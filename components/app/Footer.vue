@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col md:flex-row justify-between text-sm text-gray-500 p-3 md:p-6">
     <span class="flex-1 flex items-center <md:mt-3">
-      © 2022
-      <Icon name="logos:twitter" class="ml-2 mr-1" />
+      © 2022 by
+      <Icon name="logos:twitter" class="ml-1 mr-1" />
       <NuxtLink href="https://twitter.com/toniengelhardt"
         class="text-black dark:text-gray-300 font-semibold hover:underline"
         target="_blank"

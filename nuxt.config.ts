@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-icon',
     'nuxt-windicss',
+    'vue-plausible',
   ],
   vite: {
     vue: {
@@ -20,5 +21,9 @@ export default defineNuxtConfig({
   },
   vueuse: {
     ssrHandlers: true,
+  },
+  plausible: {
+    domain: 'webapicheck.com',
+    trackLocalhost: false,
   },
 })

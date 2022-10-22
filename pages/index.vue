@@ -2,7 +2,10 @@
   <div class="flex-col w-full min-w-full h-full mih-h-full">
     <header class="sticky">
       <AppHeader>
-        <AppSearch v-model="searchTerm" />
+        <AppSearch
+          v-model:searchTerm="searchTerm"
+          v-model:searchMode="searchMode"
+        />
         <!-- <Popover class="relative">
           <PopoverButton>Solutions</PopoverButton>
 
@@ -34,5 +37,6 @@
 
 <script setup lang="ts">
 let searchTerm = $ref('')
+let searchMode = $ref(false)
 let activeFilter = $ref(null)
 </script>

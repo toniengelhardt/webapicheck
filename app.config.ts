@@ -3,6 +3,7 @@ export default defineAppConfig({
     aliases: {
       brand: 'carbon:code',
       experimental: 'fa6-solid:flask-vial',
+      webworker: 'el:cogs',
       mdn: 'simple-icons:mozilla',
       chrome: 'logos:chrome',
       secure: 'bxs:lock-alt',

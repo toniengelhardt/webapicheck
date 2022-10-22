@@ -1,6 +1,7 @@
 export const apiData = {
   clipboard: {
     name: 'Clipboard API',
+    path: 'navigator',
     secureContext: true,
     links: [{
       name: 'docs',
@@ -9,22 +10,25 @@ export const apiData = {
   },
   digitalGoods: {
     name: 'Digital Goods API',
+    path: 'navigator',
     source: 'chrome',
     links: [{
       name: 'docs',
       url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
     }]
   },
-  wakeLock: {
-    name: 'Screen Wake Lock API',
-    experimental: true,
+  notifications: {
+    name: 'Notifications API',
+    path: 'Notification',
+    webworker: true,
     links: [{
       name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
-    }]
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
+    }],
   },
   storage: {
     name: 'Storage',
+    path: 'navigator',
     secureContext: true,
     links: [{
       name: 'docs',
@@ -33,13 +37,15 @@ export const apiData = {
   },
   vibration: {
     name: 'Vibration API',
+    path: 'navigator',
     links: [{
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API',
     }]
   },
   virtualKeyboard: {
-    name: 'VirtualKeyboardAPI',
+    name: 'Virtual Keyboard API',
+    path: 'navigator',
     secureContext: true,
     source: 'chrome',
     links: [{
@@ -47,4 +53,29 @@ export const apiData = {
       url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
     }]
   },
+  visualViewport: {
+    name: 'Visual Viewport',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API',
+    }],
+  },
+  wakeLock: {
+    name: 'Screen Wake Lock API',
+    path: 'navigator',
+    experimental: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
+    }]
+  },
+  webShare: {
+    name: 'Web Share API',
+    path: 'navigator',
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
+    }]
+  }
 }

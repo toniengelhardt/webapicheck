@@ -9,11 +9,15 @@
       </div>
       <div class="indicators">
         <Icon v-if="api.experimental" name="experimental" class="text-purple-800" />
+        <Icon v-if="api.webworker" name="webworker" />
         <Icon v-if="api.secureContext" name="secure" />
       </div>
     </div>
-    <div class="flex-1"></div>
-    <div class="flex">
+    <div class="text-xs">
+      {{ api.path || 'window' }}
+    </div>
+    <div class="flex-1 min-h-4"></div>
+    <div class="flex items-center">
       <div class="flex-1">
         <component v-if="sourceComponent" :is="sourceComponent" />
       </div>
@@ -25,7 +29,7 @@
             class="item-link"
             target="_blank"
           >{{ link.name }}</NuxtLink>
-          <Icon name="external" class="ml-1"/>
+          <Icon name="external" size=".85rem" class="ml-1"/>
         </template>
       </div>
     </div>
@@ -63,7 +67,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply flex-row px-3 py-2 min-h-20 rounded-md;
+  @apply flex-row px-3 py-2 rounded-md;
   &.experimental {
     @apply bg-purple-100 border-1 border-purple-300;
     .name {
@@ -83,12 +87,13 @@ const sourceComponent = $computed(() => {
     }
   }
   .indicators {
+    @apply flex items-center text-sm;
     > *:not(:last-child) {
       @apply mr-3;
     }
   }
   .item-link {
-    @apply text-sm underline;
+    @apply text-xs underline;
   }
 }
 </style>
