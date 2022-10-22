@@ -4,21 +4,7 @@
       <Icon name="brand" size="1.2rem" class="mr-2" /><span class="text-black font-black">WebAPI</span>&nbsp;check
     </div>
     <div>
-      <a>
-        <Icon name="carbon:search" size="1.2rem" />
-      </a>
-      <!-- <Popover class="relative">
-        <PopoverButton>Solutions</PopoverButton>
-
-        <PopoverPanel class="absolute z-10">
-          <div class="grid grid-cols-2">
-            <a href="/analytics">Analytics</a>
-            <a href="/engagement">Engagement</a>
-            <a href="/security">Security</a>
-            <a href="/integrations">Integrations</a>
-          </div>
-        </PopoverPanel>
-      </Popover> -->
+      <slot />
     </div>
   </div>
 </template>

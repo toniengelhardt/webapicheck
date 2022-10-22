@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.3",
+    "fuse.js": "^6.6.2",
     "nuxt-icon": "^0.1.7"
   },
   "devDependencies": {
