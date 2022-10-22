@@ -4,7 +4,7 @@
       <AppHeader />
     </header>
     <div class="content flex-1">
-      <div class="px-6">
+      <div class="px-3 md:px-6">
         <WebApiGrid />
       </div>
     </div>

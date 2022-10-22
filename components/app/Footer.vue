@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between text-sm text-gray-500 p-6">
+  <div class="flex justify-between text-sm text-gray-500 h-16 px-3 md:px-6">
     <span class="flex items-center">
       © 2022
       <Icon name="logos:twitter" class="ml-2 mr-1" />
