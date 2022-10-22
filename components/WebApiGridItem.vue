@@ -38,7 +38,7 @@ const itemClass = $computed(() => {
 .grid-item {
   @apply px-3 py-2 text-sm min-h-20;
   &.experimental {
-    @apply bg-blue-100 text-blue-900;
+    @apply bg-purple-100 text-purple-900;
   }
   &.available {
     @apply bg-lime-100 text-lime-900;

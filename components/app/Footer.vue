@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-between text-sm text-gray-500 h-16 px-3 md:px-6">
-    <span class="flex items-center">
+  <div class="flex flex-col md:flex-row justify-between text-sm text-gray-500 p-3 md:p-6">
+    <span class="flex-1 flex items-center <md:mt-3">
       © 2022
       <Icon name="logos:twitter" class="ml-2 mr-1" />
       <NuxtLink href="https://twitter.com/toniengelhardt"
@@ -9,7 +9,7 @@
         title="Toni Engelhardt on Twitter"
       >toniengelhardt</NuxtLink>
     </span>
-    <span class="flex items-center">
+    <span class="flex items-center <md:mt-3 md:mr-6">
       <span>Made with</span>
       <Icon name="logos:nuxt-icon" class="ml-2 mr-1" />
       <NuxtLink
@@ -39,7 +39,9 @@
         target="_blank"
         title="Official HeadlessUI website"
       >HeadlessUI</NuxtLink> -->
-      <span class="ml-6">Hosted on</span>
+    </span>
+    <span class="<md:mt-3">
+      <span>Hosted on</span>
       <Icon name="logos:vercel-icon" class="ml-2 mr-1" />
       <NuxtLink
         href="https://vercel.com/"

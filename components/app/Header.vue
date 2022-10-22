@@ -5,9 +5,9 @@
     </div>
     <div>
       <a>
-        <Icon name="carbon:search" size="1.4rem" />
+        <Icon name="carbon:search" size="1.2rem" />
       </a>
-      <Popover class="relative">
+      <!-- <Popover class="relative">
         <PopoverButton>Solutions</PopoverButton>
 
         <PopoverPanel class="absolute z-10">
@@ -18,7 +18,7 @@
             <a href="/integrations">Integrations</a>
           </div>
         </PopoverPanel>
-      </Popover>
+      </Popover> -->
     </div>
   </div>
 </template>
