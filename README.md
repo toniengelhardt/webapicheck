@@ -1,42 +1,27 @@
-# Nuxt 3 Minimal Starter
+# Web API check
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Made with Nuxt, Vite, WindiCSS, and HeadlessUI.
 
 ## Setup
 
-Make sure to install the dependencies:
+Install dependencies:
 
 ```bash
-# yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+Start development server:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Production
 
-Build the application for production:
+Build application for production:
 
 ```bash
-npm run build
+yarn build
 ```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
