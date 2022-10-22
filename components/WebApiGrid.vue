@@ -1,45 +1,54 @@
 <template>
-  <div class="grid grid-cols-5 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
     <WebApiGridItem
       v-for="api in sortedAPIs"
       :key="api.key"
-      :data="api"
+      :api="api"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-let apis: { [key: string]: any } = $ref({
+import { sortByField } from '~/utils/sorting'
+
+let apis: { [key: string]: WebAPI } = $ref({
   clipboard: {
-    name: 'ClipboardAPI',
-    available: undefined,
+    name: 'Clipboard API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
+  },
+  digitalGoods: {
+    name: 'Digital Goods API',
+    source: 'chrome',
+    url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
+  },
+  wakeLock: {
+    name: 'Screen Wake Lock API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
+    experimental: true,
   },
   storage: {
-    name: 'StorageAPI',
-    available: undefined,
+    name: 'Storage',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
   },
   vibration: {
-    name: 'ClipboardAPI',
-    available: undefined,
+    name: 'Vibration API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
   },
   virtualKeyboard: {
     name: 'VirtualKeyboardAPI',
-    available: undefined,
-  },
-  digitalGoods: {
-    name: 'DigitalGoodsAPI',
-    available: undefined,
+    source: 'chrome',
+    url: 'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
   },
 })
 
-const sortedAPIs = $computed(() => Object.keys(apis).map(apiKey => {
-  const api = apis[apiKey]
-  return {
-    key: apiKey,
-    name: api.name,
-    available: api.available,
-  }
-}))
+const sortedAPIs = $computed(() => {
+  const apiList = Object.keys(apis).reduce((list: WebAPI[], apiKey: string) => {
+    list.push(apis[apiKey])
+    return list
+  }, [])
+  sortByField(apiList, 'name')
+  return apiList
+})
 
 function loadAPIs() {
   if (window?.navigator) {

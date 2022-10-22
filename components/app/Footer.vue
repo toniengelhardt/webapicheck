@@ -32,13 +32,13 @@
         target="_blank"
         title="Official WindiCSS website"
       >Windi</NuxtLink>
-      <Icon name="logos:headlessui-icon" class="ml-2 mr-1" />
+      <!-- <Icon name="logos:headlessui-icon" class="ml-2 mr-1" />
       <NuxtLink
         href="https://headlessui.com/"
         class="text-black dark:text-gray-300 font-semibold hover:underline"
         target="_blank"
         title="Official HeadlessUI website"
-      >HeadlessUI</NuxtLink>
+      >HeadlessUI</NuxtLink> -->
       <span class="ml-6">Hosted on</span>
       <Icon name="logos:vercel-icon" class="ml-2 mr-1" />
       <NuxtLink
