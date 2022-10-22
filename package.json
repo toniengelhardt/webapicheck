@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxi dev --host=0.0.0.0 --port=3030",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "postinstall": "nuxi prepare"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.3",
+    "nuxt-icon": "^0.1.7"
+  },
+  "devDependencies": {
+    "@vueuse/nuxt": "^9.3.1",
+    "eslint": "^8.26.0",
+    "nuxt": "npm:nuxt3@latest",
+    "nuxt-windicss": "^2.5.2",
+    "sass": "^1.55.0"
+  }
+}
