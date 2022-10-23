@@ -23,11 +23,6 @@ const searchOptions = {
   threshold: 0.3,
 }
 
-const checkFunctions = {
-  notifications: () => Notification !== undefined,
-  webShare: () => navigator.canShare !== undefined,
-}
-
 let apis = $ref(apiData)
 
 const sortedAPIs = $computed(() => {
@@ -54,8 +49,7 @@ function loadAPIs() {
     Object.keys(apis).forEach(apiKey => {
       const api = apis[apiKey]
       const target = api.path === 'navigator' ? navigator : window
-      const checkFunc = checkFunctions[apiKey]
-      apis[apiKey].available = checkFunc ? checkFunc() : !!target[apiKey]
+      apis[apiKey].available = api.check ? api.check() : !!target[apiKey]
     })
   }
 }

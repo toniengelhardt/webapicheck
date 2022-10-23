@@ -1,4 +1,22 @@
 export const apiData = {
+  /* battery: {
+    name: 'Battery Status API',
+    path: 'navigator',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
+    }],
+    check: async () => navigator.getBattery()
+  }, */
+  bluetooth: {
+    name: 'Bluetooth API',
+    path: 'Bluetooth',
+    experimental: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API',
+    }],
+  },
   clipboard: {
     name: 'Clipboard API',
     path: 'navigator',
@@ -25,6 +43,7 @@ export const apiData = {
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
     }],
+    check: () => Notification !== undefined,
   },
   storage: {
     name: 'Storage',
@@ -70,6 +89,17 @@ export const apiData = {
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
     }]
   },
+  webCrypto: {
+    name: 'Web Crypto API',
+    path: 'Crypto',
+    secureContext: true,
+    webworkers: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
+    }],
+    check: () => Crypto !== undefined,
+  },
   webShare: {
     name: 'Web Share API',
     path: 'navigator',
@@ -77,6 +107,7 @@ export const apiData = {
     links: [{
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
-    }]
+    }],
+    check: () => navigator.canShare !== undefined,
   }
 }

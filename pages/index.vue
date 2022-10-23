@@ -30,13 +30,13 @@
         <div class="mt-6 text-sm">
           <div class="flex flex-col md:(flex-row items-center)">
             <div class="mr-6">
-              <Icon name="secure" />: Secure context required
+              <Icon name="secure" /> Secure context required
             </div>
             <div class="mr-6">
-              <Icon name="webworker" />: Available in web workers
+              <Icon name="webworker" /> Available in web workers
             </div>
             <div class="mr-6">
-              <Icon name="experimental" />: Experimental API
+              <Icon name="experimental" /> Experimental API
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               class="link"
               target="_blank"
             >WebAPIs</NuxtLink> are available on your device. Just open this page
-            on the device you want to check and voila.
+            on the device you want to check and voilà.
           </p>
           <p>
             If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
@@ -73,6 +73,12 @@ let activeFilter = $ref(null)
 </script>
 
 <style lang="scss" scoped>
+header {
+  @apply bg-white dark:bg-neutral-900;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
 .content {
   min-height: calc(100vh - 8rem);
 }

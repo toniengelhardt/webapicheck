@@ -11,4 +11,5 @@ declare interface WebAPI {
     name: string,
     url: string,
   }[],
+  check: () => boolean,
 }

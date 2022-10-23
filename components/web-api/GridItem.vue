@@ -8,7 +8,7 @@
         {{ api.name }}
       </div>
       <div class="indicators">
-        <Icon v-if="api.experimental" name="experimental" class="text-purple-800 dark:text-purple-300" />
+        <Icon v-if="api.experimental" name="experimental" />
         <Icon v-if="api.webworkers" name="webworker" />
         <Icon v-if="api.secureContext" name="secure" />
       </div>
@@ -16,7 +16,7 @@
     <div class="text-xs">
       {{ api.path || 'window' }}
     </div>
-    <div class="flex-1 min-h-4"></div>
+    <div class="flex-1 min-h-6"></div>
     <div class="flex items-center">
       <div class="flex-1">
         <component v-if="sourceComponent" :is="sourceComponent" />
@@ -45,13 +45,13 @@ const props = defineProps<{
 }>()
 
 const itemClass = $computed(() => {
-  return props.api.experimental
-    ? 'experimental'
-    : props.api.available === undefined
-      ? 'loading'
+  return props.api.available === false
+    ? 'not-available'
+    : props.api.experimental
+      ? 'experimental'
       : props.api.available
         ? 'available'
-        : 'not-available'
+        : 'loading'
 
 })
 
