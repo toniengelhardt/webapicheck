@@ -22,7 +22,7 @@
               v-for="item in legend"
               class="flex items-center <md:mb-3 md:mr-6"
             >
-              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-gray-100 rounded-full">
+              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-full">
                 <Icon :name="item.icon" size=".65rem" />
               </div>
               <span v-html="item.label" />

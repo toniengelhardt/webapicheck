@@ -41,7 +41,7 @@ defineEmits<{
     display: table-cell;
     vertical-align: middle;
     .modal-container {
-      @apply p-4 mx-auto bg-white dark:bg-gray-800 shadow-xl rounded;
+      @apply p-4 mx-auto bg-white dark:bg-neutral-800 shadow-xl rounded;
       width: 100%;
       max-width: 28rem;
       transition: all 0.3s ease;

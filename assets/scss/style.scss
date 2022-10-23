@@ -5,7 +5,7 @@ body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-  @apply bg-white text-black dark:(bg-neutral-900 text-gray-200);
+  @apply bg-white text-black dark:(bg-neutral-900 text-neutral-200);
 }
 
 #wrapper {

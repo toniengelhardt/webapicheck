@@ -83,7 +83,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply flex-row px-3 py-2 rounded-md text-gray-800 border-1 border-gray-300 dark:(border-neutral-500 text-neutral-200);
+  @apply flex-row px-3 py-2 rounded-md text-neutral-800 border-1 border-neutral-300 dark:(border-neutral-500 text-neutral-200);
   &.experimental {
     @apply bg-purple-100 border-1 border-purple-300 dark:(bg-purple-900 border-purple-600);
     .name {
