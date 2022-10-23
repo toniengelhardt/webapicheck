@@ -5,15 +5,17 @@
     </header>
     <div class="content flex-1">
       <div class="px-3 md:px-6">
-        <AppSearch
-          v-model:searchTerm="searchTerm"
-          v-model:searchMode="searchMode"
-        />
-        <WebApiGrid
-          :searchTerm="searchTerm"
-          :activeFilter="activeFilter"
-          class="mt-6"
-        />
+        <ClientOnly>
+          <AppSearch
+            v-model:searchTerm="searchTerm"
+            v-model:searchMode="searchMode"
+          />
+          <WebApiGrid
+            :searchTerm="searchTerm"
+            :activeFilter="activeFilter"
+            class="mt-6"
+          />
+        </ClientOnly>
         <div class="flex justify-center mt-6 text-sm">
           <div class="flex flex-col md:(flex-row items-center)">
             <div

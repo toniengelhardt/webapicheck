@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   modules: [
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',

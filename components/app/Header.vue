@@ -4,7 +4,9 @@
       <Icon name="brand" size="1.2rem" class="mr-2" /><span class="text-black dark:text-white font-black">WebAPI</span>&nbsp;check
     </div>
     <div>
-      <ContextIndicator />
+      <ClientOnly>
+        <ContextIndicator />
+      </ClientOnly>
     </div>
   </div>
 </template>
