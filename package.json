@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
   "releaseDate": "23.10.2022",
-  "author": "WebAPI Check",
+  "author": "Toni Engelhardt",
   "private": true,
   "scripts": {
     "build": "nuxi build",

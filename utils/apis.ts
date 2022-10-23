@@ -85,6 +85,16 @@ export const apiData = {
     }],
     check: () => Notification !== undefined,
   },
+  paymentRequest: {
+    name: 'Payment Request API',
+    path: 'window',
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
+    }],
+    check: () => window?.PaymentRequest !== undefined,
+  },
   storage: {
     name: 'Storage',
     path: 'navigator',

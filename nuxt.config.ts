@@ -1,6 +1,7 @@
-const title = 'WebAPI Check'
-const description = 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.'
-const url = 'https://webapicheck.com'
+const appTitle = 'WebAPI Check'
+const appAuthor = 'Toni Engelhardt'
+const appDescription = 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.'
+const appUrl = 'https://webapicheck.com'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -37,40 +38,16 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: {
-        lang: 'en',
-      },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no',
-      meta: [
-        { name: 'color-scheme', content: 'light dark' },
-        { name: 'apple-mobile-web-app-title', content: 'WebAPI Check' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: title },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:image', content: 'https://webapicheck.com/og-image.jpg' },
-        { property: 'twitter:domain', content: url },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:url', content: url },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: title },
-        { name: 'twitter:image', content: 'https://webapicheck.com/og-image.jpg' },
-        { name: 'twitter:image:alt', content: 'WebAPI Check Open Graph Image' },
-      ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      ],
     }
   },
   pwa: {
     manifest: {
       id: '/?standalone=true',
-      name: title,
-      short_name: title,
-      description: description,
+      name: appTitle,
+      short_name: appTitle,
+      description: appDescription,
       display: 'standalone',
       orientation: 'any',
       lang: 'en',
@@ -82,9 +59,19 @@ export default defineNuxtConfig({
       ],
     },
     meta: {
-      theme_color: '#ffffff',
+      name: appTitle,
+      author: appAuthor,
+      description: appDescription,
+      mobileApp: true,
       mobileAppIOS: true,
-      // nativeUI: true, DON'T USE THIS!
+      lang: 'en',
+      ogType: 'website',
+      ogSiteName: appTitle,
+      ogTitle: appTitle,
+      ogDescription: appDescription,
+      ogImage: 'https://webapicheck.com/og-image.jpg',
+      ogUrl: 'https://webapicheck.com',
+      twitterCard: 'summary_large_image',
     },
   },
 })

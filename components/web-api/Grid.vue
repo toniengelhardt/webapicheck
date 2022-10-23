@@ -56,5 +56,7 @@ function loadAPIs() {
 
 onMounted(() => {
   loadAPIs()
+  console.log('window', window)
+  console.log('navigator', navigator)
 })
 </script>
