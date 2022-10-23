@@ -12,6 +12,9 @@ export default defineAppConfig({
       external: 'ci:external-link',
       search: 'carbon:search',
       clear: 'carbon:erase',
+      light: 'carbon:sun',
+      dark: 'carbon:moon',
+      system: 'carbon:contrast',
     },
   }
 })

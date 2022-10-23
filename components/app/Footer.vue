@@ -40,7 +40,7 @@
         title="Official HeadlessUI website"
       >HeadlessUI</NuxtLink> -->
     </span>
-    <span class="flex <md:justify-center items-center <md:mt-3">
+    <span class="flex <md:justify-center items-center <md:mt-3 md:mr-6">
       <span>Hosted on</span>
       <Icon name="logos:vercel-icon" class="ml-2 mr-1" />
       <NuxtLink
@@ -49,6 +49,9 @@
         target="_blank"
         title="Official Vercel website"
       >Vercel</NuxtLink>
+    </span>
+    <span class="flex items-center <md:">
+      <ThemeSelector />
     </span>
   </div>
 </template>
