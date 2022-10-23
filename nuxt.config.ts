@@ -1,3 +1,7 @@
+const title = 'WebAPI Check'
+const description = 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.'
+const url = 'https://webapicheck.com'
+
 export default defineNuxtConfig({
   ssr: true,
   modules: [
@@ -44,10 +48,15 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'WebAPI Check' },
+        { property: 'og:site_name', content: title },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
         { property: 'og:image', content: 'https://webapicheck.com/og-image.jpg' },
-        { property: 'twitter:domain', content: 'webapicheck.com' },
+        { property: 'twitter:domain', content: url },
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:url', content: url },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: title },
         { name: 'twitter:image', content: 'https://webapicheck.com/og-image.jpg' },
         { name: 'twitter:image:alt', content: 'WebAPI Check Open Graph Image' },
       ],
@@ -59,9 +68,9 @@ export default defineNuxtConfig({
   pwa: {
     manifest: {
       id: '/?standalone=true',
-      name: 'WebAPI Check',
-      short_name: 'WebAPI Check',
-      description: 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.',
+      name: title,
+      short_name: title,
+      description: description,
       display: 'standalone',
       orientation: 'any',
       lang: 'en',
