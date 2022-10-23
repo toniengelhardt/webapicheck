@@ -43,6 +43,13 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-title', content: 'WebAPI Check' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'WebAPI Check' },
+        { property: 'og:image', content: 'https://webapicheck.com/og-image.jpg' },
+        { property: 'twitter:domain', content: 'webapicheck.com' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: 'https://webapicheck.com/og-image.jpg' },
+        { name: 'twitter:image:alt', content: 'WebAPI Check Open Graph Image' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

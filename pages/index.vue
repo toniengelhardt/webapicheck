@@ -44,6 +44,11 @@
           <p>
             If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
           </p>
+          <p class="mt-6">
+            Other DX projects:
+            <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink>,
+            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink>
+          </p>
         </div>
       </div>
     </div>
