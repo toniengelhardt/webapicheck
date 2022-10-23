@@ -8,8 +8,8 @@
         <WebApiGridItemIndicator
           v-if="api.experimental"
           icon="experimental"
-          title="Experimental API"
-          description=""
+          title="Experimental"
+          description="This feature is experimental, use with care."
         />
         <WebApiGridItemIndicator
           v-if="api.webworkers"
@@ -25,6 +25,7 @@
           description="This feature requires a Secure Context (HTTPS) to be available."
           link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
         />
+        <Icon v-if="itemClass === 'loading'" name="spinner" class="animate-spin" />
       </div>
     </div>
     <div class="text-xs">
@@ -82,7 +83,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply flex-row px-3 py-2 rounded-md;
+  @apply flex-row px-3 py-2 rounded-md text-gray-800 border-1 border-gray-300 dark:(border-neutral-500 text-neutral-200);
   &.experimental {
     @apply bg-purple-100 border-1 border-purple-300 dark:(bg-purple-900 border-purple-600);
     .name {
@@ -96,10 +97,13 @@ const sourceComponent = $computed(() => {
     }
   }
   &.not-available {
-    @apply bg-neutral-100 text-gray-800 border-1 border-gray-300 dark:(bg-neutral-700 border-neutral-500 text-neutral-200);
+    @apply bg-neutral-100 dark:bg-neutral-700;
     .name {
       @apply text-neutral-500 dark:text-neutral-400 line-through;
     }
+  }
+  .loading {
+    @apply
   }
   .indicators {
     @apply flex items-center text-sm;

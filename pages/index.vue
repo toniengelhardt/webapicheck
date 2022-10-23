@@ -1,35 +1,35 @@
 <template>
   <div class="flex-col w-full min-w-full h-full mih-h-full">
     <header class="sticky">
-      <AppHeader />
+      <AppHeader>
+        <AppSearch
+          v-model:searchTerm="searchTerm"
+          v-model:searchMode="searchMode"
+        />
+      </AppHeader>
     </header>
     <div class="content flex-1">
       <div class="px-3 md:px-6">
-        <ClientOnly>
-          <AppSearch
-            v-model:searchTerm="searchTerm"
-            v-model:searchMode="searchMode"
-          />
+        <div class="py-6">
           <WebApiGrid
             :searchTerm="searchTerm"
             :activeFilter="activeFilter"
-            class="mt-6"
           />
-        </ClientOnly>
+        </div>
         <div class="flex justify-center mt-6 text-sm">
           <div class="flex flex-col md:(flex-row items-center)">
             <div
               v-for="item in legend"
-              class="flex items-center mr-6"
+              class="flex items-center <md:mb-3 md:mr-6"
             >
-              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-gray-200 rounded-full">
+              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-gray-100 rounded-full">
                 <Icon :name="item.icon" size=".65rem" />
               </div>
               <span v-html="item.label" />
             </div>
           </div>
         </div>
-        <div class="mt-6 text-sm">
+        <div class="mt-6 text-sm <md:text-center">
           <p>
             <Icon name="emojione:construction" /> Work in progress...
           </p>
@@ -47,7 +47,7 @@
             If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
           </p>
           <p class="mt-6">
-            Other DX projects:
+            Other DX projects: <br class="md:hidden" />
             <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink>,
             <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink>
           </p>

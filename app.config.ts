@@ -1,6 +1,7 @@
 export default defineAppConfig({
   nuxtIcon: {
     aliases: {
+      spinner: 'fa6-solid:spinner',
       brand: 'carbon:code',
       experimental: 'fa6-solid:flask-vial',
       webworker: 'el:cogs',
@@ -9,6 +10,8 @@ export default defineAppConfig({
       secure: 'bxs:lock-alt',
       unsecure: 'bxs:lock-open-alt',
       external: 'ci:external-link',
+      search: 'carbon:search',
+      clear: 'carbon:erase',
     },
   }
 })
