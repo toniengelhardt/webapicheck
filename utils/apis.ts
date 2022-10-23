@@ -26,6 +26,15 @@ export const apiData = {
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
     }]
   },
+  credentials: {
+    name: 'Web Authentication API',
+    path: 'nativator',
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
+    }]
+  },
   digitalGoods: {
     name: 'Digital Goods API',
     path: 'navigator',
@@ -48,7 +57,7 @@ export const apiData = {
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     }],
-    check: () => !!document?.fullscreenEnabled
+    check: () => document.fullscreenEnabled !== undefined
   },
   geolocation: {
     name: 'Geolocation API',
@@ -83,7 +92,7 @@ export const apiData = {
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
     }],
-    check: () => Notification !== undefined,
+    check: () => { try { return Notification !== undefined } catch (error) { return false } },
   },
   paymentRequest: {
     name: 'Payment Request API',
@@ -102,7 +111,17 @@ export const apiData = {
     webworkers: true,
     links: [{
       name: 'docs',
-      url:'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
+    }]
+  },
+  usb: {
+    name: 'WebUSB API',
+    path: 'navigator',
+    experimental: true,
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
     }]
   },
   vibration: {
@@ -158,6 +177,25 @@ export const apiData = {
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
     }],
-    check: () => navigator.canShare !== undefined,
+    check: () => navigator?.canShare !== undefined,
+  },
+  webSpeech: {
+    name: 'Web Speech API',
+    path: 'window',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API',
+    }],
+    check: () => window?.SpeechRecognition || webkitSpeechRecognition
+  },
+  xr: {
+    name: 'WebXR Device API',
+    path: 'navigator',
+    experimental: true,
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
+    }],
   }
 }

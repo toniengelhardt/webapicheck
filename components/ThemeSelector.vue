@@ -1,6 +1,8 @@
 <template>
   <span class="flex justify-center items-center w-8 h-8 bg-neutral-100 text-black dark:(bg-neutral-800 text-white) cursor-pointer rounded-full" @click="onClick()">
-    <Icon :name="colorMode.preference" size="1.1rem" />
+    <ClientOnly>
+      <Icon :name="colorMode.preference" size="1.1rem" />
+    </ClientOnly>
   </span>
 </template>
 

@@ -50,7 +50,7 @@
         title="Official Vercel website"
       >Vercel</NuxtLink>
     </span>
-    <span class="flex items-center <md:">
+    <span class="flex items-center <md:(justify-center mt-6)">
       <ThemeSelector />
     </span>
   </div>
