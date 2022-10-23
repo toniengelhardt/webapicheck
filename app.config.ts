@@ -8,7 +8,7 @@ export default defineAppConfig({
       chrome: 'logos:chrome',
       secure: 'bxs:lock-alt',
       unsecure: 'bxs:lock-open-alt',
-      external: 'bytesize:external',
+      external: 'ci:external-link',
     },
   }
 })

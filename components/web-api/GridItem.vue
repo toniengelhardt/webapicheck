@@ -1,36 +1,51 @@
 <template>
-  <div
-    :class="itemClass"
-    class="grid-item"
-  >
+  <div :class="itemClass" class="grid-item">
     <div class="flex items-center">
       <div class="flex-1 font-bold name">
         {{ api.name }}
       </div>
       <div class="indicators">
-        <Icon v-if="api.experimental" name="experimental" />
-        <Icon v-if="api.webworkers" name="webworker" />
-        <Icon v-if="api.secureContext" name="secure" />
+        <WebApiGridItemIndicator
+          v-if="api.experimental"
+          icon="experimental"
+          title="Experimental API"
+          description=""
+        />
+        <WebApiGridItemIndicator
+          v-if="api.webworkers"
+          icon="webworker"
+          title="Web Workers"
+          description="This feature is also available in Web Workers."
+          link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
+        />
+        <WebApiGridItemIndicator
+          v-if="api.secureContext"
+          icon="secure"
+          title="Secure Context"
+          description="This feature requires a Secure Context (HTTPS) to be available."
+          link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
+        />
       </div>
     </div>
     <div class="text-xs">
       {{ api.path || 'window' }}
     </div>
-    <div class="flex-1 min-h-6"></div>
+    <div class="flex-1 min-h-6">
+      <slot />
+    </div>
     <div class="flex items-center">
       <div class="flex-1">
         <component v-if="sourceComponent" :is="sourceComponent" />
       </div>
       <div class="flex items-center">
-        <template v-for="link in api.links">
+        <span v-for="link in api.links" class="item-link">
           <NuxtLink
             :to="link.url"
             :class="itemClass"
-            class="item-link"
             target="_blank"
           >{{ link.name }}</NuxtLink>
-          <Icon name="external" size=".85rem" class="ml-1"/>
-        </template>
+          <Icon name="external" size=".85rem" class="ml-0.5"/>
+        </span>
       </div>
     </div>
   </div>
@@ -89,11 +104,17 @@ const sourceComponent = $computed(() => {
   .indicators {
     @apply flex items-center text-sm;
     > *:not(:last-child) {
-      @apply mr-3;
+      @apply mr-2;
     }
   }
   .item-link {
-    @apply text-xs underline;
+    @apply text-xs;
+    &:not(:last-child) {
+      @apply mr-2;
+    }
+    a {
+      @apply underline;
+    }
   }
 }
 </style>

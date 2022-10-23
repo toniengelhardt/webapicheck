@@ -1,20 +1,7 @@
 <template>
   <div class="flex-col w-full min-w-full h-full mih-h-full">
     <header class="sticky">
-      <AppHeader>
-        <!-- <Popover class="relative">
-          <PopoverButton>Solutions</PopoverButton>
-
-          <PopoverPanel class="absolute z-10">
-            <div class="grid grid-cols-2">
-              <a href="/analytics">Analytics</a>
-              <a href="/engagement">Engagement</a>
-              <a href="/security">Security</a>
-              <a href="/integrations">Integrations</a>
-            </div>
-          </PopoverPanel>
-        </Popover> -->
-      </AppHeader>
+      <AppHeader />
     </header>
     <div class="content flex-1">
       <div class="px-3 md:px-6">
@@ -27,16 +14,16 @@
           :activeFilter="activeFilter"
           class="mt-6"
         />
-        <div class="mt-6 text-sm">
+        <div class="flex justify-center mt-6 text-sm">
           <div class="flex flex-col md:(flex-row items-center)">
-            <div class="mr-6">
-              <Icon name="secure" /> Secure context required
-            </div>
-            <div class="mr-6">
-              <Icon name="webworker" /> Available in web workers
-            </div>
-            <div class="mr-6">
-              <Icon name="experimental" /> Experimental API
+            <div
+              v-for="item in legend"
+              class="flex items-center mr-6"
+            >
+              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-gray-200 rounded-full">
+                <Icon :name="item.icon" size=".65rem" />
+              </div>
+              <span v-html="item.label" />
             </div>
           </div>
         </div>
@@ -67,6 +54,32 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: "WebAPI Check — Test your Device APIs",
+  meta: [{
+    name: 'description',
+    content: 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.',
+  }, {
+    name: 'keywords',
+    content: 'WebAPI, DX, Developer Tools',
+  }]
+})
+
+const legend = [
+  {
+    icon: 'secure',
+    label: '<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" title="What is a secure context?" class="link" target="_blank">Secure Context</a> required',
+  },
+  {
+    icon: 'webworker',
+    label: 'Available in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" title="What are web workers?" class="link" target="_blank">Web Workers</a>',
+  },
+  {
+    icon: 'experimental',
+    label: 'Experimental API',
+  }
+]
+
 let searchTerm = $ref('')
 let searchMode = $ref(false)
 let activeFilter = $ref(null)

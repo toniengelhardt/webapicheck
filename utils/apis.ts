@@ -31,9 +31,49 @@ export const apiData = {
     path: 'navigator',
     source: 'chrome',
     links: [{
-      name: 'docs',
+      name: 'post',
       url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
+    }, {
+      name: 'spec',
+      url: 'https://github.com/WICG/digital-goods/blob/main/explainer.md',
+    }, {
+      name: 'status',
+      url: 'https://chromestatus.com/feature/5339955595313152',
     }]
+  },
+  fullscreen: {
+    name: 'Fullscreen API',
+    path: 'document',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
+    }],
+    check: () => !!document?.fullscreenEnabled
+  },
+  geolocation: {
+    name: 'Geolocation API',
+    path: 'navigator',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
+    }]
+  },
+  history: {
+    name: 'History API',
+    path: 'window',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API',
+    }],
+  },
+  indexedDB: {
+    name: 'IndexedDB API',
+    path: 'window',
+    webworkers: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API',
+    }],
   },
   notifications: {
     name: 'Notifications API',
@@ -69,7 +109,7 @@ export const apiData = {
     secureContext: true,
     source: 'chrome',
     links: [{
-      name: 'docs',
+      name: 'post',
       url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
     }]
   },

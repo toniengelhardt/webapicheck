@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   ssr: false,
   modules: [
+    '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
     'nuxt-icon',
@@ -29,5 +30,45 @@ export default defineNuxtConfig({
   plausible: {
     domain: 'webapicheck.com',
     trackLocalhost: false,
+  },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no',
+      meta: [
+        { name: 'color-scheme', content: 'light dark' },
+        { name: 'apple-mobile-web-app-title', content: 'WebAPI Check' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    }
+  },
+  pwa: {
+    manifest: {
+      id: '/?standalone=true',
+      name: 'WebAPI Check',
+      short_name: 'WebAPI Check',
+      description: 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.',
+      display: 'standalone',
+      orientation: 'any',
+      lang: 'en',
+      start_url: '/?standalone=true',
+      scope: '/',
+      categories: [
+        'productivity',
+        'utilities',
+      ],
+    },
+    meta: {
+      theme_color: '#ffffff',
+      mobileAppIOS: true,
+      // nativeUI: true, DON'T USE THIS!
+    },
   },
 })
