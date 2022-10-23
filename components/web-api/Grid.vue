@@ -45,15 +45,13 @@ const filteredAPIs = $computed(() => {
 })
 
 function loadAPIs() {
-  setTimeout(() => {
-    if (window?.navigator) {
-      Object.keys(apis).forEach(apiKey => {
-        const api = apis[apiKey]
-        const target = api.path === 'navigator' ? navigator : window
-        apis[apiKey].available = api.check ? api.check() : !!target[apiKey]
-      })
-    }
-  }, 1000);
+  if (window?.navigator) {
+    Object.keys(apis).forEach(apiKey => {
+      const api = apis[apiKey]
+      const target = api.path === 'navigator' ? navigator : window
+      apis[apiKey].available = api.check ? api.check() : !!target[apiKey]
+    })
+  }
 }
 
 onMounted(() => {

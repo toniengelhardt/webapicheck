@@ -7,7 +7,9 @@
       <slot />
     </div>
     <div class="flex justify-center <md:py-3 md:(w-1/5 justify-end)">
-      <ContextStatus />
+      <ClientOnly>
+        <ContextStatus />
+      </ClientOnly>
     </div>
   </div>
 </template>
