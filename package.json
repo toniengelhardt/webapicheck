@@ -23,6 +23,7 @@
     "@vueuse/nuxt": "^9.3.1",
     "eslint": "^8.26.0",
     "nuxt": "npm:nuxt3@latest",
+    "nuxt-headlessui": "^1.0.1",
     "nuxt-windicss": "^2.5.2",
     "sass": "^1.55.0"
   }

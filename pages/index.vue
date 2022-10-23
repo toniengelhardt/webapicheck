@@ -8,49 +8,55 @@
         />
       </AppHeader>
     </header>
-    <div class="content flex-1">
-      <div class="px-3 md:px-6">
-        <div class="py-6">
+    <div class="content flex-1 py-6">
+      <div class="px-3">
+        <!-- <div>
+          <ListSortingMode />
+          <ListFilter />
+        </div> -->
+        <div>
           <WebApiGrid
             :searchTerm="searchTerm"
             :activeFilter="activeFilter"
           />
         </div>
-        <div class="flex justify-center mt-6 text-sm">
-          <div class="flex flex-col md:(flex-row items-center)">
-            <div
-              v-for="item in legend"
-              class="flex items-center <md:mb-3 md:mr-6"
-            >
-              <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-full">
-                <Icon :name="item.icon" size=".65rem" />
+        <div class="p-3">
+          <div class="flex justify-center my-6 text-sm">
+            <div class="flex flex-col md:(flex-row items-center)">
+              <div
+                v-for="item in legend"
+                class="flex items-center <md:mb-3 md:mr-6"
+              >
+                <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-full">
+                  <Icon :name="item.icon" size=".65rem" />
+                </div>
+                <span v-html="item.label" />
               </div>
-              <span v-html="item.label" />
             </div>
           </div>
-        </div>
-        <div class="mt-6 text-sm <md:text-center">
-          <p>
-            <Icon name="emojione:construction" /> Work in progress...
-          </p>
-          <p class="mt-2">
-            With this little project you can easily check which
-            <NuxtLink
-              to="https://developer.mozilla.org/en-US/docs/Web/API"
-              title="MDN docs for WebAPIs"
-              class="link"
-              target="_blank"
-            >WebAPIs</NuxtLink> are available on your device. Just open this page
-            on the device you want to check and voilà.
-          </p>
-          <p>
-            If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
-          </p>
-          <p class="mt-6">
-            Other DX projects: <br class="md:hidden" />
-            <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink>,
-            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink>
-          </p>
+          <div class="<md:text-center">
+            <p>
+              <Icon name="emojione:construction" /> Work in progress...
+            </p>
+            <p class="mt-6">
+              With this little project you can easily check which
+              <NuxtLink
+                to="https://developer.mozilla.org/en-US/docs/Web/API"
+                title="MDN docs for WebAPIs"
+                class="link"
+                target="_blank"
+              >WebAPIs</NuxtLink> are available on your device. Just open this page
+              on the device you want to check and voilà.
+            </p>
+            <p>
+              If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
+            </p>
+            <p class="mt-6">
+              Other DX projects: <br class="md:hidden" />
+              <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink>,
+              <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink>
+            </p>
+          </div>
         </div>
       </div>
     </div>

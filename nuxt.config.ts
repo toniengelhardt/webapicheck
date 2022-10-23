@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    'nuxt-headlessui',
     'nuxt-icon',
     'nuxt-windicss',
     'vue-plausible',
@@ -28,6 +29,9 @@ export default defineNuxtConfig({
   },
   vueuse: {
     ssrHandlers: true,
+  },
+  headlessui: {
+    prefix: 'HL',
   },
   colorMode: {
     classSuffix: '',
