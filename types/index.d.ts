@@ -4,7 +4,7 @@ declare interface WebAPI {
   path?: string,
   available: boolean | undefined,
   secureContext?: boolean,
-  webworker?: boolean,
+  webworkers?: boolean,
   experimental?: boolean,
   source?: string,
   links?: {

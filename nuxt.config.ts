@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   ssr: false,
   modules: [
+    '@nuxtjs/color-mode',
     '@vueuse/nuxt',
     'nuxt-icon',
     'nuxt-windicss',
@@ -21,6 +22,9 @@ export default defineNuxtConfig({
   },
   vueuse: {
     ssrHandlers: true,
+  },
+  colorMode: {
+    classSuffix: '',
   },
   plausible: {
     domain: 'webapicheck.com',

@@ -20,7 +20,7 @@ export const apiData = {
   notifications: {
     name: 'Notifications API',
     path: 'Notification',
-    webworker: true,
+    webworkers: true,
     links: [{
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
@@ -30,6 +30,7 @@ export const apiData = {
     name: 'Storage',
     path: 'navigator',
     secureContext: true,
+    webworkers: true,
     links: [{
       name: 'docs',
       url:'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',

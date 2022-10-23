@@ -472,7 +472,7 @@
     unimport "^0.6.7"
     untyped "^0.4.7"
 
-"@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.11":
+"@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.9":
   version "3.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.12.tgz#637ab3e63d4213b886ab3cda19632bd08bc5ccb6"
   integrity sha512-d/6SeNVL1OPdru5aKjjUIWIwqIjbYN/VYGCrZs5gddkzJ5202DsMxyn2rs/ZyT8+oBbbVTYcCK6M+G0945mQdA==
@@ -641,6 +641,15 @@
     vite-node "^0.24.3"
     vite-plugin-checker "^0.5.1"
     vue-bundle-renderer "^0.4.4"
+
+"@nuxtjs/color-mode@^3.1.8":
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.8.tgz#58f3e5401028fe0c75088e9d2fdc5c7778d2b720"
+  integrity sha512-ahgjmSzpjTpaxvyyGA/1wD2rNcSFXiqs3/A/GEllB1s4BboJVnBIqkwIQpAguq7IDVZG2tMAvqmnZHSfwrI3IA==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.9"
+    lodash.template "^4.5.0"
+    pathe "^0.3.5"
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"

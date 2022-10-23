@@ -8,8 +8,8 @@
         {{ api.name }}
       </div>
       <div class="indicators">
-        <Icon v-if="api.experimental" name="experimental" class="text-purple-800" />
-        <Icon v-if="api.webworker" name="webworker" />
+        <Icon v-if="api.experimental" name="experimental" class="text-purple-800 dark:text-purple-300" />
+        <Icon v-if="api.webworkers" name="webworker" />
         <Icon v-if="api.secureContext" name="secure" />
       </div>
     </div>
@@ -69,21 +69,21 @@ const sourceComponent = $computed(() => {
 .grid-item {
   @apply flex-row px-3 py-2 rounded-md;
   &.experimental {
-    @apply bg-purple-100 border-1 border-purple-300;
+    @apply bg-purple-100 border-1 border-purple-300 dark:(bg-purple-900 border-purple-600);
     .name {
-      @apply text-purple-800;
+      @apply text-purple-800 dark:text-purple-200;
     }
   }
   &.available {
-    @apply bg-lime-100 border-1 border-lime-300;
+    @apply bg-lime-100 border-1 border-lime-300 dark:(bg-lime-900 border-lime-600);
     .name {
-      @apply text-lime-800;
+      @apply text-lime-800 dark:text-lime-200;
     }
   }
   &.not-available {
-    @apply bg-neutral-100 text-gray-800 border-1 border-gray-300;
+    @apply bg-neutral-100 text-gray-800 border-1 border-gray-300 dark:(bg-neutral-700 border-neutral-500 text-neutral-200);
     .name {
-      @apply text-gray-500 line-through;
+      @apply text-neutral-500 dark:text-neutral-400 line-through;
     }
   }
   .indicators {
