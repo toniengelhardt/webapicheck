@@ -43,7 +43,10 @@
       {{ api.path || 'window' }}
     </div>
     <div class="flex-1 min-h-6">
-      <component v-if="api.available && api.detail" :is="api.detail" />
+      <template v-if="api.available">
+        <component v-if="api.detail" :is="api.detail" />
+        <div v-else-if="api.value" class="my-3">{{ api.value() }}</div>
+      </template>
     </div>
     <div class="flex items-center">
       <div class="flex-1 flex items-center">

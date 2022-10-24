@@ -94,6 +94,13 @@ export const apiData = {
     secureContextRequired: true,
     check: () => window?.PaymentRequest !== undefined,
   },
+  screenOrientation: {
+    name: 'Screen Orientation API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API',
+    path: 'screen',
+    check: () => window?.screen?.orientation !== undefined,
+    value: () => window?.screen?.orientation?.type,
+  },
   storage: {
     name: 'Storage',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
