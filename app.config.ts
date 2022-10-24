@@ -15,7 +15,13 @@ export default defineAppConfig({
       light: 'carbon:sun',
       dark: 'carbon:moon',
       system: 'carbon:contrast',
-      charging: 'fa6-solid:bolt'
+      charging: 'akar-icons:battery-charging',
+      batteryEmpty: 'akar-icons:battery-empty',
+      batteryLow: 'akar-icons:battery-low',
+      batteryMedium: 'akar-icons:battery-medium',
+      batteryFull: 'akar-icons:battery-full',
+      width: 'ant-design:column-width-outlined',
+      height: 'ant-design:column-height-outlined',
     },
   }
 })

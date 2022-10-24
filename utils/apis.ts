@@ -1,4 +1,5 @@
 import DetailBatteryStatusApi from '~/components/detail/BatteryStatusApi.vue'
+import VisualViewport from '~/components/detail/VisualViewport.vue'
 
 export const apiData = {
   battery: {
@@ -151,6 +152,7 @@ export const apiData = {
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API',
     }],
+    detail: shallowRef(VisualViewport),
   },
   wakeLock: {
     name: 'Screen Wake Lock API',
