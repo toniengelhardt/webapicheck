@@ -17,8 +17,6 @@ function updatePosition(pos: GeolocationPosition) {
 }
 
 onMounted(() => {
-  console.log(navigator.geolocation);
-
   // try {
   //   navigator?.geolocation.watchPosition(updatePosition)
   // } catch (error) {}
