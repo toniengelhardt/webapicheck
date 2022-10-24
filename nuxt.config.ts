@@ -5,6 +5,12 @@ const appUrl = 'https://webapicheck.com'
 
 export default defineNuxtConfig({
   ssr: true,
+  runtimeConfig: {
+    public: {
+      twitterProfile: 'https://twitter.com/toniengelhardt',
+      githubProfile: 'https://github.com/toniengelhardt',
+    }
+  },
   modules: [
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',

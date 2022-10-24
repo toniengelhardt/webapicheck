@@ -7,6 +7,7 @@ export const apiData = {
     name: 'Battery Status API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
     path: 'navigator',
+    secureContextRequired: true,
     detail: shallowRef(DetailBatteryStatusApi),
     check: async () => {
       if ('getBattery' in navigator) {
@@ -61,7 +62,7 @@ export const apiData = {
     path: 'navigator',
     secureContextRequired: true,
     userInteractionRequired: true,
-    // detail: shallowRef(DetailGeolocationAPI),
+    detail: shallowRef(DetailGeolocationAPI),
   },
   history: {
     name: 'History API',
@@ -136,6 +137,7 @@ export const apiData = {
     name: 'Screen Wake Lock API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
     path: 'navigator',
+    secureContextRequired: true,
     experimental: true,
   },
   webCrypto: {

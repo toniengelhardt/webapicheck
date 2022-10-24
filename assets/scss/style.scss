@@ -5,15 +5,43 @@ body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-  @apply bg-white text-black dark:(bg-neutral-900 text-neutral-200);
+  @apply bg-white text-black dark:(bg-zinc-900 text-zinc-200);
+}
+
+.text-dim {
+  @apply text-zinc-500 dark:text-zinc-400;
 }
 
 .link {
-  @apply font-semibold underline;
+  @apply font-semibold underline decoration-2 decoration-rose-500;
 }
 
 .pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.btn {
+  @apply inline-flex items-center py-2 px-4 font-bold rounded cursor-pointer;
+}
+.btn-sm {
+  @extend .btn;
+  @apply py-1.5 px-3 text-sm;
+}
+.btn-xs {
+  @extend .btn;
+  @apply py-1 px-2 text-xs;
+}
+.btn-default {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-500 hover:text-gray-700
+    dark:(bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-gray-200);
+}
+.btn-base {
+  @apply dark:bg-zinc-900;
+}
+.btn-outline {
+  @extend .btn;
+  @apply bg-transparent border border-gray-300 hover:bg-gray-100
+    dark:(bg-transparent border-gray-700 hover:bg-gray-800);
 }
 
 

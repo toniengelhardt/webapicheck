@@ -1,6 +1,6 @@
 <template>
   <span
-    class="flex justify-center items-center w-8 h-8 bg-neutral-100 text-black dark:(bg-neutral-800 text-white) cursor-pointer rounded-full hover:(bg-neutral-200 dark:bg-neutral-700)"
+    class="flex justify-center items-center w-8 h-8 bg-zinc-100 text-black dark:(bg-zinc-800 text-white) cursor-pointer rounded-full hover:(bg-zinc-200 dark:bg-zinc-700)"
     @click="onClick()"
   >
     <ClientOnly>

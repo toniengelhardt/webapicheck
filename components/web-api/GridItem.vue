@@ -1,5 +1,5 @@
 <template>
-  <div :class="itemClass" class="grid-item">
+  <div class="grid-item" :class="itemClass">
     <div class="flex items-center">
       <div class="name">
         <NuxtLink
@@ -44,6 +44,7 @@
     </div>
     <div class="flex-1 min-h-6">
       <template v-if="api.available">
+        <!-- <DetailGeolocationAPI v-if="api.name === 'Geolocation API'" /> -->
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="my-3">{{ api.value() }}</div>
       </template>
@@ -67,6 +68,7 @@
 </template>
 
 <script setup lang="ts">
+import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
 import WebApiSourceChrome from '~/components/web-api/source/Chrome.vue'
 import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
 
@@ -97,7 +99,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2 rounded-md text-neutral-800 border-1 border-neutral-300 dark:(border-neutral-500 text-neutral-200);
+  @apply self-start flex-row px-3 py-2 rounded-md text-zinc-800 border-1 border-zinc-300 dark:(border-zinc-500 text-zinc-200);
   .name {
     @apply flex-1 font-bold text-lg underline;
   }
@@ -114,9 +116,9 @@ const sourceComponent = $computed(() => {
     }
   }
   &.not-available {
-    @apply bg-neutral-100 dark:bg-neutral-700;
+    @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
-      @apply text-neutral-500 dark:text-neutral-400 line-through;
+      @apply text-zinc-500 dark:text-zinc-400 line-through;
     }
   }
   .loading {

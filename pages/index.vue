@@ -9,7 +9,7 @@
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-3 pt-3 pb-6 border-b-1 border-neutral-300 dark:border-neutral-700">
+      <div class="px-3 pt-3 pb-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -27,7 +27,7 @@
                 v-for="item in legend"
                 class="flex items-center <md:(not-last:mb-3 justify-center) md:mr-6"
               >
-                <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-full">
+                <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">
                   <Icon :name="item.icon" size=".65rem" />
                 </div>
                 <span v-html="item.label" />
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="p-6 border-b-1 border-neutral-300 dark:border-neutral-700">
+      <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <div class="<md:text-center">
           <p>
             <Icon name="emojione:construction" /> Work in progress...
@@ -52,26 +52,36 @@
             on the device you want to check and voilà.
           </p>
           <p>
-            If you are interested in specific APIs that are still missing, just reach out on Twitter and I'll add them.
+            Feedback is very welcome! Get in touch on
+            <NuxtLink :to="$config.twitterProfile" title="Toni Engelhardt on Twitter" target="_blank" class="link">Twitter</NuxtLink> or
+            <NuxtLink :to="$config.githubProfile" title="Toni Engelhardt on GitHub" target="_blank" class="link">GitHub</NuxtLink>.
           </p>
+          <p class="mt-6 text-dim">FAQ:</p>
+          <ul>
+            <li>
+              <p>What is a "Secure Context"?</p>
+              <p><i>— A secure context ...</i></p>
+            </li>
+            <li>
+              <p></p>
+            </li>
+          </ul>
+          <p class="mt-6 text-dim font-bold">Sources:</p>
+          <ul class="list-inside list-disc">
+            <li><NuxtLink to="https://developer.mozilla.org" title="Resources for Developers by Developers" target="_blank" class="link">MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink to="https://developer.chrome.com" title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..." target="_blank" class="link">Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+          </ul>
           <p class="mt-6">
-            Other DX projects: <br class="md:hidden" />
+            More DX projects: <br class="md:hidden" />
             <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink><Icon name="external" class="ml-0.5" />,
             <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink><Icon name="external" class="ml-0.5" />
           </p>
-          <div class="mt-6">
-            <p>Sources:</p>
-            <ul class="list-inside list-disc">
-              <li><NuxtLink to="https://developer.mozilla.org" title="Resources for Developers by Developers" target="_blank" class="link">MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-              <li><NuxtLink to="https://developer.chrome.com" title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..." target="_blank" class="link">Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            </ul>
-          </div>
         </div>
       </div>
       <ClientOnly>
-        <div v-if="_navigator" class="m-3 p-3 bg-neutral-100 dark:bg-neutral-800">
+        <div v-if="_navigator" class="m-3 p-3 bg-zinc-100 dark:bg-zinc-800">
           <p class="font-bold">Navigator</p>
-          <div class="mt-2 text-xs text-neutral-600 dark:text-neutral-400">
+          <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
             <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
               <span class="font-bold">{{ key }}:</span> <span class="pre">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
             </p>
@@ -125,7 +135,7 @@ const _navigator = $computed(() => navigator)
 
 <style lang="scss" scoped>
 header {
-  @apply bg-white dark:bg-neutral-900;
+  @apply bg-white dark:bg-zinc-900;
   position: sticky;
   top: 0;
   z-index: 1001;

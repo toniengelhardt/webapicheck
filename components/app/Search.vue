@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center max-w-120 h-10 mx-auto border-1 border-neutral-300 dark:border-neutral-700 rounded-md overflow-hidden">
-    <div class="flex justify-center items-center min-h-10 min-w-8 ml-1 text-neutral-500 dark:text-neutral-400">
+  <div class="flex items-center max-w-120 h-10 mx-auto border-1 border-zinc-300 dark:border-zinc-700 rounded-md overflow-hidden">
+    <div class="flex justify-center items-center min-h-10 min-w-8 ml-1 text-zinc-500 dark:text-zinc-400">
       <Icon name="search" size="1.1rem" />
     </div>
     <input
@@ -12,7 +12,7 @@
       @blur="$emit('update:searchMode', false)"
     />
     <div
-      class="flex justify-center items-center min-h-10 min-w-8 mr-1 text-neutral-500 dark:text-tray-400 hover:(text-neutral-700 dark:text-neutral-200) cursor-pointer"
+      class="flex justify-center items-center min-h-10 min-w-8 mr-1 text-zinc-500 dark:text-tray-400 hover:(text-zinc-700 dark:text-zinc-200) cursor-pointer"
       @click="$emit('update:searchTerm', '')"
     >
       <Icon v-if="searchTerm" name="clear" size="1.1rem" />
