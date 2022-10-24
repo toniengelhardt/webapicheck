@@ -9,7 +9,7 @@ let width = $ref<number | undefined>(undefined)
 let height = $ref<number | undefined>(undefined)
 
 onMounted(() => {
-  width = window?.visualViewport?.width
-  height = window?.visualViewport?.height
+  width = window?.visualViewport?.width ? Math.round(window?.visualViewport?.width) : undefined
+  height = window?.visualViewport?.height ? Math.round(window?.visualViewport?.height) : undefined
 })
 </script>
