@@ -1,5 +1,6 @@
 import DetailBatteryStatusApi from '~/components/detail/BatteryStatusApi.vue'
-import VisualViewport from '~/components/detail/VisualViewport.vue'
+import DetailGeolocationAPI from '~/components/detail/GeolocationApi.vue'
+import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 
 export const apiData = {
   battery: {
@@ -25,13 +26,13 @@ export const apiData = {
     name: 'Clipboard API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
     path: 'navigator',
-    secure: true,
+    secureContextRequired: true,
   },
   credentials: {
     name: 'Web Authentication API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
     path: 'nativator',
-    secure: true,
+    secureContextRequired: true,
   },
   digitalGoods: {
     name: 'Digital Goods API',
@@ -58,7 +59,9 @@ export const apiData = {
     name: 'Geolocation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
     path: 'navigator',
-    secure: true,
+    secureContextRequired: true,
+    userInteractionRequired: true,
+    // detail: shallowRef(DetailGeolocationAPI),
   },
   history: {
     name: 'History API',
@@ -69,13 +72,13 @@ export const apiData = {
     name: 'IndexedDB API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API',
     path: 'window',
-    webworkers: true,
+    availableInWebWorkers: true,
   },
   notifications: {
     name: 'Notifications API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
     path: 'Notification',
-    webworkers: true,
+    availableInWebWorkers: true,
     check: () => {
       try {
         return Notification !== undefined
@@ -88,22 +91,22 @@ export const apiData = {
     name: 'Payment Request API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
     path: 'window',
-    secure: true,
+    secureContextRequired: true,
     check: () => window?.PaymentRequest !== undefined,
   },
   storage: {
     name: 'Storage',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
     path: 'navigator',
-    secure: true,
-    webworkers: true,
+    secureContextRequired: true,
+    availableInWebWorkers: true,
   },
   usb: {
     name: 'Web USB API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
     path: 'navigator',
     experimental: true,
-    secure: true,
+    secureContextRequired: true,
   },
   vibration: {
     name: 'Vibration API',
@@ -115,12 +118,12 @@ export const apiData = {
     url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
     path: 'navigator',
     source: 'chrome',
-    secure: true,
+    secureContextRequired: true,
   },
   visualViewport: {
     name: 'Visual Viewport',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API',
-    detail: shallowRef(VisualViewport),
+    detail: shallowRef(DetailVisualViewport),
   },
   wakeLock: {
     name: 'Screen Wake Lock API',
@@ -132,8 +135,8 @@ export const apiData = {
     name: 'Web Crypto API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
     path: 'Crypto',
-    secure: true,
-    webworkers: true,
+    secureContextRequired: true,
+    availableInWebWorkers: true,
     check: () => Crypto !== undefined,
   },
   webGL: {
@@ -154,14 +157,14 @@ export const apiData = {
     name: 'Web MIDI API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API',
     path: 'navigator',
-    secure: true,
+    secureContextRequired: true,
     check: () => navigator?.requestMIDIAccess !== undefined,
   },
   webShare: {
     name: 'Web Share API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
     path: 'navigator',
-    secure: true,
+    secureContextRequired: true,
     check: () => navigator?.canShare !== undefined,
   },
   webSpeech: {
@@ -175,6 +178,6 @@ export const apiData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
     path: 'navigator',
     experimental: true,
-    secure: true,
+    secureContextRequired: true,
   }
 }

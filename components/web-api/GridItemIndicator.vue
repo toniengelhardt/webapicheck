@@ -1,10 +1,12 @@
 <template>
   <div>
-    <Icon
-      :name="icon"
+    <a
+      :title="title"
       class="cursor-pointer"
       @click="dialogOpen = true"
-    />
+    >
+      <Icon :name="icon" />
+    </a>
     <Teleport to="body">
       <AppDialog
         :show="dialogOpen"

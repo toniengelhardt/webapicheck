@@ -17,14 +17,20 @@
           description="This feature is experimental, use with care."
         />
         <WebApiGridItemIndicator
-          v-if="api.webworkers"
+          v-if="api.availableInWebWorkers"
           icon="webworker"
           title="Web Workers"
           description="This feature is also available in Web Workers."
           link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
         />
         <WebApiGridItemIndicator
-          v-if="api.secure"
+          v-if="api.userInteractionRequired"
+          icon="interaction"
+          title="User Interaction"
+          description="A user interaction is required to use this feature."
+        />
+        <WebApiGridItemIndicator
+          v-if="api.secureContextRequired"
           icon="secure"
           title="Secure Context"
           description="This feature requires a Secure Context (HTTPS) to be available."
@@ -40,10 +46,7 @@
       <component v-if="api.available && api.detail" :is="api.detail" />
     </div>
     <div class="flex items-center">
-      <div class="flex-1">
-        <component v-if="sourceComponent" :is="sourceComponent" />
-      </div>
-      <div class="flex items-center">
+      <div class="flex-1 flex items-center">
         <span v-for="link in api.links" class="item-link">
           <NuxtLink
             :to="link.url"
@@ -52,6 +55,9 @@
           >{{ link.name }}</NuxtLink>
           <Icon name="external" size=".85rem" class="ml-0.5"/>
         </span>
+      </div>
+      <div>
+        <component v-if="sourceComponent" :is="sourceComponent" />
       </div>
     </div>
   </div>

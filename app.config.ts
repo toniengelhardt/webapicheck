@@ -22,6 +22,8 @@ export default defineAppConfig({
       batteryFull: 'akar-icons:battery-full',
       width: 'ant-design:column-width-outlined',
       height: 'ant-design:column-height-outlined',
+      location: 'carbon:airport-location',
+      interaction: 'icon-park-solid:click',
     },
   }
 })

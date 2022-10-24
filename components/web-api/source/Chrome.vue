@@ -1,5 +1,5 @@
 <template>
   <div class="flex items-center">
-    <Icon name="chrome" size=".8rem" /><span class="ml-1.5 text-xs">Chrome</span>
+    <span class="mr-1.5 text-xs">Chrome</span><Icon name="chrome" size=".8rem" />
   </div>
 </template>

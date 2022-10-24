@@ -9,7 +9,7 @@
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-3 pt-3 pb-6 border-b-1 border-gray-300 dark:border-gray-700">
+      <div class="px-3 pt-3 pb-6 border-b-1 border-neutral-300 dark:border-neutral-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="p-6">
+      <div class="p-6 border-b-1 border-neutral-300 dark:border-neutral-700">
         <div class="<md:text-center">
           <p>
             <Icon name="emojione:construction" /> Work in progress...
@@ -68,6 +68,14 @@
           </div>
         </div>
       </div>
+      <div v-if="_navigator" class="m-3 p-3 bg-neutral-100 dark:bg-neutral-800">
+        <p class="font-bold">Navigator</p>
+        <div class="mt-2 text-xs text-neutral-600 dark:text-neutral-400">
+          <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
+            <span class="font-bold">{{ key }}:</span> <span class="pre">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+          </p>
+        </div>
+      </div>
     </div>
     <footer>
       <AppFooter />
@@ -89,6 +97,10 @@ useHead({
 
 const legend = [
   {
+    icon: 'interaction',
+    label: 'User Interaction required',
+  },
+  {
     icon: 'secure',
     label: '<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" title="What is a secure context?" class="link" target="_blank">Secure Context</a> required',
   },
@@ -105,6 +117,8 @@ const legend = [
 let searchTerm = $ref('')
 let searchMode = $ref(false)
 let activeFilter = $ref(null)
+
+const _navigator = $computed(() => navigator)
 </script>
 
 <style lang="scss" scoped>

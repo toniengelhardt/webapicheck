@@ -8,16 +8,18 @@ body {
   @apply bg-white text-black dark:(bg-neutral-900 text-neutral-200);
 }
 
-#wrapper {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-}
-
 .link {
   @apply font-semibold underline;
 }
+
+.pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
+/**
+ * Animations
+ */
 
 @keyframes spin {
   from {
