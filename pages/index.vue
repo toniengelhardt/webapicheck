@@ -9,7 +9,7 @@
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-3 py-6 border-b-1 border-gray-300 dark:border-gray-700">
+      <div class="px-3 pt-3 pb-6 border-b-1 border-gray-300 dark:border-gray-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -22,7 +22,7 @@
         </div>
         <div class="mt-6">
           <div class="flex justify-center">
-            <div class="flex flex-col md:(flex-row items-center)">
+            <div class="flex flex-col md:(flex-row items-center) text-sm">
               <div
                 v-for="item in legend"
                 class="flex items-center <md:(not-last:mb-3 justify-center) md:mr-6"
@@ -48,7 +48,7 @@
               title="MDN docs for WebAPIs"
               class="link"
               target="_blank"
-            >WebAPIs</NuxtLink> are available on your device. Just open this page
+            >WebAPIs</NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device. Just open this page
             on the device you want to check and voilà.
           </p>
           <p>
@@ -56,8 +56,8 @@
           </p>
           <p class="mt-6">
             Other DX projects: <br class="md:hidden" />
-            <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink>,
-            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink>
+            <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink><Icon name="external" class="ml-0.5" />,
+            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink><Icon name="external" class="ml-0.5" />
           </p>
         </div>
       </div>

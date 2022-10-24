@@ -15,6 +15,7 @@ export default defineAppConfig({
       light: 'carbon:sun',
       dark: 'carbon:moon',
       system: 'carbon:contrast',
+      charging: 'fa6-solid:bolt'
     },
   }
 })

@@ -1,4 +1,7 @@
 <template>
+  <div class="flex justify-center text-sm mb-3 text-neutral-500 dark:text-neutral-400">
+    <span class="text-white font-bold mr-0.5">{{ supportedAPICount }}</span>/<span class="text-white font-bold ml-0.5 mr-1.5">{{ filteredAPIs.length }}</span>APIs supported
+  </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
     <WebApiGridItem
       v-for="api in filteredAPIs"
@@ -42,6 +45,10 @@ const filteredAPIs = $computed(() => {
   return props.searchTerm
     ? fuse.search(props.searchTerm).map((result: Fuse.FuseResult<WebAPI>) => result.item)
     : sortedAPIs
+})
+
+const supportedAPICount = $computed(() => {
+  return filteredAPIs.filter(api => api.available).length
 })
 
 function loadAPIs() {

@@ -1,13 +1,16 @@
+import DetailBatteryStatusApi from '~/components/detail/BatteryStatusApi.vue'
+
 export const apiData = {
-  /* battery: {
+  battery: {
     name: 'Battery Status API',
     path: 'navigator',
     links: [{
       name: 'docs',
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
     }],
-    check: async () => navigator.getBattery()
-  }, */
+    check: async () => navigator?.getBattery !== undefined,
+    detail: shallowRef(DetailBatteryStatusApi),
+  },
   bluetooth: {
     name: 'Bluetooth API',
     path: 'Bluetooth',
@@ -115,7 +118,7 @@ export const apiData = {
     }]
   },
   usb: {
-    name: 'WebUSB API',
+    name: 'Web USB API',
     path: 'navigator',
     experimental: true,
     secureContext: true,
@@ -168,6 +171,33 @@ export const apiData = {
       url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
     }],
     check: () => Crypto !== undefined,
+  },
+  webGL: {
+    name: 'WebGL',
+    path: 'WebGLRenderingContext',
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API',
+    }],
+    check: () => {
+      // https://stackoverflow.com/questions/11871077/proper-way-to-detect-webgl-support
+      try {
+        const canvas = document?.createElement('canvas')
+        return canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+      } catch(e) {
+        return false;
+      }
+    }
+  },
+  webMIDI: {
+    name: 'Web MIDI API',
+    path: 'navigator',
+    secureContext: true,
+    links: [{
+      name: 'docs',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API',
+    }],
+    check: () => navigator?.requestMIDIAccess !== undefined,
   },
   webShare: {
     name: 'Web Share API',
