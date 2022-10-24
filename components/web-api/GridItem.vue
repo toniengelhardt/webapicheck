@@ -1,8 +1,13 @@
 <template>
   <div :class="itemClass" class="grid-item">
     <div class="flex items-center">
-      <div class="flex-1 font-bold name">
-        {{ api.name }}
+      <div class="name">
+        <NuxtLink
+          :to="api.url"
+          target="_blank"
+        >
+          {{ api.name }}
+        </NuxtLink><Icon name="external" class="ml-0.5" />
       </div>
       <div class="indicators">
         <WebApiGridItemIndicator
@@ -19,7 +24,7 @@
           link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
         />
         <WebApiGridItemIndicator
-          v-if="api.secureContext"
+          v-if="api.secure"
           icon="secure"
           title="Secure Context"
           description="This feature requires a Secure Context (HTTPS) to be available."
@@ -32,7 +37,7 @@
       {{ api.path || 'window' }}
     </div>
     <div class="flex-1 min-h-6">
-      <component v-if="api.detail" :is="api.detail" />
+      <component v-if="api.available && api.detail" :is="api.detail" />
     </div>
     <div class="flex items-center">
       <div class="flex-1">
@@ -85,7 +90,7 @@ const sourceComponent = $computed(() => {
 .grid-item {
   @apply self-start flex-row px-3 py-2 rounded-md text-neutral-800 border-1 border-neutral-300 dark:(border-neutral-500 text-neutral-200);
   .name {
-    @apply text-lg;
+    @apply flex-1 font-bold text-lg underline;
   }
   &.experimental {
     @apply bg-purple-100 border-1 border-purple-300 dark:(bg-purple-900 border-purple-600);
@@ -115,7 +120,7 @@ const sourceComponent = $computed(() => {
     }
   }
   .item-link {
-    @apply text-xs;
+    @apply text-sm;
     &:not(:last-child) {
       @apply mr-2;
     }

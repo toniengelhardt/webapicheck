@@ -4,183 +4,142 @@ import VisualViewport from '~/components/detail/VisualViewport.vue'
 export const apiData = {
   battery: {
     name: 'Battery Status API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
     path: 'navigator',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
-    }],
-    check: async () => navigator?.getBattery !== undefined,
     detail: shallowRef(DetailBatteryStatusApi),
+    check: async () => {
+      if ('getBattery' in navigator) {
+        const bm = await navigator.getBattery()
+        return bm !== undefined
+      }
+      return false
+    },
   },
   bluetooth: {
     name: 'Bluetooth API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API',
     path: 'Bluetooth',
     experimental: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API',
-    }],
   },
   clipboard: {
     name: 'Clipboard API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
     path: 'navigator',
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
-    }]
+    secure: true,
   },
   credentials: {
     name: 'Web Authentication API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
     path: 'nativator',
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
-    }]
+    secure: true,
   },
   digitalGoods: {
     name: 'Digital Goods API',
+    url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
     path: 'navigator',
     source: 'chrome',
-    links: [{
-      name: 'post',
-      url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
-    }, {
-      name: 'spec',
-      url: 'https://github.com/WICG/digital-goods/blob/main/explainer.md',
-    }, {
-      name: 'status',
-      url: 'https://chromestatus.com/feature/5339955595313152',
-    }]
+    links: [
+      {
+        name: 'spec',
+        url: 'https://github.com/WICG/digital-goods/blob/main/explainer.md',
+      }, {
+        name: 'status',
+        url: 'https://chromestatus.com/feature/5339955595313152',
+      },
+    ]
   },
   fullscreen: {
     name: 'Fullscreen API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     path: 'document',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
-    }],
-    check: () => document.fullscreenEnabled !== undefined
+    check: () => document.fullscreenEnabled !== undefined,
   },
   geolocation: {
     name: 'Geolocation API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
     path: 'navigator',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
-    }]
+    secure: true,
   },
   history: {
     name: 'History API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API',
     path: 'window',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API',
-    }],
   },
   indexedDB: {
     name: 'IndexedDB API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API',
     path: 'window',
     webworkers: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API',
-    }],
   },
   notifications: {
     name: 'Notifications API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
     path: 'Notification',
     webworkers: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
-    }],
-    check: () => { try { return Notification !== undefined } catch (error) { return false } },
+    check: () => {
+      try {
+        return Notification !== undefined
+      } catch (error) {
+        return false
+      }
+    },
   },
   paymentRequest: {
     name: 'Payment Request API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
     path: 'window',
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
-    }],
+    secure: true,
     check: () => window?.PaymentRequest !== undefined,
   },
   storage: {
     name: 'Storage',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
     path: 'navigator',
-    secureContext: true,
+    secure: true,
     webworkers: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
-    }]
   },
   usb: {
     name: 'Web USB API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
     path: 'navigator',
     experimental: true,
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
-    }]
+    secure: true,
   },
   vibration: {
     name: 'Vibration API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API',
     path: 'navigator',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API',
-    }]
   },
   virtualKeyboard: {
     name: 'Virtual Keyboard API',
+    url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
     path: 'navigator',
-    secureContext: true,
     source: 'chrome',
-    links: [{
-      name: 'post',
-      url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
-    }]
+    secure: true,
   },
   visualViewport: {
     name: 'Visual Viewport',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API',
-    }],
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API',
     detail: shallowRef(VisualViewport),
   },
   wakeLock: {
     name: 'Screen Wake Lock API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
     path: 'navigator',
     experimental: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
-    }]
   },
   webCrypto: {
     name: 'Web Crypto API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
     path: 'Crypto',
-    secureContext: true,
+    secure: true,
     webworkers: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
-    }],
     check: () => Crypto !== undefined,
   },
   webGL: {
     name: 'WebGL',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API',
     path: 'WebGLRenderingContext',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API',
-    }],
     check: () => {
       // https://stackoverflow.com/questions/11871077/proper-way-to-detect-webgl-support
       try {
@@ -193,41 +152,29 @@ export const apiData = {
   },
   webMIDI: {
     name: 'Web MIDI API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API',
     path: 'navigator',
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API',
-    }],
+    secure: true,
     check: () => navigator?.requestMIDIAccess !== undefined,
   },
   webShare: {
     name: 'Web Share API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
     path: 'navigator',
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
-    }],
+    secure: true,
     check: () => navigator?.canShare !== undefined,
   },
   webSpeech: {
     name: 'Web Speech API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API',
     path: 'window',
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API',
-    }],
     check: () => window?.SpeechRecognition || webkitSpeechRecognition
   },
   xr: {
     name: 'WebXR Device API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
     path: 'navigator',
     experimental: true,
-    secureContext: true,
-    links: [{
-      name: 'docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
-    }],
+    secure: true,
   }
 }

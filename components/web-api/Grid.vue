@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center text-sm mb-3 text-neutral-500 dark:text-neutral-400">
-    <span class="text-white font-bold mr-0.5">{{ supportedAPICount }}</span>/<span class="text-white font-bold ml-0.5 mr-1.5">{{ filteredAPIs.length }}</span>APIs supported
+    <span class="text-black dark:text-white font-bold mr-0.5">{{ supportedAPICount }}</span>/<span class="text-black dark:text-white font-bold ml-0.5 mr-1.5">{{ filteredAPIs.length }}</span>APIs supported
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
     <WebApiGridItem
@@ -51,12 +51,22 @@ const supportedAPICount = $computed(() => {
   return filteredAPIs.filter(api => api.available).length
 })
 
+function defaultCheck(apiKey: string, api: WebAPI) {
+  const target = api.path === 'navigator' ? navigator : window
+  return !!target[apiKey]
+}
+
 function loadAPIs() {
-  if (window?.navigator) {
+  if (navigator) {
     Object.keys(apis).forEach(apiKey => {
       const api = apis[apiKey]
-      const target = api.path === 'navigator' ? navigator : window
-      apis[apiKey].available = api.check ? api.check() : !!target[apiKey]
+      const check = api.check || defaultCheck
+      if (check.constructor.name === "AsyncFunction") {
+        check(apiKey, api)
+          .then((available: boolean) => apis[apiKey].available = available)
+      } else {
+        apis[apiKey].available = check(apiKey, api)
+      }
     })
   }
 }

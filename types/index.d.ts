@@ -1,16 +1,17 @@
 declare interface WebAPI {
   key?: string,
   name: string,
-  path?: string,
+  url: string,
   available: boolean | undefined,
-  secureContext?: boolean,
-  webworkers?: boolean,
-  experimental?: boolean,
   source?: string,
+  path?: string,
+  experimental?: boolean,
+  secure?: boolean,
+  webworkers?: boolean,
   links?: {
     name: string,
     url: string,
   }[],
+  detail?: any,
   check?: () => boolean,
-  detail?: true,
 }
