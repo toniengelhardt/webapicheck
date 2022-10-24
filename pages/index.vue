@@ -68,14 +68,16 @@
           </div>
         </div>
       </div>
-      <div v-if="_navigator" class="m-3 p-3 bg-neutral-100 dark:bg-neutral-800">
-        <p class="font-bold">Navigator</p>
-        <div class="mt-2 text-xs text-neutral-600 dark:text-neutral-400">
-          <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
-            <span class="font-bold">{{ key }}:</span> <span class="pre">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
-          </p>
+      <ClientOnly>
+        <div v-if="_navigator" class="m-3 p-3 bg-neutral-100 dark:bg-neutral-800">
+          <p class="font-bold">Navigator</p>
+          <div class="mt-2 text-xs text-neutral-600 dark:text-neutral-400">
+            <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
+              <span class="font-bold">{{ key }}:</span> <span class="pre">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+            </p>
+          </div>
         </div>
-      </div>
+      </ClientOnly>
     </div>
     <footer>
       <AppFooter />
