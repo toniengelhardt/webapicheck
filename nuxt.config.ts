@@ -79,7 +79,7 @@ export default defineNuxtConfig({
       ogSiteName: appTitle,
       ogTitle: appTitle,
       ogDescription: appDescription,
-      ogImage: 'https://webapicheck.com/og-image.jpg',
+      ogImage: 'https://webapicheck.com/og-image.png',
       ogUrl: 'https://webapicheck.com',
       twitterCard: 'summary_large_image',
     },

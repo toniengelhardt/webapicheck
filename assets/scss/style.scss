@@ -13,11 +13,11 @@ body {
 }
 
 .link {
-  @apply font-semibold underline decoration-2 decoration-rose-500;
+  @apply font-semibold underline decoration-1 underline-offset-2 decoration-blue-400;
 }
 
-.pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.code-inline {
+  @apply font-mono px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded;
 }
 
 .btn {

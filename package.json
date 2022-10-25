@@ -23,7 +23,7 @@
     "@kevinmarrec/nuxt-pwa": "^0.9.1",
     "@nuxtjs/color-mode": "^3.1.8",
     "@types/node": "18.8.0",
-    "@vueuse/nuxt": "^9.3.1",
+    "@vueuse/nuxt": "^9.4.0",
     "eslint": "^8.26.0",
     "nuxt": "npm:nuxt3@latest",
     "nuxt-headlessui": "^1.0.1",

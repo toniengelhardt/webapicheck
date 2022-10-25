@@ -7,6 +7,7 @@ export default defineAppConfig({
       webworker: 'el:cogs',
       mdn: 'simple-icons:mozilla',
       chrome: 'logos:chrome',
+      permission: 'bx:check-shield',
       secure: 'bxs:lock-alt',
       unsecure: 'bxs:lock-open-alt',
       external: 'ci:external-link',

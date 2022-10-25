@@ -9,7 +9,7 @@
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-3 pt-3 pb-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="px-4 md:px-2 py-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -52,42 +52,102 @@
             on the device you want to check and voilà.
           </p>
           <p>
-            Feedback is very welcome! Get in touch on
-            <NuxtLink :to="$config.twitterProfile" title="Toni Engelhardt on Twitter" target="_blank" class="link">Twitter</NuxtLink> or
-            <NuxtLink :to="$config.githubProfile" title="Toni Engelhardt on GitHub" target="_blank" class="link">GitHub</NuxtLink>.
+            Feedback and suggestions are very welcome! Get in touch on
+            <NuxtLink :to="$config.twitterProfile" title="Toni Engelhardt on Twitter" target="_blank" class="link">Twitter</NuxtLink><Icon name="external" class="ml-0.5" /> or
+            <NuxtLink :to="$config.githubProfile" title="Toni Engelhardt on GitHub" target="_blank" class="link">GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
           </p>
-          <p class="mt-6 text-dim">FAQ:</p>
+          <p class="mt-6 text-xl text-dim font-bold">FAQ</p>
           <ul>
-            <li>
-              <p>What is a "Secure Context"?</p>
-              <p><i>— A secure context ...</i></p>
+            <li class="mt-4">
+              <p class="italic">What is a <b>User Interaction [1]</b> and why is it sometimes required?</p>
+              <div class="flex mt-2">
+                <div class="<md:hidden mr-3">—</div>
+                <p>
+                  A user interaction is usually a click or its accessibility equivalent.
+                  This requirement can be really frustrating if you are a developer with good conscience and
+                  just want to deliver the best UX for your users, but it is also important for web apps to be safe
+                  and to protect users from bad actors. For instance, imagine a website would start tracking your
+                  location in the background without your knowledge.
+                </p>
+              </div>
             </li>
-            <li>
-              <p></p>
+            <li class="mt-4">
+              <p class="italic">Why are sometimes special <b>Permissions [2]</b> required?</p>
+              <div class="flex mt-2">
+                <div class="<md:hidden mr-3">—</div>
+                <p>
+                  Some APIs directly access critical device hardware and data or expose powerful UI interfaces,
+                  e.g. Geolocation API, Bluetooth API, and Notifications API. For these features the browser
+                  takes control of managing access permissions so that users can easily manage and revoke them.
+                  Features that require permissions will trigger a popup asking for them when used. There is also a
+                  dedicated
+                  <NuxtLink
+                    to="https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API/Using_the_Permissions_API"
+                    target="_blank"
+                    title="Using the Permissions API on MDN"
+                    class="link"
+                  >Permissions API</NuxtLink> that gives you better control over the permissions UX.
+                </p>
+              </div>
+            </li>
+            <li class="mt-4">
+              <p class="italic">What is a <b>Secure Context [3]</b>?</p>
+              <div class="flex mt-2">
+                <div class="<md:hidden mr-3">—</div>
+                <p>
+                  A secure context is a Window or Worker for which certain minimum standards of authentication and
+                  confidentiality are met. Resources delivered locally on <span class="code-inline">http://127.0.0.1</span>,
+                  <span class="code-inline">http://localhost</span>, <span class="code-inline">http://*.localhost</span>,
+                  and <span class="code-inline">file://</span> are generally considered secure. For non-local resources
+                  to be considered secure they need to be served over
+                  <span class="code-inline">https://</span> or <span class="code-inline">wss://</span>
+                  and the security properties of the network channel they're delivered through must not be considered
+                  deprecated. You can find more information on <i>Secure Contexts</i> in the
+                  <NuxtLink to="https://w3c.github.io/webappsec-secure-contexts/" title="Secure contexts spec on W3C" class="link" target="_blank">W3C spec</NuxtLink> and on the
+                  <NuxtLink to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" title="Secure contexts on MDN" class="link" target="_blank">Secure Contexts</NuxtLink>
+                  page on MDN.
+                </p>
+              </div>
+            </li>
+            <li class="mt-4">
+              <p class="italic">What are <b>Web Workers [4]</b>?</p>
+              <div class="flex mt-2">
+                <div class="<md:hidden mr-3">—</div>
+                <p>
+                  Web workers allow applications to execute computation-intensive JavaScript in the background.
+                  That way, the application can execute heavy tasks without congesting the main thread and negatively
+                  impacting the performance of the user interface. You can find more information about web workers in the
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" title="What are web workers?" class="link" target="_blank">Web Worker API documentation</a> on MDN.
+                </p>
+              </div>
             </li>
           </ul>
-          <p class="mt-6 text-dim font-bold">Sources:</p>
-          <ul class="list-inside list-disc">
+          <p class="mt-6 mb-3 text-xl text-dim font-bold">Sources</p>
+          <ul class="list md:(list-inside list-disc)">
             <li><NuxtLink to="https://developer.mozilla.org" title="Resources for Developers by Developers" target="_blank" class="link">MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
             <li><NuxtLink to="https://developer.chrome.com" title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..." target="_blank" class="link">Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink to="https://www.w3.org" title="World Wide Web Consortium (W3C)" target="_blank" class="link">W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
           </ul>
           <p class="mt-6">
             More DX projects: <br class="md:hidden" />
             <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink><Icon name="external" class="ml-0.5" />,
-            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub Stats</NuxtLink><Icon name="external" class="ml-0.5" />
+            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub stats</NuxtLink><Icon name="external" class="ml-0.5" />
           </p>
         </div>
       </div>
       <ClientOnly>
-        <div v-if="_navigator" class="m-3 p-3 bg-zinc-100 dark:bg-zinc-800">
+        <div v-if="_navigator" class="m-4 px-4 py-3 md:(m-3 p-3) bg-zinc-100 dark:bg-zinc-800">
           <p class="font-bold">Navigator</p>
           <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
             <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
-              <span class="font-bold">{{ key }}:</span> <span class="pre">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+              <span class="font-bold">{{ key }}:</span> <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
             </p>
           </div>
         </div>
       </ClientOnly>
+      <div class="m-3 p-3 text-center text-xl font-thin italic">
+        — The web platform and an open web are the most important infrastructure projects of our time —
+      </div>
     </div>
     <footer>
       <AppFooter />
@@ -97,7 +157,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: "WebAPI Check — Test your Device APIs",
+  title: "WebAPI check — Test your device's capabilities",
   meta: [{
     name: 'description',
     content: 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.',
@@ -110,15 +170,19 @@ useHead({
 const legend = [
   {
     icon: 'interaction',
-    label: 'User Interaction required',
+    label: '<i>User Interaction<sup class="ml-0.5">1</sup></i> required',
+  },
+  {
+    icon: 'permission',
+    label: '<i>Permission/s<sup class="ml-0.5">2</sup></i> required',
   },
   {
     icon: 'secure',
-    label: '<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" title="What is a secure context?" class="link" target="_blank">Secure Context</a> required',
+    label: '<i>Secure Context<sup class="ml-0.5">3</sup></i> required',
   },
   {
     icon: 'webworker',
-    label: 'Available in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" title="What are web workers?" class="link" target="_blank">Web Workers</a>',
+    label: 'Available in <i>Web Workers<sup class="ml-0.5">4</sup></i>',
   },
   {
     icon: 'experimental',
@@ -130,7 +194,7 @@ let searchTerm = $ref('')
 let searchMode = $ref(false)
 let activeFilter = $ref(null)
 
-const _navigator = $computed(() => navigator)
+const _navigator: any = $computed(() => navigator)
 </script>
 
 <style lang="scss" scoped>

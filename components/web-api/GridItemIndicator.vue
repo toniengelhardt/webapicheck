@@ -1,33 +1,31 @@
 <template>
-  <div>
-    <a
-      :title="title"
-      class="cursor-pointer"
-      @click="dialogOpen = true"
+  <a
+    :title="title"
+    class="flex justify-center items-center h-4 w-4 ml-2 cursor-pointer"
+    @click="dialogOpen = true"
+  >
+    <Icon :name="icon" />
+  </a>
+  <Teleport to="body">
+    <AppDialog
+      :show="dialogOpen"
+      @close="dialogOpen = false"
     >
-      <Icon :name="icon" />
-    </a>
-    <Teleport to="body">
-      <AppDialog
-        :show="dialogOpen"
-        @close="dialogOpen = false"
-      >
-        <template #header>
-          <h3>{{ title }}</h3>
-        </template>
-        <p class="my-3">{{ description }}</p>
-        <p v-if="link">
-          <NuxtLink
-            :to="link"
-            class="link"
-            target="_blank"
-          >
-            More info
-          </NuxtLink>
-        </p>
-      </AppDialog>
-    </Teleport>
-  </div>
+      <template #header>
+        <h3>{{ title }}</h3>
+      </template>
+      <p class="my-3">{{ description }}</p>
+      <p v-if="link">
+        <NuxtLink
+          :to="link"
+          class="link"
+          target="_blank"
+        >
+          More info
+        </NuxtLink>
+      </p>
+    </AppDialog>
+  </Teleport>
 </template>
 
 <script setup lang="ts">

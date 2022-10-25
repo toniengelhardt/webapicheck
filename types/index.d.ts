@@ -6,8 +6,9 @@ declare interface WebAPI {
   source?: string,
   path?: string,
   experimental?: boolean,
-  secureContextRequired?: boolean,
   userInteractionRequired?: boolean,
+  permissionsRequired?: boolean,
+  secureContextRequired?: boolean,
   availableInWebWorkers?: boolean,
   links?: {
     name: string,

@@ -30,6 +30,12 @@
           description="A user interaction is required to use this feature."
         />
         <WebApiGridItemIndicator
+          v-if="api.permissionsRequired"
+          icon="permission"
+          title="Permissions"
+          description="This feature requires permissions to be granted by the user."
+        />
+        <WebApiGridItemIndicator
           v-if="api.secureContextRequired"
           icon="secure"
           title="Secure Context"
@@ -99,18 +105,18 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2 rounded-md text-zinc-800 border-1 border-zinc-300 dark:(border-zinc-500 text-zinc-200);
+  @apply self-start flex-row px-4 py-3 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-zinc-200);
   .name {
-    @apply flex-1 font-bold text-lg underline;
+    @apply flex-1 font-bold underline;
   }
   &.experimental {
-    @apply bg-purple-100 border-1 border-purple-300 dark:(bg-purple-900 border-purple-600);
+    @apply bg-purple-100 border-purple-300 dark:(bg-purple-900 border-purple-600);
     .name {
       @apply text-purple-800 dark:text-purple-200;
     }
   }
   &.available {
-    @apply bg-lime-100 border-1 border-lime-300 dark:(bg-lime-900 border-lime-600);
+    @apply bg-lime-100 border-lime-300 dark:(bg-lime-900 border-lime-600);
     .name {
       @apply text-lime-800 dark:text-lime-200;
     }
@@ -121,8 +127,8 @@ const sourceComponent = $computed(() => {
       @apply text-zinc-500 dark:text-zinc-400 line-through;
     }
   }
-  .loading {
-    @apply
+  &.loading {
+    @apply bg-zinc-50 dark:bg-zinc-800;
   }
   .indicators {
     @apply flex items-center text-sm;

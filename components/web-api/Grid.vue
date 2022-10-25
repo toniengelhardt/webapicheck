@@ -1,8 +1,8 @@
 <template>
-  <div class="flex justify-center text-sm mb-3 text-zinc-500 dark:text-zinc-400">
+  <div class="flex justify-center text-sm mb-6 text-zinc-500 dark:text-zinc-400">
     <span class="text-black dark:text-white font-bold mr-0.5">{{ supportedAPICount }}</span>/<span class="text-black dark:text-white font-bold ml-0.5 mr-1.5">{{ filteredAPIs.length }}</span>APIs supported
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
     <WebApiGridItem
       v-for="api in filteredAPIs"
       :key="api.key"

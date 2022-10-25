@@ -60,8 +60,9 @@ export const apiData = {
     name: 'Geolocation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
     path: 'navigator',
-    secureContextRequired: true,
     userInteractionRequired: true,
+    permissionsRequired: true,
+    secureContextRequired: true,
     detail: shallowRef(DetailGeolocationAPI),
   },
   history: {
