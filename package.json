@@ -11,7 +11,6 @@
     "prepare": "nuxi prepare"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.3",
     "@sentry/browser": "7.16.0",
     "@sentry/tracing": "7.16.0",
     "@sentry/vue": "7.16.0",
@@ -26,7 +25,6 @@
     "@vueuse/nuxt": "^9.4.0",
     "eslint": "^8.26.0",
     "nuxt": "npm:nuxt3@latest",
-    "nuxt-headlessui": "^1.0.1",
     "nuxt-windicss": "^2.5.2",
     "sass": "^1.55.0"
   }

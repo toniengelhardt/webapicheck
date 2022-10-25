@@ -311,11 +311,6 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@headlessui/vue@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.3.tgz#116d13391552436ea1e9e88c69f0e9d7d2585c45"
-  integrity sha512-Is4iakKts9u9E0+jEZNzoJpBjwq2SamwEIoEl2RlyYSu6Zco536GsPXaQEfg/o7Eyc1GUUlcL+dJd4Rt7qyf7A==
-
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.6.tgz#6a51d603a3aaf8d4cf45b42b3f2ac9318a4adc4b"
@@ -481,7 +476,7 @@
     unimport "^0.6.7"
     untyped "^0.4.7"
 
-"@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.12", "@nuxt/kit@^3.0.0-rc.9":
+"@nuxt/kit@^3.0.0-rc.10", "@nuxt/kit@^3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.9":
   version "3.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.12.tgz#637ab3e63d4213b886ab3cda19632bd08bc5ccb6"
   integrity sha512-d/6SeNVL1OPdru5aKjjUIWIwqIjbYN/VYGCrZs5gddkzJ5202DsMxyn2rs/ZyT8+oBbbVTYcCK6M+G0945mQdA==
@@ -3636,15 +3631,6 @@ nth-check@^2.0.1:
   integrity sha512-LK+CgECa8X3tna5iHmvojN4ZnTy8f+memCgQi0AshY6re31wFste8vbpRzVMq94mppsrgaRSrsamzkr5+1yZBQ==
   optionalDependencies:
     fsevents "~2.3.2"
-
-nuxt-headlessui@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/nuxt-headlessui/-/nuxt-headlessui-1.0.1.tgz#3b197d3bbfa3ebac573e6b1ed185f36fd7fa1436"
-  integrity sha512-5BzDb+ucLW5CE+oa06mnimy8n//Y/Til/5ehaeQK6NIn4rfpzyLmbqX+N5pwAVsXb76kEk8bugcDe9TwLG7zOg==
-  dependencies:
-    "@headlessui/vue" "^1.7.3"
-    "@nuxt/kit" "^3.0.0-rc.12"
-    pathe "^0.3.9"
 
 nuxt-icon@^0.1.7:
   version "0.1.7"

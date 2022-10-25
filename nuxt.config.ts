@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
-    'nuxt-headlessui',
+    // 'nuxt-headlessui',
     'nuxt-icon',
     'nuxt-windicss',
     'vue-plausible',
