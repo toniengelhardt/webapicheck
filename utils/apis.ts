@@ -11,7 +11,7 @@ export const apiData = {
     secureContextRequired: true,
     detail: shallowRef(DetailBatteryStatusAPI),
     check: async () => {
-      if ('getBattery' in navigator) {
+      if (navigator && 'getBattery' in navigator) {
         const bm = await navigator.getBattery()
         return bm !== undefined
       }
