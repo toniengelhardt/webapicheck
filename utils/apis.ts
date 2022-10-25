@@ -99,6 +99,11 @@ export const apiData = {
     secureContextRequired: true,
     check: () => window?.PaymentRequest !== undefined,
   },
+  performance: {
+    name: 'Performance API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Performance_API',
+    path: 'window',
+  },
   permissions: {
     name: 'Permissions API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API',
