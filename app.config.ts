@@ -25,6 +25,7 @@ export default defineAppConfig({
       height: 'ant-design:column-height-outlined',
       location: 'carbon:airport-location',
       interaction: 'icon-park-solid:click',
+      encryption: 'carbon:encryption',
     },
   }
 })

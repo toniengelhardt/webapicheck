@@ -50,7 +50,7 @@
     </div>
     <div class="flex-1 min-h-6">
       <template v-if="api.available">
-        <!-- <DetailGeolocationAPI v-if="api.name === 'Geolocation API'" /> -->
+        <!-- <WebCryptoAPI v-if="api.name === 'Web Crypto API'" /> -->
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="my-3">{{ api.value() }}</div>
       </template>
@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
+// import WebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 import WebApiSourceChrome from '~/components/web-api/source/Chrome.vue'
 import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
 
@@ -110,15 +110,15 @@ const sourceComponent = $computed(() => {
     @apply flex-1 font-bold underline;
   }
   &.experimental {
-    @apply bg-purple-100 border-purple-300 dark:(bg-purple-900 border-purple-600);
+    @apply bg-purple-100 border-purple-300 dark:(bg-purple-800 border-purple-600);
     .name {
-      @apply text-purple-800 dark:text-purple-200;
+      @apply text-purple-800 dark:text-purple-100;
     }
   }
   &.available {
-    @apply bg-lime-100 border-lime-300 dark:(bg-lime-900 border-lime-600);
+    @apply bg-lime-100 border-lime-300 dark:(bg-lime-800 border-lime-600);
     .name {
-      @apply text-lime-800 dark:text-lime-200;
+      @apply text-lime-800 dark:text-lime-100;
     }
   }
   &.not-available {

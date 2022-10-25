@@ -32,16 +32,16 @@ body {
   @apply py-1 px-2 text-xs;
 }
 .btn-default {
-  @apply bg-gray-200 hover:bg-gray-300 text-gray-500 hover:text-gray-700
-    dark:(bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-gray-200);
+  @apply bg-zinc-800 hover:bg-zinc-900 text-zinc-100 hover:text-white
+    dark:( bg-zinc-200 hover:bg-zinc-100 text-zinc-900 hover:text-black);
 }
 .btn-base {
   @apply dark:bg-zinc-900;
 }
 .btn-outline {
   @extend .btn;
-  @apply bg-transparent border border-gray-300 hover:bg-gray-100
-    dark:(bg-transparent border-gray-700 hover:bg-gray-800);
+  @apply bg-transparent border border-zinc-300 hover:bg-zinc-100
+    dark:(bg-transparent border-zinc-700 hover:bg-zinc-800);
 }
 
 

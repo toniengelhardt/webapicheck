@@ -1,6 +1,7 @@
-import DetailBatteryStatusApi from '~/components/detail/BatteryStatusApi.vue'
-import DetailGeolocationAPI from '~/components/detail/GeolocationApi.vue'
+import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
+import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
 import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
+import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
 export const apiData = {
   battery: {
@@ -8,7 +9,7 @@ export const apiData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
     path: 'navigator',
     secureContextRequired: true,
-    detail: shallowRef(DetailBatteryStatusApi),
+    detail: shallowRef(DetailBatteryStatusAPI),
     check: async () => {
       if ('getBattery' in navigator) {
         const bm = await navigator.getBattery()
@@ -21,6 +22,8 @@ export const apiData = {
     name: 'Bluetooth API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API',
     path: 'Bluetooth',
+    userInteractionRequired: true,
+    permissionsRequired: true,
     experimental: true,
   },
   clipboard: {
@@ -96,6 +99,12 @@ export const apiData = {
     secureContextRequired: true,
     check: () => window?.PaymentRequest !== undefined,
   },
+  permissions: {
+    name: 'Permissions API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API',
+    path: 'navigator',
+    availableInWebWorkers: true,
+  },
   screenOrientation: {
     name: 'Screen Orientation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API',
@@ -141,13 +150,13 @@ export const apiData = {
     secureContextRequired: true,
     experimental: true,
   },
-  webCrypto: {
+  crypto: {
     name: 'Web Crypto API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
-    path: 'Crypto',
+    path: 'windo',
     secureContextRequired: true,
     availableInWebWorkers: true,
-    check: () => Crypto !== undefined,
+    detail: shallowRef(DetailWebCryptoAPI),
   },
   webGL: {
     name: 'WebGL',
