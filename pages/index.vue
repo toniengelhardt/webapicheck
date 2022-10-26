@@ -127,11 +127,31 @@
             <li><NuxtLink to="https://developer.mozilla.org" title="Resources for Developers by Developers" target="_blank" class="link">MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
             <li><NuxtLink to="https://developer.chrome.com" title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..." target="_blank" class="link">Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
             <li><NuxtLink to="https://www.w3.org" title="World Wide Web Consortium (W3C)" target="_blank" class="link">W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink to="https://fugu-tracker.web.app/" title="Fugu API Tracker" target="_blank" class="link">Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
           </ul>
           <p class="mt-6">
             More DX projects: <br class="md:hidden" />
-            <NuxtLink to="https://repo-tracker.com" title="Better GitHub Repository Stats and Insights" target="_blank" class="link">RepoTracker</NuxtLink><Icon name="external" class="ml-0.5" />,
-            <NuxtLink to="https://github-stats.com" title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights" target="_blank" class="link">GitHub stats</NuxtLink><Icon name="external" class="ml-0.5" />
+            <NuxtLink
+              to="https://repo-tracker.com"
+              title="Better GitHub Repository Stats and Insights"
+              target="_blank"
+            >
+              <Icon name="ph:binoculars-duotone" class="dark:text-white" />
+              <span class="ml-0.5 font-black">
+                <span class="text-zinc-500 dark:text-zinc-400">Repo</span>
+                <span>Tracker</span>
+              </span>
+            </NuxtLink>,
+            <NuxtLink
+              to="https://github-stats.com"
+              title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
+              target="_blank"
+            >
+              <span class="ml-0.5 font-bold">
+                <span>GitHub</span>
+                <span class="px-0.75 py-0.25 bg-green-100 text-green-700 font-mono rounded">-stats</span>
+              </span>
+            </NuxtLink>
           </p>
         </div>
       </div>

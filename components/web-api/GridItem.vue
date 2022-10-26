@@ -107,7 +107,7 @@ const sourceComponent = $computed(() => {
 .grid-item {
   @apply self-start flex-row px-4 py-3 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-zinc-200);
   .name {
-    @apply flex-1 font-bold underline;
+    @apply flex-1 font-black underline;
   }
   &.experimental {
     @apply bg-purple-100 border-purple-300 dark:(bg-purple-800 border-purple-600);
