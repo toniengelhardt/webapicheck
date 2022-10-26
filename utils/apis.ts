@@ -38,6 +38,14 @@ export const apiData = {
     path: 'navigator',
     secureContextRequired: true,
   },
+  crypto: {
+    name: 'Web Crypto API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
+    path: 'window',
+    secureContextRequired: true,
+    availableInWebWorkers: true,
+    detail: shallowRef(DetailWebCryptoAPI),
+  },
   digitalGoods: {
     name: 'Digital Goods API',
     url: 'https://developer.chrome.com/docs/android/trusted-web-activity/receive-payments-play-billing/',
@@ -57,7 +65,24 @@ export const apiData = {
     name: 'EyeDropper API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API',
     path: 'window',
+    secureContextRequired: true,
     check: () => window?.EyeDropper !== undefined,
+    action: {
+      icon: 'eyedropper',
+      label: 'Pick a color',
+      func: () => {
+        const eyeDropper = new EyeDropper()
+        eyeDropper.open()
+          .then(result => alert(`Selected color: ${result.sRGBHex}`))
+      }
+    }
+  },
+  fileSystemAccess: {
+    name: 'File System Access API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API',
+    path: 'FileSystemHandle',
+    secureContextRequired: true,
+    check: () => window?.FileSystemHandle !== undefined,
   },
   fullscreen: {
     name: 'Fullscreen API',
@@ -182,16 +207,8 @@ export const apiData = {
     secureContextRequired: true,
     experimental: true,
   },
-  crypto: {
-    name: 'Web Crypto API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
-    path: 'window',
-    secureContextRequired: true,
-    availableInWebWorkers: true,
-    detail: shallowRef(DetailWebCryptoAPI),
-  },
   webGL: {
-    name: 'Web GL',
+    name: 'WebGL',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API',
     path: 'WebGLRenderingContext',
     check: () => {
@@ -244,8 +261,20 @@ export const apiData = {
       }
     },
   },
+  webSocket: {
+    name: 'WebSocket API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API',
+    path: 'WebSocket',
+    check: () => window?.WebSocket !== undefined,
+  },
+  webStorage: {
+    name: 'Web Storage API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API',
+    path: 'window',
+    check: () => window?.sessionStorage !== undefined && window?.localStorage !== undefined,
+  },
   xr: {
-    name: 'Web XR Device API',
+    name: 'WebXR Device API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
     path: 'navigator',
     experimental: true,

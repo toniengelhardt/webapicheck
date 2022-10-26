@@ -29,6 +29,7 @@ export default defineAppConfig({
       vibration: 'ph:vibrate',
       share: 'ph-share-network-fill',
       fullscreen: 'ph:arrows-out-simple',
+      eyedropper: 'ph:eyedropper-sample-duotone',
     },
   }
 })

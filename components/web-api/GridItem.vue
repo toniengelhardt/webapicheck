@@ -51,7 +51,7 @@
     </div>
     <div class="flex-1 min-h-12">
       <template v-if="api.available">
-        <!-- <WebCryptoAPI v-if="api.name === 'Web Crypto API'" /> -->
+        <!-- <WebStorageAPI v-if="api.name === 'Web Storage API'" /> -->
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
         <div v-else-if="api.action" class="py-3">
@@ -59,7 +59,7 @@
             class="btn-xs btn-default cursor-pointer"
             @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
           >
-            <Icon :name="api.action.icon" />
+            <Icon v-if="api.action.icon" :name="api.action.icon" />
             <span class="mx-1.5">{{ api.action.label }}</span>
           </a>
         </div>
@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-// import WebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
+// import WebStorageAPI from '~/components/detail/WebStorageAPI.vue'
 import WebApiSourceChrome from '~/components/web-api/source/Chrome.vue'
 import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
 
