@@ -2,39 +2,25 @@
   <div class="flex-col w-full min-w-full h-full mih-h-full">
     <header class="sticky">
       <AppHeader>
-        <AppSearch
-          v-model:searchTerm="searchTerm"
-          v-model:searchMode="searchMode"
-        />
+        <template #header-middle>
+          <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
+        </template>
+        <template #header-right>
+          <WebApiCounter :supportedCount="supportedAPICount" :totalCount="totalAPICount" />
+          <SecureContextStatus />
+        </template>
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-2 py-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="p-2 border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
         </div> -->
-        <div>
-          <WebApiGrid
-            :searchTerm="searchTerm"
-            :activeFilter="activeFilter"
-          />
-        </div>
-        <div class="mt-6">
-          <div class="flex justify-center">
-            <div class="flex flex-col md:(flex-row items-center) text-sm">
-              <div
-                v-for="item in legend"
-                class="flex items-center <md:(not-last:mb-3 justify-center) md:mr-6"
-              >
-                <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">
-                  <Icon :name="item.icon" size=".65rem" />
-                </div>
-                <span v-html="item.label" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <WebApiGrid :apis="filteredAPIs" />
+      </div>
+      <div class="px-6 py-12 border-b-1 border-zinc-300 dark:border-zinc-700">
+        <WebApiLegend />
       </div>
       <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <div class="<md:text-center">
@@ -48,8 +34,8 @@
               title="MDN docs for WebAPIs"
               class="link"
               target="_blank"
-            >WebAPIs</NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device. Just open this page
-            on the device you want to check and voilà.
+            >WebAPIs</NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device.
+            Just open this page on the device you want to check and voilà.
           </p>
           <p>
             Feedback and suggestions are very welcome! Get in touch on
@@ -115,8 +101,18 @@
                   <span class="code-inline">https://</span> or <span class="code-inline">wss://</span>
                   and the security properties of the network channel they're delivered through must not be considered
                   deprecated. You can find more information on <i>Secure Contexts</i> in the
-                  <NuxtLink to="https://w3c.github.io/webappsec-secure-contexts/" title="Secure contexts spec on W3C" class="link" target="_blank">W3C spec</NuxtLink> and on the
-                  <NuxtLink to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" title="Secure contexts on MDN" class="link" target="_blank">Secure Contexts</NuxtLink>
+                  <NuxtLink
+                    to="https://w3c.github.io/webappsec-secure-contexts/"
+                    title="Secure contexts spec on W3C"
+                    class="link"
+                    target="_blank"
+                  >W3C spec</NuxtLink> and on the
+                  <NuxtLink
+                    to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
+                    title="Secure contexts on MDN"
+                    class="link"
+                    target="_blank"
+                  >Secure Contexts</NuxtLink>
                   page on MDN.
                 </p>
               </div>
@@ -129,17 +125,42 @@
                   Web workers allow applications to execute computation-intensive JavaScript in the background.
                   That way, the application can execute heavy tasks without congesting the main thread and negatively
                   impacting the performance of the user interface. You can find more information about web workers in the
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" title="What are web workers?" class="link" target="_blank">Web Worker API documentation</a> on MDN.
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
+                    title="What are web workers?"
+                    class="link"
+                    target="_blank"
+                  >Web Worker API documentation</a> on MDN.
                 </p>
               </div>
             </li>
           </ul>
           <p class="mt-6 mb-3 text-xl text-dim font-bold">Sources</p>
           <ul class="list md:(list-inside list-disc)">
-            <li><NuxtLink to="https://developer.mozilla.org" title="Resources for Developers by Developers" target="_blank" class="link">MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink to="https://developer.chrome.com" title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..." target="_blank" class="link">Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink to="https://www.w3.org" title="World Wide Web Consortium (W3C)" target="_blank" class="link">W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink to="https://fugu-tracker.web.app/" title="Fugu API Tracker" target="_blank" class="link">Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink
+              to="https://developer.mozilla.org"
+              title="Resources for Developers by Developers"
+              target="_blank"
+              class="link"
+            >MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink
+              to="https://developer.chrome.com"
+              title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
+              target="_blank"
+              class="link"
+            >Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink
+              to="https://www.w3.org"
+              title="World Wide Web Consortium (W3C)"
+              target="_blank"
+              class="link"
+            >W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+            <li><NuxtLink
+              to="https://fugu-tracker.web.app/"
+              title="Fugu API Tracker"
+              target="_blank"
+              class="link"
+            >Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
           </ul>
           <p class="mt-6">
             More DX projects:
@@ -150,7 +171,7 @@
               title="Better GitHub Repository Stats and Insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800"
-              @click="plausible.trackEvent('click: RepoTracker')"
+              @click="$plausible.trackEvent('click: RepoTracker')"
             >
               <Icon name="ph:binoculars-duotone" class="dark:text-white" />
               <span class="ml-1 font-black">
@@ -163,11 +184,11 @@
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 ml-3"
-              @click="plausible.trackEvent('click: GitHub stats')"
+              @click="$plausible.trackEvent('click: GitHub stats')"
             >
               <span class="ml-0.5">
                 <span class="font-black">GitHub</span>
-                <span class="ml-0.5 px-0.75 py-0.25 bg-green-200 text-green-700 dark:(bg-green-800 text-green-300) font-mono font-semibold">-stats</span>
+                <span class="ml-0.5 px-0.75 py-0.25 bg-green-200 text-green-700 dark:(bg-green-800 text-green-300) font-mono font-semibold rounded">-stats</span>
               </span>
             </NuxtLink>
           </div>
@@ -179,7 +200,8 @@
             <p class="font-bold">Navigator</p>
             <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
               <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
-                <span class="font-bold">{{ key }}:</span> <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+                <span class="font-bold">{{ key }}:</span>
+                <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
               </p>
             </div>
           </div>
@@ -196,6 +218,10 @@
 </template>
 
 <script setup lang="ts">
+import Fuse from 'fuse.js'
+import { apiData } from '~/utils/apis'
+import { sortByField } from '~/utils/sorting'
+
 useHead({
   title: "WebAPI check — Test your device's capabilities",
   meta: [{
@@ -207,36 +233,73 @@ useHead({
   }]
 })
 
-const plausible = usePlausible()
 
-const legend = [
-  {
-    icon: 'interaction',
-    label: '<i>User Interaction<sup class="ml-0.5">1</sup></i> required',
-  },
-  {
-    icon: 'permission',
-    label: '<i>Permission/s<sup class="ml-0.5">2</sup></i> required',
-  },
-  {
-    icon: 'secure',
-    label: '<i>Secure Context<sup class="ml-0.5">3</sup></i> required',
-  },
-  {
-    icon: 'webworker',
-    label: 'Available in <i>Web Workers<sup class="ml-0.5">4</sup></i>',
-  },
-  {
-    icon: 'experimental',
-    label: 'Experimental API',
-  }
-]
 
 let searchTerm = $ref('')
 let searchMode = $ref(false)
-let activeFilter = $ref(null)
+// let activeFilter = $ref(null)
 
 const _navigator: any = $computed(() => navigator)
+
+const searchOptions = {
+  keys: ['name'],
+  threshold: 0.3,
+}
+
+let apis = $ref(apiData)
+
+const sortedAPIs = $computed(() => {
+  const apiList = Object.keys(apis).reduce((list: WebAPI[], apiKey: string) => {
+    list.push(apis[apiKey])
+    return list
+  }, [])
+  sortByField(apiList, 'name')
+  return apiList
+})
+
+const fuse = $computed(() => {
+  return new Fuse(sortedAPIs, searchOptions)
+})
+
+const filteredAPIs = $computed(() => {
+  return searchTerm
+    ? fuse.search(searchTerm).map((result: Fuse.FuseResult<WebAPI>) => result.item)
+    : sortedAPIs
+})
+
+const supportedAPICount = $computed(() => {
+  return filteredAPIs.filter(api => api.available).length
+})
+
+const totalAPICount = $computed(() => {
+  return sortedAPIs.length
+})
+
+function defaultCheck(apiKey: string, api: WebAPI) {
+  const target = api.path === 'navigator' ? navigator : window
+  return !!target[apiKey]
+}
+
+function loadAPIs() {
+  if (navigator) {
+    Object.keys(apis).forEach(apiKey => {
+      const api = apis[apiKey]
+      const check = api.check || defaultCheck
+      if (check.constructor.name === "AsyncFunction") {
+        check(apiKey, api)
+          .then((available: boolean) => apis[apiKey].available = available)
+      } else {
+        apis[apiKey].available = check(apiKey, api)
+      }
+    })
+  }
+}
+
+onMounted(() => {
+  loadAPIs()
+  console.log('window', window)
+  console.log('navigator', navigator)
+})
 </script>
 
 <style lang="scss" scoped>

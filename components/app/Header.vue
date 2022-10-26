@@ -4,12 +4,10 @@
       <AppBrand />
     </div>
     <div class="md:w-3/5">
-      <slot />
+      <slot name="header-middle" />
     </div>
     <div class="flex justify-center <md:py-3 md:(w-1/5 justify-end)">
-      <ClientOnly>
-        <ContextStatus />
-      </ClientOnly>
+      <slot name="header-right" />
     </div>
   </div>
 </template>
