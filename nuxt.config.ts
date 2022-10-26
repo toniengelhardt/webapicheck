@@ -24,6 +24,15 @@ export default defineNuxtConfig({
     vue: {
       reactivityTransform: true,
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import "@/assets/scss/_mixins.scss";
+          `,
+        },
+      },
+    },
   },
   css: [
     'assets/scss/style.scss',

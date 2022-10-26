@@ -21,6 +21,7 @@ body {
 }
 
 .btn {
+  @include noselect;
   @apply inline-flex items-center py-2 px-4 font-bold rounded cursor-pointer;
 }
 .btn-sm {
