@@ -57,13 +57,17 @@ export const apiData = {
     name: 'Fullscreen API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     path: 'document',
-    check: () => document?.fullscreenEnabled !== undefined,
+    check: () => document?.fullscreenEnabled !== undefined || document?.webkitFullscreenEnabled !== undefined,
     action: {
       icon: 'fullscreen',
       label: 'Fullscreen',
       func: () => {
         try {
-          document.documentElement.requestFullscreen()
+          if (document?.fullscreenEnabled !== undefined) {
+            document.documentElement.requestFullscreen()
+          } else if (document?.webkitFullscreenEnabled !== undefined) {
+            document.documentElement.webkitRequestFullscreen()
+          }
         } catch (error) {
           console.error(error)
           alert(`Oh oh, an error occured. Check the console for more details!`)
