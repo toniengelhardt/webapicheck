@@ -217,7 +217,7 @@ export const apiData = {
     path: 'window',
     check: () => {
       try {
-        return window?.SpeechRecognition || webkitSpeechRecognition
+        return window?.SpeechRecognition || window?.webkitSpeechRecognition
       } catch (error) {
         return false
       }

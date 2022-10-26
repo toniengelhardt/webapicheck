@@ -5,6 +5,7 @@
         <NuxtLink
           :to="api.url"
           target="_blank"
+          @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
         >
           {{ api.name }}
         </NuxtLink>
@@ -54,7 +55,10 @@
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
         <div v-else-if="api.action" class="py-3">
-          <a class="btn-xs btn-default cursor-pointer" @click="api.action!.func()">
+          <a
+            class="btn-xs btn-default cursor-pointer"
+            @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
+          >
             <Icon :name="api.action.icon" />
             <span class="mx-1.5">{{ api.action.label }}</span>
           </a>
@@ -87,6 +91,8 @@ import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
 const props = defineProps<{
   api: WebAPI,
 }>()
+
+const plausible = usePlausible()
 
 const itemClass = $computed(() => {
   return props.api.available === false

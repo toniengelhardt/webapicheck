@@ -138,6 +138,7 @@
               title="Better GitHub Repository Stats and Insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800"
+              @click="plausible.trackEvent('click: RepoTracker')"
             >
               <Icon name="ph:binoculars-duotone" class="dark:text-white" />
               <span class="ml-1 font-black">
@@ -150,6 +151,7 @@
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 ml-3"
+              @click="plausible.trackEvent('click: GitHub stats')"
             >
               <span class="ml-0.5">
                 <span class="font-black">GitHub</span>
@@ -192,6 +194,8 @@ useHead({
     content: 'WebAPI, DX, Developer Tools',
   }]
 })
+
+const plausible = usePlausible()
 
 const legend = [
   {
