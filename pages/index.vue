@@ -146,7 +146,7 @@
           </p>
           <div class="flex mt-3">
             <NuxtLink
-              to="https://repo-tracker.com"
+              to="https://repo-tracker.com?utm_source=WebAPI%20check"
               title="Better GitHub Repository Stats and Insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800"
@@ -159,7 +159,7 @@
               </span>
             </NuxtLink>
             <NuxtLink
-              to="https://github-stats.com"
+              to="https://github-stats.com?utm_source=WebAPI%20check"
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
               class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 ml-3"
