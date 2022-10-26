@@ -8,7 +8,7 @@
       class="w-full <md:text-center bg-transparent outline-none transition-all"
       placeholder="Search APIs..."
       @input="$emit('update:searchTerm', ($event.target as HTMLInputElement)?.value)"
-      @focus="$emit('update:searchMode', true)"
+      @focus="$emit('update:searchMode', true); $plausible.trackEvent('focus: Search')"
       @blur="$emit('update:searchMode', false)"
     />
     <div

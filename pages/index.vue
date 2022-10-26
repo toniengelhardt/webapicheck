@@ -53,8 +53,20 @@
           </p>
           <p>
             Feedback and suggestions are very welcome! Get in touch on
-            <NuxtLink :to="$config.twitterProfile" title="Toni Engelhardt on Twitter" target="_blank" class="link">Twitter</NuxtLink><Icon name="external" class="ml-0.5" /> or
-            <NuxtLink :to="$config.githubProfile" title="Toni Engelhardt on GitHub" target="_blank" class="link">GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
+            <NuxtLink
+              :to="$config.twitterProfile"
+              title="Toni Engelhardt on Twitter"
+              target="_blank"
+              class="link"
+              @click="$plausible.trackEvent('click: Link', { props: { target: 'Twitter profile' } })"
+            >Twitter</NuxtLink><Icon name="external" class="ml-0.5" /> or
+            <NuxtLink
+              :to="$config.githubProfile"
+              title="Toni Engelhardt on GitHub"
+              target="_blank"
+              class="link"
+              @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
+            >GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
           </p>
           <p class="mt-6 text-xl text-dim font-bold">FAQ</p>
           <ul>

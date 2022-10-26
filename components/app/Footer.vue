@@ -7,6 +7,7 @@
         class="text-black dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Toni Engelhardt on Twitter"
+        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
       >toniengelhardt</NuxtLink>
     </span>
     <span class="flex <md:justify-center items-center <md:mt-3 md:mr-6">
@@ -17,6 +18,7 @@
         class="text-black dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Nuxt 3 website"
+        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Nuxt' } })"
       >Nuxt</NuxtLink>
       <Icon name="logos:vitejs" class="ml-2 mr-1" />
       <NuxtLink
@@ -24,6 +26,7 @@
         class="text-black dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Vite website"
+        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Vite' } })"
       >Vite</NuxtLink>
       <Icon name="logos:windi-css" class="ml-2 mr-1" />
       <NuxtLink
@@ -31,6 +34,7 @@
         class="text-black dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official WindiCSS website"
+        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Windi' } })"
       >Windi</NuxtLink>
       <!-- <Icon name="logos:headlessui-icon" class="ml-2 mr-1" />
       <NuxtLink
@@ -48,6 +52,7 @@
         class="text-black dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Vercel website"
+        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Vercel' } })"
       >Vercel</NuxtLink>
     </span>
     <span class="flex items-center <md:(justify-center mt-6)">

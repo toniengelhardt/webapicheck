@@ -57,11 +57,18 @@ export const apiData = {
     name: 'Fullscreen API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     path: 'document',
-    check: () => document.fullscreenEnabled !== undefined,
+    check: () => document?.fullscreenEnabled !== undefined,
     action: {
       icon: 'fullscreen',
       label: 'Fullscreen',
-      func: () => document.documentElement.requestFullscreen(),
+      func: () => {
+        try {
+          document.documentElement.requestFullscreen()
+        } catch (error) {
+          console.error(error)
+          alert(`Oh oh, an error occured. Check the console for more details!`)
+        }
+      },
     },
   },
   geolocation: {
@@ -174,7 +181,7 @@ export const apiData = {
     detail: shallowRef(DetailWebCryptoAPI),
   },
   webGL: {
-    name: 'WebGL',
+    name: 'Web GL',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API',
     path: 'WebGLRenderingContext',
     check: () => {
@@ -217,14 +224,14 @@ export const apiData = {
     path: 'window',
     check: () => {
       try {
-        return window?.SpeechRecognition || window?.webkitSpeechRecognition
+        return !!window?.SpeechRecognition || !!window?.webkitSpeechRecognition
       } catch (error) {
         return false
       }
     },
   },
   xr: {
-    name: 'WebXR Device API',
+    name: 'Web XR Device API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
     path: 'navigator',
     experimental: true,

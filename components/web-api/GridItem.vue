@@ -72,6 +72,7 @@
             :to="link.url"
             :class="itemClass"
             target="_blank"
+            @click="$plausible.trackEvent('click: API resource', { props: { api: api.name, name: link.name } })"
           >{{ link.name }}</NuxtLink>
           <Icon name="external" size=".85rem" class="ml-0.5"/>
         </span>
