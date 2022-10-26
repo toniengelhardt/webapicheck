@@ -126,19 +126,19 @@ const sourceComponent = $computed(() => {
     }
   }
   &.experimental {
-    @apply bg-purple-200 border-purple-300 dark:(bg-purple-700 border-purple-600);
+    @apply bg-purple-200 border-purple-300 dark:(bg-purple-800 border-purple-600);
     // .header {
     //   @apply text-purple-800 dark:text-purple-100;
     // }
   }
   &.available {
-    @apply bg-lime-200 border-lime-300 dark:(bg-lime-600 border-lime-600);
+    @apply bg-lime-200 border-lime-300 dark:(bg-lime-700 border-lime-600);
     // .name {
     //   @apply text-lime-800 dark:text-lime-100;
     // }
   }
   &.not-available {
-    @apply bg-zinc-200 dark:bg-zinc-600;
+    @apply bg-zinc-200 dark:bg-zinc-700;
     .name {
       @apply text-zinc-500 dark:text-zinc-300 line-through;
     }
