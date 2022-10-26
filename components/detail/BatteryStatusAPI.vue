@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center my-3">
+  <div class="flex items-center py-3">
     <Icon :name="icon" size="1.2rem" />
     <span class="ml-2">{{ level ? level + '%' : 'N/A' }}</span>
   </div>

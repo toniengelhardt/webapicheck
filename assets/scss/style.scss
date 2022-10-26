@@ -33,7 +33,7 @@ body {
 }
 .btn-default {
   @apply bg-zinc-800 hover:bg-zinc-900 text-zinc-100 hover:text-white
-    dark:( bg-zinc-200 hover:bg-zinc-100 text-zinc-900 hover:text-black);
+    dark:( bg-white text-zinc-900 hover:text-black);
 }
 .btn-base {
   @apply dark:bg-zinc-900;

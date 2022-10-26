@@ -16,5 +16,10 @@ declare interface WebAPI {
   }[],
   check?: () => boolean,
   value?: () => string,
+  action?: {
+    icon: string,
+    label: string,
+    func: () => void,
+  },
   detail?: any,
 }

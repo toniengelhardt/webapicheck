@@ -9,7 +9,7 @@
       </AppHeader>
     </header>
     <div class="content flex-1">
-      <div class="px-4 md:px-2 py-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="px-2 py-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -130,43 +130,49 @@
             <li><NuxtLink to="https://fugu-tracker.web.app/" title="Fugu API Tracker" target="_blank" class="link">Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
           </ul>
           <p class="mt-6">
-            More DX projects: <br class="md:hidden" />
+            More DX projects:
+          </p>
+          <div class="flex mt-3">
             <NuxtLink
               to="https://repo-tracker.com"
               title="Better GitHub Repository Stats and Insights"
               target="_blank"
+              class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800"
             >
               <Icon name="ph:binoculars-duotone" class="dark:text-white" />
-              <span class="ml-0.5 font-black">
+              <span class="ml-1 font-black">
                 <span class="text-zinc-500 dark:text-zinc-400">Repo</span>
-                <span>Tracker</span>
+                <span class="ml-0.5">Tracker</span>
               </span>
-            </NuxtLink>,
+            </NuxtLink>
             <NuxtLink
               to="https://github-stats.com"
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
+              class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 ml-3"
             >
-              <span class="ml-0.5 font-bold">
-                <span>GitHub</span>
-                <span class="px-0.75 py-0.25 bg-green-100 text-green-700 font-mono rounded">-stats</span>
+              <span class="ml-0.5">
+                <span class="font-black">GitHub</span>
+                <span class="ml-0.5 px-0.75 py-0.25 bg-green-200 text-green-700 dark:(bg-green-800 text-green-300) font-mono font-semibold">-stats</span>
               </span>
             </NuxtLink>
-          </p>
-        </div>
-      </div>
-      <ClientOnly>
-        <div v-if="_navigator" class="m-4 px-4 py-3 md:(m-3 p-3) bg-zinc-100 dark:bg-zinc-800">
-          <p class="font-bold">Navigator</p>
-          <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
-            <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
-              <span class="font-bold">{{ key }}:</span> <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
-            </p>
           </div>
         </div>
-      </ClientOnly>
-      <div class="m-3 p-3 text-center text-xl font-thin italic">
-        — The web platform and an open web are the most important infrastructure projects of our time —
+      </div>
+      <div class="p-6">
+        <ClientOnly>
+          <div v-if="_navigator" class="p-6 bg-zinc-100 dark:bg-zinc-800">
+            <p class="font-bold">Navigator</p>
+            <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
+              <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
+                <span class="font-bold">{{ key }}:</span> <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+              </p>
+            </div>
+          </div>
+        </ClientOnly>
+        <div class="mt-6 px-6 text-center text-xl font-thin italic">
+          The web platform and an open web are the most important infrastructure projects of our time
+        </div>
       </div>
     </div>
     <footer>

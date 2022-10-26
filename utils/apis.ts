@@ -21,7 +21,7 @@ export const apiData = {
   bluetooth: {
     name: 'Bluetooth API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API',
-    path: 'Bluetooth',
+    path: 'navigator',
     userInteractionRequired: true,
     permissionsRequired: true,
     experimental: true,
@@ -35,7 +35,7 @@ export const apiData = {
   credentials: {
     name: 'Web Authentication API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
-    path: 'nativator',
+    path: 'navigator',
     secureContextRequired: true,
   },
   digitalGoods: {
@@ -58,6 +58,11 @@ export const apiData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     path: 'document',
     check: () => document.fullscreenEnabled !== undefined,
+    action: {
+      icon: 'fullscreen',
+      label: 'Fullscreen',
+      func: () => document.documentElement.requestFullscreen(),
+    },
   },
   geolocation: {
     name: 'Geolocation API',
@@ -131,10 +136,15 @@ export const apiData = {
     experimental: true,
     secureContextRequired: true,
   },
-  vibration: {
+  vibrate: {
     name: 'Vibration API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API',
     path: 'navigator',
+    action: {
+      icon: 'vibration',
+      label: 'Vibrate',
+      func: () => window?.navigator?.vibrate(200),
+    }
   },
   virtualKeyboard: {
     name: 'Virtual Keyboard API',
@@ -158,7 +168,7 @@ export const apiData = {
   crypto: {
     name: 'Web Crypto API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
-    path: 'windo',
+    path: 'window',
     secureContextRequired: true,
     availableInWebWorkers: true,
     detail: shallowRef(DetailWebCryptoAPI),
@@ -172,7 +182,7 @@ export const apiData = {
       try {
         const canvas = document?.createElement('canvas')
         return canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
-      } catch(e) {
+      } catch(error) {
         return false;
       }
     }
@@ -189,13 +199,29 @@ export const apiData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
     path: 'navigator',
     secureContextRequired: true,
+    userInteractionRequired: true,
     check: () => navigator?.canShare !== undefined,
+    action: {
+      icon: 'share',
+      label: 'Share page',
+      func: () => window?.navigator?.share({
+        title: 'WebAPI check',
+        text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
+        url: 'https://webapicheck.com',
+      })
+    },
   },
   webSpeech: {
     name: 'Web Speech API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API',
     path: 'window',
-    check: () => window?.SpeechRecognition || webkitSpeechRecognition
+    check: () => {
+      try {
+        return window?.SpeechRecognition || webkitSpeechRecognition
+      } catch (error) {
+        return false
+      }
+    },
   },
   xr: {
     name: 'WebXR Device API',

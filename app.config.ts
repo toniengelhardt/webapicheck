@@ -26,6 +26,9 @@ export default defineAppConfig({
       location: 'carbon:airport-location',
       interaction: 'icon-park-solid:click',
       encryption: 'carbon:encryption',
+      vibration: 'ph:vibrate',
+      share: 'ph-share-network-fill',
+      fullscreen: 'ph:arrows-out-simple',
     },
   }
 })
