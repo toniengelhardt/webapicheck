@@ -53,6 +53,12 @@ export const apiData = {
       },
     ]
   },
+  eyeDropper: {
+    name: 'EyeDropper API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API',
+    path: 'window',
+    check: () => window?.EyeDropper !== undefined,
+  },
   fullscreen: {
     name: 'Fullscreen API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
@@ -215,11 +221,15 @@ export const apiData = {
     action: {
       icon: 'share',
       label: 'Share page',
-      func: () => window?.navigator?.share({
-        title: 'WebAPI check',
-        text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
-        url: 'https://webapicheck.com',
-      })
+      func: () => {
+        try {
+          window?.navigator?.share({
+            title: 'WebAPI check',
+            text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
+            url: 'https://webapicheck.com',
+          })
+        } catch (error) {}
+      },
     },
   },
   webSpeech: {

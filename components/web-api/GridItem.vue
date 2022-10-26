@@ -96,14 +96,14 @@ const props = defineProps<{
 const plausible = usePlausible()
 
 const itemClass = $computed(() => {
-  return props.api.available === false
-    ? 'not-available'
-    : props.api.experimental
-      ? 'experimental'
-      : props.api.available
-        ? 'available'
-        : 'loading'
-
+  if (props.api.available !== undefined) {
+    return props.api.available === false
+      ? 'not-available'
+      : props.api.experimental
+        ? 'experimental'
+        : 'available'
+  }
+  return 'loading'
 })
 
 const sourceComponent = $computed(() => {
