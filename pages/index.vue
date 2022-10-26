@@ -19,7 +19,7 @@
         </div> -->
         <WebApiGrid :apis="filteredAPIs" />
       </div>
-      <div class="px-6 py-12 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <WebApiLegend />
       </div>
       <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
