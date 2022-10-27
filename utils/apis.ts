@@ -3,7 +3,14 @@ import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
 import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
-export const apiData = {
+export const apiData: WebAPIData = {
+  barcodeDetectionAPI: {
+    name: 'Barcode Detection API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector',
+    path: 'window.BarcodeDetector',
+    secureContextRequired: true,
+    experimental: true,
+  },
   batteryStatusAPI: {
     name: 'Battery Status API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API',
@@ -26,25 +33,41 @@ export const apiData = {
     permissionsRequired: true,
     experimental: true,
   },
+  broadcastChannelAPI: {
+    name: 'Broadcast Channel API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API',
+    path: 'window.BroadcastChannel',
+    availableInWebWorkers: true,
+  },
   clipboardAPI: {
     name: 'Clipboard API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API',
     path: 'navigator.clipboard',
     secureContextRequired: true,
   },
-  webAuthenticationAPI: {
-    name: 'Web Authentication API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
-    path: 'navigator.credentials',
+  contactPickerAPI: {
+    name: 'Contact Picker API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Contact_Picker_API',
+    path: 'navigator.contacts',
     secureContextRequired: true,
+    experimental: true,
   },
-  webCryptoAPI: {
-    name: 'Web Crypto API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
-    path: 'window.crypto',
+  contentIndexAPI: {
+    name: 'Content Index API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Content_Index_API',
+    path: 'window.ContentIndex',
+    experimental: true,
+    check: async () => {
+      const registration = await navigator.serviceWorker.ready
+      return 'index' in registration
+    },
+  },
+  cookieStoreAPI: {
+    name: 'Cookie Store API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Cookie_Store_API',
+    path: 'N/A',
     secureContextRequired: true,
-    availableInWebWorkers: true,
-    detail: shallowRef(DetailWebCryptoAPI),
+    experimental: true,
   },
   digitalGoodsAPI: {
     name: 'Digital Goods API',
@@ -64,9 +87,8 @@ export const apiData = {
   eyeDropperAPI: {
     name: 'EyeDropper API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API',
-    path: 'window.eyeDropper',
+    path: 'window.EyeDropper',
     secureContextRequired: true,
-    check: () => window?.EyeDropper !== undefined,
     action: {
       icon: 'eyedropper',
       label: 'Pick a color',
@@ -135,9 +157,8 @@ export const apiData = {
   paymentRequestAPI: {
     name: 'Payment Request API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
-    path: 'window.paymentRequest',
+    path: 'window.PaymentRequest',
     secureContextRequired: true,
-    check: () => window?.PaymentRequest !== undefined,
   },
   performanceAPI: {
     name: 'Performance API',
@@ -153,9 +174,15 @@ export const apiData = {
   screenOrientationAPI: {
     name: 'Screen Orientation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API',
-    path: 'window.screen',
-    check: () => window?.screen?.orientation !== undefined,
+    path: 'screen.orientation',
     value: () => window?.screen?.orientation?.type,
+  },
+  screenWakeLockAPI: {
+    name: 'Screen Wake Lock API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
+    path: 'navigator.wakeLock',
+    secureContextRequired: true,
+    experimental: true,
   },
   storage: {
     name: 'Storage',
@@ -163,13 +190,6 @@ export const apiData = {
     path: 'navigator.storage',
     secureContextRequired: true,
     availableInWebWorkers: true,
-  },
-  webUSBAPI: {
-    name: 'Web USB API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
-    path: 'navigator.usb',
-    experimental: true,
-    secureContextRequired: true,
   },
   vibrationAPI: {
     name: 'Vibration API',
@@ -194,12 +214,19 @@ export const apiData = {
     path: 'window.visualViewport',
     detail: shallowRef(DetailVisualViewport),
   },
-  screenWakeLockAPI: {
-    name: 'Screen Wake Lock API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API',
-    path: 'navigator.wakeLock',
+  webAuthenticationAPI: {
+    name: 'Web Authentication API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
+    path: 'navigator.credentials',
     secureContextRequired: true,
-    experimental: true,
+  },
+  webCryptoAPI: {
+    name: 'Web Crypto API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API',
+    path: 'window.crypto',
+    secureContextRequired: true,
+    availableInWebWorkers: true,
+    detail: shallowRef(DetailWebCryptoAPI),
   },
   webGL: {
     name: 'WebGL',
@@ -218,9 +245,8 @@ export const apiData = {
   webMIDIAPI: {
     name: 'Web MIDI API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API',
-    path: 'navigator.webMIDI',
+    path: 'navigator.requestMIDIAccess',
     secureContextRequired: true,
-    check: () => navigator?.requestMIDIAccess !== undefined,
   },
   webRTCAPI: {
     name: 'WebRTC API',
@@ -230,10 +256,9 @@ export const apiData = {
   webShareAPI: {
     name: 'Web Share API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API',
-    path: 'navigator.webShare',
+    path: 'navigator.canShare',
     secureContextRequired: true,
     userInteractionRequired: true,
-    check: () => navigator?.canShare !== undefined,
     action: {
       icon: 'share',
       label: 'Share page',
@@ -248,6 +273,11 @@ export const apiData = {
       },
     },
   },
+  webSocketAPI: {
+    name: 'WebSocket API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API',
+    path: 'window.WebSocket',
+  },
   webSpeechAPI: {
     name: 'Web Speech API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API',
@@ -260,17 +290,17 @@ export const apiData = {
       }
     },
   },
-  webSocketAPI: {
-    name: 'WebSocket API',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API',
-    path: 'window.WebSocket',
-    check: () => window?.WebSocket !== undefined,
-  },
   webStorageAPI: {
     name: 'Web Storage API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API',
-    path: 'window.webStorage',
-    check: () => window?.sessionStorage !== undefined && window?.localStorage !== undefined,
+    path: 'window.Storage',
+  },
+  webUSBAPI: {
+    name: 'Web USB API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API',
+    path: 'navigator.usb',
+    experimental: true,
+    secureContextRequired: true,
   },
   webXRDeviceAPI: {
     name: 'WebXR Device API',

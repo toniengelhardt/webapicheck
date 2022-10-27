@@ -3,7 +3,7 @@ declare interface WebAPI {
   name: string,
   path: string,
   url: string,
-  available: boolean | undefined,
+  available?: boolean,
   source?: string,
   experimental?: boolean,
   userInteractionRequired?: boolean,
@@ -14,7 +14,7 @@ declare interface WebAPI {
     name: string,
     url: string,
   }[],
-  check?: () => boolean,
+  check?: () => boolean | Promise<boolean>,
   value?: () => string,
   action?: {
     icon?: string,
@@ -23,3 +23,5 @@ declare interface WebAPI {
   },
   detail?: any,
 }
+
+declare type WebAPIData = { [key: string]: WebAPI }
