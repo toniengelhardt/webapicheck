@@ -183,7 +183,7 @@
               to="https://github-stats.com?utm_source=WebAPI%20check"
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
-              class="btn-outline <md:flex-1 md:ml-3"
+              class="btn-outline <md:flex-1 ml-3"
               @click="$plausible.trackEvent('click: GitHub stats')"
             >
               <span class="ml-0.5">

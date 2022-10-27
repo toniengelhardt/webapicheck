@@ -22,7 +22,7 @@ body {
 
 .btn {
   @include noselect;
-  @apply inline-flex items-center py-2 px-4 font-bold rounded-md cursor-pointer;
+  @apply inline-flex justify-center items-center py-2 px-4 font-bold rounded-md cursor-pointer;
 }
 .btn-sm {
   @extend .btn;
