@@ -224,6 +224,7 @@ export const apiData = {
   },
   webRTCAPI: {
     name: 'WebRTC API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API',
     path: 'window.RTCPeerConnection',
   },
   webShareAPI: {

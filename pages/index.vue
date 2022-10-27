@@ -316,4 +316,11 @@ header {
 .content {
   min-height: calc(100vh - 8rem);
 }
+.list {
+  li {
+    &:not(:first-child) {
+      @apply mt-2;
+    }
+  }
+}
 </style>
