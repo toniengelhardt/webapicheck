@@ -13,7 +13,7 @@ body {
 }
 
 .link {
-  @apply font-semibold underline decoration-1 underline-offset-2 decoration-blue-400;
+  @apply font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400;
 }
 
 .code-inline {

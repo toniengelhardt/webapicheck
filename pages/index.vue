@@ -220,6 +220,7 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
+import { Ref } from 'vue';
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
@@ -236,9 +237,8 @@ useHead({
   }]
 })
 
-
-
-let searchTerm = $ref('')
+let searchTerm = ref('')
+let debouncedSearchTerm = refDebounced(searchTerm, 100)
 let searchMode = $ref(false)
 // let activeFilter = $ref(null)
 
@@ -265,8 +265,8 @@ const fuse = $computed(() => {
 })
 
 const filteredAPIs = $computed(() => {
-  return searchTerm
-    ? fuse.search(searchTerm).map((result: Fuse.FuseResult<WebAPI>) => result.item)
+  return debouncedSearchTerm.value
+    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
     : sortedAPIs
 })
 

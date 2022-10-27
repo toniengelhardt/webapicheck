@@ -15,10 +15,10 @@ defineProps<{
 
 <style lang="scss" scoped>
 .item-counter {
-  @apply flex items-center px-1 py-0.25 text-black dark:text-white font-bold bg-zinc-200 dark:bg-zinc-600 rounded-md;
+  @apply flex items-center text-black dark:text-white font-bold;
 }
 .item-divider {
-  @apply w-1px h-6 mx-1 bg-zinc-900 dark:bg-zinc-300 rounded-full;
+  @apply w-1px h-5 mx-1.5 bg-zinc-500;
   transform: rotate(10deg);
 }
 </style>
