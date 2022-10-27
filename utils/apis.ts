@@ -55,7 +55,7 @@ export const apiData: WebAPIData = {
   contentIndexAPI: {
     name: 'Content Index API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Content_Index_API',
-    path: 'window.ContentIndex',
+    path: 'N/A',
     experimental: true,
     check: async () => {
       const registration = await navigator.serviceWorker.ready
@@ -65,7 +65,7 @@ export const apiData: WebAPIData = {
   cookieStoreAPI: {
     name: 'Cookie Store API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Cookie_Store_API',
-    path: 'N/A',
+    path: 'window.CookieStore',
     secureContextRequired: true,
     experimental: true,
   },
