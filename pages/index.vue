@@ -227,7 +227,7 @@ import { sortByField } from '~/utils/sorting'
 const config = useRuntimeConfig()
 
 useHead({
-  title: config.public.appTitle,
+  title: 'WebAPI test for any device',
   meta: [{
     name: 'description',
     content: config.public.appDescription,
