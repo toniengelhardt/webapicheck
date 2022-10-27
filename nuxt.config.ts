@@ -1,12 +1,18 @@
 const appTitle = 'WebAPI Check'
-const appAuthor = 'Toni Engelhardt'
 const appDescription = 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.'
+const appAuthor = 'Toni Engelhardt'
+const appKeywords = 'WebAPI, DX, Developer Tools'
 const appUrl = 'https://webapicheck.com'
 
 export default defineNuxtConfig({
   ssr: true,
   runtimeConfig: {
     public: {
+      appTitle,
+      appDescription,
+      appAuthor,
+      appKeywords,
+      appUrl,
       twitterProfile: 'https://twitter.com/toniengelhardt',
       githubProfile: 'https://github.com/toniengelhardt',
     }

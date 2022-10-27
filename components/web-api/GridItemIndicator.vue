@@ -1,11 +1,11 @@
 <template>
-  <a
+  <div
     :title="title"
-    class="flex justify-center items-center h-4 w-4 ml-2 cursor-pointer"
+    class="flex justify-center items-center h-5 w-5 ml-2 cursor-pointer"
     @click="dialogOpen = true"
   >
     <Icon :name="icon" />
-  </a>
+  </div>
   <Teleport to="body">
     <AppDialog
       :show="dialogOpen"

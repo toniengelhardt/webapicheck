@@ -125,12 +125,12 @@
                   Web workers allow applications to execute computation-intensive JavaScript in the background.
                   That way, the application can execute heavy tasks without congesting the main thread and negatively
                   impacting the performance of the user interface. You can find more information about web workers in the
-                  <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
+                  <NuxtLink
+                    to="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
                     title="What are web workers?"
                     class="link"
                     target="_blank"
-                  >Web Worker API documentation</a> on MDN.
+                  >Web Worker API documentation</NuxtLink> on MDN.
                 </p>
               </div>
             </li>
@@ -170,7 +170,7 @@
               to="https://repo-tracker.com?utm_source=WebAPI%20check"
               title="Better GitHub Repository Stats and Insights"
               target="_blank"
-              class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 hover:(bg-zinc-200 dark:bg-zinc-700) rounded-md"
+              class="btn-outline <md:flex-1 md:w-40 h-12"
               @click="$plausible.trackEvent('click: RepoTracker')"
             >
               <Icon name="ph:binoculars-duotone" class="dark:text-white" />
@@ -183,12 +183,12 @@
               to="https://github-stats.com?utm_source=WebAPI%20check"
               title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
               target="_blank"
-              class="flex justify-center items-center <md:flex-1 md:w-40 h-12 bg-zinc-100 dark:bg-zinc-800 hover:(bg-zinc-200 dark:bg-zinc-700) ml-3 rounded-md"
+              class="btn-outline <md:flex-1 md:ml-3"
               @click="$plausible.trackEvent('click: GitHub stats')"
             >
               <span class="ml-0.5">
                 <span class="font-black">GitHub</span>
-                <span class="ml-1 px-0.75 py-0.25 bg-green-200 text-green-700 dark:(bg-green-800 text-green-300) font-mono font-semibold rounded">-stats</span>
+                <span class="ml-1 px-0.75 py-0.25 bg-green-100 text-green-700 dark:(bg-green-900 text-green-300) font-mono font-semibold rounded">-stats</span>
               </span>
             </NuxtLink>
           </div>
@@ -196,7 +196,7 @@
       </div>
       <div class="p-6">
         <ClientOnly>
-          <div v-if="_navigator" class="p-6 bg-zinc-100 dark:bg-zinc-800">
+          <div v-if="_navigator" class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-md">
             <p class="font-bold">Navigator</p>
             <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
               <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
@@ -219,17 +219,20 @@
 
 <script setup lang="ts">
 import Fuse from 'fuse.js'
+import * as shvl from 'shvl'
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
+const config = useRuntimeConfig()
+
 useHead({
-  title: "WebAPI check — Test your device's capabilities",
+  title: config.public.appTitle,
   meta: [{
     name: 'description',
-    content: 'Easily check which WebAPIs and interfaces are available on your current device. View capabilities, get detailed API information, and test functionality.',
+    content: config.public.appDescription,
   }, {
     name: 'keywords',
-    content: 'WebAPI, DX, Developer Tools',
+    content: config.public.appKeywords,
   }]
 })
 
@@ -275,9 +278,10 @@ const totalAPICount = $computed(() => {
   return sortedAPIs.length
 })
 
-function defaultCheck(apiKey: string, api: WebAPI) {
-  const target = api.path === 'navigator' ? navigator : window
-  return !!target[apiKey]
+function defaultCheck(api: WebAPI) {
+  const partials = api.path.split('.')
+  const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
+  return !!shvl.get(window, path, undefined)
 }
 
 function loadAPIs() {
@@ -286,10 +290,10 @@ function loadAPIs() {
       const api = apis[apiKey]
       const check = api.check || defaultCheck
       if (check.constructor.name === "AsyncFunction") {
-        check(apiKey, api)
+        check(api)
           .then((available: boolean) => apis[apiKey].available = available)
       } else {
-        apis[apiKey].available = check(apiKey, api)
+        apis[apiKey].available = check(api)
       }
     })
   }

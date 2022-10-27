@@ -1,10 +1,10 @@
 declare interface WebAPI {
   key?: string,
   name: string,
+  path: string,
   url: string,
   available: boolean | undefined,
   source?: string,
-  path?: string,
   experimental?: boolean,
   userInteractionRequired?: boolean,
   permissionsRequired?: boolean,

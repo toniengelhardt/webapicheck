@@ -22,7 +22,7 @@ body {
 
 .btn {
   @include noselect;
-  @apply inline-flex items-center py-2 px-4 font-bold rounded cursor-pointer;
+  @apply inline-flex items-center py-2 px-4 font-bold rounded-md cursor-pointer;
 }
 .btn-sm {
   @extend .btn;
@@ -30,7 +30,7 @@ body {
 }
 .btn-xs {
   @extend .btn;
-  @apply py-1 px-2 text-xs;
+  @apply py-1 px-2 text-xs rounded;
 }
 .btn-default {
   @apply bg-zinc-800 hover:bg-zinc-900 text-zinc-100 hover:text-white
@@ -41,8 +41,8 @@ body {
 }
 .btn-outline {
   @extend .btn;
-  @apply bg-transparent border border-zinc-300 hover:bg-zinc-100
-    dark:(bg-transparent border-zinc-700 hover:bg-zinc-800);
+  @apply bg-transparent border-2 border-zinc-200 hover:border-zinc-300
+    dark:(bg-transparent border-zinc-700 hover:border-zinc-600);
 }
 
 

@@ -1,10 +1,10 @@
 <template>
   <div class="py-3">
-    <a class="btn-xs btn-default cursor-pointer" @click="generateKeys()">
+    <div class="btn-xs btn-default cursor-pointer" @click="generateKeys()">
       <Icon v-if="loading" name="spinner" class="animate-spin" />
       <Icon v-else name="encryption" />
       <span class="mx-1.5">Generate key</span>
-    </a>
+    </div>
   </div>
   <Teleport to="body">
     <AppDialog

@@ -46,7 +46,7 @@
         <Icon v-if="itemClass === 'loading'" name="spinner" class="animate-spin" />
       </div>
     </div>
-    <div class="text-xs">
+    <div class="text-sm">
       {{ api.path || 'window' }}
     </div>
     <div class="flex-1 min-h-12">
@@ -55,13 +55,13 @@
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
         <div v-else-if="api.action" class="py-3">
-          <a
+          <div
             class="btn-xs btn-default cursor-pointer"
             @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
           >
             <Icon v-if="api.action.icon" :name="api.action.icon" />
             <span class="mx-1.5">{{ api.action.label }}</span>
-          </a>
+          </div>
         </div>
       </template>
     </div>
@@ -122,7 +122,7 @@ const sourceComponent = $computed(() => {
   .header {
     @apply flex items-center;
     .name {
-      @apply flex-1 font-black underline;
+      @apply flex-1 text-lg font-black underline;
     }
   }
   &.experimental {
@@ -136,9 +136,10 @@ const sourceComponent = $computed(() => {
     // .name {
     //   @apply text-lime-800 dark:text-lime-100;
     // }
+
   }
   &.not-available {
-    @apply bg-zinc-200 dark:bg-zinc-700;
+    @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
       @apply text-zinc-500 dark:text-zinc-300 line-through;
     }
