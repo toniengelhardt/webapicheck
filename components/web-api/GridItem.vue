@@ -118,7 +118,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply self-start flex-row px-4 py-3 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white);
+  @apply self-start flex-row px-4 py-3 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
   .header {
     @apply flex items-center;
     .name {

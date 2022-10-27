@@ -15,7 +15,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .item-counter {
-  @apply px-1 py-0.25 text-black dark:text-white font-bold bg-zinc-200 dark:bg-zinc-600 rounded-md;
+  @apply flex items-center px-1 py-0.25 text-black dark:text-white font-bold bg-zinc-200 dark:bg-zinc-600 rounded-md;
 }
 .item-divider {
   @apply w-1px h-6 mx-1 bg-zinc-900 dark:bg-zinc-300 rounded-full;
