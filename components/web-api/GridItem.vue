@@ -141,7 +141,7 @@ const sourceComponent = $computed(() => {
   &.not-available {
     @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
-      @apply text-zinc-500 dark:text-zinc-300 line-through;
+      @apply text-zinc-600 dark:text-zinc-300 line-through;
     }
   }
   &.loading {
