@@ -46,7 +46,7 @@
     </span>
     <span class="flex <md:justify-center items-center <md:mt-3 md:mr-6">
       <span>Hosted on</span>
-      <Icon name="logos:vercel-icon" class="ml-2 mr-1" />
+      <Icon name="vercel" class="ml-2 mr-1 text-black dark:text-white" />
       <NuxtLink
         href="https://vercel.com/"
         class="text-black dark:text-zinc-300 font-semibold hover:underline"

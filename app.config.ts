@@ -30,6 +30,8 @@ export default defineAppConfig({
       share: 'ph-share-network-fill',
       fullscreen: 'ph:arrows-out-simple',
       eyedropper: 'ph:eyedropper-sample-duotone',
+      pwa: 'logos:pwa',
+      vercel: 'akar-icons:vercel-fill',
     },
   }
 })
