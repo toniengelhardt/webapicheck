@@ -19,7 +19,7 @@ declare interface WebAPI {
   action?: {
     icon?: string,
     label: string,
-    func: () => void,
+    func: () => void | Promise<void>,
   },
   detail?: any,
 }

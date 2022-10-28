@@ -320,13 +320,12 @@ export const apiData: WebAPIData = {
       icon: 'share',
       label: 'Share page',
       func: () => {
-        try {
-          window?.navigator?.share({
-            title: 'WebAPI check',
-            text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
-            url: 'https://webapicheck.com',
-          })
-        } catch (error) {}
+        navigator?.share({
+          title: 'WebAPI check',
+          text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
+          url: 'https://webapicheck.com',
+        })
+          .catch(error => {})
       },
     },
   },
