@@ -6,21 +6,31 @@
           <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
         </template>
         <template #header-right>
-          <WebApiCounter :supportedCount="supportedAPICount" :totalCount="totalAPICount" />
-          <SecureContextStatus />
+          <div class="flex w-full md:justify-end">
+            <div class="flex <md:(w-1/3 justify-center) md:mr-6">
+              <ApiCounter :supportedCount="supportedAPICount" :totalCount="totalAPICount" />
+            </div>
+            <div class="flex <md:(w-1/3 justify-center) md:mr-6">
+              <ApiModeSelector v-model="mode" />
+            </div>
+            <div class="flex <md:(w-1/3 justify-center)">
+              <ContextStatus  />
+            </div>
+          </div>
         </template>
       </AppHeader>
     </div>
     <div class="content flex-1">
-      <div class="p-2 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
         </div> -->
-        <WebApiGrid :apis="filteredAPIs" />
+        <ApiList v-if="mode === 'list'" :apis="filteredAPIs" />
+        <ApiGrid v-else :apis="filteredAPIs" />
       </div>
       <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
-        <WebApiLegend />
+        <ApiLegend />
       </div>
       <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <div class="<md:text-center">
@@ -152,62 +162,68 @@
               </div>
             </li>
           </ul>
-          <p class="mt-6 mb-3 text-xl text-dim font-bold">Sources</p>
-          <ul class="list md:(list-inside list-disc)">
-            <li><NuxtLink
-              to="https://developer.mozilla.org"
-              title="Resources for Developers by Developers"
-              target="_blank"
-              class="link"
-            >MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink
-              to="https://developer.chrome.com"
-              title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
-              target="_blank"
-              class="link"
-            >Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink
-              to="https://www.w3.org"
-              title="World Wide Web Consortium (W3C)"
-              target="_blank"
-              class="link"
-            >W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-            <li><NuxtLink
-              to="https://fugu-tracker.web.app/"
-              title="Fugu API Tracker"
-              target="_blank"
-              class="link"
-            >Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-          </ul>
-          <p class="mt-6">
-            More DX projects:
-          </p>
-          <div class="flex mt-3">
-            <NuxtLink
-              to="https://repo-tracker.com?utm_source=WebAPI%20check"
-              title="Better GitHub Repository Stats and Insights"
-              target="_blank"
-              class="btn-outline <md:flex-1 md:w-40 h-12"
-              @click="$plausible.trackEvent('click: RepoTracker')"
-            >
-              <Icon name="ph:binoculars-duotone" class="dark:text-white" />
-              <span class="ml-1 font-black">
-                <span class="text-zinc-500 dark:text-zinc-400">Repo</span>
-                <span class="ml-0.5">Tracker</span>
-              </span>
-            </NuxtLink>
-            <NuxtLink
-              to="https://github-stats.com?utm_source=WebAPI%20check"
-              title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
-              target="_blank"
-              class="btn-outline <md:flex-1 ml-3"
-              @click="$plausible.trackEvent('click: GitHub stats')"
-            >
-              <span class="ml-0.5">
-                <span class="font-black">GitHub</span>
-                <span class="ml-1 px-0.75 py-0.25 bg-green-100 text-green-700 dark:(bg-green-900 text-green-300) font-mono font-semibold rounded">-stats</span>
-              </span>
-            </NuxtLink>
+          <div class="mt-6 flex <md:flex-col">
+            <div class="md:w-1/2">
+              <p class="mb-3 text-xl text-dim font-bold">Sources</p>
+              <ul class="list md:(list-inside list-disc)">
+                <li><NuxtLink
+                  to="https://developer.mozilla.org"
+                  title="Resources for Developers by Developers"
+                  target="_blank"
+                  class="link"
+                >MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+                <li><NuxtLink
+                  to="https://developer.chrome.com"
+                  title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
+                  target="_blank"
+                  class="link"
+                >Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+                <li><NuxtLink
+                  to="https://www.w3.org"
+                  title="World Wide Web Consortium (W3C)"
+                  target="_blank"
+                  class="link"
+                >W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+                <li><NuxtLink
+                  to="https://fugu-tracker.web.app/"
+                  title="Fugu API Tracker"
+                  target="_blank"
+                  class="link"
+                >Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+              </ul>
+            </div>
+            <div class="<md:mt-6 md:w-1/2">
+              <p class="mb-4 text-xl text-dim font-bold">
+                More DX projects
+              </p>
+              <div class="flex <sm:flex-col mt-3">
+                <NuxtLink
+                  to="https://repo-tracker.com?utm_source=WebAPI%20check"
+                  title="Better GitHub Repository Stats and Insights"
+                  target="_blank"
+                  class="btn-outline <sm:text-xl <md:flex-1 md:w-50 h-12"
+                  @click="$plausible.trackEvent('click: RepoTracker')"
+                >
+                  <Icon name="ph:binoculars-duotone" class="dark:text-white" />
+                  <span class="ml-1 font-black">
+                    <span class="text-zinc-500 dark:text-zinc-400">Repo</span>
+                    <span class="ml-0.5">Tracker</span>
+                  </span>
+                </NuxtLink>
+                <NuxtLink
+                  to="https://github-stats.com?utm_source=WebAPI%20check"
+                  title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
+                  target="_blank"
+                  class="btn-outline <sm:(mt-3 text-xl) sm:ml-3 <md:flex-1  md:w-50 h-12"
+                  @click="$plausible.trackEvent('click: GitHub stats')"
+                >
+                  <span class="ml-0.5">
+                    <span class="font-black">GitHub</span>
+                    <span class="ml-1 px-0.75 py-0.25 bg-green-100 text-green-700 dark:(bg-green-900 text-green-300) font-mono font-semibold rounded">-stats</span>
+                  </span>
+                </NuxtLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -237,6 +253,7 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
+import { Ref } from 'vue';
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
@@ -253,6 +270,7 @@ useHead({
   }]
 })
 
+let mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' })
 let searchTerm = ref('')
 let debouncedSearchTerm = refDebounced(searchTerm, 100)
 let searchMode = $ref(false)
@@ -282,7 +300,7 @@ const fuse = $computed(() => {
 
 const filteredAPIs = $computed(() => {
   return debouncedSearchTerm.value
-    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
+    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<Api>) => result.item)
     : sortedAPIs
 })
 

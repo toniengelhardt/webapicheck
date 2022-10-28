@@ -25,3 +25,5 @@ declare interface WebAPI {
 }
 
 declare type WebAPIData = { [key: string]: WebAPI }
+
+declare type DisplayMode = 'list' | 'grid'

@@ -34,6 +34,10 @@ export default defineAppConfig({
       vercel: 'akar-icons:vercel-fill',
       downlink: 'carbon:cloud-download',
       roundtrip: 'carbon:arrows-horizontal',
+      grid: 'bi:grid-3x3-gap-fill',
+      list: 'ph:rows-fill',
+      available: 'akar-icons:circle-check',
+      unavailable: 'akar-icons:circle-x',
     },
   }
 })

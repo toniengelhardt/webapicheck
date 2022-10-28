@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2">
-    <WebApiGridItem
+  <div class="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2">
+    <ApiGridItem
       v-for="api in apis"
       :key="api.key"
       :api="api"

@@ -12,32 +12,32 @@
         </NuxtLink>
       </div>
       <div class="indicators">
-        <WebApiGridItemIndicator
+        <ApiGridItemIndicator
           v-if="api.experimental"
           icon="experimental"
           title="Experimental"
           description="This feature is experimental, use with care."
         />
-        <WebApiGridItemIndicator
+        <ApiGridItemIndicator
           v-if="api.availableInWebWorkers"
           icon="webworker"
           title="Web Workers"
           description="This feature is also available in Web Workers."
           link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
         />
-        <WebApiGridItemIndicator
+        <ApiGridItemIndicator
           v-if="api.userInteractionRequired"
           icon="interaction"
           title="User Interaction"
           description="A user interaction is required to use this feature."
         />
-        <WebApiGridItemIndicator
+        <ApiGridItemIndicator
           v-if="api.permissionsRequired"
           icon="permission"
           title="Permissions"
           description="This feature requires permissions to be granted by the user."
         />
-        <WebApiGridItemIndicator
+        <ApiGridItemIndicator
           v-if="api.secureContextRequired"
           icon="secure"
           title="Secure Context"
@@ -87,8 +87,8 @@
 </template>
 
 <script setup lang="ts">
-import WebApiSourceChrome from '~/components/web-api/source/Chrome.vue'
-import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
+import ApiSourceChrome from '~/components/api/source/Chrome.vue'
+import ApiSourceMDN from '~/components/api/source/MDN.vue'
 
 const props = defineProps<{
   api: WebAPI,
@@ -110,9 +110,9 @@ const itemClass = $computed(() => {
 const sourceComponent = $computed(() => {
   switch (props.api.source) {
     case 'chrome':
-      return WebApiSourceChrome
+      return ApiSourceChrome
     default:
-      return WebApiSourceMDN
+      return ApiSourceMDN
   }
 })
 </script>
