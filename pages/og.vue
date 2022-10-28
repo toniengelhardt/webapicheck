@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center w-full bg-neutral-100">
+  <div class="flex justify-center items-center w-full bg-white dark:bg-zync-900">
     <div class="flex justify-center items-center h-full" style="width: 100vh;">
       <div class="flex flex-col items-center text-neutral-900">
         <Icon name="brand" size="22rem" class="text-neutral-400" />
