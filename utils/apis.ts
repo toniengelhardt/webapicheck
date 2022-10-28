@@ -127,6 +127,12 @@ export const apiData: WebAPIData = {
       },
     },
   },
+  gamepadAPI: {
+    name: 'Gamepad API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API',
+    path: 'window.Gamepad',
+    secureContextRequired: true,
+  },
   geolocationAPI: {
     name: 'Geolocation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API',
@@ -141,11 +147,29 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API',
     path: 'window.history',
   },
+  htmlSanitizer: {
+    name: 'HTML Sanitizer API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/HTML_Sanitizer_API',
+    path: 'window.Sanitizer',
+    secureContextRequired: true,
+    experimental: true,
+  },
+  imageCaptureAPI: {
+    name: 'Image Capture API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Image_Capture_API',
+    path: 'window.ImageCapture',
+    experimental: true,
+  },
   indexedDBAPI: {
     name: 'IndexedDB API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API',
     path: 'window.indexedDB',
     availableInWebWorkers: true,
+  },
+  intersectionObserverAPI: {
+    name: 'Intersection Observer API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API',
+    path: 'window.IntersectionObserver',
   },
   notificationsAPI: {
     name: 'Notifications API',

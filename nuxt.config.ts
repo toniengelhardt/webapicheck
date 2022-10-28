@@ -1,5 +1,5 @@
 const appTitle = 'WebAPI check'
-const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your device. Requirements, tests, specs, etc.'
+const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your device. WebAPI requirements, specs, tests, etc.'
 const appAuthor = 'Toni Engelhardt'
 const appKeywords = 'WebAPI, DX, Developer Tools'
 const appUrl = 'https://webapicheck.com'
