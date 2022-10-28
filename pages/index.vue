@@ -1,6 +1,6 @@
 <template>
   <div class="flex-col w-full min-w-full h-full mih-h-full">
-    <header class="sticky">
+    <div class="header">
       <AppHeader>
         <template #header-middle>
           <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
@@ -10,7 +10,7 @@
           <SecureContextStatus />
         </template>
       </AppHeader>
-    </header>
+    </div>
     <div class="content flex-1">
       <div class="p-2 border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
@@ -228,9 +228,9 @@
         </div>
       </div>
     </div>
-    <footer>
+    <div class="footer">
       <AppFooter />
-    </footer>
+    </div>
   </div>
 </template>
 
@@ -323,8 +323,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-header {
-  @apply bg-white dark:bg-zinc-900;
+.header {
+  @apply sticky bg-white dark:bg-zinc-900;
   position: sticky;
   top: 0;
   z-index: 1001;
