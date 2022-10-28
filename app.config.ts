@@ -32,6 +32,8 @@ export default defineAppConfig({
       eyedropper: 'ph:eyedropper-sample-duotone',
       pwa: 'logos:pwa',
       vercel: 'akar-icons:vercel-fill',
+      downlink: 'carbon:cloud-download',
+      roundtrip: 'carbon:arrows-horizontal',
     },
   }
 })

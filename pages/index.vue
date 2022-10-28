@@ -35,7 +35,7 @@
               class="link"
               target="_blank"
             >WebAPIs</NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device.
-            Just open this page on the device you want to check and voilà.
+            Just open this page on the device you want to test and voilà.
           </p>
           <p>
             Feedback and suggestions are very welcome! Get in touch on
@@ -217,8 +217,8 @@
             <p class="font-bold">Navigator</p>
             <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
               <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
-                <span class="font-bold">{{ key }}:</span>
-                <span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
+                <span class="font-bold">{{ key }}:</span>&nbsp;<!--
+             --><span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
               </p>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
 import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
+import DetailNetworkConnectionAPI from '~/components/detail/NetworkConnectionAPI.vue'
 import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
@@ -171,6 +172,14 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API',
     path: 'window.IntersectionObserver',
   },
+  networkConnectionAPI: {
+    name: 'Network Connection API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API',
+    path: 'navigator.connection',
+    availableInWebWorkers: true,
+    experimental: true,
+    detail: shallowRef(DetailNetworkConnectionAPI),
+  },
   notificationsAPI: {
     name: 'Notifications API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API',
@@ -189,11 +198,24 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Performance_API',
     path: 'window.performance',
   },
+  performanceTimelineAPI: {
+    name: 'Performance Timeline API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline',
+    path: 'window.performance',
+    availableInWebWorkers: true,
+    check: () => window?.performance?.getEntries !== undefined,
+  },
   permissionsAPI: {
     name: 'Permissions API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API',
     path: 'navigator.permissions',
     availableInWebWorkers: true,
+  },
+  pictureInPicture: {
+    name: 'Picture-in-Picture API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture_API',
+    path: 'window.PictureInPictureWindow',
+    check: () => !!document?.pictureInPictureEnabled,
   },
   screenOrientationAPI: {
     name: 'Screen Orientation API',
@@ -214,6 +236,11 @@ export const apiData: WebAPIData = {
     path: 'navigator.storage',
     secureContextRequired: true,
     availableInWebWorkers: true,
+  },
+  touch: {
+    name: 'Touch Events',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Touch_events',
+    path: 'window.Touch',
   },
   vibrationAPI: {
     name: 'Vibration API',
@@ -265,6 +292,12 @@ export const apiData: WebAPIData = {
         return false;
       }
     }
+  },
+  webHIDAPI: {
+    name: 'WebHID API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API',
+    path: 'navigator.hid',
+    experimental: true,
   },
   webMIDIAPI: {
     name: 'Web MIDI API',

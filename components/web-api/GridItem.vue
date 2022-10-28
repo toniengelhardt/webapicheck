@@ -54,7 +54,6 @@
     </div>
     <div class="flex-1 min-h-12">
       <template v-if="api.available">
-        <!-- <WebStorageAPI v-if="api.name === 'Web Storage API'" /> -->
         <component v-if="api.detail" :is="api.detail" />
         <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
         <div v-else-if="api.action" class="py-3">
@@ -88,7 +87,6 @@
 </template>
 
 <script setup lang="ts">
-// import WebStorageAPI from '~/components/detail/WebStorageAPI.vue'
 import WebApiSourceChrome from '~/components/web-api/source/Chrome.vue'
 import WebApiSourceMDN from '~/components/web-api/source/MDN.vue'
 
