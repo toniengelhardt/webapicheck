@@ -4,6 +4,7 @@
       <div class="name">
         <NuxtLink
           :to="api.url"
+          :title="`${api.name} documentation`"
           target="_blank"
           @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
         >
@@ -43,7 +44,9 @@
           description="This feature requires a Secure Context (HTTPS) to be available."
           link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
         />
-        <Icon v-if="itemClass === 'loading'" name="spinner" class="animate-spin" />
+        <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-5 h-5 ml-2">
+          <Icon name="spinner" class="animate-spin" />
+        </div>
       </div>
     </div>
     <div class="text-sm">
@@ -140,12 +143,19 @@ const sourceComponent = $computed(() => {
   }
   &.not-available {
     @apply bg-zinc-100 dark:bg-zinc-700;
+    // background: repeating-linear-gradient(
+    //   -55deg,
+    //   var(--color-zinc-100),
+    //   var(--color-zinc-100) 10px,
+    //   var(--color-zinc-200) 10px,
+    //   var(--color-zinc-200) 20px,
+    // );
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }
   }
   &.loading {
-    @apply bg-zinc-50 dark:bg-zinc-800;
+    @apply bg-zinc-100 dark:bg-zinc-800;
   }
   .indicators {
     @apply flex items-center text-sm;

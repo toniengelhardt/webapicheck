@@ -57,6 +57,23 @@
           <p class="mt-6 text-xl text-dim font-bold">FAQ</p>
           <ul>
             <li class="mt-4">
+              <p class="italic">What is a <b>WebAPI</b>?</p>
+              <div class="flex mt-2">
+                <div class="<md:hidden mr-3">—</div>
+                <p>
+                  WebAPIs are a collection of specifications defined by
+                  <NuxtLink
+                    to="https://www.w3.org"
+                    title="The World Wide Web Consortium"
+                    class="link"
+                    target="_blank"
+                  >W3C</NuxtLink> and others that allow web applications
+                  to interact with device hardware and browser capabilities
+                  beyond simple script execution, e.g. storage, service workers, etc.
+                </p>
+              </div>
+            </li>
+            <li class="mt-4">
               <p class="italic">What is a <b>User Interaction [1]</b> and why is it sometimes required?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -220,7 +237,6 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
-import { Ref } from 'vue';
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
