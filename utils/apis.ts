@@ -19,11 +19,15 @@ export const apiData: WebAPIData = {
     secureContextRequired: true,
     detail: shallowRef(DetailBatteryStatusAPI),
     check: async () => {
-      if (navigator && 'getBattery' in navigator) {
-        const bm = await navigator.getBattery()
-        return bm !== undefined
+      try {
+        if (navigator && 'getBattery' in navigator) {
+          const bm = await navigator.getBattery()
+          return bm !== undefined
+        }
+        return false
+      } catch (error) {
+        return false
       }
-      return false
     },
   },
   bluetoothAPI: {
@@ -59,8 +63,12 @@ export const apiData: WebAPIData = {
     path: 'N/A',
     experimental: true,
     check: async () => {
-      const registration = await navigator.serviceWorker.ready
-      return 'index' in registration
+      try {
+        const registration = await navigator.serviceWorker.ready
+        return 'index' in registration
+      } catch (error) {
+        return false
+      }
     },
   },
   cookieStoreAPI: {
