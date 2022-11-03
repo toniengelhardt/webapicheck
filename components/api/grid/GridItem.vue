@@ -72,12 +72,12 @@
         <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-4 h-4">
           <Icon name="spinner" class="animate-spin" />
         </div>
-        <div v-else class="status" :class="status.name">
+        <div v-else class="status" :class="status?.name">
           <span class="status-icon">
-            <Icon :name="status.icon" />
+            <Icon :name="status?.icon || ''" />
           </span>
           <span class="status-label">
-            {{ status.label }}
+            {{ status?.label }}
           </span>
         </div>
       </div>
@@ -117,25 +117,28 @@ const sourceComponent = $computed(() => {
   }
 })
 const status = $computed(() =>  {
-  if (props.api.experimental) {
-    return {
-      name: 'experimental',
-      icon: 'experimental',
-      label: 'Experimental',
+  if (props.api.available) {
+    if (props.api.experimental) {
+      return {
+        name: 'experimental',
+        icon: 'experimental',
+        label: 'Experimental',
+      }
     }
-  } else if (props.api.available) {
     return {
       name: 'available',
       icon: 'check',
       label: 'Available',
     }
-  } else {
+  }
+  if (props.api.available === false) {
     return {
       name: 'unavailable',
       icon: 'cross',
-      label: 'Not supported',
+      label: 'Not available',
     }
   }
+  return undefined
 })
 </script>
 
@@ -196,12 +199,12 @@ const status = $computed(() =>  {
     @apply flex items-center;
     &.available {
       .status-icon {
-        @apply text-lime-600 border-lime-600;
+        @apply text-lime-600 border-lime-600 dark:(text-lime-200 border-lime-200);
       }
     }
     &.experimental {
       .status-icon {
-        @apply text-purple-700 border-purple-700;
+        @apply text-purple-700 border-purple-700 dark:(text-purple-200 border-purple-200);
       }
     }
     &.unavailable {
