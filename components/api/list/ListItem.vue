@@ -115,7 +115,7 @@ const sourceComponent = $computed(() => {
 
 <style lang="scss" scoped>
 .list-item {
-  @apply flex flex-row px-4 py-2;
+  @apply flex flex-row px-4 py-2 rounded;
   .name {
     @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline;
   }

@@ -26,5 +26,9 @@ export default defineConfig({
         ':root': extractColorVars(theme('colors')),
       });
     }
-  ]
+  ],
+  shortcuts: {
+    'text-default': 'text-black dark:text-zinc-200',
+    'text-dim': 'text-zinc-500 dark:text-zinc-400',
+  }
 })

@@ -38,6 +38,7 @@ export default defineAppConfig({
       list: 'ph:rows-fill',
       available: 'akar-icons:circle-check',
       unavailable: 'akar-icons:circle-x',
+      email: 'ph:paper-plane-tilt',
     },
   }
 })

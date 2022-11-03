@@ -11,9 +11,9 @@
     "prepare": "nuxi prepare"
   },
   "dependencies": {
-    "@sentry/browser": "7.17.2",
-    "@sentry/tracing": "7.17.2",
-    "@sentry/vue": "7.17.2",
+    "@sentry/browser": "7.17.3",
+    "@sentry/tracing": "7.17.3",
+    "@sentry/vue": "7.17.3",
     "fuse.js": "^6.6.2",
     "nuxt-icon": "^0.1.7",
     "shvl": "^3.0.0",

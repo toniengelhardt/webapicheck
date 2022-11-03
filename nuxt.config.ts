@@ -15,6 +15,7 @@ export default defineNuxtConfig({
       appUrl,
       twitterProfile: 'https://twitter.com/toniengelhardt',
       githubProfile: 'https://github.com/toniengelhardt',
+      feedbackEmail: 'feedback@webapicheck.com',
     }
   },
   modules: [
