@@ -138,7 +138,7 @@ const sourceComponent = $computed(() => {
     @apply bg-zinc-100 dark:bg-zinc-800;
   }
   .indicators {
-    @apply flex justify-end items-center w-35 text-sm;
+    @apply flex justify-end items-center w-28 text-sm;
     > *:not(:last-child) {
       @apply mr-2;
     }

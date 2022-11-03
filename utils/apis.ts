@@ -108,6 +108,11 @@ export const apiData: WebAPIData = {
       }
     }
   },
+  fileAPI: {
+    name: 'File API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/File_API',
+    path: 'window.File',
+  },
   fileSystemAccessAPI: {
     name: 'File System Access API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API',
@@ -179,6 +184,18 @@ export const apiData: WebAPIData = {
     name: 'Intersection Observer API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API',
     path: 'window.IntersectionObserver',
+  },
+  largestContentFullPaintAPI: {
+    name: 'LCP API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint',
+    path: 'window.LargestContentfulPaint',
+    experimental: true,
+  },
+  layoutInstabilityAPI: {
+    name: 'Layout Instability API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Layout_Instability_API',
+    path: 'window.LayoutShift',
+    experimental: true,
   },
   networkConnectionAPI: {
     name: 'Network Connection API',
@@ -273,6 +290,12 @@ export const apiData: WebAPIData = {
     path: 'window.visualViewport',
     detail: shallowRef(DetailVisualViewport),
   },
+  webAudioAPI: {
+    name: 'Web Audio API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API',
+    path: 'window.AudioContext',
+    check: () => window?.AudioContext !== undefined || window?.webkitAudioContext !== undefined,
+  },
   webAuthenticationAPI: {
     name: 'Web Authentication API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
@@ -300,6 +323,20 @@ export const apiData: WebAPIData = {
         return false;
       }
     }
+  },
+  webGPU: {
+    name: 'WebGPU',
+    url: 'https://developer.chrome.com/en/docs/web-platform/webgpu',
+    path: 'navigator.gpu',
+    source: 'chrome',
+    experimental: true,
+    links: [{
+      name: 'spec',
+      url: 'https://gpuweb.github.io/gpuweb/',
+    }, {
+      name: 'status',
+      url: 'https://chromestatus.com/feature/6213121689518080',
+    }],
   },
   webHIDAPI: {
     name: 'WebHID API',

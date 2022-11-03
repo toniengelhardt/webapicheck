@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col <md:text-center md:flex-row justify-between text-sm text-dim px-3 md:px-6 <md:py-6 md:min-h-16 border-t-1 border-zinc-300 dark:border-zinc-700">
-    <span class="flex-1 flex flex-col <md:justify-center md:flex-row items-center">
+    <span class="flex-1 flex flex-col-reverse <md:justify-center md:flex-row items-center">
       <span class="flex items-center">
         © 2022 by
         <Icon name="logos:twitter" class="ml-1 mr-1" />
@@ -12,13 +12,25 @@
           @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
         >toniengelhardt</NuxtLink>
       </span>
-      <span class="flex items-center <md:mt-3">
-        <Icon name="email" class="md:ml-6 mr-1" />
-        <NuxtLink
-          :to="`mailto:${$config.feedbackEmail}`"
-          class="underline hover:text-default"
-          title="Send feedback via email"
-        >Feedback</NuxtLink>
+      <span class="flex <md:(w-full justify-center mb-6)">
+        <span class="flex items-center">
+          <Icon name="email" class="md:ml-6 mr-1" />
+          <NuxtLink
+            :to="`mailto:${$config.feedbackEmail}`"
+            class="underline hover:text-default"
+            title="Send feedback via email"
+            target="_blank"
+          >Feedback</NuxtLink>
+        </span>
+        <span class="flex items-center">
+          <Icon name="discussion" class="ml-3 md:ml-6 mr-1" />
+          <NuxtLink
+            to="https://www.reddit.com/r/webdev/comments/ygee67/open_this_page_to_check_which_webapis_are/"
+            class="underline hover:text-default"
+            title="Discussion on Reddit"
+            target="_blank"
+          >Discussion</NuxtLink>
+        </span>
       </span>
     </span>
     <span class="flex <md:justify-center items-center <md:mt-3 md:mr-6">
