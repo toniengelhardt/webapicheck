@@ -182,7 +182,7 @@ const sourceComponent = $computed(() => {
     @apply bg-lime-200 border-lime-300 dark:(bg-lime-700 border-lime-600);
   }
   &.not-available {
-    @apply bg-zinc-100 dark:bg-zinc-700;
+    @apply bg-zinc-100 dark:bg-zinc-800;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }

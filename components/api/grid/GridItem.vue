@@ -165,14 +165,7 @@ const status = $computed(() =>  {
 
   }
   &.not-available {
-    @apply bg-zinc-100 dark:bg-zinc-700;
-    // background: repeating-linear-gradient(
-    //   -55deg,
-    //   var(--color-zinc-100),
-    //   var(--color-zinc-100) 10px,
-    //   var(--color-zinc-200) 10px,
-    //   var(--color-zinc-200) 20px,
-    // );
+    @apply bg-zinc-100 dark:bg-zinc-800;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }
