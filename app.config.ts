@@ -3,7 +3,7 @@ export default defineAppConfig({
     aliases: {
       spinner: 'fa6-solid:spinner',
       brand: 'carbon:code',
-      experimental: 'fa6-solid:flask-vial',
+      experimental: 'ph:flask-fill',
       webworker: 'el:cogs',
       mdn: 'simple-icons:mozilla',
       chrome: 'logos:chrome',
@@ -40,6 +40,8 @@ export default defineAppConfig({
       unavailable: 'akar-icons:circle-x',
       email: 'ph:paper-plane-tilt',
       discussion: 'ph:chats',
+      check: 'ph:check-bold',
+      cross: 'ph:x-bold',
     },
   }
 })

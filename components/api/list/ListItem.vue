@@ -1,5 +1,10 @@
 <template>
   <div class="list-item" :class="itemClass">
+    <div class="status" :class="status.name">
+      <span class="status-icon">
+        <Icon :name="status.icon" />
+      </span>
+    </div>
     <div class="name">
       <NuxtLink
         :to="api.url"
@@ -28,7 +33,7 @@
         </div>
       </template>
     </div> -->
-    <div class="<lg:hidden flex-1 flex items-center">
+    <!-- <div class="<lg:hidden flex-1 flex items-center">
       <span v-for="link in api.links" class="item-link">
         <NuxtLink
           :to="link.url"
@@ -38,7 +43,7 @@
         >{{ link.name }}</NuxtLink>
         <Icon name="external" size=".85rem" class="ml-0.5"/>
       </span>
-    </div>
+    </div> -->
     <div class="<md:hidden flex justify-end items-center w-24">
       <component v-if="sourceComponent" :is="sourceComponent" />
     </div>
@@ -102,7 +107,27 @@ const itemClass = $computed(() => {
   }
   return 'loading'
 })
-
+const status = $computed(() =>  {
+  if (props.api.experimental) {
+    return {
+      name: 'experimental',
+      icon: 'experimental',
+      label: 'Experimental',
+    }
+  } else if (props.api.available) {
+    return {
+      name: 'available',
+      icon: 'check',
+      label: 'Available',
+    }
+  } else {
+    return {
+      name: 'unavailable',
+      icon: 'cross',
+      label: 'Not available',
+    }
+  }
+})
 const sourceComponent = $computed(() => {
   switch (props.api.source) {
     case 'chrome':
@@ -116,8 +141,33 @@ const sourceComponent = $computed(() => {
 <style lang="scss" scoped>
 .list-item {
   @apply flex flex-row px-4 py-2 rounded;
+  .status {
+    @apply flex items-center mr-2;
+    &.available {
+      .status-icon {
+        @apply text-lime-600 border-lime-600;
+      }
+    }
+    &.experimental {
+      .status-icon {
+        @apply text-purple-700 border-purple-700;
+      }
+    }
+    &.unavailable {
+      // @apply text-rose-500;
+      .status-icon {
+        @apply text-rose-500 border-rose-500;
+      }
+    }
+    .status-icon {
+      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full;
+      .icon {
+        @apply text-0.6rem;
+      }
+    }
+  }
   .name {
-    @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline;
+    @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline leading-tight;
   }
   .path {
     @apply flex items-center w-60 text-sm <md:hidden;
@@ -138,7 +188,7 @@ const sourceComponent = $computed(() => {
     @apply bg-zinc-100 dark:bg-zinc-800;
   }
   .indicators {
-    @apply flex justify-end items-center w-28 text-sm;
+    @apply flex justify-end items-center w-21 text-sm;
     > *:not(:last-child) {
       @apply mr-2;
     }

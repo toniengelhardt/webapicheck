@@ -32,9 +32,9 @@ const legend = [
     icon: 'webworker',
     label: 'Available in <i>Web Workers<sup class="ml-0.5">4</sup></i>',
   },
-  {
+  /* {
     icon: 'experimental',
     label: 'Experimental API',
-  }
+  } */
 ]
 </script>

@@ -13,12 +13,6 @@
       </div>
       <div class="indicators">
         <ApiGridItemIndicator
-          v-if="api.experimental"
-          icon="experimental"
-          title="Experimental"
-          description="This feature is experimental, use with care."
-        />
-        <ApiGridItemIndicator
           v-if="api.availableInWebWorkers"
           icon="webworker"
           title="Web Workers"
@@ -44,9 +38,6 @@
           description="This feature requires a Secure Context (HTTPS) to be available."
           link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
         />
-        <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-5 h-5 ml-2">
-          <Icon name="spinner" class="animate-spin" />
-        </div>
       </div>
     </div>
     <div class="text-sm">
@@ -69,7 +60,7 @@
     </div>
     <div class="flex items-center">
       <div class="flex-1 flex items-center">
-        <span v-for="link in api.links" class="item-link">
+        <!-- <span v-for="link in api.links" class="item-link">
           <NuxtLink
             :to="link.url"
             :class="itemClass"
@@ -77,7 +68,18 @@
             @click="$plausible.trackEvent('click: API resource', { props: { api: api.name, name: link.name } })"
           >{{ link.name }}</NuxtLink>
           <Icon name="external" size=".85rem" class="ml-0.5"/>
-        </span>
+        </span> -->
+        <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-4 h-4">
+          <Icon name="spinner" class="animate-spin" />
+        </div>
+        <div v-else class="status" :class="status.name">
+          <span class="status-icon">
+            <Icon :name="status.icon" />
+          </span>
+          <span class="status-label">
+            {{ status.label }}
+          </span>
+        </div>
       </div>
       <div>
         <component v-if="sourceComponent" :is="sourceComponent" />
@@ -106,13 +108,33 @@ const itemClass = $computed(() => {
   }
   return 'loading'
 })
-
 const sourceComponent = $computed(() => {
   switch (props.api.source) {
     case 'chrome':
       return ApiSourceChrome
     default:
       return ApiSourceMDN
+  }
+})
+const status = $computed(() =>  {
+  if (props.api.experimental) {
+    return {
+      name: 'experimental',
+      icon: 'experimental',
+      label: 'Experimental',
+    }
+  } else if (props.api.available) {
+    return {
+      name: 'available',
+      icon: 'check',
+      label: 'Available',
+    }
+  } else {
+    return {
+      name: 'unavailable',
+      icon: 'cross',
+      label: 'Not supported',
+    }
   }
 })
 </script>
@@ -168,6 +190,34 @@ const sourceComponent = $computed(() => {
     }
     a {
       @apply underline;
+    }
+  }
+  .status {
+    @apply flex items-center;
+    &.available {
+      .status-icon {
+        @apply text-lime-600 border-lime-600;
+      }
+    }
+    &.experimental {
+      .status-icon {
+        @apply text-purple-700 border-purple-700;
+      }
+    }
+    &.unavailable {
+      // @apply text-rose-500;
+      .status-icon {
+        @apply text-rose-500 border-rose-500;
+      }
+    }
+    .status-icon {
+      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full;
+      .icon {
+        @apply text-0.6rem;
+      }
+    }
+    .status-label {
+      @apply ml-1.5 text-xs;
     }
   }
 }
