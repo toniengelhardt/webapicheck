@@ -5,7 +5,7 @@ const appKeywords = 'WebAPI, DX, Developer Tools'
 const appUrl = 'https://webapicheck.com'
 
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   runtimeConfig: {
     public: {
       appTitle,
