@@ -64,6 +64,18 @@
               @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
             >GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
           </p>
+          <p class="mt-6 text-xl text-dim font-bold">Disclaimer</p>
+          <p class="mt-4">
+            There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
+            <NuxtLink
+              :to="`mailto:${$config.feedbackEmail}`"
+              class="link"
+              title="Send feedback via email"
+              target="_blank"
+            >{{ $config.feedbackEmail }}</NuxtLink> so that I can fix them.
+            Please also note that some browsers (e.g. Brave) might not always report API support correctly and
+            signal for certain APIs that they are available when they are actually not.
+          </p>
           <p class="mt-6 text-xl text-dim font-bold">FAQ</p>
           <ul>
             <li class="mt-4">
@@ -300,7 +312,7 @@ const fuse = $computed(() => {
 
 const filteredAPIs = $computed(() => {
   return debouncedSearchTerm.value
-    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<Api>) => result.item)
+    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
     : sortedAPIs
 })
 
@@ -324,10 +336,10 @@ function loadAPIs() {
       const api = apis[apiKey]
       const check = api.check || defaultCheck
       if (check.constructor.name === "AsyncFunction") {
-        check(api)
+        (check(api) as Promise<boolean>)
           .then((available: boolean) => apis[apiKey].available = available)
       } else {
-        apis[apiKey].available = check(api)
+        apis[apiKey].available = check(api) as boolean
       }
     })
   }

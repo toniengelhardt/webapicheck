@@ -1,7 +1,7 @@
 declare interface WebAPI {
   key?: string,
   name: string,
-  path: string,
+  path?: string,
   url: string,
   available?: boolean,
   source?: string,

@@ -16,7 +16,7 @@
       </NuxtLink>
     </div>
     <div class="path">
-      {{ api.path }}
+      {{ api.path || 'N/A' }}
     </div>
     <!-- <div class="flex-1 min-h-12">
       <template v-if="api.available">
@@ -107,7 +107,7 @@ const itemClass = $computed(() => {
   }
   return 'loading'
 })
-const status = $computed(() =>  {
+const status: { name: string, icon: string, label: string } | undefined = $computed(() =>  {
   if (props.api.available) {
     if (props.api.experimental) {
       return {
@@ -129,7 +129,7 @@ const status = $computed(() =>  {
       label: 'Not available',
     }
   }
-  return false
+  return undefined
 })
 const sourceComponent = $computed(() => {
   switch (props.api.source) {

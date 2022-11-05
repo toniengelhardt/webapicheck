@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="text-sm">
-      {{ api.path || 'window' }}
+      {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-12">
       <template v-if="api.available">

@@ -5,6 +5,41 @@ import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
 export const apiData: WebAPIData = {
+  absoluteOrientationSensor: {
+    name: 'Absolute Orientation Sensor',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor',
+    path: 'window.AbsoluteOrientationSensor',
+    permissionsRequired: true,
+    // action: {
+    //   // icon: 'eyedropper',
+    //   label: 'Get orientation',
+    //   func: () => {
+    //     try {
+    //       const options = { frequency: 60, referenceFrame: 'device' }
+    //       const sensor = new AbsoluteOrientationSensor(options)
+    //       useEventListener(sensor, 'reading', () => {
+    //         // model is a Three.js object instantiated elsewhere.
+    //         // model.quaternion.fromArray(sensor.quaternion).inverse();
+    //         console.log('XXX', sensor)
+    //       })
+    //       sensor.start();
+    //     } catch (error) {
+    //       console.error(error)
+    //       alert(`Oh oh, an error occured. Check the console for more details!`)
+    //     }
+    //   }
+    // }
+  },
+  accelerometer: {
+    name: 'Accelerometer',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer',
+    path: 'window.Accelerometer',
+  },
+  ambientLightSensor: {
+    name: 'Ambient Light Sensor',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor',
+    path: 'window.AmbientLightSensor',
+  },
   barcodeDetectionAPI: {
     name: 'Barcode Detection API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector',
@@ -36,6 +71,7 @@ export const apiData: WebAPIData = {
     path: 'navigator.bluetooth',
     userInteractionRequired: true,
     permissionsRequired: true,
+    secureContextRequired: true,
     experimental: true,
   },
   broadcastChannelAPI: {
@@ -60,7 +96,6 @@ export const apiData: WebAPIData = {
   contentIndexAPI: {
     name: 'Content Index API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Content_Index_API',
-    path: 'N/A',
     experimental: true,
     check: async () => {
       try {
@@ -104,7 +139,7 @@ export const apiData: WebAPIData = {
       func: () => {
         const eyeDropper = new EyeDropper()
         eyeDropper.open()
-          .then(result => alert(`Selected color: ${result.sRGBHex}`))
+          .then((result: any) => alert(`Selected color: ${result.sRGBHex}`))
       }
     }
   },
@@ -242,6 +277,19 @@ export const apiData: WebAPIData = {
     path: 'window.PictureInPictureWindow',
     check: () => !!document?.pictureInPictureEnabled,
   },
+  // S
+  // screenCaptureAPI: {
+  //   name: 'Screen Capture API',
+  //   url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API',
+  //   check: async () => {
+  //     try {
+  //       const captureStream = await navigator.mediaDevices.getDisplayMedia()
+  //       return !!captureStream
+  //     } catch (err) {
+  //       return false
+  //     }
+  //   }
+  // },
   screenOrientationAPI: {
     name: 'Screen Orientation API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API',
@@ -255,6 +303,11 @@ export const apiData: WebAPIData = {
     secureContextRequired: true,
     experimental: true,
   },
+  selectionAPI: {
+    name: 'Selection API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Selection_API',
+    path: 'window.Selection',
+  },
   storage: {
     name: 'Storage',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Storage_API',
@@ -262,11 +315,13 @@ export const apiData: WebAPIData = {
     secureContextRequired: true,
     availableInWebWorkers: true,
   },
+  // T [complete]
   touch: {
     name: 'Touch Events',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Touch_events',
     path: 'window.Touch',
   },
+  // V [complete]
   vibrationAPI: {
     name: 'Vibration API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API',
@@ -290,6 +345,12 @@ export const apiData: WebAPIData = {
     path: 'window.visualViewport',
     detail: shallowRef(DetailVisualViewport),
   },
+  // W [complete]
+  webAnimationsAPI: {
+    name: 'Web Animations API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API',
+    path: 'window.Animation',
+  },
   webAudioAPI: {
     name: 'Web Audio API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API',
@@ -301,6 +362,11 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API',
     path: 'navigator.credentials',
     secureContextRequired: true,
+  },
+  webCodecsAPI: {
+    name: 'WebCodecs API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API',
+    check: () => window?.AudioDecoder !== undefined && window?.VideoDecoder !== undefined
   },
   webCryptoAPI: {
     name: 'Web Crypto API',
@@ -318,9 +384,9 @@ export const apiData: WebAPIData = {
       // https://stackoverflow.com/questions/11871077/proper-way-to-detect-webgl-support
       try {
         const canvas = document?.createElement('canvas')
-        return canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+        return !!(canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')))
       } catch(error) {
-        return false;
+        return false
       }
     }
   },
@@ -374,7 +440,7 @@ export const apiData: WebAPIData = {
       },
     },
   },
-  webSocketAPI: {
+  webSocketsAPI: {
     name: 'WebSocket API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API',
     path: 'window.WebSocket',
@@ -403,11 +469,33 @@ export const apiData: WebAPIData = {
     experimental: true,
     secureContextRequired: true,
   },
+  webVTT: {
+    name: 'WebVTT API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API',
+    check: () => window?.VTTCue !== undefined && window?.VTTRegion !== undefined,
+  },
+  webWorkersAPI: {
+    name: 'Web Workers API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers',
+    path: 'window.Worker',
+  },
   webXRDeviceAPI: {
     name: 'WebXR Device API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API',
     path: 'navigator.xr',
     experimental: true,
     secureContextRequired: true,
+  },
+  windowControlsOverlayAPI: {
+    name: 'Window Controls Overlay API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Window_Controls_Overlay_API',
+    path: 'navigator.windowControlsOverlay',
+    experimental: true,
+  },
+  // X [complete]
+  xmlHttpRequest: {
+    name: 'XMMLHttpRequest',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest',
+    path: 'window.XMLHttpRequest',
   },
 }
