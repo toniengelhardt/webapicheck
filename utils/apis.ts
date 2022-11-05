@@ -10,6 +10,7 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor',
     path: 'window.AbsoluteOrientationSensor',
     permissionsRequired: true,
+    secureContextRequired: true,
     // action: {
     //   // icon: 'eyedropper',
     //   label: 'Get orientation',
@@ -34,11 +35,17 @@ export const apiData: WebAPIData = {
     name: 'Accelerometer',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer',
     path: 'window.Accelerometer',
+    permissionsRequired: true,
+    secureContextRequired: true,
+    experimental: true,
   },
   ambientLightSensor: {
     name: 'Ambient Light Sensor',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor',
     path: 'window.AmbientLightSensor',
+    permissionsRequired: true,
+    secureContextRequired: true,
+    experimental: true,
   },
   barcodeDetectionAPI: {
     name: 'Barcode Detection API',
@@ -221,7 +228,7 @@ export const apiData: WebAPIData = {
     path: 'window.IntersectionObserver',
   },
   largestContentFullPaintAPI: {
-    name: 'LCP API',
+    name: 'Largest Contentful Paint API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint',
     path: 'window.LargestContentfulPaint',
     experimental: true,

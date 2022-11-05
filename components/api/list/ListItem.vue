@@ -170,7 +170,7 @@ const sourceComponent = $computed(() => {
     }
   }
   .name {
-    @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline leading-tight;
+    @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline leading-tight truncate;
   }
   .path {
     @apply flex items-center w-60 text-sm <md:hidden;
@@ -191,7 +191,7 @@ const sourceComponent = $computed(() => {
     @apply bg-zinc-100 dark:bg-zinc-800;
   }
   .indicators {
-    @apply flex justify-end items-center w-25 text-sm;
+    @apply flex justify-end items-center md:w-25 text-sm;
     > *:not(:last-child) {
       @apply mr-2;
     }

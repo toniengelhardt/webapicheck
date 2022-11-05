@@ -32,7 +32,7 @@
       <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
         <ApiLegend />
       </div>
-      <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="px-6 py-12 border-b-1 border-zinc-300 dark:border-zinc-700">
         <div class="<md:text-center">
           <p>
             <Icon name="emojione:construction" /> Work in progress...
@@ -64,8 +64,8 @@
               @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
             >GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
           </p>
-          <p class="mt-6 text-xl text-dim font-bold">Disclaimer</p>
-          <p class="mt-4">
+          <p class="mt-12 text-xl text-dim font-bold">Disclaimer</p>
+          <p class="mt-6">
             There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
             <NuxtLink
               :to="`mailto:${$config.feedbackEmail}`"
@@ -76,9 +76,9 @@
             Please also note that some browsers (e.g. Brave) might not always report API support correctly and
             signal for certain APIs that they are available when they are actually not.
           </p>
-          <p class="mt-6 text-xl text-dim font-bold">FAQ</p>
+          <p class="mt-12 text-xl text-dim font-bold">FAQ</p>
           <ul>
-            <li class="mt-4">
+            <li class="mt-6">
               <p class="italic">What is a <b>WebAPI</b>?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -95,7 +95,7 @@
                 </p>
               </div>
             </li>
-            <li class="mt-4">
+            <li class="mt-6">
               <p class="italic">What is a <b>User Interaction [1]</b> and why is it sometimes required?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -108,7 +108,7 @@
                 </p>
               </div>
             </li>
-            <li class="mt-4">
+            <li class="mt-6">
               <p class="italic">Why are sometimes special <b>Permissions [2]</b> required?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -127,7 +127,7 @@
                 </p>
               </div>
             </li>
-            <li class="mt-4">
+            <li class="mt-6">
               <p class="italic">What is a <b>Secure Context [3]</b>?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -156,7 +156,7 @@
                 </p>
               </div>
             </li>
-            <li class="mt-4">
+            <li class="mt-6">
               <p class="italic">What are <b>Web Workers [4]</b>?</p>
               <div class="flex mt-2">
                 <div class="<md:hidden mr-3">—</div>
@@ -174,9 +174,9 @@
               </div>
             </li>
           </ul>
-          <div class="mt-6 flex <md:flex-col">
+          <div class="mt-12 flex <md:flex-col">
             <div class="md:w-1/2">
-              <p class="mb-3 text-xl text-dim font-bold">Sources</p>
+              <p class="mb-6 text-xl text-dim font-bold">Sources</p>
               <ul class="list md:(list-inside list-disc)">
                 <li><NuxtLink
                   to="https://developer.mozilla.org"
@@ -204,8 +204,8 @@
                 >Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
               </ul>
             </div>
-            <div class="<md:mt-6 md:w-1/2">
-              <p class="mb-4 text-xl text-dim font-bold">
+            <div class="<md:mt-12 md:w-1/2">
+              <p class="mb-6 text-xl text-dim font-bold">
                 More DX projects
               </p>
               <div class="flex <sm:flex-col mt-3">

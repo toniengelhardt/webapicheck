@@ -148,7 +148,7 @@ const status = $computed(() =>  {
   .header {
     @apply flex items-center;
     .name {
-      @apply flex-1 text-lg font-black underline;
+      @apply flex-1 text-lg font-black underline truncate;
     }
   }
   &.experimental {
