@@ -5,32 +5,6 @@ import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
 export const apiData: WebAPIData = {
-  absoluteOrientationSensor: {
-    name: 'Absolute Orientation Sensor',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor',
-    path: 'window.AbsoluteOrientationSensor',
-    permissionsRequired: true,
-    secureContextRequired: true,
-    // action: {
-    //   // icon: 'eyedropper',
-    //   label: 'Get orientation',
-    //   func: () => {
-    //     try {
-    //       const options = { frequency: 60, referenceFrame: 'device' }
-    //       const sensor = new AbsoluteOrientationSensor(options)
-    //       useEventListener(sensor, 'reading', () => {
-    //         // model is a Three.js object instantiated elsewhere.
-    //         // model.quaternion.fromArray(sensor.quaternion).inverse();
-    //         console.log('XXX', sensor)
-    //       })
-    //       sensor.start();
-    //     } catch (error) {
-    //       console.error(error)
-    //       alert(`Oh oh, an error occured. Check the console for more details!`)
-    //     }
-    //   }
-    // }
-  },
   accelerometer: {
     name: 'Accelerometer',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer',
@@ -183,6 +157,7 @@ export const apiData: WebAPIData = {
       },
     },
   },
+  // G
   gamepadAPI: {
     name: 'Gamepad API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API',
@@ -198,6 +173,21 @@ export const apiData: WebAPIData = {
     secureContextRequired: true,
     detail: shallowRef(DetailGeolocationAPI),
   },
+  gravitySensor: {
+    name: 'Gravity Sensor',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/GravitySensor',
+    path: 'window.GravitySensor',
+    permissionsRequired: true,
+    secureContextRequired: true,
+  },
+  gyroscope: {
+    name: 'Gyroscope',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope',
+    path: 'window.Gyroscope',
+    permissionsRequired: true,
+    secureContextRequired: true,
+  },
+  // H
   historyAPI: {
     name: 'History API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API',
@@ -210,6 +200,7 @@ export const apiData: WebAPIData = {
     secureContextRequired: true,
     experimental: true,
   },
+  // I
   imageCaptureAPI: {
     name: 'Image Capture API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Image_Capture_API',
@@ -227,6 +218,7 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API',
     path: 'window.IntersectionObserver',
   },
+  // L
   largestContentFullPaintAPI: {
     name: 'Largest Contentful Paint API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint',
@@ -239,6 +231,23 @@ export const apiData: WebAPIData = {
     path: 'window.LayoutShift',
     experimental: true,
   },
+  linearAccelerationSensor: {
+    name: 'https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor',
+    path: 'window.LinearAccelerationSensor',
+    permissionsRequired: true,
+    secureContextRequired: true,
+  },
+  // M
+  magnetometer: {
+    name: 'Magnetometer',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Magnetometer',
+    path: 'window.Magnetometer',
+    permissionsRequired: true,
+    secureContextRequired: true,
+    experimental: true,
+  },
+  // N
   networkConnectionAPI: {
     name: 'Network Connection API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API',
@@ -254,6 +263,34 @@ export const apiData: WebAPIData = {
     permissionsRequired: true,
     availableInWebWorkers: true,
   },
+  // O
+  orientationSensor: {
+    name: 'Orientation Sensor',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor',
+    path: 'window.OrientationSensor',
+    permissionsRequired: true,
+    secureContextRequired: true,
+    // action: {
+    //   // icon: 'eyedropper',
+    //   label: 'Get orientation',
+    //   func: () => {
+    //     try {
+    //       const options = { frequency: 60, referenceFrame: 'device' }
+    //       const sensor = new AbsoluteOrientationSensor(options)
+    //       useEventListener(sensor, 'reading', () => {
+    //         // model is a Three.js object instantiated elsewhere.
+    //         // model.quaternion.fromArray(sensor.quaternion).inverse();
+    //         console.log('XXX', sensor)
+    //       })
+    //       sensor.start();
+    //     } catch (error) {
+    //       console.error(error)
+    //       alert(`Oh oh, an error occured. Check the console for more details!`)
+    //     }
+    //   }
+    // }
+  },
+  // P
   paymentRequestAPI: {
     name: 'Payment Request API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API',
@@ -283,6 +320,13 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture_API',
     path: 'window.PictureInPictureWindow',
     check: () => !!document?.pictureInPictureEnabled,
+  },
+  // R
+  reportingAPI: {
+    name: 'https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API',
+    path: 'window.ReportingObserver',
+    experimental: true,
   },
   // S
   // screenCaptureAPI: {
