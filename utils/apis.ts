@@ -232,7 +232,7 @@ export const apiData: WebAPIData = {
     experimental: true,
   },
   linearAccelerationSensor: {
-    name: 'https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor',
+    name: 'Linear Acceleration Sensor',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor',
     path: 'window.LinearAccelerationSensor',
     permissionsRequired: true,
@@ -323,7 +323,7 @@ export const apiData: WebAPIData = {
   },
   // R
   reportingAPI: {
-    name: 'https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API',
+    name: 'Reporting API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API',
     path: 'window.ReportingObserver',
     experimental: true,

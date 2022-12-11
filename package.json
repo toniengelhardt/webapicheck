@@ -1,6 +1,6 @@
 {
-  "version": "0.5.2",
-  "releaseDate": "05.11.2022",
+  "version": "0.5.3",
+  "releaseDate": "11.12.2022",
   "author": "Toni Engelhardt",
   "private": true,
   "scripts": {
@@ -11,22 +11,22 @@
     "prepare": "nuxi prepare"
   },
   "dependencies": {
-    "@sentry/browser": "7.17.4",
-    "@sentry/tracing": "7.17.4",
-    "@sentry/vue": "7.17.4",
+    "@sentry/browser": "7.24.2",
+    "@sentry/tracing": "7.24.2",
+    "@sentry/vue": "7.24.2",
     "fuse.js": "^6.6.2",
-    "nuxt-icon": "^0.1.7",
-    "shvl": "^3.0.0",
-    "vue-plausible": "^1.3.2"
+    "shvl": "^3.0.0"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.9.1",
-    "@nuxtjs/color-mode": "^3.1.8",
-    "@types/node": "18.8.0",
-    "@vueuse/nuxt": "^9.4.0",
-    "eslint": "^8.26.0",
-    "nuxt": "npm:nuxt3@latest",
-    "nuxt-windicss": "^2.5.2",
-    "sass": "^1.56.0"
+    "@kevinmarrec/nuxt-pwa": "^0.13.0",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@vueuse/nuxt": "^9.6.0",
+    "eslint": "^8.29.0",
+    "nuxt": "^3.0.0",
+    "nuxt-icon": "^0.1.8",
+    "nuxt-plausible": "^0.1.2",
+    "nuxt-windicss": "^2.6.0",
+    "sass": "^1.56.2",
+    "typescript": "^4.9.4"
   }
 }

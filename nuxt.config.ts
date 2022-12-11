@@ -22,10 +22,9 @@ export default defineNuxtConfig({
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
-    // 'nuxt-headlessui',
     'nuxt-icon',
+    'nuxt-plausible',
     'nuxt-windicss',
-    'vue-plausible',
   ],
   vite: {
     vue: {
@@ -44,28 +43,20 @@ export default defineNuxtConfig({
   css: [
     'assets/scss/style.scss',
   ],
-  postcss: {
-    plugins: {
-      cssnano: false
-    }
-  },
-  vueuse: {
-    ssrHandlers: true,
-  },
-  headlessui: {
-    prefix: 'HL',
-  },
   colorMode: {
     classSuffix: '',
   },
   plausible: {
     domain: 'webapicheck.com',
     trackLocalhost: false,
+    autoOutboundTracking: false,
   },
   app: {
     head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1.0',
+      htmlAttrs: {
+        lang: 'en',
+        translate: 'no', // Avoid translation.
+      },
     }
   },
   pwa: {
