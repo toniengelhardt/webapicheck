@@ -265,7 +265,7 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
-import { Ref } from 'vue';
+import { Ref } from 'vue'
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
@@ -274,6 +274,7 @@ const config = useRuntimeConfig()
 useHead({
   title: 'WebAPI test for any device',
   meta: [{
+    hid: 'description',
     name: 'description',
     content: config.public.appDescription,
   }, {
@@ -282,11 +283,11 @@ useHead({
   }]
 })
 
-let mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' })
+let mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' }) as Ref<DisplayMode>
 let searchTerm = ref('')
 let debouncedSearchTerm = refDebounced(searchTerm, 100)
 let searchMode = $ref(false)
-// let activeFilter = $ref(null)
+// let activeFilter = $ref(null)s
 
 const _navigator: any = $computed(() => navigator)
 
@@ -325,9 +326,12 @@ const totalAPICount = $computed(() => {
 })
 
 function defaultCheck(api: WebAPI) {
-  const partials = api.path.split('.')
-  const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
-  return !!shvl.get(window, path, undefined)
+  if (api.path) {
+    const partials = api.path.split('.')
+    const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
+    return !!shvl.get(window, path, undefined)
+  }
+  return false
 }
 
 function loadAPIs() {

@@ -27,9 +27,6 @@ export default defineNuxtConfig({
     'nuxt-windicss',
   ],
   vite: {
-    vue: {
-      reactivityTransform: true,
-    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -39,6 +36,12 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  experimental: {
+    reactivityTransform: true,
+  },
+  typescript: {
+    shim: false,
   },
   css: [
     'assets/scss/style.scss',
