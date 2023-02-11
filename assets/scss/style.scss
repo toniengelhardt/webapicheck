@@ -33,7 +33,7 @@ body {
   @apply inline-block font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400;
 }
 .footer-link {
-  @apply hover:text-default cursor-pointer;
+  @apply text-default hover:(text-zinc-800 dark:text-white) cursor-pointer;
 }
 
 .code-inline {

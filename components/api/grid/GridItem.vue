@@ -145,10 +145,10 @@ const status = computed(() => {
     }
   }
   &.experimental {
-    @apply bg-purple-200 border-purple-300 dark:(bg-purple-800 border-purple-600);
+    @apply bg-purple-200 dark:bg-purple-500/65;
   }
   &.available {
-    @apply bg-lime-200 border-lime-300 dark:(bg-lime-700 border-lime-600);
+    @apply bg-lime-200 dark:bg-lime-500/65;
   }
   &.not-available {
     @apply bg-zinc-100 dark:bg-zinc-800;
