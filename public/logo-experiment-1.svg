@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(217, 249, 157);" x="60" y="60" width="380" height="110" rx="30" ry="30"/>
+  <path d="M 130.602 145 C 129.171 144.994 127.799 144.44 126.778 143.457 L 101.587 118.756 C 98.643 115.87 99.99 110.941 104.011 109.885 C 105.877 109.394 107.868 109.918 109.234 111.257 L 130.602 132.208 L 177.161 86.557 C 180.105 83.67 185.13 84.99 186.208 88.934 C 186.708 90.763 186.175 92.715 184.808 94.055 L 134.425 143.457 C 133.405 144.44 132.033 144.994 130.602 145 Z" style="fill: rgb(132, 204, 22); stroke-width: 40px;"/>
+  <rect style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(221, 214, 254);" x="60" y="195" width="380" height="110" rx="30" ry="30"/>
+  <rect style="stroke: rgb(0, 0, 0); paint-order: fill; stroke-width: 0px; fill: rgb(244, 244, 245);" x="60" y="330" width="380" height="110" rx="30" ry="30"/>
+  <rect width="256" height="256" transform="matrix(1, 0, 0, 1, 80.291681, 218.30697)" fill="none" style=""/>
+  <path d="M 131.987 220 L 131.987 240.151 C 131.983 240.621 131.856 241.081 131.619 241.489 L 110.381 276.055 C 109.328 277.778 110.58 279.971 112.637 280 C 112.642 280 112.647 280 112.652 280 L 167.349 280 C 169.404 279.982 170.67 277.797 169.627 276.067 C 169.624 276.063 169.621 276.06 169.619 276.055 L 148.382 241.489 C 148.145 241.081 148.018 240.621 148.014 240.151 L 148.014 220" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke: rgb(139, 92, 246); stroke-width: 8px;"/>
+  <line x1="126.643" y1="220" x2="153.356" y2="220" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke: rgb(139, 92, 246); stroke-width: 8px;"/>
+  <path d="M 118.162 263.37 C 122.102 260.533 128.88 258.935 140 264.348 C 151.921 270.185 158.867 267.87 162.673 264.707" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke: rgb(139, 92, 246); stroke-width: 8px;"/>
+  <line x1="170" y1="355" x2="110" y2="415" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke: rgb(239, 68, 68); stroke-width: 11px;" bx:origin="0.5 0.5"/>
+  <line x1="170" y1="415" x2="110" y2="355" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke: rgb(239, 68, 68); stroke-width: 11px;" bx:origin="0.5 0.5"/>
+</svg>

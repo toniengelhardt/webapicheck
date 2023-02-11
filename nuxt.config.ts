@@ -83,6 +83,11 @@ export default defineNuxtConfig({
       twitterCard: 'summary_large_image',
       theme_color: false,
     },
+    icon: {
+      source: 'public/icon.png',
+      maskableSource: 'public/icon.maskable.png',
+      maskablePadding: 0,
+    },
   },
   linkChecker: {
     failOn404: true,
