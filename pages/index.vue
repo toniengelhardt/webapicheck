@@ -1,25 +1,23 @@
 <template>
-  <div class="flex-col w-full min-w-full h-full mih-h-full">
-    <div class="header">
-      <AppHeader>
-        <template #header-middle>
-          <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
-        </template>
-        <template #header-right>
-          <div class="flex w-full md:justify-end">
-            <div class="flex <md:(w-1/3 justify-center) md:mr-6">
-              <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
-            </div>
-            <div class="flex <md:(w-1/3 justify-center) md:mr-6">
-              <ApiModeSelector v-model="mode" />
-            </div>
-            <div class="flex <md:(w-1/3 justify-center)">
-              <ContextStatus />
-            </div>
+  <div class="wrapper">
+    <AppHeader>
+      <template #header-middle>
+        <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
+      </template>
+      <template #header-right>
+        <div class="flex w-full md:justify-end">
+          <div class="flex <md:(w-1/3 justify-center) md:mr-4">
+            <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
           </div>
-        </template>
-      </AppHeader>
-    </div>
+          <div class="flex <md:(w-1/3 justify-center) md:mr-4">
+            <ApiModeSelector v-model="mode" />
+          </div>
+          <div class="flex <md:(w-1/3 justify-center)">
+            <ContextStatus />
+          </div>
+        </div>
+      </template>
+    </AppHeader>
     <div class="content flex-1">
       <div class="border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
@@ -35,9 +33,6 @@
       <div class="px-6 py-12 border-b-1 border-zinc-300 dark:border-zinc-700">
         <div class="<md:text-center">
           <p>
-            <Icon name="emojione:construction" /> Work in progress...
-          </p>
-          <p class="mt-6">
             With this little project you can easily check which
             <NuxtLink
               to="https://developer.mozilla.org/en-US/docs/Web/API"
@@ -50,9 +45,9 @@
             Just open this page on the device you want to test and voilà.
           </p>
           <p>
-            Feedback and suggestions are very welcome! Get in touch on
+            Feedback, suggestions, and contributions are very welcome! Get in touch on
             <NuxtLink
-              :to="$config.twitterProfile"
+              :to="$config.public.twitterProfile"
               title="Toni Engelhardt on Twitter"
               target="_blank"
               class="link"
@@ -61,7 +56,7 @@
               Twitter
             </NuxtLink><Icon name="external" class="ml-0.5" /> or
             <NuxtLink
-              :to="$config.githubProfile"
+              :to="$config.public.repoUrl"
               title="Toni Engelhardt on GitHub"
               target="_blank"
               class="link"
@@ -76,12 +71,12 @@
           <p class="mt-6">
             There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
             <NuxtLink
-              :to="`mailto:${$config.feedbackEmail}`"
+              :to="`mailto:${$config.public.feedbackEmail}`"
               class="link"
               title="Send feedback via email"
               target="_blank"
             >
-              {{ $config.feedbackEmail }}
+              {{ $config.public.feedbackEmail }}
             </NuxtLink> so that I can fix them.
             Please also note that some browsers (e.g. Brave) might not always report API support correctly and
             signal for certain APIs that they are available when they are actually not.
@@ -221,7 +216,7 @@
               <p class="mb-6 text-xl text-dim font-bold">
                 Sources
               </p>
-              <ul class="list md:(list-inside list-disc)">
+              <ul class="md:(list-inside list-disc)">
                 <li>
                   <NuxtLink
                     to="https://developer.mozilla.org"
@@ -232,7 +227,7 @@
                     MDN Web Docs
                   </NuxtLink><Icon name="external" class="ml-0.5" />
                 </li>
-                <li>
+                <li class="mt-2">
                   <NuxtLink
                     to="https://developer.chrome.com"
                     title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
@@ -242,7 +237,7 @@
                     Chrome Developers
                   </NuxtLink><Icon name="external" class="ml-0.5" />
                 </li>
-                <li>
+                <li class="mt-2">
                   <NuxtLink
                     to="https://www.w3.org"
                     title="World Wide Web Consortium (W3C)"
@@ -252,7 +247,7 @@
                     W3C
                   </NuxtLink><Icon name="external" class="ml-0.5" />
                 </li>
-                <li>
+                <li class="mt-2">
                   <NuxtLink
                     to="https://fugu-tracker.web.app/"
                     title="Fugu API Tracker"
@@ -276,8 +271,8 @@
                   class="btn-outline <sm:text-xl <md:flex-1 md:w-50 h-12"
                   @click="$plausible.trackEvent('click: RepoTracker')"
                 >
-                  <Icon name="ph:binoculars-duotone" class="dark:text-white" />
-                  <span class="ml-1 font-black">
+                  <Icon name="repotracker" class="dark:text-white" />
+                  <span class="ml-1.5 font-black">
                     <span class="text-zinc-500 dark:text-zinc-400">Repo</span>
                     <span class="ml-0.5">Tracker</span>
                   </span>
@@ -318,9 +313,7 @@
         </div>
       </div>
     </div>
-    <div class="footer">
-      <AppFooter />
-    </div>
+    <AppFooter />
   </div>
 </template>
 
@@ -414,20 +407,19 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  @apply sticky bg-white dark:bg-zinc-900;
-  position: sticky;
-  top: 0;
-  z-index: 1001;
+.wrapper {
+  @apply flex-col w-100vw h-100vh;
 }
 .content {
-  min-height: calc(100vh - 8rem);
+  @apply overflow-y-scroll;
+  height: calc(100vh - 6rem);
+  max-height: calc(100vh - 6rem);
 }
-.list {
-  li {
-    &:not(:first-child) {
-      @apply mt-2;
-    }
-  }
-}
+// .list {
+//   li {
+//     &:not(:first-child) {
+//       @apply mt-2;
+//     }
+//   }
+// }
 </style>

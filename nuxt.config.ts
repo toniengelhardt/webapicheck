@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       siteName: appName,
       siteDescription: appDescription,
       twitterProfile: 'https://twitter.com/toniengelhardt',
-      githubProfile: 'https://github.com/toniengelhardt',
+      repoUrl: 'https://github.com/toniengelhardt/webapicheck',
       feedbackEmail: 'feedback@webapicheck.com',
     },
   },

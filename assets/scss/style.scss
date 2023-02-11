@@ -5,7 +5,12 @@ body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-  @apply text-default bg-white dark:bg-zinc-900;
+
+  @apply text-default bg-base;
+
+  @media (min-width: 640px) {
+    overscroll-behavior-y: none;
+  }
 }
 
 .text-dim {
@@ -13,7 +18,10 @@ body {
 }
 
 .link {
-  @apply font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400;
+  @apply inline-block font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400;
+}
+.footer-link {
+  @apply hover:text-default cursor-pointer;
 }
 
 .code-inline {
@@ -44,6 +52,7 @@ body {
   @apply bg-transparent border-2 border-zinc-200 hover:border-zinc-300
     dark:(bg-transparent border-zinc-700 hover:border-zinc-600);
 }
+
 
 
 /**

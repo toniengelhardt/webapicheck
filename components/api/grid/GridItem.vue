@@ -137,7 +137,7 @@ const status = computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply self-start flex-row px-4 py-3 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
+  @apply self-start flex-row px-3 py-2 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
   .header {
     @apply flex items-center;
     .name {
@@ -146,16 +146,9 @@ const status = computed(() => {
   }
   &.experimental {
     @apply bg-purple-200 border-purple-300 dark:(bg-purple-800 border-purple-600);
-    // .header {
-    //   @apply text-purple-800 dark:text-purple-100;
-    // }
   }
   &.available {
     @apply bg-lime-200 border-lime-300 dark:(bg-lime-700 border-lime-600);
-    // .name {
-    //   @apply text-lime-800 dark:text-lime-100;
-    // }
-
   }
   &.not-available {
     @apply bg-zinc-100 dark:bg-zinc-800;

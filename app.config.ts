@@ -7,6 +7,7 @@ export default defineAppConfig({
       webworker: 'el:cogs',
       mdn: 'simple-icons:mozilla',
       chrome: 'logos:chrome',
+      github: 'carbon:logo-github',
       permission: 'bx:check-shield',
       secure: 'bxs:lock-alt',
       unsecure: 'bxs:lock-open-alt',
@@ -42,6 +43,7 @@ export default defineAppConfig({
       discussion: 'ph:chats',
       check: 'ph:check-bold',
       cross: 'ph:x-bold',
+      repotracker: 'IconRepoTracker',
     },
   },
 })

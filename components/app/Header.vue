@@ -1,5 +1,5 @@
 <template>
-  <div class="flex <md:(flex-col justify-center) md:(flex-row items-center h-16) w-full px-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+  <div class="flex <md:(flex-col justify-center) md:(flex-row items-center h-12) w-full px-4 bg-base border-b-1 border-zinc-300 dark:border-zinc-700">
     <div class="flex <md:(justify-center py-3) md:w-1/3">
       <AppBrand />
     </div>
