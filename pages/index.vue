@@ -423,6 +423,8 @@ onMounted(() => {
   @apply overflow-y-scroll;
   height: calc(100vh - 11.25rem);
   max-height: calc(100vh - 11.25rem);
+  height: calc(100svh - 11.25rem);
+  max-height: calc(100svh - 11.25rem);
   @media (min-width: 640px) {
     height: calc(100vh - 6rem);
     max-height: calc(100vh - 6rem);
