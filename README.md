@@ -1,21 +1,18 @@
 # Web API check
 
-Made with Nuxt, Vite, WindiCSS, and HeadlessUI.
+Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...
+
+Made with Nuxt, Vite, and WindiCSS.
 
 ## Setup
 
-Install dependencies:
+Clone the repo, install the dependencies with pnpm, and you're ready to go.
+
+Dev server launches by default on `http://localhost:3030`.
 
 ```bash
-yarn install
-```
-
-## Development Server
-
-Start development server:
-
-```bash
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ## Production
@@ -23,5 +20,9 @@ yarn dev
 Build application for production:
 
 ```bash
-yarn build
+pnpm build
 ```
+
+---
+
+Development insights are available on [RepoTracker](https://repo-tracker.com/r/gh/toniengelhardt/webapicheck).

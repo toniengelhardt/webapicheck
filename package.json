@@ -1,7 +1,6 @@
 {
-  "version": "0.5.3",
-  "releaseDate": "11.12.2022",
-  "author": "Toni Engelhardt",
+  "version": "1.0.0",
+  "releaseDate": "11.02.2023",
   "private": true,
   "packageManager": "pnpm@7.19.0",
   "scripts": {
