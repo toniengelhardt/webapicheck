@@ -1,10 +1,10 @@
 <template>
   <div class="element">
-    <div class="option" :class="{ selected: modelValue === 'grid' }" @click="$emit('update:modelValue', 'grid')">
-      <Icon name="grid" />
-    </div>
     <div class="option" :class="{ selected: modelValue === 'list' }" @click="$emit('update:modelValue', 'list')">
       <Icon name="list" />
+    </div>
+    <div class="option" :class="{ selected: modelValue === 'grid' }" @click="$emit('update:modelValue', 'grid')">
+      <Icon name="grid" />
     </div>
   </div>
 </template>

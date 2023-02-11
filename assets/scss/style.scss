@@ -13,6 +13,18 @@ body {
   }
 }
 
+.no-scrollbar {
+  @media (max-width: 639px) {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+    &::-webkit-scrollbar {
+      /* Chrome, Safari, Opera */
+      display: none !important;
+      -webkit-appearance: none !important;
+    }
+  }
+}
+
 .text-dim {
   @apply text-zinc-500 dark:text-zinc-400;
 }

@@ -18,7 +18,7 @@
         </div>
       </template>
     </AppHeader>
-    <div class="content flex-1">
+    <div class="content flex-1 no-scrollbar">
       <div class="border-b-1 border-zinc-300 dark:border-zinc-700">
         <!-- <div>
           <ListSortingMode />
@@ -44,7 +44,7 @@
             </NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device.
             Just open this page on the device you want to test and voilà.
           </p>
-          <p>
+          <p class="mt-2">
             Feedback, suggestions, and contributions are very welcome! Get in touch on
             <NuxtLink
               :to="$config.public.twitterProfile"
@@ -57,7 +57,7 @@
             </NuxtLink><Icon name="external" class="ml-0.5" /> or
             <NuxtLink
               :to="$config.public.repoUrl"
-              title="Toni Engelhardt on GitHub"
+              title="Contribute on GitHub"
               target="_blank"
               class="link"
               @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
@@ -77,7 +77,16 @@
               target="_blank"
             >
               {{ $config.public.feedbackEmail }}
-            </NuxtLink> so that I can fix them.
+            </NuxtLink> or create an issue on
+            <NuxtLink
+              :to="$config.public.repoUrl"
+              title="Contribute on GitHub"
+              target="_blank"
+              class="link"
+              @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
+            >
+              GitHub
+            </NuxtLink><Icon name="external" class="ml-0.5" />.
             Please also note that some browsers (e.g. Brave) might not always report API support correctly and
             signal for certain APIs that they are available when they are actually not.
           </p>
@@ -308,7 +317,7 @@
             </div>
           </div>
         </ClientOnly>
-        <div class="mt-6 px-6 text-center text-xl font-thin italic">
+        <div class="mt-6 md:px-6 text-center text-xl font-thin italic">
           The web platform and an open web are the most important infrastructure projects of our time
         </div>
       </div>
@@ -401,8 +410,8 @@ function loadAPIs() {
 
 onMounted(() => {
   loadAPIs()
-  console.log('window', window)
-  console.log('navigator', navigator)
+  // console.log('window', window)
+  // console.log('navigator', navigator)
 })
 </script>
 
@@ -412,14 +421,11 @@ onMounted(() => {
 }
 .content {
   @apply overflow-y-scroll;
-  height: calc(100vh - 6rem);
-  max-height: calc(100vh - 6rem);
+  height: calc(100vh - 11.25rem);
+  max-height: calc(100vh - 11.25rem);
+  @media (min-width: 640px) {
+    height: calc(100vh - 6rem);
+    max-height: calc(100vh - 6rem);
+  }
 }
-// .list {
-//   li {
-//     &:not(:first-child) {
-//       @apply mt-2;
-//     }
-//   }
-// }
 </style>

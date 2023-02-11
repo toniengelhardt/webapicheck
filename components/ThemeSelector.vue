@@ -1,6 +1,6 @@
 <template>
   <span
-    class="flex-center <md:(w-8 h-8) footer-link"
+    class="footer-link flex-center <md:(w-8 h-8)"
     @click="onClick(); $plausible.trackEvent('click: Theme switcher');"
   >
     <ClientOnly>

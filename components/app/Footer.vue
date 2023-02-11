@@ -1,27 +1,27 @@
 <template>
-  <div class="flex flex-col <md:text-center md:flex-row justify-between text-sm text-dim px-3 md:px-4 <md:py-6 md:min-h-12 border-t-1 border-zinc-300 dark:border-zinc-700">
-    <span class="flex-1 flex flex-col-reverse <md:justify-center md:flex-row items-center">
+  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 border-t-1 border-zinc-300 dark:border-zinc-700">
+    <span class="flex-1 flex items-center">
       <ThemeSelector />
       <NuxtLink
         :to="`mailto:${$config.public.repoUrl}`"
-        class="footer-link flex-center <md:(w-full mb-6) md:ml-4"
+        class="footer-link flex-center <md:(w-8 h-8) ml-2 md:ml-4"
         title="Contribute on GitHub"
         target="_blank"
       >
         <Icon name="github" size="1.1rem" />
-        <span class="ml-1.5">Contribute</span>
+        <span class="ml-1.5 <md:hidden">Contribute</span>
       </NuxtLink>
       <NuxtLink
         :to="`mailto:${$config.public.feedbackEmail}`"
-        class="footer-link flex-center <md:(w-full mb-6) md:ml-4"
+        class="footer-link flex-center <md:(w-8 h-8) ml-2 md:ml-4"
         title="Send feedback via email"
         target="_blank"
       >
-        <Icon name="email" />
-        <span class="ml-1.5">Feedback</span>
+        <Icon name="email" size="1.1rem" />
+        <span class="ml-1.5 <md:hidden">Feedback</span>
       </NuxtLink>
     </span>
-    <span class="flex <md:justify-center items-center">
+    <span class="flex items-center">
       <span>by</span>
       <Icon name="logos:twitter" class="ml-1 mr-1" />
       <NuxtLink
@@ -33,7 +33,7 @@
       >toniengelhardt</NuxtLink>
     </span>
     <span class="flex items-center mx-2 <md:hidden">&middot;</span>
-    <span class="flex <md:justify-center items-center">
+    <span class="flex items-center <md:hidden">
       <span>with</span>
       <Icon name="logos:nuxt-icon" class="ml-2 mr-1" />
       <NuxtLink
@@ -68,7 +68,7 @@
       >HeadlessUI</NuxtLink> -->
     </span>
     <span class="flex items-center mx-2 <md:hidden">&middot;</span>
-    <span class="flex <md:justify-center items-center">
+    <span class="flex items-center <md:hidden">
       <span>on</span>
       <Icon name="vercel" class="ml-2 mr-1 text-black dark:text-white" />
       <NuxtLink
