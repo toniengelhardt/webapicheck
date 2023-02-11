@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
-let connection = $ref<any>(undefined)
+const connection = ref<any>(undefined)
 
 onMounted(() => {
-  connection = navigator?.connection
+  connection.value = (navigator as any)?.connection
 })
 </script>

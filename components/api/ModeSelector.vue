@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  modelValue: DisplayMode,
+defineProps<{
+  modelValue: DisplayMode
 }>()
-const emit = defineEmits<{
+defineEmits<{
   (event: 'update:modelValue', value: string): void
 }>()
 </script>

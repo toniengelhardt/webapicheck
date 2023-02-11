@@ -14,7 +14,9 @@
       <template #header>
         <h3>{{ title }}</h3>
       </template>
-      <p class="my-3">{{ description }}</p>
+      <p class="my-3">
+        {{ description }}
+      </p>
       <p v-if="link">
         <NuxtLink
           :to="link"
@@ -30,11 +32,11 @@
 
 <script setup lang="ts">
 defineProps<{
-  icon: string,
-  title: string,
-  description: string,
-  link?: string,
+  icon: string
+  title: string
+  description: string
+  link?: string
 }>()
 
-let dialogOpen = $ref(false)
+const dialogOpen = ref(false)
 </script>

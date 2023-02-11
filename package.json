@@ -3,30 +3,41 @@
   "releaseDate": "11.12.2022",
   "author": "Toni Engelhardt",
   "private": true,
+  "packageManager": "pnpm@7.19.0",
   "scripts": {
-    "build": "nuxi build",
-    "dev": "nuxi dev --host=0.0.0.0 --port=3030",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
-    "prepare": "nuxi prepare"
-  },
-  "dependencies": {
-    "@sentry/browser": "7.25.0",
-    "@sentry/tracing": "7.25.0",
-    "@sentry/vue": "7.25.0",
-    "fuse.js": "^6.6.2",
-    "shvl": "^3.0.0"
+    "dev": "nuxt dev --host=0.0.0.0 --port=3030",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "prepare": "nuxt prepare",
+    "lint": "eslint --ext .vue,.js,.ts,.mjs .",
+    "lint:ci": "eslint --ext .vue,.js,.ts,.mjs .",
+    "typecheck": "vue-tsc",
+    "typecheck:ci": "vue-tsc --noEmit",
+    "test": "vitest",
+    "test:ci": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.13.0",
+    "@antfu/eslint-config": "^0.35.2",
+    "@kevinmarrec/nuxt-pwa": "^0.16.2",
     "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/plausible": "^0.2.0",
     "@vueuse/nuxt": "^9.6.0",
     "eslint": "^8.29.0",
-    "nuxt": "^3.0.0",
-    "nuxt-icon": "^0.1.8",
-    "nuxt-plausible": "^0.1.2",
+    "nuxt": "^3.2.0",
+    "nuxt-icon": "^0.2.11",
+    "nuxt-seo-kit": "^1.2.3",
+    "nuxt-vitest": "^0.6.5",
     "nuxt-windicss": "^2.6.0",
     "sass": "^1.56.2",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vue-tsc": "^1.0.24"
+  },
+  "dependencies": {
+    "@sentry/browser": "^7.37.1",
+    "@sentry/tracing": "^7.37.1",
+    "@sentry/vue": "^7.37.1",
+    "fuse.js": "^6.6.2",
+    "shvl": "^3.0.0"
   }
 }

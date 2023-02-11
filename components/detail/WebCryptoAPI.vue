@@ -14,34 +14,38 @@
       <template #header>
         <h3>Public Key</h3>
       </template>
-      <p class="my-3">Algorithm: {{ keyInfo.alg }}</p>
-      <p class="text-xs font-mono break-all">{{ keyInfo.n }}</p>
+      <p class="my-3">
+        Algorithm: {{ keyInfo.alg }}
+      </p>
+      <p class="text-xs font-mono break-all">
+        {{ keyInfo.n }}
+      </p>
     </AppDialog>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-let loading = $ref(false)
-let dialogOpen = $ref(false)
-let keyInfo = $ref<any>(null)
+const loading = ref(false)
+const dialogOpen = ref(false)
+const keyInfo = ref<any>(null)
 
 async function generateKeys() {
   const subtle = window?.crypto?.subtle
   if (subtle) {
-    loading = true
+    loading.value = true
     const key = await subtle.generateKey(
       {
-        name: "RSA-OAEP",
+        name: 'RSA-OAEP',
         modulusLength: 4096,
         publicExponent: new Uint8Array([1, 0, 1]),
-        hash: "SHA-256"
+        hash: 'SHA-256',
       },
       true,
-      ["encrypt", "decrypt"],
+      ['encrypt', 'decrypt'],
     )
-    keyInfo = await subtle.exportKey('jwk', key.publicKey)
-    loading = false
-    dialogOpen = true
+    keyInfo.value = await subtle.exportKey('jwk', key.publicKey)
+    loading.value = false
+    dialogOpen.value = true
   }
 }
 </script>

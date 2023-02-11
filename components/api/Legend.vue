@@ -2,7 +2,8 @@
   <div class="flex justify-center">
     <div class="flex flex-col md:(flex-row items-center) text-sm">
       <div
-        v-for="item in legend"
+        v-for="(item, idx) in legend"
+        :key="idx"
         class="flex items-center <md:(not-last:mb-3 justify-center) md:mr-6"
       >
         <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">

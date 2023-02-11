@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-let width = $ref<number | undefined>(undefined)
-let height = $ref<number | undefined>(undefined)
+const width = ref<number | undefined>(undefined)
+const height = ref<number | undefined>(undefined)
 
 onMounted(() => {
-  width = window?.visualViewport?.width ? Math.round(window?.visualViewport?.width) : undefined
-  height = window?.visualViewport?.height ? Math.round(window?.visualViewport?.height) : undefined
+  width.value = window?.visualViewport?.width ? Math.round(window?.visualViewport?.width) : undefined
+  height.value = window?.visualViewport?.height ? Math.round(window?.visualViewport?.height) : undefined
 })
 </script>

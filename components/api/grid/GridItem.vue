@@ -45,8 +45,10 @@
     </div>
     <div class="flex-1 min-h-12">
       <template v-if="api.available">
-        <component v-if="api.detail" :is="api.detail" />
-        <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
+        <component :is="api.detail" v-if="api.detail" />
+        <div v-else-if="api.value" class="py-3">
+          {{ api.value() }}
+        </div>
         <div v-else-if="api.action" class="py-3">
           <div
             class="btn-xs btn-default cursor-pointer"
@@ -60,15 +62,6 @@
     </div>
     <div class="flex items-center">
       <div class="flex-1 flex items-center">
-        <!-- <span v-for="link in api.links" class="item-link">
-          <NuxtLink
-            :to="link.url"
-            :class="itemClass"
-            target="_blank"
-            @click="$plausible.trackEvent('click: API resource', { props: { api: api.name, name: link.name } })"
-          >{{ link.name }}</NuxtLink>
-          <Icon name="external" size=".85rem" class="ml-0.5"/>
-        </span> -->
         <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-4 h-4">
           <Icon name="spinner" class="animate-spin" />
         </div>
@@ -82,7 +75,7 @@
         </div>
       </div>
       <div>
-        <component v-if="sourceComponent" :is="sourceComponent" />
+        <component :is="sourceComponent" v-if="sourceComponent" />
       </div>
     </div>
   </div>
@@ -93,12 +86,12 @@ import ApiSourceChrome from '~/components/api/source/Chrome.vue'
 import ApiSourceMDN from '~/components/api/source/MDN.vue'
 
 const props = defineProps<{
-  api: WebAPI,
+  api: WebAPI
 }>()
 
 const plausible = usePlausible()
 
-const itemClass = $computed(() => {
+const itemClass = computed(() => {
   if (props.api.available !== undefined) {
     return props.api.available === false
       ? 'not-available'
@@ -108,7 +101,7 @@ const itemClass = $computed(() => {
   }
   return 'loading'
 })
-const sourceComponent = $computed(() => {
+const sourceComponent = computed(() => {
   switch (props.api.source) {
     case 'chrome':
       return ApiSourceChrome
@@ -116,7 +109,7 @@ const sourceComponent = $computed(() => {
       return ApiSourceMDN
   }
 })
-const status = $computed(() =>  {
+const status = computed(() => {
   if (props.api.available) {
     if (props.api.experimental) {
       return {
@@ -201,7 +194,6 @@ const status = $computed(() =>  {
       }
     }
     &.unavailable {
-      // @apply text-rose-500;
       .status-icon {
         @apply text-rose-500 border-rose-500;
       }

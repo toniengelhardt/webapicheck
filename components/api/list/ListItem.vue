@@ -18,34 +18,8 @@
     <div class="path">
       {{ api.path || 'N/A' }}
     </div>
-    <!-- <div class="flex-1 min-h-12">
-      <template v-if="api.available">
-        <component v-if="api.detail" :is="api.detail" />
-        <div v-else-if="api.value" class="py-3">{{ api.value() }}</div>
-        <div v-else-if="api.action" class="py-3">
-          <div
-            class="btn-xs btn-default cursor-pointer"
-            @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
-          >
-            <Icon v-if="api.action.icon" :name="api.action.icon" />
-            <span class="mx-1.5">{{ api.action.label }}</span>
-          </div>
-        </div>
-      </template>
-    </div> -->
-    <!-- <div class="<lg:hidden flex-1 flex items-center">
-      <span v-for="link in api.links" class="item-link">
-        <NuxtLink
-          :to="link.url"
-          :class="itemClass"
-          target="_blank"
-          @click="$plausible.trackEvent('click: API resource', { props: { api: api.name, name: link.name } })"
-        >{{ link.name }}</NuxtLink>
-        <Icon name="external" size=".85rem" class="ml-0.5"/>
-      </span>
-    </div> -->
     <div class="<md:hidden flex justify-end items-center w-24">
-      <component v-if="sourceComponent" :is="sourceComponent" />
+      <component :is="sourceComponent" v-if="sourceComponent" />
     </div>
     <div class="indicators">
       <ApiGridItemIndicator
@@ -92,12 +66,12 @@ import ApiSourceChrome from '~/components/api/source/Chrome.vue'
 import ApiSourceMDN from '~/components/api/source/MDN.vue'
 
 const props = defineProps<{
-  api: WebAPI,
+  api: WebAPI
 }>()
 
 const plausible = usePlausible()
 
-const itemClass = $computed(() => {
+const itemClass = computed(() => {
   if (props.api.available !== undefined) {
     return props.api.available === false
       ? 'not-available'
@@ -107,7 +81,7 @@ const itemClass = $computed(() => {
   }
   return 'loading'
 })
-const status: { name: string, icon: string, label: string } | undefined = $computed(() =>  {
+const status = computed(() => {
   if (props.api.available) {
     if (props.api.experimental) {
       return {
@@ -131,7 +105,7 @@ const status: { name: string, icon: string, label: string } | undefined = $compu
   }
   return undefined
 })
-const sourceComponent = $computed(() => {
+const sourceComponent = computed(() => {
   switch (props.api.source) {
     case 'chrome':
       return ApiSourceChrome
@@ -157,7 +131,6 @@ const sourceComponent = $computed(() => {
       }
     }
     &.unavailable {
-      // @apply text-rose-500;
       .status-icon {
         @apply text-rose-500 border-rose-500;
       }

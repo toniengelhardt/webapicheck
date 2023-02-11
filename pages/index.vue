@@ -8,13 +8,13 @@
         <template #header-right>
           <div class="flex w-full md:justify-end">
             <div class="flex <md:(w-1/3 justify-center) md:mr-6">
-              <ApiCounter :supportedCount="supportedAPICount" :totalCount="totalAPICount" />
+              <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
             </div>
             <div class="flex <md:(w-1/3 justify-center) md:mr-6">
               <ApiModeSelector v-model="mode" />
             </div>
             <div class="flex <md:(w-1/3 justify-center)">
-              <ContextStatus  />
+              <ContextStatus />
             </div>
           </div>
         </template>
@@ -44,7 +44,9 @@
               title="MDN docs for WebAPIs"
               class="link"
               target="_blank"
-            >WebAPIs</NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device.
+            >
+              WebAPIs
+            </NuxtLink><Icon name="external" class="ml-0.5" /> are available on your device.
             Just open this page on the device you want to test and voilà.
           </p>
           <p>
@@ -55,16 +57,22 @@
               target="_blank"
               class="link"
               @click="$plausible.trackEvent('click: Link', { props: { target: 'Twitter profile' } })"
-            >Twitter</NuxtLink><Icon name="external" class="ml-0.5" /> or
+            >
+              Twitter
+            </NuxtLink><Icon name="external" class="ml-0.5" /> or
             <NuxtLink
               :to="$config.githubProfile"
               title="Toni Engelhardt on GitHub"
               target="_blank"
               class="link"
               @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
-            >GitHub</NuxtLink><Icon name="external" class="ml-0.5" />.
+            >
+              GitHub
+            </NuxtLink><Icon name="external" class="ml-0.5" />.
           </p>
-          <p class="mt-12 text-xl text-dim font-bold">Disclaimer</p>
+          <p class="mt-12 text-xl text-dim font-bold">
+            Disclaimer
+          </p>
           <p class="mt-6">
             There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
             <NuxtLink
@@ -72,16 +80,24 @@
               class="link"
               title="Send feedback via email"
               target="_blank"
-            >{{ $config.feedbackEmail }}</NuxtLink> so that I can fix them.
+            >
+              {{ $config.feedbackEmail }}
+            </NuxtLink> so that I can fix them.
             Please also note that some browsers (e.g. Brave) might not always report API support correctly and
             signal for certain APIs that they are available when they are actually not.
           </p>
-          <p class="mt-12 text-xl text-dim font-bold">FAQ</p>
+          <p class="mt-12 text-xl text-dim font-bold">
+            FAQ
+          </p>
           <ul>
             <li class="mt-6">
-              <p class="italic">What is a <b>WebAPI</b>?</p>
+              <p class="italic">
+                What is a <b>WebAPI</b>?
+              </p>
               <div class="flex mt-2">
-                <div class="<md:hidden mr-3">—</div>
+                <div class="<md:hidden mr-3">
+                  —
+                </div>
                 <p>
                   WebAPIs are a collection of specifications defined by
                   <NuxtLink
@@ -89,16 +105,22 @@
                     title="The World Wide Web Consortium"
                     class="link"
                     target="_blank"
-                  >W3C</NuxtLink> and others that allow web applications
+                  >
+                    W3C
+                  </NuxtLink> and others that allow web applications
                   to interact with device hardware and browser capabilities
                   beyond simple script execution, e.g. storage, service workers, etc.
                 </p>
               </div>
             </li>
             <li class="mt-6">
-              <p class="italic">What is a <b>User Interaction [1]</b> and why is it sometimes required?</p>
+              <p class="italic">
+                What is a <b>User Interaction [1]</b> and why is it sometimes required?
+              </p>
               <div class="flex mt-2">
-                <div class="<md:hidden mr-3">—</div>
+                <div class="<md:hidden mr-3">
+                  —
+                </div>
                 <p>
                   A user interaction is usually a click or its accessibility equivalent.
                   This requirement can be really frustrating if you are a developer with good conscience and
@@ -109,9 +131,13 @@
               </div>
             </li>
             <li class="mt-6">
-              <p class="italic">Why are sometimes special <b>Permissions [2]</b> required?</p>
+              <p class="italic">
+                Why are sometimes special <b>Permissions [2]</b> required?
+              </p>
               <div class="flex mt-2">
-                <div class="<md:hidden mr-3">—</div>
+                <div class="<md:hidden mr-3">
+                  —
+                </div>
                 <p>
                   Some APIs directly access critical device hardware and data or expose powerful UI interfaces,
                   e.g. Geolocation API, Bluetooth API, and Notifications API. For these features the browser
@@ -123,14 +149,20 @@
                     target="_blank"
                     title="Using the Permissions API on MDN"
                     class="link"
-                  >Permissions API</NuxtLink> that gives you better control over the permissions UX.
+                  >
+                    Permissions API
+                  </NuxtLink> that gives you better control over the permissions UX.
                 </p>
               </div>
             </li>
             <li class="mt-6">
-              <p class="italic">What is a <b>Secure Context [3]</b>?</p>
+              <p class="italic">
+                What is a <b>Secure Context [3]</b>?
+              </p>
               <div class="flex mt-2">
-                <div class="<md:hidden mr-3">—</div>
+                <div class="<md:hidden mr-3">
+                  —
+                </div>
                 <p>
                   A secure context is a Window or Worker for which certain minimum standards of authentication and
                   confidentiality are met. Resources delivered locally on <span class="code-inline">http://127.0.0.1</span>,
@@ -145,21 +177,29 @@
                     title="Secure contexts spec on W3C"
                     class="link"
                     target="_blank"
-                  >W3C spec</NuxtLink> and on the
+                  >
+                    W3C spec
+                  </NuxtLink> and on the
                   <NuxtLink
                     to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
                     title="Secure contexts on MDN"
                     class="link"
                     target="_blank"
-                  >Secure Contexts</NuxtLink>
+                  >
+                    Secure Contexts
+                  </NuxtLink>
                   page on MDN.
                 </p>
               </div>
             </li>
             <li class="mt-6">
-              <p class="italic">What are <b>Web Workers [4]</b>?</p>
+              <p class="italic">
+                What are <b>Web Workers [4]</b>?
+              </p>
               <div class="flex mt-2">
-                <div class="<md:hidden mr-3">—</div>
+                <div class="<md:hidden mr-3">
+                  —
+                </div>
                 <p>
                   Web workers allow applications to execute computation-intensive JavaScript in the background.
                   That way, the application can execute heavy tasks without congesting the main thread and negatively
@@ -169,39 +209,59 @@
                     title="What are web workers?"
                     class="link"
                     target="_blank"
-                  >Web Worker API documentation</NuxtLink> on MDN.
+                  >
+                    Web Worker API documentation
+                  </NuxtLink> on MDN.
                 </p>
               </div>
             </li>
           </ul>
           <div class="mt-12 flex <md:flex-col">
             <div class="md:w-1/2">
-              <p class="mb-6 text-xl text-dim font-bold">Sources</p>
+              <p class="mb-6 text-xl text-dim font-bold">
+                Sources
+              </p>
               <ul class="list md:(list-inside list-disc)">
-                <li><NuxtLink
-                  to="https://developer.mozilla.org"
-                  title="Resources for Developers by Developers"
-                  target="_blank"
-                  class="link"
-                >MDN Web Docs</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-                <li><NuxtLink
-                  to="https://developer.chrome.com"
-                  title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
-                  target="_blank"
-                  class="link"
-                >Chrome Developers</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-                <li><NuxtLink
-                  to="https://www.w3.org"
-                  title="World Wide Web Consortium (W3C)"
-                  target="_blank"
-                  class="link"
-                >W3C</NuxtLink><Icon name="external" class="ml-0.5" /></li>
-                <li><NuxtLink
-                  to="https://fugu-tracker.web.app/"
-                  title="Fugu API Tracker"
-                  target="_blank"
-                  class="link"
-                >Fugu API Tracker</NuxtLink><Icon name="external" class="ml-0.5" /></li>
+                <li>
+                  <NuxtLink
+                    to="https://developer.mozilla.org"
+                    title="Resources for Developers by Developers"
+                    target="_blank"
+                    class="link"
+                  >
+                    MDN Web Docs
+                  </NuxtLink><Icon name="external" class="ml-0.5" />
+                </li>
+                <li>
+                  <NuxtLink
+                    to="https://developer.chrome.com"
+                    title="Chrome's official site to help you build Extensions, publish on the Chrome Web Store, optimize your website, and more..."
+                    target="_blank"
+                    class="link"
+                  >
+                    Chrome Developers
+                  </NuxtLink><Icon name="external" class="ml-0.5" />
+                </li>
+                <li>
+                  <NuxtLink
+                    to="https://www.w3.org"
+                    title="World Wide Web Consortium (W3C)"
+                    target="_blank"
+                    class="link"
+                  >
+                    W3C
+                  </NuxtLink><Icon name="external" class="ml-0.5" />
+                </li>
+                <li>
+                  <NuxtLink
+                    to="https://fugu-tracker.web.app/"
+                    title="Fugu API Tracker"
+                    target="_blank"
+                    class="link"
+                  >
+                    Fugu API Tracker
+                  </NuxtLink><Icon name="external" class="ml-0.5" />
+                </li>
               </ul>
             </div>
             <div class="<md:mt-12 md:w-1/2">
@@ -242,9 +302,11 @@
       <div class="p-6">
         <ClientOnly>
           <div v-if="_navigator" class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-md">
-            <p class="font-bold">Navigator</p>
+            <p class="font-bold">
+              Navigator
+            </p>
             <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
-              <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']">
+              <p v-for="key in ['appCodeName', 'appName', 'appVersion', 'platform', 'vendor', 'languages']" :key="key">
                 <span class="font-bold">{{ key }}:</span>&nbsp;<!--
              --><span class="font-mono">{{ Array.isArray(_navigator[key]) ? _navigator[key].join(', ') : _navigator[key] }}</span>
               </p>
@@ -265,64 +327,59 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
-import { Ref } from 'vue'
+import type { Ref } from 'vue'
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
 const config = useRuntimeConfig()
 
-useHead({
-  title: 'WebAPI test for any device',
-  meta: [{
-    hid: 'description',
-    name: 'description',
-    content: config.public.appDescription,
-  }, {
-    name: 'keywords',
-    content: config.public.appKeywords,
-  }]
+useSeoMeta({
+  titleTemplate: '%s',
+  title: 'WebAPI check – Test your device\'s WebAPI capabilities',
+  ogTitle: config.public.siteName,
+  ogDescription: config.public.siteDescription,
+  ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-let mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' }) as Ref<DisplayMode>
-let searchTerm = ref('')
-let debouncedSearchTerm = refDebounced(searchTerm, 100)
-let searchMode = $ref(false)
-// let activeFilter = $ref(null)s
+const mode = useCookie('mode', { default: () => 'grid' }) as Ref<DisplayMode>
+const searchTerm = ref('')
+const debouncedSearchTerm = refDebounced(searchTerm, 100)
+const searchMode = ref(false)
 
-const _navigator: any = $computed(() => navigator)
+const _navigator: any = computed(() => navigator)
 
 const searchOptions = {
   keys: ['name'],
   threshold: 0.3,
 }
 
-let apis = $ref(apiData)
+const apis = ref(apiData)
 
-const sortedAPIs = $computed(() => {
-  const apiList = Object.keys(apis).reduce((list: WebAPI[], apiKey: string) => {
-    list.push(apis[apiKey])
+const sortedAPIs = computed(() => {
+  const apiList = Object.keys(apis.value).reduce((list: WebAPI[], apiKey: string) => {
+    list.push(apis.value[apiKey])
     return list
   }, [])
   sortByField(apiList, 'name')
   return apiList
 })
 
-const fuse = $computed(() => {
-  return new Fuse(sortedAPIs, searchOptions)
+const fuse = computed(() => {
+  return new Fuse(sortedAPIs.value, searchOptions)
 })
 
-const filteredAPIs = $computed(() => {
+const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
-    ? fuse.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
-    : sortedAPIs
+    ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
+    : sortedAPIs.value
 })
 
-const supportedAPICount = $computed(() => {
-  return filteredAPIs.filter(api => api.available).length
+const supportedAPICount = computed(() => {
+  return filteredAPIs.value.filter(api => api.available).length
 })
 
-const totalAPICount = $computed(() => {
-  return sortedAPIs.length
+const totalAPICount = computed(() => {
+  return sortedAPIs.value.length
 })
 
 function defaultCheck(api: WebAPI) {
@@ -336,14 +393,14 @@ function defaultCheck(api: WebAPI) {
 
 function loadAPIs() {
   if (navigator) {
-    Object.keys(apis).forEach(apiKey => {
-      const api = apis[apiKey]
+    Object.keys(apis.value).forEach((apiKey) => {
+      const api = apis.value[apiKey]
       const check = api.check || defaultCheck
-      if (check.constructor.name === "AsyncFunction") {
+      if (check.constructor.name === 'AsyncFunction') {
         (check(api) as Promise<boolean>)
-          .then((available: boolean) => apis[apiKey].available = available)
+          .then((available: boolean) => apis.value[apiKey].available = available)
       } else {
-        apis[apiKey].available = check(api) as boolean
+        apis.value[apiKey].available = check(api) as boolean
       }
     })
   }

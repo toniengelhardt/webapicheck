@@ -43,5 +43,5 @@ export default defineAppConfig({
       check: 'ph:check-bold',
       cross: 'ph:x-bold',
     },
-  }
+  },
 })

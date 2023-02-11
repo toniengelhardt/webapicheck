@@ -5,8 +5,7 @@
     "strict": true,
     "resolveJsonModule": true,
     "types": [
-      "nuxt-windicss",
-      "vue/ref-macros"
-    ],
+      "nuxt-windicss"
+    ]
   }
 }

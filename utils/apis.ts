@@ -37,7 +37,7 @@ export const apiData: WebAPIData = {
     check: async () => {
       try {
         if (navigator && 'getBattery' in navigator) {
-          const bm = await navigator.getBattery()
+          const bm = await (navigator as any).getBattery()
           return bm !== undefined
         }
         return false
@@ -107,7 +107,7 @@ export const apiData: WebAPIData = {
         name: 'status',
         url: 'https://chromestatus.com/feature/5339955595313152',
       },
-    ]
+    ],
   },
   eyeDropperAPI: {
     name: 'EyeDropper API',
@@ -118,11 +118,14 @@ export const apiData: WebAPIData = {
       icon: 'eyedropper',
       label: 'Pick a color',
       func: () => {
-        const eyeDropper = new EyeDropper()
-        eyeDropper.open()
-          .then((result: any) => alert(`Selected color: ${result.sRGBHex}`))
-      }
-    }
+        try {
+          // @ts-expect-error - EyeDropper raises an error.
+          const eyeDropper = new EyeDropper()
+          eyeDropper.open()
+            .then((result: any) => alert(`Selected color: ${result.sRGBHex}`))
+        } catch (error) { }
+      },
+    },
   },
   fileAPI: {
     name: 'File API',
@@ -139,7 +142,7 @@ export const apiData: WebAPIData = {
     name: 'Fullscreen API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API',
     path: 'document.fullscreen',
-    check: () => document?.fullscreenEnabled !== undefined || document?.webkitFullscreenEnabled !== undefined,
+    check: () => document?.fullscreenEnabled !== undefined || (document as any)?.webkitFullscreenEnabled !== undefined,
     action: {
       icon: 'fullscreen',
       label: 'Fullscreen',
@@ -147,12 +150,12 @@ export const apiData: WebAPIData = {
         try {
           if (document?.fullscreenEnabled !== undefined) {
             document.documentElement.requestFullscreen()
-          } else if (document?.webkitFullscreenEnabled !== undefined) {
-            document.documentElement.webkitRequestFullscreen()
+          } else if ((document as any)?.webkitFullscreenEnabled !== undefined) {
+            (document.documentElement as any).webkitRequestFullscreen()
           }
         } catch (error) {
           console.error(error)
-          alert(`Oh oh, an error occured. Check the console for more details!`)
+          alert('Oh oh, an error occured. Check the console for more details!')
         }
       },
     },
@@ -380,12 +383,12 @@ export const apiData: WebAPIData = {
     action: {
       icon: 'vibration',
       label: 'Vibrate',
-      func: () => window?.navigator?.vibrate(200),
-    }
+      func: () => { window?.navigator?.vibrate(200) },
+    },
   },
   virtualKeyboardAPI: {
     name: 'Virtual Keyboard API',
-    url:'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
+    url: 'https://developer.chrome.com/docs/web-platform/virtual-keyboard/',
     path: 'navigator.virtualKeyboard',
     source: 'chrome',
     secureContextRequired: true,
@@ -406,7 +409,7 @@ export const apiData: WebAPIData = {
     name: 'Web Audio API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API',
     path: 'window.AudioContext',
-    check: () => window?.AudioContext !== undefined || window?.webkitAudioContext !== undefined,
+    check: () => window?.AudioContext !== undefined || (window as any)?.webkitAudioContext !== undefined,
   },
   webAuthenticationAPI: {
     name: 'Web Authentication API',
@@ -417,7 +420,7 @@ export const apiData: WebAPIData = {
   webCodecsAPI: {
     name: 'WebCodecs API',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API',
-    check: () => window?.AudioDecoder !== undefined && window?.VideoDecoder !== undefined
+    check: () => (window as any)?.AudioDecoder !== undefined && (window as any)?.VideoDecoder !== undefined,
   },
   webCryptoAPI: {
     name: 'Web Crypto API',
@@ -436,10 +439,10 @@ export const apiData: WebAPIData = {
       try {
         const canvas = document?.createElement('canvas')
         return !!(canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')))
-      } catch(error) {
+      } catch (error) {
         return false
       }
-    }
+    },
   },
   webGPU: {
     name: 'WebGPU',
@@ -487,7 +490,7 @@ export const apiData: WebAPIData = {
           text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
           url: 'https://webapicheck.com',
         })
-          .catch(error => {})
+          .catch(() => {})
       },
     },
   },
@@ -502,7 +505,7 @@ export const apiData: WebAPIData = {
     path: 'window.webSpeech',
     check: () => {
       try {
-        return !!window?.SpeechRecognition || !!window?.webkitSpeechRecognition
+        return !!(window as any)?.SpeechRecognition || !!(window as any)?.webkitSpeechRecognition
       } catch (error) {
         return false
       }

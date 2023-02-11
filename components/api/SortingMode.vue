@@ -27,9 +27,8 @@
           <div class="px-1 py-1">
             <HLMenuItem v-slot="{ active }">
               <button
-                :class="[
+                class="group flex w-full items-center rounded-md px-2 py-2 text-sm" :class="[
                   active ? 'bg-violet-500 text-white' : 'text-zinc-900',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
                 <EditIcon
@@ -42,9 +41,8 @@
             </HLMenuItem>
             <HLMenuItem v-slot="{ active }">
               <button
-                :class="[
+                class="group flex w-full items-center rounded-md px-2 py-2 text-sm" :class="[
                   active ? 'bg-violet-500 text-white' : 'text-zinc-900',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
                 <DuplicateIcon
@@ -59,9 +57,8 @@
           <div class="px-1 py-1">
             <HLMenuItem v-slot="{ active }">
               <button
-                :class="[
+                class="group flex w-full items-center rounded-md px-2 py-2 text-sm" :class="[
                   active ? 'bg-violet-500 text-white' : 'text-zinc-900',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
                 <ArchiveIcon
@@ -74,9 +71,8 @@
             </HLMenuItem>
             <HLMenuItem v-slot="{ active }">
               <button
-                :class="[
+                class="group flex w-full items-center rounded-md px-2 py-2 text-sm" :class="[
                   active ? 'bg-violet-500 text-white' : 'text-zinc-900',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
                 <HLMoveIcon
@@ -92,9 +88,8 @@
           <div class="px-1 py-1">
             <HLMenuItem v-slot="{ active }">
               <button
-                :class="[
+                class="group flex w-full items-center rounded-md px-2 py-2 text-sm" :class="[
                   active ? 'bg-violet-500 text-white' : 'text-zinc-900',
-                  'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
                 <HLDeleteIcon

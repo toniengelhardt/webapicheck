@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "@antfu"
+    ],
+    "rules": {
+        "curly": "off",
+        "dot-notation": "off",
+        "no-console": "off",
+        "no-alert": "off",
+        "no-extra-parens": "off",
+        "operator-linebreak": "off",
+        "vue/component-tags-order": "off",
+        "vue/no-mutating-props": "off",
+        "vue/prefer-template": "off",
+        "@typescript-eslint/brace-style": "off"
+
+    }
+}

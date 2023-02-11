@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  show: boolean,
+  show: boolean
 }>()
 defineEmits<{
   (event: 'close'): void

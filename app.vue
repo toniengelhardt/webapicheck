@@ -1,5 +1,6 @@
 <template>
   <div id="wrapper">
+    <SeoKit />
     <NuxtPage />
   </div>
 </template>

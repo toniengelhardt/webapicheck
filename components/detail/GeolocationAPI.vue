@@ -15,14 +15,14 @@
 </template>
 
 <script setup lang="ts">
-let loading = $ref(false)
-let coords = $ref<{ latitude: number, longitude: number } | undefined>(undefined)
+const loading = ref(false)
+const coords = ref<{ latitude: number; longitude: number } | undefined>(undefined)
 
 function updatePosition() {
-  loading = true
-  navigator?.geolocation?.getCurrentPosition(pos => {
-    coords = pos.coords
-    loading = false
-  }, () => loading = false)
+  loading.value = true
+  navigator?.geolocation?.getCurrentPosition((pos) => {
+    coords.value = pos.coords
+    loading.value = false
+  }, () => loading.value = false)
 }
 </script>

@@ -10,7 +10,7 @@
       @input="$emit('update:searchTerm', ($event.target as HTMLInputElement)?.value)"
       @focus="$emit('update:searchMode', true); $plausible.trackEvent('focus: Search')"
       @blur="$emit('update:searchMode', false)"
-    />
+    >
     <div
       class="flex justify-center items-center min-h-10 min-w-8 mr-1 text-zinc-500 dark:text-tray-400 hover:(text-zinc-700 dark:text-zinc-200) cursor-pointer"
       @click="$emit('update:searchTerm', '')"
@@ -22,8 +22,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  searchTerm: string,
-  searchMode: boolean,
+  searchTerm: string
+  searchMode: boolean
 }>()
 defineEmits<{
   (event: 'update:searchTerm', value: string): void

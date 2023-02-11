@@ -1,29 +1,28 @@
-const appTitle = 'WebAPI check'
-const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your device. WebAPI requirements, specs, tests, etc.'
-const appAuthor = 'Toni Engelhardt'
-const appKeywords = 'WebAPI, DX, Developer Tools'
-const appUrl = 'https://webapicheck.com'
+const appName = 'WebAPI check'
+const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...'
 
 export default defineNuxtConfig({
-  ssr: true,
+  extends: [
+    'nuxt-seo-kit',
+  ],
   runtimeConfig: {
     public: {
-      appTitle,
-      appDescription,
-      appAuthor,
-      appKeywords,
-      appUrl,
+      titleSeparator: '·',
+      trailingSlash: false,
+      siteUrl: 'https://webapicheck.com',
+      siteName: appName,
+      siteDescription: appDescription,
       twitterProfile: 'https://twitter.com/toniengelhardt',
       githubProfile: 'https://github.com/toniengelhardt',
       feedbackEmail: 'feedback@webapicheck.com',
-    }
+    },
   },
   modules: [
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
+    '@nuxtjs/plausible',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-plausible',
     'nuxt-windicss',
   ],
   vite: {
@@ -36,9 +35,6 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
-  experimental: {
-    reactivityTransform: true,
   },
   typescript: {
     shim: false,
@@ -60,38 +56,35 @@ export default defineNuxtConfig({
         lang: 'en',
         translate: 'no', // Avoid translation.
       },
-    }
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', key: 'favicon' },
+      ],
+    },
   },
   pwa: {
     manifest: {
       id: '/?standalone=true',
-      name: appTitle,
-      short_name: appTitle,
+      name: appName,
+      short_name: appName,
       description: appDescription,
       display: 'standalone',
-      orientation: 'any',
+      orientation: 'portrait',
       lang: 'en',
       start_url: '/?standalone=true',
-      scope: '/',
       categories: [
         'productivity',
         'utilities',
       ],
     },
     meta: {
-      name: appTitle,
-      author: appAuthor,
-      description: appDescription,
+      title: appName,
       mobileApp: true,
       mobileAppIOS: true,
-      lang: 'en',
-      ogType: 'website',
-      ogSiteName: appTitle,
-      ogTitle: appTitle,
-      ogDescription: appDescription,
-      ogImage: 'https://webapicheck.com/og-image.png',
-      ogUrl: 'https://webapicheck.com',
       twitterCard: 'summary_large_image',
+      theme_color: false,
     },
+  },
+  linkChecker: {
+    failOn404: true,
   },
 })

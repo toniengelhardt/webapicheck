@@ -1,8 +1,9 @@
-node_modules
-*.log*
-.nuxt
-.nitro
-.cache
-.output
+*.log
 .env
-dist
+.DS_Store
+.lighthouse
+.nuxt
+.output
+.vscode
+
+/node_modules
