@@ -3,7 +3,7 @@
     <span class="flex-1 flex items-center">
       <ThemeSelector />
       <NuxtLink
-        :to="`mailto:${$config.public.repoUrl}`"
+        :to="$config.public.repoUrl"
         class="footer-link flex-center <md:(w-8 h-8) ml-2 md:ml-4"
         title="Contribute on GitHub"
         target="_blank"
