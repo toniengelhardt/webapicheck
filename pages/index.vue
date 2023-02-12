@@ -7,7 +7,7 @@
       />
     </template>
     <template #header-right>
-      <div flex w-full md:justify-end py-3>
+      <div flex w-full lt-md:py-3 md:justify-end>
         <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
           <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
         </div>
@@ -28,7 +28,7 @@
     >
       There are no APIs matching your search...
     </div>
-    <ApiList v-else-if="mode === 'list'" :apis="filteredAPIs" />
+    <ApiList v-else-if="mode === 'rows'" :apis="filteredAPIs" />
     <ApiGrid v-else :apis="filteredAPIs" />
   </NuxtLayout>
 </template>

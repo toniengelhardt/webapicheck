@@ -1,9 +1,17 @@
 <template>
   <div class="element">
-    <div class="option" :class="{ selected: modelValue === 'list' }" @click="$emit('update:modelValue', 'list')">
+    <div
+      class="option"
+      :class="{ selected: modelValue === 'rows' }"
+      @click="$emit('update:modelValue', 'rows')"
+    >
       <Icon name="list" />
     </div>
-    <div class="option" :class="{ selected: modelValue === 'grid' }" @click="$emit('update:modelValue', 'grid')">
+    <div
+      class="option"
+      :class="{ selected: modelValue === 'grid' }"
+      @click="$emit('update:modelValue', 'grid')"
+    >
       <Icon name="grid" />
     </div>
   </div>
