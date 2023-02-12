@@ -15,7 +15,11 @@ export default defineNuxtConfig({
       twitterProfile: 'https://twitter.com/toniengelhardt',
       repoUrl: 'https://github.com/toniengelhardt/webapicheck',
       feedbackEmail: 'feedback@webapicheck.com',
+      sentryDSN: process.env.SENTRY_DSN,
     },
+  },
+  experimental: {
+    componentIslands: true,
   },
   modules: [
     '@kevinmarrec/nuxt-pwa',
