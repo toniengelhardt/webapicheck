@@ -4,7 +4,7 @@
     @click="onClick(); $plausible.trackEvent('click: Theme switcher');"
   >
     <ClientOnly>
-      <Icon :name="colorMode.preference" size="1.1rem" />
+      <Icon :name="colorMode.preference" size="1.25rem" />
     </ClientOnly>
     <span class="ml-1.5 <md:hidden">
       Theme

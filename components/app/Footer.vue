@@ -1,23 +1,23 @@
 <template>
-  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 border-t-1 border-zinc-300 dark:border-zinc-700">
+  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 border-t-1 border-default">
     <span class="flex-1 flex items-center">
       <ThemeSelector />
       <NuxtLink
         :to="$config.public.repoUrl"
-        class="footer-link flex-center <md:(w-8 h-8) ml-2 md:ml-4"
+        class="footer-link flex-center <md:(w-8 h-8) ml-3 md:ml-4"
         title="Contribute on GitHub"
         target="_blank"
       >
-        <Icon name="github" size="1.1rem" />
+        <Icon name="github" size="1.25rem" />
         <span class="ml-1.5 <md:hidden">Contribute</span>
       </NuxtLink>
       <NuxtLink
         :to="`mailto:${$config.public.feedbackEmail}`"
-        class="footer-link flex-center <md:(w-8 h-8) ml-2 md:ml-4"
+        class="footer-link flex-center <md:(w-8 h-8) ml-3 md:ml-4"
         title="Send feedback via email"
         target="_blank"
       >
-        <Icon name="email" size="1.1rem" />
+        <Icon name="email" size="1.25rem" />
         <span class="ml-1.5 <md:hidden">Feedback</span>
       </NuxtLink>
     </span>

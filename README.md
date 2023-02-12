@@ -15,8 +15,6 @@ Sources:
 
 Clone the repo, install the dependencies with pnpm, and you're ready to go.
 
-Dev server launches by default on `http://localhost:3030`.
-
 ```bash
 pnpm install
 pnpm dev
@@ -29,8 +27,6 @@ Build application for production:
 ```bash
 pnpm build
 ```
-
----
 
 _The web platform and an open web are the most important infrastructure projects of our time._
 

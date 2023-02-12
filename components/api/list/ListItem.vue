@@ -117,17 +117,17 @@ const sourceComponent = computed(() => {
 
 <style lang="scss" scoped>
 .list-item {
-  @apply flex flex-row px-4 py-2 rounded;
+  @apply flex flex-row px-3.5 py-2 rounded;
   .status {
     @apply flex items-center min-w-4 mr-2;
     &.available {
       .status-icon {
-        @apply text-lime-600 border-lime-600 dark:(text-lime-200 border-lime-200);
+        @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
       }
     }
     &.experimental {
       .status-icon {
-        @apply text-purple-700 border-purple-700 dark:(text-purple-200 border-purple-200);
+        @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
       }
     }
     &.unavailable {
@@ -149,13 +149,13 @@ const sourceComponent = computed(() => {
     @apply flex items-center w-60 text-sm <md:hidden;
   }
   &.experimental {
-    @apply bg-purple-200 dark:bg-purple-500/65;
+    @apply bg-purple-200 dark:bg-purple-500/50;
   }
   &.available {
-    @apply bg-lime-200 dark:bg-lime-500/65;
+    @apply bg-lime-200 dark:bg-lime-500/50;
   }
   &.not-available {
-    @apply bg-zinc-100 dark:bg-zinc-800;
+    @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }

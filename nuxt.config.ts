@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     'nuxt-seo-kit',
   ],
   runtimeConfig: {
+    indexable: true,
     public: {
       titleSeparator: '·',
       trailingSlash: false,
@@ -46,18 +47,14 @@ export default defineNuxtConfig({
   css: [
     'assets/scss/style.scss',
   ],
-  colorMode: {
-    classSuffix: '',
-  },
-  plausible: {
-    domain: 'webapicheck.com',
-    trackLocalhost: false,
-    autoOutboundTracking: false,
+  postcss: {
+    plugins: {
+      cssnano: false,
+    },
   },
   app: {
     head: {
       htmlAttrs: {
-        lang: 'en',
         translate: 'no', // Avoid translation.
       },
       link: [
@@ -92,6 +89,14 @@ export default defineNuxtConfig({
       maskableSource: 'public/icon.maskable.png',
       maskablePadding: 0,
     },
+  },
+  colorMode: {
+    classSuffix: '',
+  },
+  plausible: {
+    domain: 'webapicheck.com',
+    trackLocalhost: false,
+    autoOutboundTracking: false,
   },
   linkChecker: {
     failOn404: true,

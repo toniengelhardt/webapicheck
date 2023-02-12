@@ -1,16 +1,15 @@
 <template>
   <div class="grid-item" :class="itemClass">
     <div class="header">
-      <div class="name">
-        <NuxtLink
-          :to="api.url"
-          :title="`${api.name} documentation`"
-          target="_blank"
-          @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
-        >
-          {{ api.name }}
-        </NuxtLink>
-      </div>
+      <NuxtLink
+        :to="api.url"
+        :title="`${api.name} documentation`"
+        target="_blank"
+        class="name"
+        @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
+      >
+        {{ api.name }}
+      </NuxtLink>
       <div class="indicators">
         <ApiGridItemIndicator
           v-if="api.availableInWebWorkers"
@@ -44,24 +43,29 @@
       {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-12">
-      <template v-if="api.available">
-        <component :is="api.detail" v-if="api.detail" />
-        <div v-else-if="api.value" class="py-3">
-          {{ api.value() }}
-        </div>
-        <div v-else-if="api.action" class="py-3">
-          <div
-            class="btn-xs btn-default cursor-pointer"
-            @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
-          >
-            <Icon v-if="api.action.icon" :name="api.action.icon" />
-            <span class="mx-1.5">{{ api.action.label }}</span>
+      <ClientOnly>
+        <template v-if="api.available">
+          <component
+            :is="api.detail"
+            v-if="api.detail"
+          />
+          <div v-else-if="api.value" class="py-3">
+            {{ api.value() }}
           </div>
-        </div>
-      </template>
+          <div v-else-if="api.action" class="py-3">
+            <div
+              class="btn-xs btn-default cursor-pointer"
+              @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
+            >
+              <Icon v-if="api.action.icon" :name="api.action.icon" />
+              <span class="mx-1.5">{{ api.action.label }}</span>
+            </div>
+          </div>
+        </template>
+      </ClientOnly>
     </div>
     <div class="flex items-center">
-      <div class="flex-1 flex items-center">
+      <div class="flex-1 flex items-center h-4">
         <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-4 h-4">
           <Icon name="spinner" class="animate-spin" />
         </div>
@@ -74,9 +78,7 @@
           </span>
         </div>
       </div>
-      <div>
-        <component :is="sourceComponent" v-if="sourceComponent" />
-      </div>
+      <component :is="sourceComponent" v-if="sourceComponent" />
     </div>
   </div>
 </template>
@@ -137,21 +139,21 @@ const status = computed(() => {
 
 <style lang="scss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
+  @apply self-start flex-row px-3 py-2.5 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
   .header {
-    @apply flex items-center;
+    @apply flex items-center h-5;
     .name {
-      @apply flex-1 text-lg font-black underline truncate;
+      @apply flex-1 text-lg font-black underline truncate leading-1.25rem;
     }
   }
   &.experimental {
-    @apply bg-purple-200 dark:bg-purple-500/65;
+    @apply bg-purple-200 dark:bg-purple-500/50;
   }
   &.available {
-    @apply bg-lime-200 dark:bg-lime-500/65;
+    @apply bg-lime-200 dark:bg-lime-500/50;
   }
   &.not-available {
-    @apply bg-zinc-100 dark:bg-zinc-800;
+    @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }
@@ -160,7 +162,7 @@ const status = computed(() => {
     @apply bg-zinc-100 dark:bg-zinc-800;
   }
   .indicators {
-    @apply flex items-center text-sm;
+    @apply flex items-center text-sm leading-none;
     > *:not(:last-child) {
       @apply mr-2;
     }
@@ -178,12 +180,12 @@ const status = computed(() => {
     @apply flex items-center;
     &.available {
       .status-icon {
-        @apply text-lime-600 border-lime-600 dark:(text-lime-200 border-lime-200);
+        @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
       }
     }
     &.experimental {
       .status-icon {
-        @apply text-purple-700 border-purple-700 dark:(text-purple-200 border-purple-200);
+        @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
       }
     }
     &.unavailable {
@@ -192,7 +194,7 @@ const status = computed(() => {
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full;
+      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full box-border;
       .icon {
         @apply text-0.6rem;
       }

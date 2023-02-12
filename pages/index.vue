@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <AppHeader>
-      <template #header-middle>
+      <template #header-center>
         <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
       </template>
       <template #header-right>
@@ -19,7 +19,7 @@
       </template>
     </AppHeader>
     <div class="content flex-1 no-scrollbar">
-      <div class="border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="border-b-1 border-default">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -27,10 +27,10 @@
         <ApiList v-if="mode === 'list'" :apis="filteredAPIs" />
         <ApiGrid v-else :apis="filteredAPIs" />
       </div>
-      <div class="p-6 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="flex-center <md:p-4 md:(h-12 px-4) border-b-1 border-default">
         <ApiLegend />
       </div>
-      <div class="px-6 py-12 border-b-1 border-zinc-300 dark:border-zinc-700">
+      <div class="px-4 py-12 border-b-1 border-default">
         <div class="<md:text-center">
           <p>
             With this little project you can easily check which
@@ -303,7 +303,7 @@
           </div>
         </div>
       </div>
-      <div class="p-6">
+      <div class="p-4">
         <ClientOnly>
           <div v-if="_navigator" class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-md">
             <p class="font-bold">
@@ -317,7 +317,7 @@
             </div>
           </div>
         </ClientOnly>
-        <div class="mt-6 md:px-6 text-center text-xl font-thin italic">
+        <div class="mt-4 md:px-4 text-center text-xl font-thin italic">
           The web platform and an open web are the most important infrastructure projects of our time
         </div>
       </div>
@@ -365,24 +365,14 @@ const sortedAPIs = computed(() => {
   sortByField(apiList, 'name')
   return apiList
 })
-
-const fuse = computed(() => {
-  return new Fuse(sortedAPIs.value, searchOptions)
-})
-
+const fuse = computed(() => new Fuse(sortedAPIs.value, searchOptions))
 const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
     ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
     : sortedAPIs.value
 })
-
-const supportedAPICount = computed(() => {
-  return filteredAPIs.value.filter(api => api.available).length
-})
-
-const totalAPICount = computed(() => {
-  return sortedAPIs.value.length
-})
+const supportedAPICount = computed(() => filteredAPIs.value.filter(api => api.available).length)
+const totalAPICount = computed(() => sortedAPIs.value.length)
 
 function defaultCheck(api: WebAPI) {
   if (api.path) {
@@ -408,16 +398,16 @@ function loadAPIs() {
   }
 }
 
-onMounted(() => {
-  loadAPIs()
-  // console.log('window', window)
-  // console.log('navigator', navigator)
-})
+onMounted(() => loadAPIs())
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
-  @apply flex-col w-100vw h-100vh;
+  @apply flex-col w-100vw;
+  height: 100vh;
+  max-height: 100vh;
+  height: 100svh;
+  max-height: 100svh;
 }
 .content {
   @apply overflow-y-scroll;

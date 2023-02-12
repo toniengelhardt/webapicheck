@@ -32,5 +32,6 @@ export default defineConfig({
     'bg-base': 'bg-white dark:bg-zinc-900',
     'text-default': 'text-black dark:text-zinc-200',
     'text-dim': 'text-zinc-500 dark:text-zinc-400',
+    'border-default': 'border-zinc-300 dark:border-zinc-700',
   },
 })
