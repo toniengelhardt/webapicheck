@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center max-w-120 h-9 mx-auto border-1 border-default rounded-md overflow-hidden">
+  <div class="flex items-center max-w-120 h-9 mx-auto border-1 border-base rounded-md overflow-hidden">
     <div class="flex justify-center items-center min-h-10 min-w-8 ml-1 text-zinc-500 dark:text-zinc-400">
       <Icon name="search" size="1.1rem" />
     </div>

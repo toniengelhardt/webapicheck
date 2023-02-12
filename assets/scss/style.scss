@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 
-  @apply text-default bg-base;
+  @apply text-base bg-base;
 
   @media (min-width: 640px) {
     overscroll-behavior-y: none;
@@ -33,7 +33,7 @@ body {
   @apply inline-block font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400;
 }
 .footer-link {
-  @apply text-default hover:(text-zinc-800 dark:text-white) cursor-pointer;
+  @apply text-base hover:(text-zinc-800 dark:text-white) cursor-pointer;
 }
 
 .code-inline {

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 border-t-1 border-default">
+  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 border-t-1 border-base">
     <span class="flex-1 flex items-center">
       <ThemeSelector />
       <NuxtLink

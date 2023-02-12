@@ -19,7 +19,7 @@
       </template>
     </AppHeader>
     <div class="content flex-1 no-scrollbar">
-      <div class="border-b-1 border-default">
+      <div class="border-b-1 border-base">
         <!-- <div>
           <ListSortingMode />
           <ListFilter />
@@ -27,10 +27,10 @@
         <ApiList v-if="mode === 'list'" :apis="filteredAPIs" />
         <ApiGrid v-else :apis="filteredAPIs" />
       </div>
-      <div class="flex-center <md:p-4 md:(h-12 px-4) border-b-1 border-default">
+      <div class="flex-center <md:p-4 md:(h-12 px-4) border-b-1 border-base">
         <ApiLegend />
       </div>
-      <div class="px-4 py-12 border-b-1 border-default">
+      <div class="px-4 py-12 border-b-1 border-base">
         <div class="<md:text-center">
           <p>
             With this little project you can easily check which
