@@ -1,7 +1,10 @@
 <template>
   <NuxtLayout>
     <template #header-center>
-      <AppSearch v-model:searchTerm="searchTerm" v-model:searchMode="searchMode" />
+      <AppSearch
+        v-model:searchTerm="searchTerm"
+        v-model:searchMode="searchMode"
+      />
     </template>
     <template #header-right>
       <div flex w-full md:justify-end py-3>
@@ -9,7 +12,10 @@
           <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
         </div>
         <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
-          <ApiModeSelector v-model="mode" />
+          <ApiModeSelector
+            :model-value="mode as DisplayMode"
+            @update:model-value="newValue => mode = newValue"
+          />
         </div>
         <div class="flex lt-md:(w-1/3 justify-center)">
           <ContextStatus />
@@ -30,7 +36,6 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
-import type { Ref } from 'vue'
 import { apiData } from '~/utils/apis'
 import { sortByField } from '~/utils/sorting'
 
@@ -44,7 +49,7 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const mode = useCookie('mode', { default: () => ref('grid') }) as Ref<DisplayMode>
+const mode = useCookie('mode')
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
 const searchMode = ref(false)

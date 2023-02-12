@@ -119,7 +119,7 @@ const sourceComponent = computed(() => {
 .list-item {
   @apply flex flex-row px-3.5 py-2 rounded;
   .status {
-    @apply flex items-center min-w-4 mr-2;
+    @apply flex items-center shrink-0 min-w-4 mr-2;
     &.available {
       .status-icon {
         @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
@@ -136,7 +136,7 @@ const sourceComponent = computed(() => {
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full;
+      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full box-border;
       .icon {
         @apply text-0.6rem;
       }
