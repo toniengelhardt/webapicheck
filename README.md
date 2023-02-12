@@ -2,7 +2,7 @@
 
 Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...
 
-Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Windi](https://windicss.org).
+Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss).
 
 Feel free to contribute and add more APIs.
 
