@@ -17,7 +17,7 @@
         </p>
         <p class="mt-4">
           Feedback, suggestions, and contributions are very welcome! Get in touch on
-          <NuxtLink
+          <span whitespace-nowrap><NuxtLink
             :to="$config.public.twitterProfile"
             title="Toni Engelhardt on Twitter"
             target="_blank"
@@ -25,8 +25,8 @@
             @click="$plausible.trackEvent('click: Link', { props: { target: 'Twitter profile' } })"
           >
             Twitter
-          </NuxtLink><Icon name="external" class="ml-0.5" /> or
-          <NuxtLink
+          </NuxtLink><Icon name="external" class="ml-0.5" /></span> or
+          <span whitespace-nowrap><NuxtLink
             :to="$config.public.repoUrl"
             title="Contribute on GitHub"
             target="_blank"
@@ -34,7 +34,7 @@
             @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub profile' } })"
           >
             GitHub
-          </NuxtLink><Icon name="external" class="ml-0.5" />.
+          </NuxtLink><Icon name="external" class="ml-0.5" /></span>.
         </p>
 
         <h2>Legend</h2>
