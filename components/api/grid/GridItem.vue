@@ -43,26 +43,24 @@
       {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-12">
-      <ClientOnly>
-        <template v-if="api.available">
-          <component
-            :is="api.detail"
-            v-if="api.detail"
-          />
-          <div v-else-if="api.value" class="py-3">
-            {{ api.value() }}
+      <template v-if="api.available">
+        <component
+          :is="api.detail"
+          v-if="api.detail"
+        />
+        <div v-else-if="api.value" class="py-3">
+          {{ api.value() }}
+        </div>
+        <div v-else-if="api.action" class="py-3">
+          <div
+            class="btn-xs btn-default cursor-pointer"
+            @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
+          >
+            <Icon v-if="api.action.icon" :name="api.action.icon" />
+            <span class="mx-1.5">{{ api.action.label }}</span>
           </div>
-          <div v-else-if="api.action" class="py-3">
-            <div
-              class="btn-xs btn-default cursor-pointer"
-              @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
-            >
-              <Icon v-if="api.action.icon" :name="api.action.icon" />
-              <span class="mx-1.5">{{ api.action.label }}</span>
-            </div>
-          </div>
-        </template>
-      </ClientOnly>
+        </div>
+      </template>
     </div>
     <div class="flex items-center">
       <div class="flex-1 flex items-center h-4">
