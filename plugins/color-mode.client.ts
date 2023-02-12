@@ -1,4 +1,4 @@
-import colors from 'windicss/colors'
+import { theme } from '@unocss/preset-mini'
 
 export default defineNuxtPlugin(() => {
   // Adjust theme-color dynamically based on color mode.
@@ -10,8 +10,8 @@ export default defineNuxtPlugin(() => {
       name: 'theme-color',
       content: () => (
         colorMode.value === 'dark'
-          ? colors.zinc[900]
-          : 'white'
+          ? (theme.colors as any).zinc[900]
+          : (theme.colors as any).zinc[50]
       ),
     }],
   })

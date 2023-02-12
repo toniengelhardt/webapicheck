@@ -18,7 +18,7 @@ defineEmits<{
 }>()
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .element {
   @apply flex items-center rounded-md;
   .option {

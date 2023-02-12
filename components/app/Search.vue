@@ -1,11 +1,14 @@
 <template>
-  <div class="flex items-center max-w-120 h-9 mx-auto border-1 border-base rounded-md overflow-hidden">
+  <div
+    class="flex items-center max-w-120 h-9 mx-auto rounded-md overflow-hidden"
+    border="solid 1 base"
+  >
     <div class="flex justify-center items-center min-h-10 min-w-8 ml-1 text-zinc-500 dark:text-zinc-400">
       <Icon name="search" size="1.1rem" />
     </div>
     <input
       :value="searchTerm"
-      class="w-full <md:text-center bg-transparent outline-none transition-all"
+      class="w-full lt-md:text-center text-size-base bg-transparent border-none outline-none transition-all box-border"
       placeholder="Search APIs..."
       @input="$emit('update:searchTerm', ($event.target as HTMLInputElement)?.value)"
       @focus="$emit('update:searchMode', true); $plausible.trackEvent('focus: Search')"

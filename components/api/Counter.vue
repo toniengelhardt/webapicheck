@@ -17,9 +17,9 @@ defineProps<{
 }>()
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .item-counter {
-  @apply flex items-center text-black dark:text-white font-bold;
+  @apply flex items-center text-base dark:text-white font-bold;
 }
 .item-divider {
   @apply w-1px h-4 mx-2 bg-zinc-500;
