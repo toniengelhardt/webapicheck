@@ -13,8 +13,8 @@
         >
           <Icon name="back" />
         </div>
-        <div flex-1 flex-center>
-          <BrandIcon />
+        <div lt-md:flex-1 flex-center>
+          <BrandIcon :class="{ '!display-none': $route.path !== '/' }" />
           <BrandName ml-1 />
         </div>
         <div :class="{ 'display-none': $route.path === '/' }" w-8 h-8 />

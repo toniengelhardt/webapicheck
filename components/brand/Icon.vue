@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex-center flex-col w-8 h-8">
     <Icon name="brand" size="1.25rem" />
     <div class="flex">
       <div class="dot bg-lime-500" />

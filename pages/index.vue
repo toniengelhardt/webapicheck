@@ -44,7 +44,7 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const mode = useCookie('mode', { default: () => 'grid' }) as Ref<DisplayMode>
+const mode = useCookie('mode', { default: () => ref('grid') }) as Ref<DisplayMode>
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
 const searchMode = ref(false)
