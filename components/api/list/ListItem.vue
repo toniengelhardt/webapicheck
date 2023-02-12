@@ -18,7 +18,7 @@
     <div class="path">
       {{ api.path || 'N/A' }}
     </div>
-    <div class="<md:hidden flex justify-end items-center w-24">
+    <div class="lt-md:hidden flex justify-end items-center w-24">
       <component :is="sourceComponent" v-if="sourceComponent" />
     </div>
     <div class="indicators">
@@ -115,7 +115,7 @@ const sourceComponent = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .list-item {
   @apply flex flex-row px-3.5 py-2 rounded;
   .status {
@@ -136,7 +136,7 @@ const sourceComponent = computed(() => {
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full;
+      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full;
       .icon {
         @apply text-0.6rem;
       }
@@ -146,7 +146,7 @@ const sourceComponent = computed(() => {
     @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline leading-tight truncate;
   }
   .path {
-    @apply flex items-center w-60 text-sm <md:hidden;
+    @apply flex items-center w-60 text-sm lt-md:hidden;
   }
   &.experimental {
     @apply bg-purple-200 dark:bg-purple-500/50;

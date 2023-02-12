@@ -26,36 +26,40 @@ export default defineNuxtConfig({
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@nuxtjs/plausible',
+    '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-windicss',
+    // 'nuxt-windicss',
   ],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @import "@/assets/scss/_mixins.scss";
-          `,
-        },
-      },
-    },
-  },
+  // vite: {
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: `
+  //           @import "@/assets/scss/_mixins.scss";
+  //         `,
+  //       },
+  //     },
+  //   },
+  // },
   typescript: {
     shim: false,
   },
   css: [
-    'assets/scss/style.scss',
+    'assets/css/style.css',
   ],
   postcss: {
     plugins: {
-      cssnano: false,
+      'postcss-nested': {},
     },
   },
   app: {
     head: {
       htmlAttrs: {
         translate: 'no', // Avoid translation.
+      },
+      bodyAttrs: {
+        class: 'text-base bg-base',
       },
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', key: 'favicon' },

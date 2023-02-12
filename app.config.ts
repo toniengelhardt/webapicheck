@@ -1,6 +1,10 @@
 export default defineAppConfig({
   nuxtIcon: {
     aliases: {
+      nuxt: 'logos:nuxt-icon',
+      vite: 'logos:vitejs',
+      unocss: 'logos:unocss',
+      back: 'ph:arrow-left-bold',
       spinner: 'fa6-solid:spinner',
       brand: 'carbon:code',
       experimental: 'ph:flask-fill',
@@ -35,11 +39,12 @@ export default defineAppConfig({
       vercel: 'akar-icons:vercel-fill',
       downlink: 'carbon:cloud-download',
       roundtrip: 'carbon:arrows-horizontal',
-      grid: 'bi:grid-3x3-gap-fill',
+      grid: 'ph:squares-four-fill',
       list: 'ph:rows-fill',
-      available: 'akar-icons:circle-check',
-      unavailable: 'akar-icons:circle-x',
+      available: 'ph:check-circle-bold',
+      unavailable: 'ph:x-circle-bold',
       email: 'ph:paper-plane-tilt',
+      info: 'ph:info',
       discussion: 'ph:chats',
       check: 'ph:check-bold',
       cross: 'ph:x-bold',

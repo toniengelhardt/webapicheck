@@ -1,15 +1,15 @@
 <template>
-  <div class="flex justify-center">
-    <div class="flex flex-col md:(flex-row items-center) text-sm">
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col items-start w-full text-sm">
       <div
         v-for="(item, idx) in legend"
         :key="idx"
-        class="flex items-center <md:(not-last:mb-3 justify-center) md:mr-6"
+        class="flex items-center not-last:mb-3"
       >
-        <div class="flex justify-center items-center w-5 h-5 mr-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full">
+        <div class="flex shrink-0 justify-center items-center w-5 h-5 mr-2 bg-zinc-100 dark:bg-zinc-800 rounded-full">
           <Icon :name="item.icon" size=".65rem" />
         </div>
-        <span v-html="item.label" />
+        <div leading-tight v-html="item.label" />
       </div>
     </div>
   </div>
@@ -19,19 +19,19 @@
 const legend = [
   {
     icon: 'interaction',
-    label: '<i>User Interaction<sup class="ml-0.5">1</sup></i> required',
+    label: '<i>User Interaction</i> required',
   },
   {
     icon: 'permission',
-    label: '<i>Permission/s<sup class="ml-0.5">2</sup></i> required',
+    label: '<i>Permission/s</i> required',
   },
   {
     icon: 'secure',
-    label: '<i>Secure Context<sup class="ml-0.5">3</sup></i> required',
+    label: '<i>Secure Context</i> required',
   },
   {
     icon: 'webworker',
-    label: 'Available in <i>Web Workers<sup class="ml-0.5">4</sup></i>',
+    label: 'Available in <i>Web Workers</i>',
   },
   /* {
     icon: 'experimental',

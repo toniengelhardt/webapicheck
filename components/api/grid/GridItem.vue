@@ -137,9 +137,9 @@ const status = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2.5 text-zinc-800 border-0 border-zinc-300 dark:(border-zinc-500 text-white) rounded-md;
+  @apply self-start flex-row px-3 py-2.5 text-zinc-800 dark:text-white rounded-md;
   .header {
     @apply flex items-center h-5;
     .name {
@@ -194,7 +194,7 @@ const status = computed(() => {
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-1 rounded-full box-border;
+      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full box-border;
       .icon {
         @apply text-0.6rem;
       }

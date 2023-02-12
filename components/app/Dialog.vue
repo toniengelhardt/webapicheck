@@ -27,7 +27,7 @@ defineEmits<{
 }>()
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .modal-mask {
   @apply fixed top-0 left-0;
   display: table;
@@ -61,7 +61,7 @@ defineEmits<{
   }
 }
 
-// Transitions
+/* Transitions */
 
 .modal-enter-from {
   opacity: 0;
