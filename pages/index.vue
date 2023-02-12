@@ -49,7 +49,7 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const mode = useCookie('mode')
+const mode = useCookie('mode', { default: () => 'grid' })
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
 const searchMode = ref(false)
