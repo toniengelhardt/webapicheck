@@ -37,7 +37,7 @@
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Toni Engelhardt on Twitter"
-        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
       >toniengelhardt</NuxtLink>
     </span>
     <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
@@ -49,7 +49,7 @@
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Nuxt 3 website"
-        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Nuxt' } })"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Nuxt' } })"
       >Nuxt</NuxtLink>
       <Icon name="vite" class="ml-2 mr-1" />
       <NuxtLink
@@ -57,7 +57,7 @@
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Vite website"
-        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Vite' } })"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Vite' } })"
       >Vite</NuxtLink>
       <Icon name="unocss" class="ml-2 mr-1" filter dark:invert />
       <NuxtLink
@@ -65,7 +65,7 @@
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official WindiCSS website"
-        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Windi' } })"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Windi' } })"
       >Uno</NuxtLink>
     </span>
     <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
@@ -77,7 +77,7 @@
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
         title="Official Vercel website"
-        @click="$plausible.trackEvent('click: Footer link', { props: { target: 'Vercel' } })"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Vercel' } })"
       >Vercel</NuxtLink>
     </span>
   </div>

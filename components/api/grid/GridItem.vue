@@ -6,38 +6,11 @@
         :title="`${api.name} documentation`"
         target="_blank"
         class="name"
-        @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
+        @click="useTrackEvent('click: API link', { props: { api: api.name } })"
       >
         {{ api.name }}
       </NuxtLink>
-      <div class="indicators">
-        <ApiGridItemIndicator
-          v-if="api.availableInWebWorkers"
-          icon="webworker"
-          title="Web Workers"
-          description="This feature is also available in Web Workers."
-          link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
-        />
-        <ApiGridItemIndicator
-          v-if="api.userInteractionRequired"
-          icon="interaction"
-          title="User Interaction"
-          description="A user interaction is required to use this feature."
-        />
-        <ApiGridItemIndicator
-          v-if="api.permissionsRequired"
-          icon="permission"
-          title="Permissions"
-          description="This feature requires permissions to be granted by the user."
-        />
-        <ApiGridItemIndicator
-          v-if="api.secureContextRequired"
-          icon="secure"
-          title="Secure Context"
-          description="This feature requires a Secure Context (HTTPS) to be available."
-          link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
-        />
-      </div>
+      <ApiPropertyIndicators :api="api" />
     </div>
     <div class="text-sm">
       {{ api.path || 'N/A' }}
@@ -54,7 +27,7 @@
         <div v-else-if="api.action" class="py-3">
           <div
             class="btn-xs btn-default cursor-pointer"
-            @click="api.action!.func(); plausible.trackEvent('click: API action', { props: { api: api.name } });"
+            @click="api.action!.func(); useTrackEvent('click: API action', { props: { api: api.name } });"
           >
             <Icon v-if="api.action.icon" :name="api.action.icon" />
             <span class="mx-1.5">{{ api.action.label }}</span>
@@ -76,20 +49,15 @@
           </span>
         </div>
       </div>
-      <component :is="sourceComponent" v-if="sourceComponent" />
+      <ApiSource :api="api" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import ApiSourceChrome from '~/components/api/source/Chrome.vue'
-import ApiSourceMDN from '~/components/api/source/MDN.vue'
-
 const props = defineProps<{
   api: WebAPI
 }>()
-
-const plausible = usePlausible()
 
 const itemClass = computed(() => {
   if (props.api.available !== undefined) {
@@ -100,14 +68,6 @@ const itemClass = computed(() => {
         : 'available'
   }
   return 'loading'
-})
-const sourceComponent = computed(() => {
-  switch (props.api.source) {
-    case 'chrome':
-      return ApiSourceChrome
-    default:
-      return ApiSourceMDN
-  }
 })
 const status = computed(() => {
   if (props.api.available) {

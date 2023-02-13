@@ -29,7 +29,7 @@ useSeoMeta({
             title="Toni Engelhardt on Twitter"
             target="_blank"
             class="link"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'Twitter profile' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'Twitter profile' } })"
           >
             Twitter
           </NuxtLink><Icon name="external" class="ml-0.5" /></span> or
@@ -38,7 +38,7 @@ useSeoMeta({
             title="Contribute on GitHub"
             target="_blank"
             class="link"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub repo' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'GitHub repo' } })"
           >
             GitHub
           </NuxtLink><Icon name="external" class="ml-0.5" /></span>.
@@ -53,7 +53,7 @@ useSeoMeta({
             class="link"
             title="Send feedback via email"
             target="_blank"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'Feedback' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'Feedback' } })"
           >
             {{ $config.public.feedbackEmail }}
           </NuxtLink> or
@@ -62,7 +62,7 @@ useSeoMeta({
             title="GitHub issues for WebAPIcheck"
             target="_blank"
             class="link"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'GitHub issues' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'GitHub issues' } })"
           >
             create an issue
           </NuxtLink><Icon name="external" class="ml-0.5" />
@@ -73,7 +73,7 @@ useSeoMeta({
             title="Brave browser"
             target="_blank"
             class="link"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'Brave' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'Brave' } })"
           >
             Brave
           </NuxtLink><Icon name="external" class="ml-0.5" />)
@@ -88,7 +88,7 @@ useSeoMeta({
             title="Progressive Web Apps on web.dev"
             target="_blank"
             class="link"
-            @click="$plausible.trackEvent('click: Link', { props: { target: 'Progressive Web Apps (PWA)' } })"
+            @click="useTrackEvent('click: Link', { props: { target: 'Progressive Web Apps (PWA)' } })"
           >
             Progressive Web App (PWA)
           </NuxtLink><Icon name="external" class="ml-0.5" />,
@@ -317,7 +317,7 @@ useSeoMeta({
                 title="Better GitHub Repository Stats and Insights"
                 target="_blank"
                 class="btn-outline lt-sm:text-xl lt-md:flex-1 md:w-50 h-12"
-                @click="$plausible.trackEvent('click: RepoTracker')"
+                @click="useTrackEvent('click: RepoTracker')"
               >
                 <Icon name="repotracker" class="dark:text-white" />
                 <span class="ml-1.5 font-black">
@@ -330,7 +330,7 @@ useSeoMeta({
                 title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
                 target="_blank"
                 class="btn-outline lt-sm:(mt-3 text-xl) sm:ml-3 lt-md:flex-1  md:w-50 h-12"
-                @click="$plausible.trackEvent('click: GitHub stats')"
+                @click="useTrackEvent('click: GitHub stats')"
               >
                 <span class="ml-0.5">
                   <span class="font-black">GitHub</span>

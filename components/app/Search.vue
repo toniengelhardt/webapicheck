@@ -11,7 +11,7 @@
       w-full lt-md:text-center text-size-base text-base bg-transparent border-none outline-none transition-all box-border
       placeholder="Search APIs..."
       @input="$emit('update:searchTerm', ($event.target as HTMLInputElement)?.value)"
-      @focus="$emit('update:searchMode', true); $plausible.trackEvent('focus: Search')"
+      @focus="$emit('update:searchMode', true); useTrackEvent('focus: Search')"
       @blur="$emit('update:searchMode', false)"
     >
     <div

@@ -1,75 +1,32 @@
 <template>
   <div class="list-item" :class="itemClass">
     <div class="status" :class="status?.name">
-      <span v-if="status" class="status-icon">
-        <Icon :name="status.icon" />
-      </span>
+      <Icon v-if="status" :name="status.icon" />
     </div>
-    <div class="name">
-      <NuxtLink
-        :to="api.url"
-        :title="`${api.name} documentation`"
-        target="_blank"
-        @click="plausible.trackEvent('click: API link', { props: { api: api.name } })"
-      >
-        {{ api.name }}
-      </NuxtLink>
-    </div>
+    <NuxtLink
+      :to="api.url"
+      :title="`${api.name} documentation`"
+      target="_blank"
+      class="name"
+      @click="useTrackEvent('click: API link', { props: { api: api.name } })"
+    >
+      {{ api.name }}
+    </NuxtLink>
     <div class="path">
       {{ api.path || 'N/A' }}
     </div>
-    <div class="lt-md:hidden flex justify-end items-center w-24">
-      <component :is="sourceComponent" v-if="sourceComponent" />
-    </div>
-    <div class="indicators">
-      <ApiGridItemIndicator
-        v-if="api.experimental"
-        icon="experimental"
-        title="Experimental"
-        description="This feature is experimental, use with care."
-      />
-      <ApiGridItemIndicator
-        v-if="api.availableInWebWorkers"
-        icon="webworker"
-        title="Web Workers"
-        description="This feature is also available in Web Workers."
-        link="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
-      />
-      <ApiGridItemIndicator
-        v-if="api.userInteractionRequired"
-        icon="interaction"
-        title="User Interaction"
-        description="A user interaction is required to use this feature."
-      />
-      <ApiGridItemIndicator
-        v-if="api.permissionsRequired"
-        icon="permission"
-        title="Permissions"
-        description="This feature requires permissions to be granted by the user."
-      />
-      <ApiGridItemIndicator
-        v-if="api.secureContextRequired"
-        icon="secure"
-        title="Secure Context"
-        description="This feature requires a Secure Context (HTTPS) to be available."
-        link="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
-      />
-      <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-5 h-5 ml-2">
-        <Icon name="spinner" class="animate-spin" />
-      </div>
+    <ApiSource :api="api" />
+    <div flex justify-end items-center md:w-30>
+      <ApiPropertyIndicators v-if="itemClass !== 'loading'" :api="api" />
+      <Icon v-else name="spinner" class="animate-spin" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import ApiSourceChrome from '~/components/api/source/Chrome.vue'
-import ApiSourceMDN from '~/components/api/source/MDN.vue'
-
 const props = defineProps<{
   api: WebAPI
 }>()
-
-const plausible = usePlausible()
 
 const itemClass = computed(() => {
   if (props.api.available !== undefined) {
@@ -105,41 +62,24 @@ const status = computed(() => {
   }
   return undefined
 })
-const sourceComponent = computed(() => {
-  switch (props.api.source) {
-    case 'chrome':
-      return ApiSourceChrome
-    default:
-      return ApiSourceMDN
-  }
-})
 </script>
 
 <style lang="postcss" scoped>
 .list-item {
-  @apply flex flex-row px-3.5 py-2 rounded;
+  @apply flex items-center px-3.5 py-2 rounded;
   .status {
-    @apply flex items-center shrink-0 min-w-4 mr-2;
+    @apply flex-center shrink-0 w-5 h-5 mr-2 md:mr-3 border-solid border-1 border-base rounded-full box-border;
     &.available {
-      .status-icon {
-        @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
-      }
+      @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
     }
     &.experimental {
-      .status-icon {
-        @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
-      }
+      @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
     }
     &.unavailable {
-      .status-icon {
-        @apply text-rose-500 border-rose-500;
-      }
+      @apply text-rose-500 border-rose-500;
     }
-    .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full box-border;
-      .icon {
-        @apply text-0.6rem;
-      }
+    .icon {
+      @apply text-0.8rem;
     }
   }
   .name {
@@ -162,12 +102,6 @@ const sourceComponent = computed(() => {
   }
   &.loading {
     @apply bg-zinc-100 dark:bg-zinc-800;
-  }
-  .indicators {
-    @apply flex justify-end items-center md:w-25 text-sm;
-    > *:not(:last-child) {
-      @apply mr-2;
-    }
   }
   .item-link {
     @apply text-sm leading-none;

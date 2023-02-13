@@ -1,7 +1,7 @@
 <template>
   <span
     class="flex-center lt-md:(w-8 h-8) footer-link "
-    @click="onClick(); $plausible.trackEvent('click: Theme switcher');"
+    @click="onClick(); useTrackEvent('click: Theme switcher');"
   >
     <ClientOnly>
       <Icon :name="colorMode.preference" size="1.25rem" />
