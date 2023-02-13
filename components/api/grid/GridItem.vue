@@ -1,15 +1,15 @@
 <template>
-  <div class="grid-item" :class="itemClass">
+  <NuxtLink
+    :to="api.url"
+    :title="`${api.name} documentation`"
+    target="_blank"
+    class="grid-item" :class="itemClass"
+    @click="useTrackEvent('click: API link', { props: { api: api.name } })"
+  >
     <div class="header">
-      <NuxtLink
-        :to="api.url"
-        :title="`${api.name} documentation`"
-        target="_blank"
-        class="name"
-        @click="useTrackEvent('click: API link', { props: { api: api.name } })"
-      >
+      <div class="name">
         {{ api.name }}
-      </NuxtLink>
+      </div>
       <ApiPropertyIndicators :api="api" />
     </div>
     <div class="text-sm">
@@ -27,7 +27,7 @@
         <div v-else-if="api.action" class="py-3">
           <div
             class="btn-xs btn-default cursor-pointer"
-            @click="api.action!.func(); useTrackEvent('click: API action', { props: { api: api.name } });"
+            @click.prevent="api.action!.func(); useTrackEvent('click: API action', { props: { api: api.name } });"
           >
             <Icon v-if="api.action.icon" :name="api.action.icon" />
             <span class="mx-1.5">{{ api.action.label }}</span>
@@ -51,7 +51,7 @@
       </div>
       <ApiSource :api="api" />
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -88,11 +88,11 @@ const itemClass = computed(() => status.value?.name || 'loading')
 
 <style lang="postcss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2.5 text-zinc-800 dark:text-white rounded-md;
+  @apply self-start flex-row px-3 py-2.5 text-zinc-800 dark:text-white rounded-md hover:(filter brightness-97 dark:brightness-90);
   .header {
     @apply flex items-center h-5;
     .name {
-      @apply flex-1 text-lg font-black underline truncate leading-1.25rem;
+      @apply flex-1 text-lg font-black truncate leading-none;
     }
   }
   &.experimental {
@@ -109,12 +109,6 @@ const itemClass = computed(() => status.value?.name || 'loading')
   }
   &.loading {
     @apply bg-zinc-100 dark:bg-zinc-800;
-  }
-  .indicators {
-    @apply flex items-center text-sm leading-none;
-    > *:not(:last-child) {
-      @apply mr-2;
-    }
   }
   .item-link {
     @apply text-sm leading-none;

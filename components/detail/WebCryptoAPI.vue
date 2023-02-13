@@ -1,6 +1,6 @@
 <template>
   <div class="py-3">
-    <div class="btn-xs btn-default cursor-pointer" @click="generateKeys()">
+    <div class="btn-xs btn-default cursor-pointer" @click.prevent="generateKeys()">
       <Icon v-if="loading" name="spinner" class="animate-spin" />
       <Icon v-else name="encryption" />
       <span class="mx-1.5">Generate key</span>

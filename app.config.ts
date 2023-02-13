@@ -45,6 +45,7 @@ export default defineAppConfig({
       unavailable: 'ph:x-circle-bold',
       email: 'ph:paper-plane-tilt',
       info: 'ph:info',
+      waiting: 'ph:hourglass-medium-fill',
       discussion: 'ph:chats',
       check: 'ph:check-bold',
       cross: 'ph:x-bold',

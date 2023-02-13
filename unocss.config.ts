@@ -15,6 +15,7 @@ export default defineConfig({
     'bg-surface': 'bg-zinc-100 dark:bg-zinc-800',
     'text-base': 'text-black dark:text-zinc-200',
     'text-dim': 'text-zinc-500 dark:text-zinc-400',
+    'text-faint': 'text-zinc-400 dark:text-zinc-500',
     'border-base': 'border-zinc-300 dark:border-zinc-700',
     'btn': 'inline-flex justify-center items-center py-2 px-4 font-bold rounded-md cursor-pointer select-none box-border',
     'btn-xs': 'btn py-1 px-2 text-xs rounded',

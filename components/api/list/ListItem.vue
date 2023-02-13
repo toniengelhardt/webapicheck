@@ -1,17 +1,17 @@
 <template>
-  <div class="list-item" :class="itemClass">
+  <NuxtLink
+    :to="api.url"
+    :title="`${api.name} documentation`"
+    target="_blank"
+    class="list-item" :class="itemClass"
+    @click="useTrackEvent('click: API link', { props: { api: api.name } })"
+  >
     <div class="status" :class="status?.name">
       <Icon v-if="status" :name="status.icon" />
     </div>
-    <NuxtLink
-      :to="api.url"
-      :title="`${api.name} documentation`"
-      target="_blank"
-      class="name"
-      @click="useTrackEvent('click: API link', { props: { api: api.name } })"
-    >
+    <div class="name">
       {{ api.name }}
-    </NuxtLink>
+    </div>
     <div class="path">
       {{ api.path || 'N/A' }}
     </div>
@@ -20,7 +20,7 @@
       <ApiPropertyIndicators v-if="itemClass !== 'loading'" :api="api" />
       <Icon v-else name="spinner" class="animate-spin" />
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -50,16 +50,20 @@ const status = computed(() => {
       label: 'Not available',
     }
   }
-  return undefined
+  return {
+    name: 'loading',
+    icon: 'waiting',
+    label: 'Loading',
+  }
 })
-const itemClass = computed(() => status.value?.name || 'loading')
+const itemClass = computed(() => status.value.name)
 </script>
 
 <style lang="postcss" scoped>
 .list-item {
-  @apply flex items-center px-3.5 py-2 rounded;
+  @apply flex items-center px-3.5 py-2 rounded hover:(filter brightness-97 dark:brightness-90);
   .status {
-    @apply flex-center shrink-0 w-5 h-5 mr-2 md:mr-3 border-solid border-1 border-base rounded-full box-border;
+    @apply flex-center shrink-0 w-5 h-5 mr-2 md:mr-3 text-faint border-solid border-1 border-base rounded-full box-border;
     &.available {
       @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
     }
@@ -74,7 +78,7 @@ const itemClass = computed(() => status.value?.name || 'loading')
     }
   }
   .name {
-    @apply flex-1 md:min-w-90 md:text-lg font-black hover:underline leading-tight truncate;
+    @apply flex-1 md:min-w-90 md:text-lg font-black leading-none truncate;
   }
   .path {
     @apply flex items-center w-60 text-sm lt-md:hidden;
@@ -85,7 +89,7 @@ const itemClass = computed(() => status.value?.name || 'loading')
   &.available {
     @apply bg-lime-200 dark:bg-lime-500/50;
   }
-  &.not-available {
+  &.unavailable {
     @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;

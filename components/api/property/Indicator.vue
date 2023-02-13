@@ -1,8 +1,9 @@
 <template>
   <div
     :title="title"
-    class="flex justify-center items-center h-5 w-5 ml-2 cursor-pointer"
-    @click="dialogOpen = true"
+    flex justify-center items-center h-5 w-5 ml-2 bg-black:10 hover:bg-black:15
+    rounded cursor-pointer
+    @click.prevent="dialogOpen = true"
   >
     <Icon :name="icon" />
   </div>

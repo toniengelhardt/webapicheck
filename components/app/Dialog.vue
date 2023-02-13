@@ -9,9 +9,9 @@
           <div class="modal-body">
             <slot />
           </div>
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <slot name="footer" />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -59,6 +59,10 @@ defineEmits<{
       }
     }
   }
+}
+
+:deep(h3) {
+  @apply mt-0 mb-4;
 }
 
 /* Transitions */
