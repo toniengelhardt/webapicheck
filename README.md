@@ -28,7 +28,19 @@ Build application for production:
 pnpm build
 ```
 
-_The web platform and an open web are the most important infrastructure projects of our time._
+## Contribute
 
-**Repo Insights via [RepoTracker](https://repo-tracker.com):**  
+Contributions are very welcome!
+
+For bug fixes you can open pull requests right away, but for improvements and new features I'd suggest opening an issue for discussion first to avoid unnecessary work if it gets rejected.
+
+When you commit code please use prefixes according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventiona) to make [changelogithub](https://github.com/antfu/changelogithub) work properly.
+
+<br>
+
+> _The web platform and an open web are the most important infrastructure projects of our time._
+
+<br>
+
+Repo Insights via **[RepoTracker](https://repo-tracker.com)** at  
 [www.repo-tracker.com/r/gh/toniengelhardt/webapicheck](https://repo-tracker.com/r/gh/toniengelhardt/webapicheck)
