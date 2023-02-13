@@ -1,3 +1,10 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Info',
+  description: 'General information about WebAPIs and WebAPIcheck, plus Legend, Disclaimer, FAQs, Sources, and Browser Navigator.',
+})
+</script>
+
 <template>
   <div>
     <NuxtLayout>

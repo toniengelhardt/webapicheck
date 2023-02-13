@@ -1,4 +1,4 @@
-# Web API check
+# WebAPIcheck
 
 Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...
 
