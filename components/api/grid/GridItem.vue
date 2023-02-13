@@ -59,16 +59,6 @@ const props = defineProps<{
   api: WebAPI
 }>()
 
-const itemClass = computed(() => {
-  if (props.api.available !== undefined) {
-    return props.api.available === false
-      ? 'not-available'
-      : props.api.experimental
-        ? 'experimental'
-        : 'available'
-  }
-  return 'loading'
-})
 const status = computed(() => {
   if (props.api.available) {
     if (props.api.experimental) {
@@ -93,6 +83,7 @@ const status = computed(() => {
   }
   return undefined
 })
+const itemClass = computed(() => status.value?.name || 'loading')
 </script>
 
 <style lang="postcss" scoped>
@@ -110,7 +101,7 @@ const status = computed(() => {
   &.available {
     @apply bg-lime-200 dark:bg-lime-500/50;
   }
-  &.not-available {
+  &.unavailable {
     @apply bg-zinc-100 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
