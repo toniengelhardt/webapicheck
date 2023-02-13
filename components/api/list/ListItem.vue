@@ -26,10 +26,11 @@
 <script setup lang="ts">
 const props = defineProps<{
   api: WebAPI
+  available?: boolean
 }>()
 
 const status = computed(() => {
-  if (props.api.available) {
+  if (props.available) {
     if (props.api.experimental) {
       return {
         name: 'experimental',
@@ -43,7 +44,7 @@ const status = computed(() => {
       label: 'Available',
     }
   }
-  if (props.api.available === false) {
+  if (props.available === false) {
     return {
       name: 'unavailable',
       icon: 'cross',

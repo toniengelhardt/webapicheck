@@ -36,8 +36,6 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import * as shvl from 'shvl'
-import { apiData } from '~/utils/apis'
-import { sortByField } from '~/utils/sorting'
 
 const config = useRuntimeConfig()
 
@@ -59,24 +57,17 @@ const searchOptions = {
   threshold: 0.3,
 }
 
-const apis = ref(apiData)
+const webApiList = useWebApiList().value
+const webApiStatuses = useState('webApiStatuses', (): { [key: keyof typeof webApiData]: boolean } => ({}))
 
-const sortedAPIs = computed(() => {
-  const apiList = Object.keys(apis.value).reduce((list: WebAPI[], apiKey: string) => {
-    list.push(apis.value[apiKey])
-    return list
-  }, [])
-  sortByField(apiList, 'name')
-  return apiList
-})
-const fuse = computed(() => new Fuse(sortedAPIs.value, searchOptions))
+const fuse = computed(() => new Fuse(webApiList, searchOptions))
 const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
     ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
-    : sortedAPIs.value
+    : webApiList
 })
-const supportedAPICount = computed(() => filteredAPIs.value.filter(api => api.available).length)
-const totalAPICount = computed(() => sortedAPIs.value.length)
+const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)
+const totalAPICount = computed(() => webApiList.length)
 
 function defaultCheck(api: WebAPI) {
   if (api.path) {
@@ -88,15 +79,14 @@ function defaultCheck(api: WebAPI) {
 }
 
 function loadAPIs() {
-  if (navigator) {
-    Object.keys(apis.value).forEach((apiKey) => {
-      const api = apis.value[apiKey]
-      const check = api.check || defaultCheck
+  if (navigator && !Object.keys(webApiStatuses.value).length) {
+    webApiList.forEach((webApi) => {
+      const check = webApi.check || defaultCheck
       if (check.constructor.name === 'AsyncFunction') {
-        (check(api) as Promise<boolean>)
-          .then((available: boolean) => apis.value[apiKey].available = available)
+        (check(webApi) as Promise<boolean>)
+          .then((available: boolean) => webApiStatuses.value[webApi.id] = available)
       } else {
-        apis.value[apiKey].available = check(api) as boolean
+        webApiStatuses.value[webApi.id] = check(webApi) as boolean
       }
     })
   }
