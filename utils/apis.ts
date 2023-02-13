@@ -79,10 +79,14 @@ export const apiData: WebAPIData = {
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Content_Index_API',
     experimental: true,
     check: async () => {
-      try {
-        const registration = await navigator.serviceWorker.ready
-        return 'index' in registration
-      } catch (error) {
+      if ('serviceWorker' in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.ready
+          return 'index' in registration
+        } catch (error) {
+          return false
+        }
+      } else {
         return false
       }
     },

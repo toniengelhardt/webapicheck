@@ -12,6 +12,7 @@ export default defineConfig({
   shortcuts: {
     'flex-center': 'flex justify-center items-center',
     'bg-base': 'bg-white dark:bg-zinc-900',
+    'bg-surface': 'bg-zinc-100 dark:bg-zinc-800',
     'text-base': 'text-black dark:text-zinc-200',
     'text-dim': 'text-zinc-500 dark:text-zinc-400',
     'border-base': 'border-zinc-300 dark:border-zinc-700',
