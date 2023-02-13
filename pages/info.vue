@@ -151,8 +151,8 @@ useSeoMeta({
                   class="link"
                   target="_blank"
                 >
-                  "Let's build a Native(-like) Web App (NWA)"
-                </NuxtLink> for more info on that topic.
+                  Let's build a Native(-like) Web App (NWA)
+                </NuxtLink><Icon name="external" class="ml-0.5" /> for more info on that topic.
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ useSeoMeta({
                 class="link"
               >
                 Permissions API
-              </NuxtLink> that gives you better control over the permissions UX.
+              </NuxtLink><Icon name="external" class="ml-0.5" /> that gives you better control over the permissions UX.
             </p>
           </div>
         </div>
@@ -223,7 +223,7 @@ useSeoMeta({
                 target="_blank"
               >
                 W3C spec
-              </NuxtLink> and on the
+              </NuxtLink><Icon name="external" class="ml-0.5" /> and on the
               <NuxtLink
                 to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
                 title="Secure contexts on MDN"
@@ -231,7 +231,7 @@ useSeoMeta({
                 target="_blank"
               >
                 Secure Contexts
-              </NuxtLink>
+              </NuxtLink><Icon name="external" class="ml-0.5" />
               page on MDN.
             </p>
           </div>
@@ -255,7 +255,7 @@ useSeoMeta({
                 target="_blank"
               >
                 Web Worker API documentation
-              </NuxtLink> on MDN.
+              </NuxtLink><Icon name="external" class="ml-0.5" /> on MDN.
             </p>
           </div>
         </div>
