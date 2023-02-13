@@ -1,12 +1,43 @@
+<script setup lang="ts">
+const isSecure = computed(() => window?.isSecureContext)
+</script>
+
 <template>
-  <div class="flex flex-row justify-center items-center text-sm">
+  <div flex-center>
     <ClientOnly>
-      <span v-if="isSecure" class="flex items-center text-lime-600 dark:text-yellow-400 font-bold rounded-md"><span class="lt-md:inline lt-lg:hidden">secure</span><Icon name="secure" class="ml-0.5" /></span>
-      <span v-else class="flex items-center text-rose-600 dark:text-rose-500 font-bold rounded-md"><span class="lt-md:inline lt-lg:hidden">not secure</span><Icon name="unsecure" class="ml-0.5" /></span>
+      <div :class="isSecure ? 'secure' : 'unsecure'" flex-center>
+        <div class="label">
+          {{ isSecure ? 'secure' : 'not secure' }}
+        </div>
+        <div class="icon-container">
+          <Icon :name="isSecure ? 'secure' : 'unsecure'" size="0.75rem" />
+        </div>
+      </div>
     </ClientOnly>
   </div>
 </template>
 
-<script setup lang="ts">
-const isSecure = computed(() => window?.isSecureContext)
-</script>
+<style lang="postcss" scoped>
+.label {
+  @apply text-sm;
+}
+.icon-container {
+  @apply flex-center w-5 h-5 rounded;
+}
+.secure {
+  .icon-container {
+    @apply flex-center ml-1.5 bg-blue-100 dark:bg-blue-500/25;
+    .icon {
+      @apply text-blue-500 dark:text-blue-400;
+    }
+  }
+}
+.unsecure {
+  .icon-container {
+    @apply flex-center ml-1 bg-orange-100 dark:bg-orange-500/25;
+    .icon {
+      @apply text-orange-500 dark:text-orange-400;
+    }
+  }
+}
+</style>

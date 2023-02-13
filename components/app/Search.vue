@@ -8,7 +8,7 @@
     </div>
     <input
       :value="searchTerm"
-      class="w-full lt-md:text-center text-size-base bg-transparent border-none outline-none transition-all box-border"
+      class="w-full lt-md:text-center text-size-base text-base bg-transparent border-none outline-none transition-all box-border"
       placeholder="Search APIs..."
       @input="$emit('update:searchTerm', ($event.target as HTMLInputElement)?.value)"
       @focus="$emit('update:searchMode', true); $plausible.trackEvent('focus: Search')"

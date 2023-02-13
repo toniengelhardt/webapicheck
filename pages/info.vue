@@ -36,10 +36,8 @@
             GitHub
           </NuxtLink><Icon name="external" class="ml-0.5" /></span>.
         </p>
-
         <h2>Legend</h2>
         <ApiLegend />
-
         <h2>
           Disclaimer
         </h2>
@@ -195,7 +193,6 @@
             </div>
           </li>
         </ul>
-
         <div mt-12 flex lt-md:flex-col>
           <div class="md:w-1/2">
             <p class="mb-6 text-xl text-dim font-bold">
@@ -277,11 +274,9 @@
             </div>
           </div>
         </div>
-
         <div mt-12 text-center text-2xl font-thin italic>
           The web platform and an open web are the most important infrastructure projects of our time!
         </div>
-
         <div mt-12>
           <ClientOnly>
             <Navigator />
