@@ -1,8 +1,18 @@
+import * as shvl from 'shvl'
 import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
 import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
 import DetailNetworkConnectionAPI from '~/components/detail/NetworkConnectionAPI.vue'
 import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
+
+export function defaultWebApiCheck(api: WebAPI) {
+  if (api.path) {
+    const partials = api.path.split('.')
+    const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
+    return !!shvl.get(window, path, undefined)
+  }
+  return false
+}
 
 export const webApiData: { [slug: string]: Omit<WebAPI, 'id'> } = {
   'accelerometer': {

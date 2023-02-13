@@ -35,7 +35,6 @@
 
 <script setup lang="ts">
 import Fuse from 'fuse.js'
-import * as shvl from 'shvl'
 
 const config = useRuntimeConfig()
 
@@ -69,28 +68,5 @@ const filteredAPIs = computed(() => {
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)
 const totalAPICount = computed(() => webApiList.length)
 
-function defaultCheck(api: WebAPI) {
-  if (api.path) {
-    const partials = api.path.split('.')
-    const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
-    return !!shvl.get(window, path, undefined)
-  }
-  return false
-}
-
-function loadAPIs() {
-  if (navigator && !Object.keys(webApiStatuses.value).length) {
-    webApiList.forEach((webApi) => {
-      const check = webApi.check || defaultCheck
-      if (check.constructor.name === 'AsyncFunction') {
-        (check(webApi) as Promise<boolean>)
-          .then((available: boolean) => webApiStatuses.value[webApi.id] = available)
-      } else {
-        webApiStatuses.value[webApi.id] = check(webApi) as boolean
-      }
-    })
-  }
-}
-
-onMounted(() => loadAPIs())
+onMounted(() => useLoadWebApis())
 </script>

@@ -13,6 +13,11 @@ const webApiId = computed(() => route.params.id.toString())
 const webApi = computed(() => ({ id: webApiId.value, ...webApiData[webApiId.value] }))
 const available = computed(() => webAPIStatuses.value[webApiId.value])
 
+useSeoMeta({
+  title: () => webApi.value.name,
+  description: () => `Details for "${webApi.value.name}". WebAPI device test for your current device, general information, and requirements.`,
+})
+
 const status = computed(() => {
   if (available) {
     if (webApi.value.experimental) {
@@ -37,13 +42,17 @@ const status = computed(() => {
   }
   return undefined
 })
+
+onMounted(() => useLoadWebApis([webApi.value]))
 </script>
 
 <template>
   <div>
     <NuxtLayout>
       <div max-w-screen-lg mx-auto px-4>
-        <h1>{{ webApi.name }}</h1>
+        <h1>
+          {{ webApi.name }}
+        </h1>
         <div class="status" :class="status?.name">
           <span class="status-icon">
             <Icon :name="status?.icon || ''" />
@@ -66,7 +75,9 @@ const status = computed(() => {
               Source
             </div>
             <div class="value">
-              <ApiSource :api="webApi" />
+              <ClientOnly>
+                <ApiSource :api="webApi" />
+              </ClientOnly>
             </div>
           </div>
           <div>
