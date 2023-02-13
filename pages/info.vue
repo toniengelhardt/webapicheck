@@ -146,7 +146,7 @@ useSeoMeta({
               <p mt-2>
                 Take a look at my post
                 <NuxtLink
-                  to="https://www.w3.org"
+                  to="https://itnext.io/lets-build-a-native-like-web-app-nwa-22a553fee338"
                   title="The World Wide Web Consortium"
                   class="link"
                   target="_blank"
