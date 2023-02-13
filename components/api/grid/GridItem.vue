@@ -1,8 +1,7 @@
 <template>
   <NuxtLink
-    :to="api.url"
+    :to="`/apis/${api.id}`"
     :title="`${api.name} documentation`"
-    target="_blank"
     class="grid-item" :class="itemClass"
     @click="useTrackEvent('click: API link', { props: { api: api.name } })"
   >
@@ -16,7 +15,7 @@
       {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-12">
-      <template v-if="api.available">
+      <template v-if="available">
         <component
           :is="api.detail"
           v-if="api.detail"
@@ -57,10 +56,11 @@
 <script setup lang="ts">
 const props = defineProps<{
   api: WebAPI
+  available?: boolean
 }>()
 
 const status = computed(() => {
-  if (props.api.available) {
+  if (props.available) {
     if (props.api.experimental) {
       return {
         name: 'experimental',
@@ -74,7 +74,7 @@ const status = computed(() => {
       label: 'Available',
     }
   }
-  if (props.api.available === false) {
+  if (props.available === false) {
     return {
       name: 'unavailable',
       icon: 'cross',

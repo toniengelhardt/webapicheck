@@ -1,9 +1,8 @@
 declare interface WebAPI {
-  key?: string,
+  id: string, // also used as slug.
   name: string,
   path?: string,
   url: string,
-  available?: boolean,
   source?: string,
   experimental?: boolean,
   userInteractionRequired?: boolean,
@@ -24,6 +23,8 @@ declare interface WebAPI {
   detail?: any,
 }
 
-declare type WebAPIData = { [key: string]: WebAPI }
-
-declare type DisplayMode = 'rows' | 'grid'
+declare interface WebAPIStatus {
+  name: string,
+  icon: string,
+  label: string,
+}
