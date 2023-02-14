@@ -22,7 +22,7 @@ defineProps<{
   modelValue: DisplayMode
 }>()
 defineEmits<{
-  (event: 'update:modelValue', value: string): void
+  (event: 'update:modelValue', value: DisplayMode): void
 }>()
 </script>
 

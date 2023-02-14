@@ -13,8 +13,8 @@
         </div>
         <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
           <ApiModeSelector
-            :model-value="mode as DisplayMode"
-            @update:model-value="newValue => mode = newValue"
+            :model-value="mode"
+            @update:model-value="updateMode($event)"
           />
         </div>
         <div class="flex lt-md:(w-1/3 justify-center)">
@@ -46,7 +46,7 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const mode = useCookie('mode', { default: () => 'grid' })
+const mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' })
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
 const searchMode = ref(false)
@@ -67,6 +67,10 @@ const filteredAPIs = computed(() => {
 })
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)
 const totalAPICount = computed(() => webApiList.length)
+
+function updateMode(newValue: DisplayMode) {
+  mode.value = newValue
+}
 
 onMounted(() => useTestWebApis())
 </script>
