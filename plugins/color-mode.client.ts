@@ -11,7 +11,7 @@ export default defineNuxtPlugin(() => {
       content: () => (
         colorMode.value === 'dark'
           ? (theme.colors as any).zinc[900]
-          : (theme.colors as any).zinc[50]
+          : '#ffffff'
       ),
     }],
   })
