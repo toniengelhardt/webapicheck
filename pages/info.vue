@@ -8,8 +8,10 @@ useSeoMeta({
 <template>
   <div>
     <NuxtLayout>
-      <div max-w-screen-md mx-auto px-4 py-12>
-        <h1>Info</h1>
+      <div max-w-screen-md mx-auto px-3 md:px-4 py-4 md:py-12>
+        <h1 mb-8 md:mb-12>
+          Info
+        </h1>
         <p>
           With this little project you can easily check which
           <NuxtLink
@@ -354,9 +356,6 @@ useSeoMeta({
 </template>
 
 <style lang="postcss" scoped>
-h1 {
-  @apply mt-0;
-}
 h2 {
   @apply mt-8 md:mt-12;
 }

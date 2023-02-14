@@ -3,7 +3,7 @@ const _navigator: any = computed(() => navigator)
 </script>
 
 <template>
-  <div v-if="_navigator" class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-md">
+  <div v-if="_navigator" class="p-3 md:px-4 bg-zinc-100 dark:bg-zinc-800 rounded-md">
     <p class="font-black">
       Navigator
     </p>

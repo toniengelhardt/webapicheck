@@ -5,7 +5,7 @@ const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
 </script>
 
 <template>
-  <div class="flex justify-between items-center text-sm text-dim px-3 md:px-4 h-12 box-border" border="t-solid t-1 base">
+  <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-12 box-border" border="t-solid t-1 base">
     <ThemeSelector />
     <NuxtLink
       :to="$config.public.repoUrl"

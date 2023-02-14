@@ -49,7 +49,7 @@ onMounted(() => useTestWebApis([webApi.value]))
 <template>
   <div>
     <NuxtLayout>
-      <div max-w-screen-lg mx-auto px-4>
+      <div max-w-screen-lg mx-auto px-3 md:px-4>
         <h1>
           {{ webApi.name }}
         </h1>
@@ -61,7 +61,7 @@ onMounted(() => useTestWebApis([webApi.value]))
             {{ status?.label }}
           </span>
         </div>
-        <div class="box" grid md:grid-cols-2 gap-4 mt-8>
+        <div class="box" grid md:grid-cols-2 gap-3 md:gap-4 mt-8>
           <div>
             <div class="label">
               Path
@@ -132,7 +132,7 @@ onMounted(() => useTestWebApis([webApi.value]))
 
 <style lang="postcss" scoped>
 h1 {
-  @apply my-8;
+  @apply mb-8;
 }
 .status {
   @apply flex items-center;
@@ -159,10 +159,10 @@ h1 {
   }
 }
 .box {
-  @apply p-4 border-solid border-1 border-base rounded;
+  @apply p-3 md:p-4 border-solid border-1 border-base rounded;
 }
 .panel {
-  @apply px-4 py-3 bg-blue-50 dark:bg-blue-400/10 mt-4 rounded;
+  @apply px-3 md:px-4 py-3 bg-blue-50 dark:bg-blue-400/10 mt-4 rounded;
   .icon {
     @apply mr-2 text-blue-600 dark:text-blue-400;
   }

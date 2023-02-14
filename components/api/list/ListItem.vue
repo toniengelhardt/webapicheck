@@ -63,7 +63,7 @@ const itemClass = computed(() => status.value.name)
 
 <style lang="postcss" scoped>
 .list-item {
-  @apply flex items-center px-4 py-2 hover:(filter brightness-97 dark:brightness-90);
+  @apply flex items-center px-3 md:px-4 py-2 hover:(filter brightness-97 dark:brightness-90);
   &.experimental {
     @apply bg-purple-200 dark:bg-purple-600/50;
   }

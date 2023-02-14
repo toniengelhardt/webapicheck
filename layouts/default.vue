@@ -2,7 +2,7 @@
   <div class="layout">
     <!-- Header -->
     <div
-      class="flex lt-md:(flex-col justify-center) md:(flex-row items-center) w-full px-4 bg-base box-border"
+      class="flex lt-md:(flex-col justify-center) md:(flex-row items-center) w-full px3 md:px-4 bg-base box-border"
       border="b-solid b-1 base"
     >
       <div class="flex items-center h-12 lt-md:justify-center md:w-1/3">

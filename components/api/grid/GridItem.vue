@@ -87,7 +87,7 @@ const itemClass = computed(() => status.value?.name || 'loading')
 
 <style lang="postcss" scoped>
 .grid-item {
-  @apply self-start flex-row px-4 md:px-3 py-2.5 text-zinc-800 dark:text-white md:rounded-md hover:(filter brightness-97 dark:brightness-90);
+  @apply self-start flex-row px-3 py-2.5 text-zinc-800 dark:text-white md:rounded-md hover:(filter brightness-97 dark:brightness-90);
   .header {
     @apply flex items-center h-5;
     .name {
