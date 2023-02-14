@@ -20,17 +20,17 @@ defineProps<{
   @apply flex items-center;
   &.available {
     .status-icon {
-      @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
+      @apply text-available border-available;
     }
   }
   &.experimental {
     .status-icon {
-      @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
+      @apply text-experimental border-experimental;
     }
   }
   &.unavailable {
     .status-icon {
-      @apply text-rose-500 border-rose-500;
+      @apply text-unavailable;
     }
   }
   .status-icon {

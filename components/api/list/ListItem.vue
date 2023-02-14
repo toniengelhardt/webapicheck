@@ -82,13 +82,13 @@ const itemClass = computed(() => status.value.name)
   .status {
     @apply flex-center shrink-0 w-5 h-5 mr-2 md:mr-3 text-dim border-solid border-0 border-base rounded-full box-border;
     &.available {
-      @apply text-lime-700 border-lime-700 dark:(text-lime-300 border-lime-300);
+      @apply text-available border-available;
     }
     &.experimental {
-      @apply text-purple-800 border-purple-800 dark:(text-purple-300 border-purple-300);
+      @apply text-experimental border-experimental;
     }
     &.unavailable {
-      @apply text-rose-600 border-rose-600 dark:(text-rose-500 border-rose-500);
+      @apply text-unavailable;
     }
     .icon {
       @apply text-1.25rem;

@@ -138,17 +138,17 @@ h1 {
   @apply flex items-center;
   &.available {
     .status-icon {
-      @apply text-lime-600 bg-lime-100 border-lime-600 dark:(text-lime-300 bg-lime-500/20 border-lime-300);
+      @apply text-available border-available bg-lime-100 dark:bg-lime-500/20;
     }
   }
   &.experimental {
     .status-icon {
-      @apply text-purple-700 bg-purple-100 border-purple-700 dark:(text-purple-300 bg-purple-500/20 border-purple-300);
+      @apply text-experimental border-experimental bg-purple-100 dark:bg-purple-500/20;
     }
   }
   &.unavailable {
     .status-icon {
-      @apply text-rose-600 bg-rose-100 border-rose-600 dark:(text-rose-500 bg-rose-500/20 border-rose-500);
+      @apply text-unavailable border-unavailable bg-rose-100 dark:bg-rose-500/20;
     }
   }
   .status-icon {

@@ -1,11 +1,11 @@
 <template>
-  <div class="flex items-center text-xs text-zinc-500 dark:text-zinc-400">
+  <div class="flex items-center text-sm text-zinc-500 dark:text-zinc-400">
     <div class="item-counter">
-      <Icon name="available" class="text-lime-600 dark:text-lime-500 mr-1" /><span>{{ supportedCount }}</span>
+      <Icon name="available" class="text-available mr-1" /><span>{{ supportedCount }}</span>
     </div>
     <div class="item-divider" />
     <div class="item-counter">
-      <Icon name="unavailable" class="text-rose-600 dark:text-rose-500 mr-1" /><span>{{ totalCount - supportedCount }}</span>
+      <Icon name="unavailable" class="text-unavailable mr-1" /><span>{{ totalCount - supportedCount }}</span>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ defineProps<{
 
 <style lang="postcss" scoped>
 .item-counter {
-  @apply flex items-center text-base dark:text-white font-bold;
+  @apply flex items-center text-base dark:text-white font-semibold;
 }
 .item-divider {
   @apply w-1px h-4 mx-2 bg-zinc-500;

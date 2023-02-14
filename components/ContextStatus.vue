@@ -19,7 +19,7 @@ const isSecure = computed(() => window?.isSecureContext)
 
 <style lang="postcss" scoped>
 .label {
-  @apply text-sm;
+  @apply text-sm font-semibold;
 }
 .icon-container {
   @apply flex-center w-5 h-5 ml-2 rounded;
