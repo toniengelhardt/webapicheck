@@ -13,7 +13,7 @@
         </div>
         <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
           <ApiModeSelector
-            :modelValue="mode"
+            :modelValue="displayMode"
             @update:modelValue="updateMode($event)"
           />
         </div>
@@ -28,8 +28,8 @@
     >
       There are no APIs matching your search...
     </div>
-    <ApiList v-else-if="mode === 'rows'" :apis="filteredAPIs" />
-    <ApiGrid v-else-if="mode === 'grid'" :apis="filteredAPIs" />
+    <ApiList v-else-if="displayMode === 'rows'" :apis="filteredAPIs" />
+    <ApiGrid v-else-if="displayMode === 'grid'" :apis="filteredAPIs" />
   </NuxtLayout>
 </template>
 
@@ -46,10 +46,10 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const mode: Ref<DisplayMode> = useCookie('mode', { default: () => 'grid' })
+const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'grid' })
+const searchMode = ref(false)
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
-const searchMode = ref(false)
 
 const searchOptions = {
   keys: ['name'],
@@ -69,12 +69,12 @@ const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webA
 const totalAPICount = computed(() => webApiList.length)
 
 function updateMode(newValue: DisplayMode) {
-  mode.value = newValue
+  displayMode.value = newValue
 }
 
 onMounted(() => useTestWebApis())
 
-watch(() => mode.value, (newVal, oldVal) => {
+watch(() => displayMode.value, (newVal, oldVal) => {
   console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
 })
 </script>
