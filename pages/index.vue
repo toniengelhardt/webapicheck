@@ -29,7 +29,7 @@
       There are no APIs matching your search...
     </div>
     <ApiList v-else-if="displayMode === 'rows'" :apis="filteredAPIs" />
-    <ApiGrid v-else-if="displayMode === 'grid'" :apis="filteredAPIs" />
+    <ApiGrid v-else-if="displayMode === 'tiles'" :apis="filteredAPIs" />
   </NuxtLayout>
 </template>
 
@@ -46,7 +46,7 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
-const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'grid' })
+const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'tiles' })
 
 console.log('Initial displayMode value:', displayMode.value)
 
@@ -59,17 +59,17 @@ const searchOptions = {
   threshold: 0.3,
 }
 
-const webApiList = useWebApiList().value
+const webApiList = useWebApiList()
 const webApiStatuses = useState('webApiStatuses', (): { [key: keyof typeof webApiData]: boolean } => ({}))
 
-const fuse = computed(() => new Fuse(webApiList, searchOptions))
+const fuse = computed(() => new Fuse(webApiList.value, searchOptions))
 const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
     ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebApi>) => result.item)
-    : webApiList
+    : webApiList.value
 })
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)
-const totalAPICount = computed(() => webApiList.length)
+const totalAPICount = computed(() => webApiList.value.length)
 
 function updateMode(newValue: DisplayMode) {
   displayMode.value = newValue

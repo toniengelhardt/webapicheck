@@ -1,1 +1,1 @@
-declare type DisplayMode = 'rows' | 'grid'
+declare type DisplayMode = 'rows' | 'tiles'

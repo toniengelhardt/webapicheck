@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 gap-0.5 py-0.5">
     <ApiListItem
       v-for="api in apis"
-      :key="api.name"
+      :key="api.id"
       :api="api"
       :available="!!webApiStatuses[api.id]"
     />
