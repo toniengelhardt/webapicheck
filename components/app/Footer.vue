@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 
-const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses')
+const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
 
 const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
 

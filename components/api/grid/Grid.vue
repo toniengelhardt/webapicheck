@@ -4,7 +4,7 @@
       v-for="api in apis"
       :key="api.name"
       :api="api"
-      :available="webApiStatuses[api.id]"
+      :available="!!webApiStatuses[api.id]"
     />
   </div>
 </template>
@@ -14,5 +14,5 @@ defineProps<{
   apis: WebApi[]
 }>()
 
-const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses')
+const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
 </script>
