@@ -47,7 +47,7 @@
           </span>
         </div>
       </div>
-      <ApiSource :api="api" />
+      <ApiSource :source="api.source" />
     </div>
   </NuxtLink>
 </template>

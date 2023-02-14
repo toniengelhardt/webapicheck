@@ -14,7 +14,7 @@
       {{ api.path || 'N/A' }}
     </div>
     <ApiSource
-      :api="api"
+      :source="api.source"
       class="source"
     />
     <div class="indicators">

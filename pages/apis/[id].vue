@@ -75,9 +75,7 @@ onMounted(() => useTestWebApis([webApi.value]))
               Source
             </div>
             <div class="value">
-              <ClientOnly>
-                <ApiSource :api="webApi" />
-              </ClientOnly>
+              <ApiSource :source="webApi.source" />
             </div>
           </div>
           <div>

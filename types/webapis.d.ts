@@ -1,9 +1,11 @@
+declare type WebApiSource = 'chrome' | 'mdn'
+
 declare interface WebApi {
   id: string, // also used as slug.
   name: string,
   path?: string,
   url: string,
-  source?: string,
+  source: WebApiSource,
   experimental?: boolean,
   userInteractionRequired?: boolean,
   permissionsRequired?: boolean,

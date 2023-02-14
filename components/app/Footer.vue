@@ -67,7 +67,7 @@ async function share() {
         class="footer-item font-semibold lt-md:(w-8 h-8)"
         target="_blank"
         title="Toni Engelhardt on Twitter"
-        @click="useTrackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
+        @click="useTrackEvent('click: Twitter profile')"
       >
         <Icon name="logos:twitter" lt-md:text-1.4rem md:ml-1 md:mr-1 />
         <span lt-md:hidden>toniengelhardt</span>
