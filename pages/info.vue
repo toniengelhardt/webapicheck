@@ -266,7 +266,7 @@ useSeoMeta({
             <p class="mb-6 text-xl text-dim font-bold">
               Resources
             </p>
-            <ul class="p-0 md:list-disc-inside">
+            <ul class="pl-4 md:pl-0.5 md:list-disc-inside">
               <li>
                 <NuxtLink
                   to="https://developer.mozilla.org"
