@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="indicators">
+  <div class="flex items-center">
     <ApiPropertyIndicator
       v-if="api.experimental"
       icon="experimental"
@@ -40,12 +40,3 @@ defineProps<{
     />
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.indicators {
-  @apply flex items-center text-sm;
-  > *:not(:last-child) {
-    @apply mr-2;
-  }
-}
-</style>

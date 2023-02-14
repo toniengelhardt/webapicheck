@@ -11,10 +11,10 @@
       </div>
       <ApiPropertyIndicators :api="api" />
     </div>
-    <div class="text-sm">
+    <div class="path">
       {{ api.path || 'N/A' }}
     </div>
-    <div class="flex-1 min-h-12">
+    <div class="flex-1 min-h-4 md:min-h-12">
       <template v-if="available">
         <component
           :is="api.detail"
@@ -88,12 +88,15 @@ const itemClass = computed(() => status.value?.name || 'loading')
 
 <style lang="postcss" scoped>
 .grid-item {
-  @apply self-start flex-row px-3 py-2.5 text-zinc-800 dark:text-white rounded-md hover:(filter brightness-97 dark:brightness-90);
+  @apply self-start flex-row px-4 md:px-3 py-2.5 text-zinc-800 dark:text-white md:rounded-md hover:(filter brightness-97 dark:brightness-90);
   .header {
     @apply flex items-center h-5;
     .name {
       @apply flex-1 text-lg font-black truncate leading-none;
     }
+  }
+  .path {
+    @apply text-sm text-black/65 dark:text-white/75;
   }
   &.experimental {
     @apply bg-purple-200 dark:bg-purple-500/50;
@@ -102,7 +105,7 @@ const itemClass = computed(() => status.value?.name || 'loading')
     @apply bg-lime-200 dark:bg-lime-500/50;
   }
   &.unavailable {
-    @apply bg-zinc-100 dark:bg-zinc-700;
+    @apply bg-zinc-200 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }
@@ -137,13 +140,14 @@ const itemClass = computed(() => status.value?.name || 'loading')
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-4 h-4 border-solid border-1 rounded-full box-border;
+      @apply flex justify-center items-center w-5 h-5
+      border-solid border-1 rounded-full box-border;
       .icon {
-        @apply text-0.6rem;
+        @apply text-0.8rem;
       }
     }
     .status-label {
-      @apply ml-1.5 text-xs;
+      @apply ml-1.5 text-sm;
     }
   }
 }

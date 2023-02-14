@@ -22,11 +22,11 @@ const isSecure = computed(() => window?.isSecureContext)
   @apply text-sm;
 }
 .icon-container {
-  @apply flex-center w-5 h-5 rounded;
+  @apply flex-center w-5 h-5 ml-2 rounded;
 }
 .secure {
   .icon-container {
-    @apply flex-center ml-1.5 bg-blue-100 dark:bg-blue-500/25;
+    @apply flex-center bg-blue-100 dark:bg-blue-500/25;
     .icon {
       @apply text-blue-500 dark:text-blue-400;
     }
@@ -34,7 +34,7 @@ const isSecure = computed(() => window?.isSecureContext)
 }
 .unsecure {
   .icon-container {
-    @apply flex-center ml-1 bg-orange-100 dark:bg-orange-500/25;
+    @apply flex-center bg-orange-100 dark:bg-orange-500/25;
     .icon {
       @apply text-orange-500 dark:text-orange-400;
     }

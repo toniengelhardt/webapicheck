@@ -7,11 +7,14 @@ definePageMeta({
 
 const route = useRoute()
 
-const webAPIStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('WebAPIStatuses')
+const webAPIStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('webApiStatuses', () => ({}))
 
 const webApiId = computed(() => route.params.id.toString())
 const webApi = computed(() => ({ id: webApiId.value, ...webApiData[webApiId.value] }))
-const available = computed(() => webAPIStatuses.value[webApiId.value])
+const available = computed(() => {
+  console.log(webAPIStatuses.value)
+  return webAPIStatuses.value[webApiId.value]
+})
 
 useSeoMeta({
   title: () => webApi.value.name,
@@ -19,7 +22,7 @@ useSeoMeta({
 })
 
 const status = computed(() => {
-  if (available) {
+  if (available.value) {
     if (webApi.value.experimental) {
       return {
         name: 'experimental',
@@ -33,7 +36,7 @@ const status = computed(() => {
       label: 'Available on this device',
     }
   }
-  if (available === false) {
+  if (available.value === false) {
     return {
       name: 'unavailable',
       icon: 'cross',
@@ -64,10 +67,10 @@ onMounted(() => useLoadWebApis([webApi.value]))
         <div class="box" grid md:grid-cols-2 gap-4 mt-8>
           <div>
             <div class="label">
-              Property
+              Path
             </div>
             <div class="value">
-              {{ webApi.path }}
+              {{ webApi.path || 'N/A' }}
             </div>
           </div>
           <div>
@@ -97,31 +100,32 @@ onMounted(() => useLoadWebApis([webApi.value]))
           </div>
         </div>
         <div mt-8>
-          <div v-if="webApi.experimental" class="panel">
-            <div flex items-center>
-              <Icon name="experimental" mr-1.5 text-faint size="1.25rem" /> Experimental
-            </div>
-          </div>
+          <p text-dim font-bold>
+            Special properties
+          </p>
           <div v-if="webApi.availableInWebWorkers" class="panel">
             <div flex items-center>
-              <Icon name="webworker" mr-1.5 text-faint size="1.25rem" /> Available in Web Workers
+              <Icon name="webworker" size="1.25rem" /> Available in Web Workers
             </div>
           </div>
           <div v-if="webApi.userInteractionRequired" class="panel">
             <div flex items-center>
-              <Icon name="interaction" mr-1.5 text-faint size="1.25rem" /> User interaction required
+              <Icon name="interaction" size="1.25rem" /> User interaction required
             </div>
           </div>
           <div v-if="webApi.permissionsRequired" class="panel">
             <div flex items-center>
-              <Icon name="permission" mr-1.5 text-faint size="1.25rem" /> Permission/s required
+              <Icon name="permission" size="1.25rem" /> Permission/s required
             </div>
           </div>
           <div v-if="webApi.secureContextRequired" class="panel">
             <div flex items-center>
-              <Icon name="secure" mr-1.5 text-faint size="1.25rem" /> Secure context required
+              <Icon name="secure" size="1.25rem" /> Secure context required
             </div>
           </div>
+          <p v-if="!webApi.availableInWebWorkers && !webApi.userInteractionRequired && !webApi.permissionsRequired && !webApi.secureContextRequired" mt-4 italic>
+            No special features or requirements.
+          </p>
         </div>
       </div>
     </NuxtLayout>
@@ -160,7 +164,10 @@ h1 {
   @apply p-4 border-solid border-1 border-base rounded;
 }
 .panel {
-  @apply p-4 bg-surface not-first:mt-4 rounded;
+  @apply px-4 py-3 bg-blue-50 dark:bg-blue-400/10 not-first:mt-4 rounded;
+  .icon {
+    @apply mr-2 text-blue-600 dark:text-blue-400;
+  }
 }
 .label {
   @apply mb-1.5 text-sm text-dim font-bold;

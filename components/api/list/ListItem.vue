@@ -15,7 +15,7 @@
     <div class="path">
       {{ api.path || 'N/A' }}
     </div>
-    <ApiSource :api="api" />
+    <ApiSource :api="api" lt-md:hidden />
     <div flex justify-end items-center md:w-30>
       <ApiPropertyIndicators v-if="itemClass !== 'loading'" :api="api" />
       <Icon v-else name="spinner" class="animate-spin" />
@@ -62,7 +62,7 @@ const itemClass = computed(() => status.value.name)
 
 <style lang="postcss" scoped>
 .list-item {
-  @apply flex items-center px-3.5 py-2 rounded hover:(filter brightness-97 dark:brightness-90);
+  @apply flex items-center px-4 py-2 hover:(filter brightness-97 dark:brightness-90);
   .status {
     @apply flex-center shrink-0 w-5 h-5 mr-2 md:mr-3 text-faint border-solid border-1 border-base rounded-full box-border;
     &.available {
@@ -91,7 +91,7 @@ const itemClass = computed(() => status.value.name)
     @apply bg-lime-200 dark:bg-lime-500/50;
   }
   &.unavailable {
-    @apply bg-zinc-100 dark:bg-zinc-700;
+    @apply bg-zinc-200 dark:bg-zinc-700;
     .name {
       @apply text-zinc-600 dark:text-zinc-300 line-through;
     }

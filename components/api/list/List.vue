@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 gap-0.5 p-0.5">
+  <div class="grid grid-cols-1 gap-0.5 py-0.5">
     <ApiListItem
       v-for="api in apis"
       :key="api.name"
