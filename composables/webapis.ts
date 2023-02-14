@@ -3,7 +3,7 @@
  * Note that it has to return a ref, otherwise the ShallowRef components break.
  */
 export const useWebApiList = () => {
-  const list = Object.keys(webApiData).reduce((list: WebAPI[], apiKey: string) => {
+  const list = Object.keys(webApiData).reduce((list: WebApi[], apiKey: string) => {
     list.push({
       id: apiKey,
       ...webApiData[apiKey],
@@ -17,7 +17,7 @@ export const useWebApiList = () => {
 /**
  * Note: this probably needs some refactoring.
  */
-export const useWebApiStatus = (api: WebAPI, available?: boolean) => {
+export const useWebApiStatus = (api: WebApi, available?: boolean) => {
   return computed(() => {
     if (available) {
       if (api.experimental) {
@@ -50,9 +50,9 @@ export const useWebApiStatus = (api: WebAPI, available?: boolean) => {
  * @param webApis: list of WebAPIs to test, defaults to all.
  * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
  */
-export const useTestWebApis = (webApis?: WebAPI[], force = false) => {
+export const useTestWebApis = (webApis?: WebApi[], force = false) => {
   if (navigator) {
-    const webApiStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('webApiStatuses', () => ({}))
+    const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
     webApis = webApis || useWebApiList().value
     webApis.forEach((webApi) => {
       if (force || !webApiStatuses.value[webApi.id]) {

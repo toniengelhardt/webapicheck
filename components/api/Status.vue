@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  status?: WebAPIStatus
+  status?: WebAPIStatusInfo
 }>()
 </script>
 

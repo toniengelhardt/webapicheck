@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  apis: WebAPI[]
+  apis: WebApi[]
 }>()
 
-const webApiStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('webApiStatuses')
+const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses')
 </script>

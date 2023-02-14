@@ -3,7 +3,7 @@ import ApiSourceChrome from '~/components/api/source/Chrome.vue'
 import ApiSourceMDN from '~/components/api/source/MDN.vue'
 
 const props = defineProps<{
-  api: WebAPI
+  api: WebApi
 }>()
 
 const sourceComponent = computed(() => {

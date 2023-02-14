@@ -28,7 +28,7 @@ export default defineConfig({
     'btn-subtle': 'btn bg-element hover:bg-element-active',
     'btn-outline': 'btn bg-transparent border-solid border-2 border-zinc-200 hover:border-zinc-300 dark:(bg-transparent border-zinc-700 hover:border-zinc-600)',
     'link': 'inline-block font-semibold underline decoration-1 underline-offset-2 decoration-sky-500 dark:decoration-sky-400',
-    'footer-link': 'text-base hover:(text-zinc-800 dark:text-white) cursor-pointer',
+    'footer-item': 'text-base hover:(text-zinc-800 dark:text-white) cursor-pointer',
     'code-inline': 'font-mono px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded',
   },
   presets: [

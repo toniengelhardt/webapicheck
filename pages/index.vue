@@ -62,7 +62,7 @@ const webApiStatuses = useState('webApiStatuses', (): { [key: keyof typeof webAp
 const fuse = computed(() => new Fuse(webApiList, searchOptions))
 const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
-    ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebAPI>) => result.item)
+    ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebApi>) => result.item)
     : webApiList
 })
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)

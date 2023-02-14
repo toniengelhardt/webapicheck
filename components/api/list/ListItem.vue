@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  api: WebAPI
+  api: WebApi
   available?: boolean
 }>()
 

@@ -1,36 +1,45 @@
+<script setup lang="ts">
+const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses')
+
+const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
+</script>
+
 <template>
-  <div class="flex justify-between text-sm text-dim px-3 md:px-4 h-12 box-border" border="t-solid t-1 base">
-    <span class="flex-1 flex items-center">
-      <ThemeSelector />
-      <NuxtLink
-        :to="$config.public.repoUrl"
-        class="footer-link flex-center lt-md:(w-8 h-8) ml-3 md:ml-4"
-        title="Contribute on GitHub"
-        target="_blank"
-      >
-        <Icon name="github" size="1.25rem" />
-        <span class="ml-1.5 lt-md:hidden">Contribute</span>
-      </NuxtLink>
-      <NuxtLink
-        :to="`mailto:${$config.public.feedbackEmail}`"
-        class="footer-link flex-center lt-md:(w-8 h-8) ml-3 md:ml-4"
-        title="Send feedback via email"
-        target="_blank"
-      >
-        <Icon name="email" size="1.25rem" />
-        <span class="ml-1.5 lt-md:hidden">Feedback</span>
-      </NuxtLink>
-      <NuxtLink
-        to="/info"
-        title="Legend and information about WebAPI check"
-        class="footer-link flex-center lt-md:(w-8 h-8) ml-3 md:ml-4"
-      >
-        <Icon name="info" size="1.25rem" />
-        <span class="ml-1.5 lt-md:hidden">Info</span>
-      </NuxtLink>
-    </span>
+  <div class="flex justify-between items-center text-sm text-dim px-3 md:px-4 h-12 box-border" border="t-solid t-1 base">
+    <ThemeSelector />
+    <NuxtLink
+      :to="$config.public.repoUrl"
+      class="footer-item"
+      title="Contribute on GitHub"
+      target="_blank"
+    >
+      <Icon name="github" />
+      <span>Contribute</span>
+    </NuxtLink>
+    <NuxtLink
+      :to="`mailto:${$config.public.feedbackEmail}`"
+      class="footer-item"
+      title="Send feedback via email"
+      target="_blank"
+    >
+      <Icon name="email" />
+      <span>Feedback</span>
+    </NuxtLink>
+    <div v-if="shareAvailable" class="footer-item">
+      <Icon name="share" />
+      <span>Share</span>
+    </div>
+    <NuxtLink
+      to="/info"
+      title="Legend and information about WebAPI check"
+      class="footer-item"
+    >
+      <Icon name="info" />
+      <span>Info</span>
+    </NuxtLink>
+    <span flex-1 lt-md:hidden />
     <span class="flex items-center">
-      <span>by</span>
+      <span lt-md:hidden>by</span>
       <Icon name="logos:twitter" class="ml-1 mr-1" />
       <NuxtLink
         :to="$config.public.twitterProfile"
@@ -82,3 +91,15 @@
     </span>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.footer-item {
+  @apply flex-center lt-md:(w-8 h-8) md:not-first:ml-8;
+  .icon {
+    @apply text-1.25rem;
+  }
+  span {
+    @apply ml-1.5 lt-md:hidden;
+  }
+}
+</style>

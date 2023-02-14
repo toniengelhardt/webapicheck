@@ -5,7 +5,7 @@ import DetailNetworkConnectionAPI from '~/components/detail/NetworkConnectionAPI
 import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
 import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
 
-export function defaultWebApiCheck(api: WebAPI) {
+export function defaultWebApiCheck(api: WebApi) {
   if (api.path) {
     const partials = api.path.split('.')
     const path = partials[0] === 'window' ? partials.slice(1).join('.') : api.path
@@ -14,7 +14,7 @@ export function defaultWebApiCheck(api: WebAPI) {
   return false
 }
 
-export const webApiData: { [slug: string]: Omit<WebAPI, 'id'> } = {
+export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
   'accelerometer': {
     name: 'Accelerometer',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer',

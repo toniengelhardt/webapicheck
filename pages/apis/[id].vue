@@ -7,11 +7,11 @@ definePageMeta({
 
 const route = useRoute()
 
-const webAPIStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('webApiStatuses', () => ({}))
+const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
 
 const webApiId = computed(() => route.params.id.toString())
 const webApi = computed(() => ({ id: webApiId.value, ...webApiData[webApiId.value] }))
-const available = computed(() => webAPIStatuses.value[webApiId.value])
+const available = computed(() => webApiStatuses.value[webApiId.value])
 
 useSeoMeta({
   title: () => webApi.value.name,

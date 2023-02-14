@@ -1,4 +1,4 @@
-declare interface WebAPI {
+declare interface WebApi {
   id: string, // also used as slug.
   name: string,
   path?: string,
@@ -23,7 +23,11 @@ declare interface WebAPI {
   detail?: any,
 }
 
-declare interface WebAPIStatus {
+declare interface WebApiStatuses {
+  [key: keyof typeof webApiData]: boolean
+}
+
+declare interface WebAPIStatusInfo {
   name: string,
   icon: string,
   label: string,

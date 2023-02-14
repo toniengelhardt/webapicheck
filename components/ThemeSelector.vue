@@ -1,6 +1,6 @@
 <template>
   <span
-    class="flex-center lt-md:(w-8 h-8) footer-link "
+    class="flex-center lt-md:(w-8 h-8) footer-item "
     @click="onClick(); useTrackEvent('click: Theme switcher');"
   >
     <ClientOnly>

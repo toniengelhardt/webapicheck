@@ -32,7 +32,7 @@ export default defineAppConfig({
       interaction: 'icon-park-solid:click',
       encryption: 'carbon:encryption',
       vibration: 'ph:vibrate',
-      share: 'ph-share-network-fill',
+      share: 'ph:share-network',
       fullscreen: 'ph:arrows-out-simple',
       eyedropper: 'ph:eyedropper-sample-duotone',
       pwa: 'logos:pwa',

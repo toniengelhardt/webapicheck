@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  api: WebAPI
+  api: WebApi
 }>()
 </script>
 
