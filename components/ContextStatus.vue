@@ -28,7 +28,7 @@ const isSecure = computed(() => window?.isSecureContext)
   .icon-container {
     @apply flex-center bg-blue-100 dark:bg-blue-500/25;
     .icon {
-      @apply text-blue-500 dark:text-blue-400;
+      @apply text-blue-600 dark:text-blue-400;
     }
   }
 }

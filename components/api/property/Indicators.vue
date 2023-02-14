@@ -6,12 +6,12 @@ defineProps<{
 
 <template>
   <div class="flex items-center">
-    <ApiPropertyIndicator
+    <!-- <ApiPropertyIndicator
       v-if="api.experimental"
       icon="experimental"
       title="Experimental"
       description="This feature is experimental, use with care."
-    />
+    /> -->
     <ApiPropertyIndicator
       v-if="api.availableInWebWorkers"
       icon="webworker"

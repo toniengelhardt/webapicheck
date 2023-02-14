@@ -1,8 +1,8 @@
 <template>
   <div
     :title="title"
-    flex justify-center items-center h-5 w-5 ml-4 md:ml-2 text-sm bg-black:15
-    hover:bg-black:20 dark:bg-white:15 dark:hover:bg-white:20
+    flex justify-center items-center h-5 w-5 ml-4 md:ml-2 text-sm bg-black:10
+    hover:bg-black:20 dark:bg-white:10 dark:hover:bg-white:20
     rounded cursor-pointer
     @click.prevent="dialogOpen = true"
   >

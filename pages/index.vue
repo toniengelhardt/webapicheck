@@ -68,5 +68,5 @@ const filteredAPIs = computed(() => {
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)
 const totalAPICount = computed(() => webApiList.length)
 
-onMounted(() => useLoadWebApis())
+onMounted(() => useTestWebApis())
 </script>

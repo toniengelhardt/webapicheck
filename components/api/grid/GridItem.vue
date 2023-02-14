@@ -1,9 +1,8 @@
 <template>
   <NuxtLink
     :to="`/apis/${api.id}`"
-    :title="`${api.name} documentation`"
+    :title="`${api.name} details`"
     class="grid-item" :class="itemClass"
-    @click="useTrackEvent('click: API link', { props: { api: api.name } })"
   >
     <div class="header">
       <div class="name">
@@ -96,13 +95,13 @@ const itemClass = computed(() => status.value?.name || 'loading')
     }
   }
   .path {
-    @apply text-sm text-black/65 dark:text-white/75;
+    @apply text-sm;
   }
   &.experimental {
-    @apply bg-purple-200 dark:bg-purple-500/50;
+    @apply bg-purple-200 dark:bg-purple-600/50;
   }
   &.available {
-    @apply bg-lime-200 dark:bg-lime-500/50;
+    @apply bg-lime-200 dark:bg-lime-600/50;
   }
   &.unavailable {
     @apply bg-zinc-200 dark:bg-zinc-700;
@@ -126,28 +125,28 @@ const itemClass = computed(() => status.value?.name || 'loading')
     @apply flex items-center;
     &.available {
       .status-icon {
-        @apply text-lime-600 border-lime-600 dark:(text-lime-300 border-lime-300);
+        @apply text-lime-700 border-lime-700 dark:(text-lime-300 border-lime-300);
       }
     }
     &.experimental {
       .status-icon {
-        @apply text-purple-700 border-purple-700 dark:(text-purple-300 border-purple-300);
+        @apply text-purple-800 border-purple-800 dark:(text-purple-300 border-purple-300);
       }
     }
     &.unavailable {
       .status-icon {
-        @apply text-rose-500 border-rose-500;
+        @apply text-rose-600 border-rose-600 dark:(text-rose-500 border-rose-500);
       }
     }
     .status-icon {
-      @apply flex justify-center items-center w-5 h-5
-      border-solid border-1 rounded-full box-border;
+      @apply flex justify-center items-center w-4 h-4
+      border-solid border-0 rounded-full box-border;
       .icon {
-        @apply text-0.8rem;
+        @apply text-1rem;
       }
     }
     .status-label {
-      @apply ml-1.5 text-sm;
+      @apply ml-1.25 text-sm;
     }
   }
 }

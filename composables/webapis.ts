@@ -1,3 +1,7 @@
+/**
+ * Converts the webApiData object into a sorted list (by name) for use in list and grid.
+ * Note that it has to return a ref, otherwise the ShallowRef components break.
+ */
 export const useWebApiList = () => {
   const list = Object.keys(webApiData).reduce((list: WebAPI[], apiKey: string) => {
     list.push({
@@ -10,6 +14,9 @@ export const useWebApiList = () => {
   return ref(list)
 }
 
+/**
+ * Note: this probably needs some refactoring.
+ */
 export const useWebApiStatus = (api: WebAPI, available?: boolean) => {
   return computed(() => {
     if (available) {
@@ -37,12 +44,18 @@ export const useWebApiStatus = (api: WebAPI, available?: boolean) => {
   })
 }
 
-export const useLoadWebApis = (webApis?: WebAPI[]) => {
+/**
+ * Check the availability of each WebAPI on the current device.
+ * This can only run on the client obviously.
+ * @param webApis: list of WebAPIs to test, defaults to all.
+ * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
+ */
+export const useTestWebApis = (webApis?: WebAPI[], force = false) => {
   if (navigator) {
     const webApiStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useState('webApiStatuses', () => ({}))
     webApis = webApis || useWebApiList().value
     webApis.forEach((webApi) => {
-      if (!webApiStatuses.value[webApi.id]) {
+      if (force || !webApiStatuses.value[webApi.id]) {
         const check = webApi.check || defaultWebApiCheck
         if (check.constructor.name === 'AsyncFunction') {
           (check(webApi) as Promise<boolean>)

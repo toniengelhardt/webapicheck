@@ -8,7 +8,9 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  safelist: ['display-none'],
+  safelist: [
+    'display-none',
+  ],
   shortcuts: {
     'flex-center': 'flex justify-center items-center',
     'bg-base': 'bg-white dark:bg-zinc-900',

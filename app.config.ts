@@ -7,7 +7,7 @@ export default defineAppConfig({
       back: 'ph:arrow-left-bold',
       spinner: 'fa6-solid:spinner',
       brand: 'carbon:code',
-      experimental: 'ph:flask-fill',
+      experimental: 'ph:flask-bold',
       webworker: 'el:cogs',
       mdn: 'simple-icons:mozilla',
       chrome: 'logos:chrome',

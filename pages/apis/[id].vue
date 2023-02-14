@@ -43,7 +43,7 @@ const status = computed(() => {
   return undefined
 })
 
-onMounted(() => useLoadWebApis([webApi.value]))
+onMounted(() => useTestWebApis([webApi.value]))
 </script>
 
 <template>
@@ -90,6 +90,7 @@ onMounted(() => useLoadWebApis([webApi.value]))
                 :title="`Documentation for ${webApi.name}`"
                 target="_blank"
                 btn-xs btn-outline
+                @click="useTrackEvent('click: WebAPI documentation', { props: { webapi: webApi.id } })"
               >
                 OPEN <Icon name="external" class="ml-0.5" />
               </NuxtLink>

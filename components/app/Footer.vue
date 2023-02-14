@@ -61,11 +61,11 @@
       >Vite</NuxtLink>
       <Icon name="unocss" class="ml-2 mr-1" filter dark:invert />
       <NuxtLink
-        href="https://windicss.org/"
+        href="https://uno.antfu.me"
         class="text-base dark:text-zinc-300 font-semibold hover:underline"
         target="_blank"
-        title="Official WindiCSS website"
-        @click="useTrackEvent('click: Footer link', { props: { target: 'Windi' } })"
+        title="Official UnoCSS website"
+        @click="useTrackEvent('click: Footer link', { props: { target: 'Uno' } })"
       >Uno</NuxtLink>
     </span>
     <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
