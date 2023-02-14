@@ -13,8 +13,8 @@
         </div>
         <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
           <ApiModeSelector
-            :model-value="mode"
-            @update:model-value="updateMode($event)"
+            :modelValue="mode"
+            @update:modelValue="updateMode($event)"
           />
         </div>
         <div class="flex lt-md:(w-1/3 justify-center)">
@@ -29,7 +29,7 @@
       There are no APIs matching your search...
     </div>
     <ApiList v-else-if="mode === 'rows'" :apis="filteredAPIs" />
-    <ApiGrid v-else :apis="filteredAPIs" />
+    <ApiGrid v-else-if="mode === 'grid'" :apis="filteredAPIs" />
   </NuxtLayout>
 </template>
 
@@ -73,4 +73,8 @@ function updateMode(newValue: DisplayMode) {
 }
 
 onMounted(() => useTestWebApis())
+
+watch(() => mode.value, (newVal, oldVal) => {
+  console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
+})
 </script>

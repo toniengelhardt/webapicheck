@@ -9,10 +9,11 @@
         "no-alert": "off",
         "no-extra-parens": "off",
         "operator-linebreak": "off",
+        "vue/attribute-hyphenation": "off",
         "vue/component-tags-order": "off",
         "vue/no-mutating-props": "off",
         "vue/prefer-template": "off",
+        "vue/v-on-event-hyphenation": "off",
         "@typescript-eslint/brace-style": "off"
-
     }
 }

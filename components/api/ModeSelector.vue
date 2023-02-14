@@ -3,14 +3,14 @@
     <div
       class="option"
       :class="{ selected: modelValue === 'rows' }"
-      @click="$emit('update:modelValue', 'rows')"
+      @click="selectMode('rows')"
     >
       <Icon name="list" />
     </div>
     <div
       class="option"
       :class="{ selected: modelValue === 'grid' }"
-      @click="$emit('update:modelValue', 'grid')"
+      @click="selectMode('grid')"
     >
       <Icon name="grid" />
     </div>
@@ -21,9 +21,11 @@
 defineProps<{
   modelValue: DisplayMode
 }>()
-defineEmits<{
-  (event: 'update:modelValue', value: DisplayMode): void
-}>()
+const emit = defineEmits(['update:modelValue'])
+
+function selectMode(mode: DisplayMode) {
+  emit('update:modelValue', mode)
+}
 </script>
 
 <style lang="postcss" scoped>
