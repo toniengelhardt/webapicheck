@@ -86,7 +86,7 @@ onMounted(() => useTestWebApis([webApi.value]))
             </div>
             <div inline-flex items-center>
               <NuxtLink
-                :to="webApi.path"
+                :to="webApi.url"
                 :title="`Documentation for ${webApi.name}`"
                 target="_blank"
                 btn-xs btn-outline
