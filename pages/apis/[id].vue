@@ -11,14 +11,11 @@ const webAPIStatuses: Ref<{ [key: keyof typeof webApiData]: boolean }> = useStat
 
 const webApiId = computed(() => route.params.id.toString())
 const webApi = computed(() => ({ id: webApiId.value, ...webApiData[webApiId.value] }))
-const available = computed(() => {
-  console.log(webAPIStatuses.value)
-  return webAPIStatuses.value[webApiId.value]
-})
+const available = computed(() => webAPIStatuses.value[webApiId.value])
 
 useSeoMeta({
   title: () => webApi.value.name,
-  description: () => `Details for "${webApi.value.name}". WebAPI device test for your current device, general information, and requirements.`,
+  description: () => `Open this page to test if your current device supports ${webApi.value.name} (WebAPI). Details, properties, special requirements, and more for ${webApi.value.name}.`,
 })
 
 const status = computed(() => {
@@ -100,7 +97,7 @@ onMounted(() => useLoadWebApis([webApi.value]))
           </div>
         </div>
         <div mt-8>
-          <p text-dim font-bold>
+          <p mb-6 text-dim font-bold>
             Special properties
           </p>
           <div v-if="webApi.availableInWebWorkers" class="panel">
@@ -164,7 +161,7 @@ h1 {
   @apply p-4 border-solid border-1 border-base rounded;
 }
 .panel {
-  @apply px-4 py-3 bg-blue-50 dark:bg-blue-400/10 not-first:mt-4 rounded;
+  @apply px-4 py-3 bg-blue-50 dark:bg-blue-400/10 mt-4 rounded;
   .icon {
     @apply mr-2 text-blue-600 dark:text-blue-400;
   }
