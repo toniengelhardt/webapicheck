@@ -39,7 +39,7 @@ export default defineAppConfig({
       vercel: 'akar-icons:vercel-fill',
       downlink: 'carbon:cloud-download',
       roundtrip: 'carbon:arrows-horizontal',
-      grid: 'ph:squares-four-fill',
+      tiles: 'ph:squares-four-fill',
       list: 'ph:rows-fill',
       available: 'ph:check-circle-bold',
       unavailable: 'ph:x-circle-bold',
