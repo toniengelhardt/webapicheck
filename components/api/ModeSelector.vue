@@ -9,10 +9,10 @@
     </div>
     <div
       class="option"
-      :class="{ selected: modelValue === 'grid' }"
-      @click="selectMode('grid')"
+      :class="{ selected: modelValue === 'tiles' }"
+      @click="selectMode('tiles')"
     >
-      <Icon name="grid" />
+      <Icon name="tiles" />
     </div>
   </div>
 </template>
