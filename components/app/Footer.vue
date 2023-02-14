@@ -6,6 +6,7 @@ const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses')
 const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
 
 async function share() {
+  useTrackEvent('click: Share')
   try {
     await navigator.share({
       title: 'WebAPI check',
@@ -27,6 +28,7 @@ async function share() {
       class="footer-item footer-action"
       title="Contribute on GitHub"
       target="_blank"
+      @click="useTrackEvent('click: Contribute')"
     >
       <Icon name="github" />
       <span>Contribute</span>
@@ -36,6 +38,7 @@ async function share() {
       class="footer-item footer-action"
       title="Send feedback via email"
       target="_blank"
+      @click="useTrackEvent('click: Feedback')"
     >
       <Icon name="email" />
       <span>Feedback</span>
