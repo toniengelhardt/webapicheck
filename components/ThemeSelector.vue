@@ -1,11 +1,9 @@
 <template>
   <span
-    class="flex-center lt-md:(w-8 h-8) footer-item "
+    class="flex-center lt-md:w-8 h-8 footer-item "
     @click="onClick(); useTrackEvent('click: Theme switcher');"
   >
-    <ClientOnly>
-      <Icon :name="colorMode.preference" size="1.25rem" />
-    </ClientOnly>
+    <Icon :name="colorMode.preference" text-1.5rem md:text-1.25rem />
     <span class="ml-1.5 lt-md:hidden">
       Theme
     </span>

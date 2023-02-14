@@ -9,7 +9,7 @@ const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
     <ThemeSelector />
     <NuxtLink
       :to="$config.public.repoUrl"
-      class="footer-item"
+      class="footer-item footer-action"
       title="Contribute on GitHub"
       target="_blank"
     >
@@ -18,21 +18,21 @@ const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
     </NuxtLink>
     <NuxtLink
       :to="`mailto:${$config.public.feedbackEmail}`"
-      class="footer-item"
+      class="footer-item footer-action"
       title="Send feedback via email"
       target="_blank"
     >
       <Icon name="email" />
       <span>Feedback</span>
     </NuxtLink>
-    <div v-if="shareAvailable" class="footer-item">
+    <div v-if="shareAvailable" class="footer-item footer-action">
       <Icon name="share" />
       <span>Share</span>
     </div>
     <NuxtLink
       to="/info"
       title="Legend and information about WebAPI check"
-      class="footer-item"
+      class="footer-item footer-action"
     >
       <Icon name="info" />
       <span>Info</span>
@@ -40,63 +40,73 @@ const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
     <span flex-1 lt-md:hidden />
     <span class="flex items-center">
       <span lt-md:hidden>by</span>
-      <Icon name="logos:twitter" class="ml-1 mr-1" />
       <NuxtLink
         :to="$config.public.twitterProfile"
-        class="text-base dark:text-zinc-300 font-semibold hover:underline"
+        class="footer-item font-semibold lt-md:(w-8 h-8)"
         target="_blank"
         title="Toni Engelhardt on Twitter"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Twitter profile' } })"
-      >toniengelhardt</NuxtLink>
+      >
+        <Icon name="logos:twitter" lt-md:text-1.4rem md:ml-1 md:mr-1 />
+        <span lt-md:hidden>toniengelhardt</span>
+      </NuxtLink>
     </span>
     <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
     <span class="flex items-center lt-md:hidden">
       <span>with</span>
-      <Icon name="nuxt" class="ml-2 mr-1" />
       <NuxtLink
         href="https://v3.nuxtjs.org/"
-        class="text-base dark:text-zinc-300 font-semibold hover:underline"
+        class="footer-item font-semibold"
         target="_blank"
         title="Official Nuxt 3 website"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Nuxt' } })"
-      >Nuxt</NuxtLink>
-      <Icon name="vite" class="ml-2 mr-1" />
+      >
+        <Icon name="nuxt" class="ml-2 mr-1" />
+        <span>Nuxt</span>
+      </NuxtLink>
       <NuxtLink
         href="https://vitejs.dev"
-        class="text-base dark:text-zinc-300 font-semibold hover:underline"
+        class="footer-item font-semibold"
         target="_blank"
         title="Official Vite website"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Vite' } })"
-      >Vite</NuxtLink>
-      <Icon name="unocss" class="ml-2 mr-1" filter dark:invert />
+      >
+        <Icon name="vite" class="ml-2 mr-1" />
+        <span>Vite</span>
+      </NuxtLink>
       <NuxtLink
         href="https://uno.antfu.me"
-        class="text-base dark:text-zinc-300 font-semibold hover:underline"
+        class="footer-item font-semibold"
         target="_blank"
         title="Official UnoCSS website"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Uno' } })"
-      >Uno</NuxtLink>
+      >
+        <Icon name="unocss" class="ml-2 mr-1" filter dark:invert />
+        <span>Uno</span>
+      </NuxtLink>
     </span>
     <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
     <span class="flex items-center lt-md:hidden">
       <span>on</span>
-      <Icon name="vercel" class="ml-2 mr-1 text-base dark:text-white" />
       <NuxtLink
         href="https://vercel.com/"
-        class="text-base dark:text-zinc-300 font-semibold hover:underline"
+        class="footer-item font-semibold"
         target="_blank"
         title="Official Vercel website"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Vercel' } })"
-      >Vercel</NuxtLink>
+      >
+        <Icon name="vercel" class="ml-2 mr-1 text-base dark:text-white" />
+        <span>Vercel</span>
+      </NuxtLink>
     </span>
   </div>
 </template>
 
 <style lang="postcss" scoped>
-.footer-item {
+.footer-action {
   @apply flex-center lt-md:(w-8 h-8) md:not-first:ml-8;
   .icon {
-    @apply text-1.25rem;
+    @apply text-1.5rem md:text-1.25rem;
   }
   span {
     @apply ml-1.5 lt-md:hidden;
