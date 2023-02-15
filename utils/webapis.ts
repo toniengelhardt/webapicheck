@@ -623,7 +623,7 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
   },
   // X [complete]
   'xml-http-request': {
-    name: 'XMMLHttpRequest',
+    name: 'XMLHttpRequest',
     url: 'https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest',
     path: 'window.XMLHttpRequest',
     source: 'mdn',
