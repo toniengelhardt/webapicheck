@@ -1,4 +1,3 @@
-import { shallowRef } from 'vue'
 import * as shvl from 'shvl'
 import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
 import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
