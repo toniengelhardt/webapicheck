@@ -67,3 +67,13 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
     })
   }
 }
+
+/**
+ * Returns the availability of each WebAPI based on the query param.
+ * @param webApis: list of WebAPIs to test, defaults to all.
+ */
+export const useSharedWebApis = () => {
+  const route = useRoute()
+  const sharedWebApiStatuses: Ref<WebApiStatuses> = useState('sharedWebApiStatuses', () => ({}))
+  sharedWebApiStatuses.value = decode(route.query.value?.toString() ?? '')
+}

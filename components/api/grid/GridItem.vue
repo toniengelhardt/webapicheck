@@ -14,7 +14,7 @@
       {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-4 md:min-h-12">
-      <template v-if="available">
+      <template v-if="available && renderDetails">
         <component
           :is="api.detail"
           v-if="api.detail"
@@ -53,10 +53,13 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   api: WebApi
   available?: boolean
-}>()
+  renderDetails: boolean
+}>(), {
+  renderDetails: true,
+})
 
 const status = computed(() => {
   if (props.available) {

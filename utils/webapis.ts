@@ -1,3 +1,4 @@
+import { shallowRef } from 'vue'
 import * as shvl from 'shvl'
 import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
 import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
@@ -557,7 +558,7 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
           text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
           url: 'https://webapicheck.com',
         })
-          .catch(() => {})
+          .catch(() => { })
       },
     },
   },
@@ -629,3 +630,74 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
     source: 'mdn',
   },
 }
+/**
+ * IMPORTANT
+ * Don't reorder and always add new entries at the bottom, otherwise existing links will break.
+ */
+export const webApiExportList: (keyof typeof webApiData)[] = [
+  'accelerometer',
+  'ambient-light-sensor',
+  'barcode-detection-api',
+  'battery-status-api',
+  'bluetooth-api',
+  'broadcast-channel-api',
+  'clipboard-api',
+  'contact-picker-api',
+  'content-index-api',
+  'cookie-store-api',
+  'digital-goods-api',
+  'eyedropper-api',
+  'file-api',
+  'file-system-access-api',
+  'fullscreen-api',
+  'gamepad-api',
+  'geolocation-api',
+  'gravity-sensor',
+  'gyroscope',
+  'history-api',
+  'html-sanitizer',
+  'image-capture-api',
+  'indexed-db-api',
+  'intersection-observer-api',
+  'largest-content-full-paint-api',
+  'layout-instability-api',
+  'linear-acceleration-sensor',
+  'magnetometer',
+  'network-connection-api',
+  'notifications-api',
+  'orientation-sensor',
+  'payment-request-api',
+  'performance-api',
+  'performance-timeline-api',
+  'permissions-api',
+  'picture-in-picture',
+  'reporting-api',
+  'screen-orientation-api',
+  'screen-wakelock-api',
+  'selection-api',
+  'storage',
+  'touch',
+  'vibration-api',
+  'virtual-keyboard-api',
+  'visual-viewport',
+  'web-animations-api',
+  'web-audio-api',
+  'web-authentication-api',
+  'web-codecs-api',
+  'web-crypto-api',
+  'webgl',
+  'webgpu',
+  'webhid-api',
+  'web-midi-api',
+  'webrtc-api',
+  'web-share-api',
+  'web-sockets-api',
+  'web-speech-api',
+  'web-storage-api',
+  'web-usb-api',
+  'webvtt',
+  'web-workers-api',
+  'webxr-device-api',
+  'window-controls-overlay-api',
+  'xml-http-request',
+]
