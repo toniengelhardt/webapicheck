@@ -43,7 +43,7 @@ defineEmits<{
     .modal-container {
       @apply p-3 md:p-4 mx-auto bg-white dark:bg-zinc-800 shadow-xl rounded box-border;
       width: 100%;
-      max-width: 28rem;
+      max-width: 35rem;
       transition: all 0.3s ease;
       .modal-header {
         @apply text-xl font-semibold;

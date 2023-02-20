@@ -8,16 +8,19 @@
     </template>
     <template #header-right>
       <div flex w-full lt-md:py-3 md:justify-end>
-        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
+        <div class="flex lt-md:(w-1/4 justify-center) md:mr-4">
+          <ApiShareButton :source="source" />
+        </div>
+        <div class="flex lt-md:(w-1/4 justify-center) md:mr-4">
           <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
         </div>
-        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
+        <div class="flex lt-md:(w-1/4 justify-center) md:mr-4">
           <ApiModeSelector
             :modelValue="displayMode"
             @update:modelValue="updateMode($event)"
           />
         </div>
-        <div class="flex lt-md:(w-1/3 justify-center)">
+        <div class="flex lt-md:(w-1/4 justify-center)">
           <ContextStatus />
         </div>
       </div>
@@ -37,7 +40,7 @@
 import Fuse from 'fuse.js'
 
 const props = withDefaults(defineProps<{
-  source: 'webApiStatuses' | 'sharedWebApiStatuses'
+  source: PageType
 }>(), {
   source: 'webApiStatuses',
 })

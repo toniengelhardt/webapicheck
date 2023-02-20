@@ -13,7 +13,7 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
   apis: WebApi[]
-  source: 'webApiStatuses' | 'sharedWebApiStatuses'
+  source: PageType
 }>(), {
   source: 'webApiStatuses',
 })

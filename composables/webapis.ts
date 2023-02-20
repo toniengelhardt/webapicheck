@@ -75,5 +75,5 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
 export const useSharedWebApis = () => {
   const route = useRoute()
   const sharedWebApiStatuses: Ref<WebApiStatuses> = useState('sharedWebApiStatuses', () => ({}))
-  sharedWebApiStatuses.value = decode(route.query.value?.toString() ?? '')
+  sharedWebApiStatuses.value = decode(route.query.config?.toString() ?? '')
 }

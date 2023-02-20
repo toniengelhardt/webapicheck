@@ -1,6 +1,7 @@
 import { webApiExportList } from './webapis'
 
 export function encode(webApis: Record<keyof typeof webApiData, boolean>) {
+  console.log(webApis)
   const booleansToBinary = webApiExportList
     .map(webApiKey => webApis[webApiKey] ? '1' : '0').join('')
   const binaryToNumber = parseInt(booleansToBinary, 2)
