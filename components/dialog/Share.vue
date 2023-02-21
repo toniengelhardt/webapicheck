@@ -44,7 +44,7 @@ const webApiStatuses = useWebApiStatuses()
 
 const state = ref<'copied' | 'error' | undefined>(undefined)
 
-const url = computed(() => `${window.location}?status=${encodeStatus(webApiStatuses.value)}`)
+const url = computed(() => `${window.location}?status=v1-${encodeStatus(webApiStatuses.value)}`)
 const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
 
 function copyUrl() {
