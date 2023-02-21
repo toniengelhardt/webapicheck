@@ -1,9 +1,9 @@
+import { Buffer } from 'buffer'
 import * as shvl from 'shvl'
-import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
-import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
-import DetailNetworkConnectionAPI from '~/components/detail/NetworkConnectionAPI.vue'
-import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
-import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
+import {
+  DetailBatteryStatusAPI, DetailGeolocationAPI, DetailNetworkConnectionAPI,
+  DetailVisualViewport, DetailWebCryptoAPI,
+} from '#components'
 
 export function defaultWebApiCheck(api: WebApi) {
   if (api.path) {
@@ -700,3 +700,16 @@ export const webApiExportList: (keyof typeof webApiData)[] = [
   'window-controls-overlay-api',
   'xml-http-request',
 ]
+
+export function encodeStatus(webApis: Record<keyof typeof webApiData, boolean>) {
+  return Buffer.from(webApiExportList.map(webApiKey => webApis[webApiKey] ? '1' : '0').join(''), 'base64')
+}
+
+export function decodeStatus(encoded: string) {
+  const stringToNumber = parseInt(encoded)
+  const numberToBinary = stringToNumber.toString(2)
+  const entries = webApiExportList.map((webApiKey, i) => {
+    return [webApiKey, numberToBinary.charAt(i) === '1']
+  })
+  return Object.fromEntries(entries) as Record<keyof typeof webApiData, boolean>
+}
