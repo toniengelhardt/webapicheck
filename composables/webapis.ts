@@ -60,7 +60,7 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
   const webApiStatuses = useWebApiStatuses()
   const sharedStatus = useSharedStatus()
   if (sharedStatus) {
-    for (const [key, val] of Object.entries(decodeStatus(sharedStatus))) {
+    for (const [key, val] of Object.entries(decodeStatus(sharedStatus.split('-')[1]))) {
       webApiStatuses.value[key] = val
     }
   } else if (navigator) {
