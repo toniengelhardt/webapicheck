@@ -62,7 +62,7 @@ useSeoMeta({
 const shareDialogOpen = useState('shareDialogOpen', () => false)
 const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'tiles' })
 
-console.log('Initial displayMode value:', displayMode.value)
+// console.log('Initial displayMode value:', displayMode.value)
 
 const searchMode = ref(false)
 const searchTerm = ref('')
@@ -85,9 +85,14 @@ const totalAPICount = computed(() => webApiList.value.length)
 function updateMode(newValue: DisplayMode) {
   displayMode.value = newValue
 }
-useTestWebApis()
 
-watch(() => displayMode.value, (newVal, oldVal) => {
-  console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
+// watch(() => displayMode.value, (newVal, oldVal) => {
+//   console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
+// })
+
+onMounted(() => {
+  useTestWebApis()
+  const x = encodeStatus(webApiStatuses.value)
+  decodeStatus(x)
 })
 </script>

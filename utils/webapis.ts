@@ -700,48 +700,36 @@ export const webApiExportList: (keyof typeof webApiData)[] = [
   'xml-http-request',
 ]
 
-function encodeBase64(data: string) {
-  let encodeFn: () => string = () => {
-    throw new TypeError('Failed to determine the platform specific decoder')
-  }
-  if (typeof btoa === 'function') {
-    encodeFn = () => btoa(data)
-  } else if (typeof Buffer === 'function') {
-    encodeFn = () => Buffer.from(data, 'utf-8').toString('base64')
-  }
-  const retval = encodeFn()
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-  return retval
+/**
+ * Convert a binary number string to a base64-encoded string.
+ * @param binarySequence: binary number string.
+ */
+export function binaryToBase64(binarySequence: string) {
+  // Note: we need to use BigInt to avoid rounding errors.
+  const decimalSequence = BigInt(`0b${binarySequence}`).toString()
+  return window.btoa(decimalSequence).replace(/\+/g, '-').replace(/\//g, '_')
 }
 
-function decodeBase64(data: string) {
-  let decodeFn: () => string = () => {
-    throw new TypeError('Failed to determine the platform specific decoder')
-  }
-  if (typeof atob === 'function') {
-    decodeFn = () => atob(data)
-  } else if (typeof Buffer === 'function') {
-    decodeFn = () => Buffer.from(data, 'base64').toString('utf-8')
-  }
-  const retval = decodeFn()
-    .replace(/-/g, '+')
-    .replace(/_/g, '/')
-  return retval
+/**
+ * Convert a base64-encoded string to a binary number string.
+ * @param base64Sequence: base64-encoded string.
+ */
+export function base64ToBinary(base64Sequence: string) {
+  const decimalSequence = window.atob(base64Sequence).replace(/-/g, '+').replace(/_/g, '/')
+  return BigInt(decimalSequence).toString(2)
 }
 
-export function encodeStatus(webApis: Record<keyof typeof webApiData, boolean>) {
-  const booleansToBinary = webApiExportList
-    .map(webApiKey => webApis[webApiKey] ? '1' : '0').join('')
-  const binaryToNumber = parseInt(booleansToBinary, 2)
-  return encodeBase64(`${binaryToNumber}`)
+export function encodeStatus(webApiStatuses: WebApiStatuses) {
+  const statusesBinary = webApiExportList.map(webApiKey => webApiStatuses[webApiKey] ? '1' : '0').join('')
+  return binaryToBase64(statusesBinary)
 }
 
-export function decodeStatus(encoded: string) {
-  const stringToNumber = parseInt(decodeBase64(encoded))
-  const numberToBinary = stringToNumber.toString(2).padStart(webApiExportList.length, '0')
+export function decodeStatus(statusBase64: string) {
+  // Left-pad the sequence with 0s to the length of the webApiExportList to
+  // recover leading 0s that were chopped off in the encoding process.
+  const statusesBinary = base64ToBinary(statusBase64).padStart(webApiExportList.length, '0')
   const entries = webApiExportList.map((webApiKey, i) => {
-    return [webApiKey, numberToBinary.charAt(i) === '1']
+    return [webApiKey, statusesBinary.charAt(i) === '1']
   })
-  return Object.fromEntries(entries) as Record<keyof typeof webApiData, boolean>
+  return Object.fromEntries(entries) as WebApiStatuses
 }

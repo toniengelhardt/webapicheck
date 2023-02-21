@@ -57,17 +57,14 @@ export const useWebApiStatus = (api: WebApi, available?: boolean) => {
  * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
  */
 export const useTestWebApis = (webApis?: WebApi[], force = false) => {
-  const webApiStatuses = useWebApiStatuses()
-  const sharedStatus = useSharedStatus()
-  if (sharedStatus) {
-    for (const [key, val] of Object.entries(decodeStatus(sharedStatus.split('-')[1]))) {
-      webApiStatuses.value[key] = val
-    }
-    return true
-  }
-  onMounted(() => {
-    if (navigator) {
-      console.log('Testing capabilities...')
+  if (window && navigator) {
+    const webApiStatuses = useWebApiStatuses()
+    const sharedStatus = useSharedStatus()
+    if (sharedStatus) {
+      for (const [key, val] of Object.entries(decodeStatus(sharedStatus.split('-')[1]))) {
+        webApiStatuses.value[key] = val
+      }
+    } else {
       webApis = webApis || useWebApiList().value
       webApis.forEach((webApi) => {
         if (force || !webApiStatuses.value[webApi.id]) {
@@ -81,5 +78,5 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
         }
       })
     }
-  })
+  }
 }

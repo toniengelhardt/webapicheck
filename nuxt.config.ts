@@ -29,19 +29,8 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
-    // 'nuxt-windicss',
+    'nuxt-vitest',
   ],
-  // vite: {
-  //   css: {
-  //     preprocessorOptions: {
-  //       scss: {
-  //         additionalData: `
-  //           @import "@/assets/scss/_mixins.scss";
-  //         `,
-  //       },
-  //     },
-  //   },
-  // },
   typescript: {
     shim: false,
   },
