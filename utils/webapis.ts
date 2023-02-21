@@ -1,4 +1,3 @@
-import { Buffer } from 'buffer'
 import * as shvl from 'shvl'
 import {
   DetailBatteryStatusAPI, DetailGeolocationAPI, DetailNetworkConnectionAPI,
@@ -702,7 +701,10 @@ export const webApiExportList: (keyof typeof webApiData)[] = [
 ]
 
 export function encodeStatus(webApis: Record<keyof typeof webApiData, boolean>) {
-  return Buffer.from(webApiExportList.map(webApiKey => webApis[webApiKey] ? '1' : '0').join(''), 'base64')
+  const booleansToBinary = webApiExportList
+    .map(webApiKey => webApis[webApiKey] ? '1' : '0').join('')
+  const binaryToNumber = parseInt(booleansToBinary, 2)
+  return binaryToNumber
 }
 
 export function decodeStatus(encoded: string) {
