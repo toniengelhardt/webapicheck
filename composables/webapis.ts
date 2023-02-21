@@ -63,19 +63,23 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
     for (const [key, val] of Object.entries(decodeStatus(sharedStatus.split('-')[1]))) {
       webApiStatuses.value[key] = val
     }
-  } else if (navigator) {
-    console.log('Testing capabilities...')
-    webApis = webApis || useWebApiList().value
-    webApis.forEach((webApi) => {
-      if (force || !webApiStatuses.value[webApi.id]) {
-        const check = webApi.check || defaultWebApiCheck
-        if (check.constructor.name === 'AsyncFunction') {
-          (check(webApi) as Promise<boolean>)
-            .then((available: boolean) => webApiStatuses.value[webApi.id] = available)
-        } else {
-          webApiStatuses.value[webApi.id] = check(webApi) as boolean
-        }
-      }
-    })
+    return true
   }
+  onMounted(() => {
+    if (navigator) {
+      console.log('Testing capabilities...')
+      webApis = webApis || useWebApiList().value
+      webApis.forEach((webApi) => {
+        if (force || !webApiStatuses.value[webApi.id]) {
+          const check = webApi.check || defaultWebApiCheck
+          if (check.constructor.name === 'AsyncFunction') {
+            (check(webApi) as Promise<boolean>)
+              .then((available: boolean) => webApiStatuses.value[webApi.id] = available)
+          } else {
+            webApiStatuses.value[webApi.id] = check(webApi) as boolean
+          }
+        }
+      })
+    }
+  })
 }
