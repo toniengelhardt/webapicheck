@@ -14,6 +14,12 @@ export const useWebApiList = () => {
   return ref(list)
 }
 
+export const useSharedStatus = () => {
+  const route = useRoute()
+  return route.query.status?.toString()
+}
+
+export const useWebApiStatuses = () => useState('webApiStatuses', () => ({})) as Ref<WebApiStatuses>
 /**
  * Note: this probably needs some refactoring.
  */
@@ -51,8 +57,14 @@ export const useWebApiStatus = (api: WebApi, available?: boolean) => {
  * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
  */
 export const useTestWebApis = (webApis?: WebApi[], force = false) => {
-  if (navigator) {
-    const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
+  const webApiStatuses = useWebApiStatuses()
+  const sharedStatus = useSharedStatus()
+  if (sharedStatus) {
+    for (const [key, val] of Object.entries(decodeStatus(sharedStatus))) {
+      webApiStatuses.value[key] = val
+    }
+  } else if (navigator) {
+    console.log('Testing capabilities...')
     webApis = webApis || useWebApiList().value
     webApis.forEach((webApi) => {
       if (force || !webApiStatuses.value[webApi.id]) {
@@ -66,14 +78,4 @@ export const useTestWebApis = (webApis?: WebApi[], force = false) => {
       }
     })
   }
-}
-
-/**
- * Returns the availability of each WebAPI based on the query param.
- * @param webApis: list of WebAPIs to test, defaults to all.
- */
-export const useSharedWebApis = () => {
-  const route = useRoute()
-  const sharedWebApiStatuses: Ref<WebApiStatuses> = useState('sharedWebApiStatuses', () => ({}))
-  sharedWebApiStatuses.value = decode(route.query.config?.toString() ?? '')
 }

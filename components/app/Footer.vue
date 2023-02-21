@@ -1,23 +1,6 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
-
-const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
-
-const shareAvailable = computed(() => !!webApiStatuses.value?.['web-share-api'])
-
-async function share() {
-  useTrackEvent('click: Share')
-  try {
-    await navigator.share({
-      title: 'WebAPI check',
-      text: 'Simply open this page to test which WebAPIs that are supported on your device.',
-      url: config.public.siteUrl,
-    })
-    useTrackEvent('Share successful')
-  } catch (err: any) {
-    useTrackEvent('Share error', { props: { error: err?.message || 'N/A' } })
-  }
-}
+const sharedStatus = useSharedStatus()
+const shareDialogOpen = useState('shareDialogOpen', () => false)
 </script>
 
 <template>
@@ -43,13 +26,20 @@ async function share() {
       <Icon name="email" />
       <span>Feedback</span>
     </NuxtLink>
-    <div
+    <!-- <div
       v-if="shareAvailable"
       class="footer-item footer-action"
       @click="share()"
     >
       <Icon name="share" />
       <span>Share</span>
+    </div> -->
+    <div
+      v-if="!sharedStatus"
+      class="!md:hidden footer-item footer-action"
+      @click="shareDialogOpen = true"
+    >
+      <Icon name="link" />
     </div>
     <NuxtLink
       to="/info"

@@ -1,8 +1,8 @@
 <template>
   <NuxtLink
-    :to="`/apis/${api.id}`"
+    :to="detailsEnabled ? `/apis/${api.id}` : undefined"
     :title="`${api.name} details`"
-    class="list-item" :class="itemClass"
+    class="list-item" :class="itemClasses"
   >
     <div class="status" :class="status?.name">
       <Icon v-if="status" :name="status.icon" />
@@ -18,17 +18,20 @@
       class="source"
     />
     <div class="indicators">
-      <ApiPropertyIndicators v-if="itemClass !== 'loading'" :api="api" />
+      <ApiPropertyIndicators v-if="status.name !== 'loading'" :api="api" />
       <Icon v-else name="spinner" class="animate-spin" />
     </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   api: WebApi
   available?: boolean
-}>()
+  detailsEnabled?: boolean
+}>(), {
+  detailsEnabled: true,
+})
 
 const status = computed(() => {
   if (props.available) {
@@ -58,7 +61,7 @@ const status = computed(() => {
     label: 'Loading',
   }
 })
-const itemClass = computed(() => status.value.name)
+const itemClasses = computed(() => status.value.name + (props.detailsEnabled ? '' : ' disabled'))
 </script>
 
 <style lang="postcss" scoped>

@@ -33,6 +33,7 @@ export default defineAppConfig({
       encryption: 'carbon:encryption',
       vibration: 'ph:vibrate',
       share: 'ph:share-network-bold',
+      link: 'ph:link-bold',
       fullscreen: 'ph:arrows-out-simple',
       eyedropper: 'ph:eyedropper-sample-duotone',
       pwa: 'logos:pwa',

@@ -5,18 +5,16 @@
       :key="api.id"
       :api="api"
       :available="!!webApiStatuses[api.id]"
-      :render-details="source !== 'sharedWebApiStatuses'"
+      :detailsEnabled="!sharedStatus"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+defineProps<{
   apis: WebApi[]
-  source: PageType
-}>(), {
-  source: 'webApiStatuses',
-})
+}>()
 
-const webApiStatuses: Ref<WebApiStatuses> = useState(props.source, () => ({}))
+const sharedStatus = useSharedStatus()
+const webApiStatuses = useWebApiStatuses()
 </script>

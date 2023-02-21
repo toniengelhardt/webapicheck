@@ -21,6 +21,10 @@ a {
 a:visited {
   @apply text-base;
 }
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
 
 p {
   @apply m-0;

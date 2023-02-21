@@ -2,7 +2,7 @@
   <NuxtLink
     :to="`/apis/${api.id}`"
     :title="`${api.name} details`"
-    class="grid-item" :class="itemClass"
+    class="grid-item" :class="itemClasses"
   >
     <div class="header">
       <div class="name">
@@ -14,7 +14,7 @@
       {{ api.path || 'N/A' }}
     </div>
     <div class="flex-1 min-h-4 md:min-h-12">
-      <template v-if="available && renderDetails">
+      <template v-if="available && detailsEnabled">
         <component
           :is="api.detail"
           v-if="api.detail"
@@ -35,7 +35,7 @@
     </div>
     <div class="flex items-center">
       <div class="flex-1 flex items-center h-4">
-        <div v-if="itemClass === 'loading'" class="flex justify-center items-center w-4 h-4">
+        <div v-if="!status.name" class="flex justify-center items-center w-4 h-4">
           <Icon name="spinner" class="animate-spin" />
         </div>
         <div v-else class="status" :class="status?.name">
@@ -56,9 +56,9 @@
 const props = withDefaults(defineProps<{
   api: WebApi
   available?: boolean
-  renderDetails: boolean
+  detailsEnabled?: boolean
 }>(), {
-  renderDetails: true,
+  detailsEnabled: true,
 })
 
 const status = computed(() => {
@@ -83,9 +83,13 @@ const status = computed(() => {
       label: 'Not available',
     }
   }
-  return undefined
+  return {
+    name: 'loading',
+    icon: 'waiting',
+    label: 'Loading',
+  }
 })
-const itemClass = computed(() => status.value?.name || 'loading')
+const itemClasses = computed(() => status.value.name + (props.detailsEnabled ? '' : ' disabled'))
 </script>
 
 <style lang="postcss" scoped>
