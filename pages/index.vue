@@ -85,8 +85,7 @@ const totalAPICount = computed(() => webApiList.value.length)
 function updateMode(newValue: DisplayMode) {
   displayMode.value = newValue
 }
-
-onMounted(() => useTestWebApis())
+useTestWebApis()
 
 watch(() => displayMode.value, (newVal, oldVal) => {
   console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
