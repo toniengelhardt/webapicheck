@@ -1,9 +1,8 @@
 import * as shvl from 'shvl'
-import DetailBatteryStatusAPI from '~/components/detail/BatteryStatusAPI.vue'
-import DetailGeolocationAPI from '~/components/detail/GeolocationAPI.vue'
-import DetailNetworkConnectionAPI from '~/components/detail/NetworkConnectionAPI.vue'
-import DetailVisualViewport from '~/components/detail/VisualViewport.vue'
-import DetailWebCryptoAPI from '~/components/detail/WebCryptoAPI.vue'
+import {
+  DetailBatteryStatusAPI, DetailGeolocationAPI, DetailNetworkConnectionAPI,
+  DetailVisualViewport, DetailWebCryptoAPI,
+} from '#components'
 
 export function defaultWebApiCheck(api: WebApi) {
   if (api.path) {
@@ -557,7 +556,7 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
           text: 'Easily check which WebAPIs and interfaces are available on your current device by opening this page.',
           url: 'https://webapicheck.com',
         })
-          .catch(() => {})
+          .catch(() => { })
       },
     },
   },
@@ -628,4 +627,109 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
     path: 'window.XMLHttpRequest',
     source: 'mdn',
   },
+}
+/**
+ * IMPORTANT
+ * Don't reorder and always add new entries at the bottom, otherwise existing links will break.
+ */
+export const webApiExportList: (keyof typeof webApiData)[] = [
+  'accelerometer',
+  'ambient-light-sensor',
+  'barcode-detection-api',
+  'battery-status-api',
+  'bluetooth-api',
+  'broadcast-channel-api',
+  'clipboard-api',
+  'contact-picker-api',
+  'content-index-api',
+  'cookie-store-api',
+  'digital-goods-api',
+  'eyedropper-api',
+  'file-api',
+  'file-system-access-api',
+  'fullscreen-api',
+  'gamepad-api',
+  'geolocation-api',
+  'gravity-sensor',
+  'gyroscope',
+  'history-api',
+  'html-sanitizer',
+  'image-capture-api',
+  'indexed-db-api',
+  'intersection-observer-api',
+  'largest-content-full-paint-api',
+  'layout-instability-api',
+  'linear-acceleration-sensor',
+  'magnetometer',
+  'network-connection-api',
+  'notifications-api',
+  'orientation-sensor',
+  'payment-request-api',
+  'performance-api',
+  'performance-timeline-api',
+  'permissions-api',
+  'picture-in-picture',
+  'reporting-api',
+  'screen-orientation-api',
+  'screen-wakelock-api',
+  'selection-api',
+  'storage',
+  'touch',
+  'vibration-api',
+  'virtual-keyboard-api',
+  'visual-viewport',
+  'web-animations-api',
+  'web-audio-api',
+  'web-authentication-api',
+  'web-codecs-api',
+  'web-crypto-api',
+  'webgl',
+  'webgpu',
+  'webhid-api',
+  'web-midi-api',
+  'webrtc-api',
+  'web-share-api',
+  'web-sockets-api',
+  'web-speech-api',
+  'web-storage-api',
+  'web-usb-api',
+  'webvtt',
+  'web-workers-api',
+  'webxr-device-api',
+  'window-controls-overlay-api',
+  'xml-http-request',
+]
+
+/**
+ * Convert a binary number string to a base64-encoded string.
+ * @param binarySequence: binary number string.
+ */
+export function binaryToBase64(binarySequence: string) {
+  // Note: we need to use BigInt to avoid rounding errors.
+  const decimalSequence = BigInt(`0b${binarySequence}`).toString()
+  return window.btoa(decimalSequence).replace(/\+/g, '-').replace(/\//g, '_')
+}
+
+/**
+ * Convert a base64-encoded string to a binary number string.
+ * @param base64Sequence: base64-encoded string.
+ */
+export function base64ToBinary(base64Sequence: string) {
+  const decimalSequence = window.atob(base64Sequence).replace(/-/g, '+').replace(/_/g, '/')
+  return BigInt(decimalSequence).toString(2)
+}
+
+export function encodeStatus(webApiStatuses: WebApiStatuses) {
+  const statusesBinary = webApiExportList.map(webApiKey => webApiStatuses[webApiKey] ? '1' : '0').join('')
+  return binaryToBase64(statusesBinary)
+}
+
+export function decodeStatus(statusBase64: string) {
+  // Left-pad the sequence with 0s to the length of the webApiExportList to
+  // recover leading 0s that were chopped off in the encoding process.
+  const statusesBinary = base64ToBinary(statusBase64).padStart(webApiExportList.length, '0')
+  const entries = webApiExportList.map((webApiKey, i) => {
+    return [webApiKey, statusesBinary.charAt(i) === '1']
+  })
+  return Object.fromEntries(entries) as WebApiStatuses
 }

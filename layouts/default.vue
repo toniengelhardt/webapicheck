@@ -32,6 +32,10 @@
     </div>
     <!-- Footer -->
     <AppFooter />
+    <!-- Dialogs -->
+    <Teleport to="body">
+      <DialogShare />
+    </Teleport>
   </div>
 </template>
 

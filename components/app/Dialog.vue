@@ -2,7 +2,7 @@
   <Transition name="modal">
     <div v-if="show" class="modal-mask" @click="$emit('close')">
       <div class="modal-wrapper">
-        <div class="modal-container" @click.stop>
+        <div class="modal-container" :style="{ maxWidth }" @click.stop>
           <div class="modal-header">
             <slot name="header" />
           </div>
@@ -19,9 +19,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   show: boolean
-}>()
+  maxWidth?: string
+}>(), {
+  maxWidth: '28rem',
+})
 defineEmits<{
   (event: 'close'): void
 }>()
@@ -41,9 +44,8 @@ defineEmits<{
     display: table-cell;
     vertical-align: middle;
     .modal-container {
-      @apply p-3 md:p-4 mx-auto bg-white dark:bg-zinc-800 shadow-xl rounded box-border;
+      @apply p-3 md:p-4 mx-auto bg-white dark:bg-zinc-900 shadow-xl rounded box-border;
       width: 100%;
-      max-width: 28rem;
       transition: all 0.3s ease;
       .modal-header {
         @apply text-xl font-semibold;

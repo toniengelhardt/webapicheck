@@ -19,22 +19,22 @@
     "@kevinmarrec/nuxt-pwa": "^0.16.2",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/plausible": "^0.2.0",
-    "@unocss/nuxt": "^0.49.4",
-    "@vueuse/nuxt": "^9.6.0",
+    "@unocss/nuxt": "^0.49.7",
+    "@vueuse/nuxt": "^9.13.0",
     "eslint": "^8.29.0",
-    "nuxt": "^3.2.0",
-    "nuxt-icon": "^0.2.11",
+    "nuxt": "^3.2.2",
+    "nuxt-icon": "^0.3.2",
     "nuxt-seo-kit": "^1.2.3",
     "nuxt-vitest": "^0.6.6",
     "typescript": "^4.9.4",
-    "vue-tsc": "^1.0.24"
+    "vue-tsc": "^1.1.5"
   },
   "dependencies": {
-    "@sentry/browser": "^7.37.2",
-    "@sentry/tracing": "^7.37.2",
-    "@sentry/vue": "^7.37.2",
+    "@sentry/browser": "^7.38.0",
+    "@sentry/tracing": "^7.38.0",
+    "@sentry/vue": "^7.38.0",
     "fuse.js": "^6.6.2",
-    "postcss-nested": "^6.0.0",
+    "postcss-nested": "^6.0.1",
     "shvl": "^3.0.0"
   }
 }

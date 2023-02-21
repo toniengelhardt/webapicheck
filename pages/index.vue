@@ -20,6 +20,14 @@
         <div class="flex lt-md:(w-1/3 justify-center)">
           <ContextStatus />
         </div>
+        <div
+          v-if="!sharedStatus"
+          lt-md:hidden flex-center ml-4 text-sm font-bold text-black bg-yellow-400 hover:bg-yellow-400:90 h-7 px-2.5 py-0 rounded cursor-pointer
+          @click="shareDialogOpen = true"
+        >
+          <Icon name="ph:arrow-up-bold" />
+          <span ml-1 mr-0.5>Share</span>
+        </div>
       </div>
     </template>
     <div
@@ -36,6 +44,11 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 
+const searchOptions = {
+  keys: ['name'],
+  threshold: 0.3,
+}
+
 const config = useRuntimeConfig()
 
 useSeoMeta({
@@ -46,21 +59,19 @@ useSeoMeta({
   ogImage: `${config.public.siteUrl}/og-image.png`,
 })
 
+const shareDialogOpen = useState('shareDialogOpen', () => false)
 const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'tiles' })
 
-console.log('Initial displayMode value:', displayMode.value)
+// console.log('Initial displayMode value:', displayMode.value)
 
 const searchMode = ref(false)
 const searchTerm = ref('')
 const debouncedSearchTerm = refDebounced(searchTerm, 100)
 
-const searchOptions = {
-  keys: ['name'],
-  threshold: 0.3,
-}
-
 const webApiList = useWebApiList()
-const webApiStatuses = useState('webApiStatuses', (): { [key: keyof typeof webApiData]: boolean } => ({}))
+const webApiStatuses = useWebApiStatuses()
+
+const sharedStatus = useSharedStatus()
 
 const fuse = computed(() => new Fuse(webApiList.value, searchOptions))
 const filteredAPIs = computed(() => {
@@ -75,9 +86,13 @@ function updateMode(newValue: DisplayMode) {
   displayMode.value = newValue
 }
 
-onMounted(() => useTestWebApis())
+// watch(() => displayMode.value, (newVal, oldVal) => {
+//   console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
+// })
 
-watch(() => displayMode.value, (newVal, oldVal) => {
-  console.log(`DisplayMode changed from '${oldVal}' to '${newVal}'`)
+onMounted(() => {
+  useTestWebApis()
+  const x = encodeStatus(webApiStatuses.value)
+  decodeStatus(x)
 })
 </script>

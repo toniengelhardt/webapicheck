@@ -5,6 +5,7 @@
       :key="api.id"
       :api="api"
       :available="!!webApiStatuses[api.id]"
+      :detailsEnabled="!sharedStatus"
     />
   </div>
 </template>
@@ -14,5 +15,6 @@ defineProps<{
   apis: WebApi[]
 }>()
 
-const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
+const sharedStatus = useSharedStatus()
+const webApiStatuses = useWebApiStatuses()
 </script>

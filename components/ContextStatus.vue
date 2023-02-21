@@ -10,7 +10,7 @@ const isSecure = computed(() => window?.isSecureContext)
           {{ isSecure ? 'secure' : 'not secure' }}
         </div>
         <div class="icon-container">
-          <Icon :name="isSecure ? 'secure' : 'unsecure'" size="0.75rem" />
+          <Icon :name="isSecure ? 'secure' : 'unsecure'" size="0.7rem" />
         </div>
       </div>
     </ClientOnly>
@@ -22,7 +22,7 @@ const isSecure = computed(() => window?.isSecureContext)
   @apply text-sm font-semibold;
 }
 .icon-container {
-  @apply flex-center w-5 h-5 ml-2 rounded;
+  @apply flex-center w-5 h-5 ml-1.5 rounded-full;
 }
 .secure {
   .icon-container {
