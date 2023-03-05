@@ -1,7 +1,7 @@
 <template>
   <div>
     <SeoKit />
-    <NuxtPage />
+    <NuxtPage :keepalive="{}" />
   </div>
 </template>
 
