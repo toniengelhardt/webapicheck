@@ -1,11 +1,11 @@
 # WebAPI check
 
-Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...
+Simply open this page and get an instant overview of the WebAPIs that are supported on your current device.
 
 | ![WebAPI check preview](https://user-images.githubusercontent.com/2703233/218753084-20b6cd9c-5303-48df-89ae-7bccb1519d0a.png) |
 |-|
 
-Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss).
+Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss). Powered by [Vercel](https://vercel.com).
 
 Sources: 
 
@@ -58,7 +58,7 @@ Adding new WebAPIs is really easy, just add it to the `webApiData` object in `ut
 }
 ```
 
-By default the app will check if the interface under `path` is defined, aka. in this case `navigator.bluetooth`, and if yes the API is available, if not it is not available.
+By default the app will check if the interface under `path` is defined – in this case `navigator.bluetooth` – and if yes the API is available, if not it is not available.
 
 But that is the simplest case, some APIs require a more complex test in which case you can add a custom check function like so:
 
@@ -84,7 +84,7 @@ But that is the simplest case, some APIs require a more complex test in which ca
 }
 ```
 
-Note that this entry also has a `detail` property, which you can define if you want display a widget demoing an API. In this case the widget shows the current battery level of the device. Take a look at the `DetailBatteryStatusAPI` component to get a feel for how that looks like.
+Note that this entry also has a `detail` property, which you can define if you want to display a widget to demo the API. Here the widget shows the current battery level of the device. Take a look at the `DetailBatteryStatusAPI` component to get a feel for how that looks like.
 
 If you need help, don't hesitate to ask.
 
@@ -95,4 +95,4 @@ If you need help, don't hesitate to ask.
 <br>
 
 Repo Insights via **[RepoTracker](https://repo-tracker.com)** at  
-[www.repo-tracker.com/r/gh/toniengelhardt/webapicheck](https://repo-tracker.com/r/gh/toniengelhardt/webapicheck)
+[https://repo-tracker.com/r/gh/toniengelhardt/webapicheck](https://repo-tracker.com/r/gh/toniengelhardt/webapicheck)
