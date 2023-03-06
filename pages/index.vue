@@ -60,7 +60,10 @@ useSeoMeta({
 })
 
 const shareDialogOpen = useState('shareDialogOpen', () => false)
-const displayMode: Ref<DisplayMode> = useCookie('displayMode', { default: () => 'tiles' })
+const displayMode: Ref<DisplayMode> = useCookie('displayMode', {
+  sameSite: 'lax',
+  default: () => 'tiles',
+})
 
 const searchMode = ref(false)
 const searchTerm = ref('')
