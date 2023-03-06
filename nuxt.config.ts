@@ -55,6 +55,11 @@ export default defineNuxtConfig({
       ],
     },
   },
+  nitro: {
+    prerender: {
+      ignore: ['/'],
+    },
+  },
   pwa: {
     manifest: {
       id: '/?standalone=true',
