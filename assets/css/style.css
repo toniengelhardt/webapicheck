@@ -2,12 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-  max-width: 100%;
-  overflow-x: hidden;
 
   @media (min-width: 640px) {
     overscroll-behavior-y: none;
