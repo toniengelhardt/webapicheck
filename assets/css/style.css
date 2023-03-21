@@ -64,11 +64,6 @@ p {
   background: darkgrey;
 }
 
-/* Remove Unwanted Horizontal Scrollbar */
-.content {
-  overflow-y: scroll;
-}
-
 /**
  * Animations
  */

@@ -48,6 +48,6 @@
   max-height: 100svh;
 }
 .content {
-  @apply flex-1 overflow-scroll;
+  @apply flex-1 overflow-x-hidden overflow-y-scroll;
 }
 </style>
