@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const config = useRuntimeConfig()
 const sharedStatus = useSharedStatus()
 const shareDialogOpen = useState('shareDialogOpen', () => false)
 </script>
@@ -7,7 +8,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
   <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-12 box-border" border="t-solid t-1 base">
     <ThemeSelector />
     <NuxtLink
-      :to="$config.public.repoUrl"
+      :to="config.public.repoUrl"
       class="footer-item footer-action"
       title="Contribute on GitHub"
       target="_blank"
@@ -17,7 +18,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
       <span>Contribute</span>
     </NuxtLink>
     <NuxtLink
-      :to="`mailto:${$config.public.feedbackEmail}`"
+      :to="`mailto:${config.public.feedbackEmail}`"
       class="footer-item footer-action"
       title="Send feedback via email"
       target="_blank"
@@ -53,7 +54,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
     <span class="flex items-center">
       <span lt-md:hidden>by</span>
       <NuxtLink
-        :to="$config.public.twitterProfile"
+        :to="config.public.twitterProfile"
         class="footer-item font-semibold lt-md:(w-8 h-8)"
         target="_blank"
         title="Toni Engelhardt on Twitter"

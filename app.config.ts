@@ -51,6 +51,7 @@ export default defineAppConfig({
       check: 'ph:check-bold',
       cross: 'ph:x-bold',
       repotracker: 'IconRepoTracker',
+      promptmetheus: 'game-icons:fire',
     },
   },
 })

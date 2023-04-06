@@ -3,6 +3,8 @@ useSeoMeta({
   title: 'Info',
   description: 'General information about WebAPIs and WebAPIcheck, plus Legend, Disclaimer, FAQs, Resources, and Browser Navigator.',
 })
+
+const config = useRuntimeConfig()
 </script>
 
 <template>
@@ -27,7 +29,7 @@ useSeoMeta({
         <p class="mt-4">
           Feedback, suggestions, and contributions are very welcome! Get in touch on
           <span whitespace-nowrap><NuxtLink
-            :to="$config.public.twitterProfile"
+            :to="config.public.twitterProfile"
             title="Toni Engelhardt on Twitter"
             target="_blank"
             class="link"
@@ -36,7 +38,7 @@ useSeoMeta({
             Twitter
           </NuxtLink><Icon name="external" class="ml-0.5" /></span> or
           <span whitespace-nowrap><NuxtLink
-            :to="$config.public.repoUrl"
+            :to="config.public.repoUrl"
             title="Contribute on GitHub"
             target="_blank"
             class="link"
@@ -51,16 +53,16 @@ useSeoMeta({
         <p>
           There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
           <NuxtLink
-            :to="`mailto:${$config.public.feedbackEmail}`"
+            :to="`mailto:${config.public.feedbackEmail}`"
             class="link"
             title="Send feedback via email"
             target="_blank"
             @click="useTrackEvent('click: Link', { props: { target: 'Feedback' } })"
           >
-            {{ $config.public.feedbackEmail }}
+            {{ config.public.feedbackEmail }}
           </NuxtLink> or
           <NuxtLink
-            :to="`${$config.public.repoUrl}/issues`"
+            :to="`${config.public.repoUrl}/issues`"
             title="GitHub issues for WebAPIcheck"
             target="_blank"
             class="link"
@@ -313,12 +315,12 @@ useSeoMeta({
             <p class="mb-6 text-xl text-dim font-bold">
               More DX projects
             </p>
-            <div class="flex lt-sm:flex-col mt-3">
+            <div class="flex flex-col gap-3 mt-3">
               <NuxtLink
                 to="https://repo-tracker.com?utm_source=WebAPI%20check"
                 title="Better GitHub Repository Stats and Insights"
                 target="_blank"
-                class="btn-outline lt-sm:text-xl lt-md:flex-1 md:w-50 h-12"
+                class="btn-outline lt-sm:text-xl w-full h-12"
                 @click="useTrackEvent('click: RepoTracker')"
               >
                 <Icon name="repotracker" class="dark:text-white" />
@@ -331,13 +333,22 @@ useSeoMeta({
                 to="https://github-stats.com?utm_source=WebAPI%20check"
                 title="Link redirection for GitHub repositories to RepoTracker for advanced GitHub repository statistics and insights"
                 target="_blank"
-                class="btn-outline lt-sm:(mt-3 text-xl) sm:ml-3 lt-md:flex-1  md:w-50 h-12"
+                class="btn-outline lt-sm:text-xl w-full h-12"
                 @click="useTrackEvent('click: GitHub stats')"
               >
                 <span class="ml-0.5">
-                  <span class="font-black">GitHub</span>
-                  <span class="ml-1 px-0.75 py-0.25 bg-green-100 text-green-700 dark:(bg-green-900 text-green-300) font-mono font-semibold rounded">-stats</span>
+                  <span class="font-bold font-mono">GitHub</span>
+                  <span class="ml-0.5 px-0.75 py-0.25 bg-green-100 text-green-700 dark:(bg-green-900 text-green-300) font-mono font-semibold rounded">-stats</span>
                 </span>
+              </NuxtLink>
+              <NuxtLink
+                to="https://promptmetheus.com?utm_source=WebAPI%20check"
+                title="Compose, test, and evaluate one-shot prompts for the OpenAI platform"
+                target="_blank"
+                class="btn-outline lt-sm:text-xl w-full h-12 font-black uppercase"
+                @click="useTrackEvent('click: RepoTracker')"
+              >
+                Pr<Icon name="promptmetheus" size="1rem" pb-0.6 class="mt-0.5 -mx-0.15" text-rose-400 />mpt<span text-dim font-normal tracking-tighter>metheus</span>
               </NuxtLink>
             </div>
           </div>
