@@ -49,14 +49,34 @@ const config = useRuntimeConfig()
         </p>
         <h2>Legend</h2>
         <ApiLegend />
+        <h2>Share your configuration</h2>
+        <p>
+          Thanks to the amazing idea and work by
+          <NuxtLink
+            to="https://github.com/paoloricciuti"
+            title="Paolo Ricciuti's GitHub profile"
+            target="_blank"
+            link
+          >Paolo Ricciuti</NuxtLink> you can share your device's WebAPI capabilities
+          via magic link. Just open the
+          <NuxtLink
+            to="/"
+            title="WebAPI check test page"
+            link
+          >test page</NuxtLink> and click share. Anyone opening the link will see
+          the exact same configuration that you see on your device. This can be very
+          useful for debuging purposes. If something works on your development device
+          but doesn't work on a user's device just ask them to share a link and you can
+          instantly confirm or rule out any issues related to WebAPIs.
+        </p>
         <h2>Disclaimer</h2>
         <p>
           There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
           <NuxtLink
             :to="`mailto:${config.public.feedbackEmail}`"
-            class="link"
             title="Send feedback via email"
             target="_blank"
+            link
             @click="useTrackEvent('click: Link', { props: { target: 'Feedback' } })"
           >
             {{ config.public.feedbackEmail }}
@@ -65,7 +85,7 @@ const config = useRuntimeConfig()
             :to="`${config.public.repoUrl}/issues`"
             title="GitHub issues for WebAPIcheck"
             target="_blank"
-            class="link"
+            link
             @click="useTrackEvent('click: Link', { props: { target: 'GitHub issues' } })"
           >
             create an issue
