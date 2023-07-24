@@ -5,7 +5,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
 
 <template>
   <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-14 md:h-10 box-border" border="t-solid t-1 base">
-    <ThemeSelector mr-4 />
+    <ThemeSelector />
     <NuxtLink
       :to="$config.public.repoUrl"
       class="footer-item footer-action"
@@ -117,7 +117,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
 
 <style lang="postcss" scoped>
 .footer-action {
-  @apply flex-center lt-md:(w-10 h-10) ml-2 md:not-first:ml-4;
+  @apply flex-center lt-md:(w-10 h-10) ml-2 md:not-first:ml-6;
   .icon {
     @apply text-1.5rem md:text-1.15rem;
   }
