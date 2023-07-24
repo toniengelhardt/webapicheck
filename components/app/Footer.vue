@@ -4,8 +4,8 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
 </script>
 
 <template>
-  <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-14 md:h-10 box-border" border="t-solid t-1 base">
-    <ThemeSelector />
+  <div class="flex justify-between items-center text-sm text-dim px-2 md:px-4 h-14 md:h-10 box-border" border="t-solid t-1 base">
+    <ThemeSelector lt-md:ml-2 />
     <NuxtLink
       :to="$config.public.repoUrl"
       class="footer-item footer-action"
@@ -57,7 +57,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
       <span lt-md:hidden>Made by</span>
       <NuxtLink
         :to="$config.public.twitterProfile"
-        class="footer-item font-semibold lt-md:(w-8 h-8 ml-3)"
+        class="footer-item font-semibold lt-md:(w-10 h-10 mx-2)"
         target="_blank"
         title="Toni Engelhardt on Twitter"
         @click="useTrackEvent('click: Twitter profile')"

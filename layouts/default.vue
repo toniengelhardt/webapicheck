@@ -2,12 +2,12 @@
   <div class="layout">
     <!-- Header -->
     <div
-      class="flex lt-md:(flex-col justify-center) md:(flex-row items-center) w-full px3 md:px-4 bg-base box-border"
+      class="flex lt-md:(flex-col justify-center) md:(flex-row items-center) w-full px-2 md:px-4 bg-base box-border"
       border="b-solid b-1 base"
     >
       <div class="flex items-center h-12 lt-md:justify-center md:w-1/3">
         <div
-          flex-center w-12 h-12 cursor-pointer text-1.25rem
+          flex-center w-10 h-10 cursor-pointer text-1.25rem
           :class="{ 'display-none': $route.path === '/' }"
           @click="$router.go(-1)"
         >
