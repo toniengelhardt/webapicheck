@@ -1,3 +1,7 @@
+import '@total-typescript/ts-reset'
+import { sentryVitePlugin } from '@sentry/vite-plugin'
+import { version } from './package.json'
+
 const appName = 'WebAPI check'
 const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...'
 
@@ -35,16 +39,18 @@ export default defineNuxtConfig({
     shim: false,
   },
   css: [
-    'assets/css/style.css',
+    'assets/postcss/style.postcss',
   ],
   postcss: {
     plugins: {
+      'cssnano': false,
       'postcss-nested': {},
     },
   },
   app: {
     head: {
       htmlAttrs: {
+        lang: 'en',
         translate: 'no', // Avoid translation.
       },
       bodyAttrs: {
@@ -55,9 +61,26 @@ export default defineNuxtConfig({
       ],
     },
   },
+  vite: {
+    build: {
+      sourcemap: true,
+    },
+    plugins: [
+      // Sentry Vite plugin needs to be after all other plugins.
+      sentryVitePlugin({
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        org: 'webapicheck',
+        project: 'webapp',
+        release: {
+          name: version,
+        },
+        telemetry: false,
+      }),
+    ],
+  },
   nitro: {
-    prerender: {
-      ignore: ['/'],
+    routeRules: {
+      '/': { prerender: false }, // Note: for some reason / is prerendered by default, which breaks the auth middleware.
     },
   },
   pwa: {

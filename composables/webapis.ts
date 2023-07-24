@@ -2,7 +2,7 @@
  * Converts the webApiData object into a sorted list (by name) for use in list and grid.
  * Note that it has to return a ref, otherwise the ShallowRef components break.
  */
-export const useWebApiList = () => {
+export function useWebApiList() {
   const list = Object.keys(webApiData).reduce((list: WebApi[], apiKey: string) => {
     list.push({
       id: apiKey,
@@ -14,16 +14,18 @@ export const useWebApiList = () => {
   return ref(list)
 }
 
-export const useSharedStatus = () => {
+export function useSharedStatus() {
   const route = useRoute()
   return route.query.status?.toString()
 }
 
-export const useWebApiStatuses = () => useState('webApiStatuses', () => ({})) as Ref<WebApiStatuses>
+export function useWebApiStatuses() {
+  return useState('webApiStatuses', () => ({} as WebApiStatuses))
+}
 /**
  * Note: this probably needs some refactoring.
  */
-export const useWebApiStatus = (api: WebApi, available?: boolean) => {
+export function useWebApiStatus(api: WebApi, available?: boolean) {
   return computed(() => {
     if (available) {
       if (api.experimental) {
@@ -56,7 +58,7 @@ export const useWebApiStatus = (api: WebApi, available?: boolean) => {
  * @param webApis: list of WebAPIs to test, defaults to all.
  * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
  */
-export const useTestWebApis = (webApis?: WebApi[], force = false) => {
+export function useTestWebApis(webApis?: WebApi[], force = false) {
   if (window && navigator) {
     const webApiStatuses = useWebApiStatuses()
     const sharedStatus = useSharedStatus()

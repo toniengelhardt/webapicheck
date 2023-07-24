@@ -1,32 +1,34 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
 const sharedStatus = useSharedStatus()
 const shareDialogOpen = useState('shareDialogOpen', () => false)
 </script>
 
 <template>
-  <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-12 box-border" border="t-solid t-1 base">
-    <ThemeSelector />
+  <div class="flex justify-between items-center text-sm text-dim px-6 md:px-4 h-14 md:h-10 box-border" border="t-solid t-1 base">
+    <ThemeSelector mr-4 />
     <NuxtLink
-      :to="config.public.repoUrl"
+      :to="$config.public.repoUrl"
       class="footer-item footer-action"
       title="Contribute on GitHub"
       target="_blank"
+      lt-md:important-hidden
       @click="useTrackEvent('click: Contribute')"
     >
       <Icon name="github" />
       <span>Contribute</span>
     </NuxtLink>
     <NuxtLink
-      :to="`mailto:${config.public.feedbackEmail}`"
+      :to="`mailto:${$config.public.feedbackEmail}`"
       class="footer-item footer-action"
       title="Send feedback via email"
       target="_blank"
+      lt-md:important-hidden
       @click="useTrackEvent('click: Feedback')"
     >
       <Icon name="email" />
       <span>Feedback</span>
     </NuxtLink>
+    <div flex-1 md:hidden />
     <!-- <div
       v-if="shareAvailable"
       class="footer-item footer-action"
@@ -51,11 +53,11 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
       <span>Info</span>
     </NuxtLink>
     <span flex-1 lt-md:hidden />
-    <span class="flex items-center">
-      <span lt-md:hidden>by</span>
+    <span flex items-center>
+      <span lt-md:hidden>Made by</span>
       <NuxtLink
-        :to="config.public.twitterProfile"
-        class="footer-item font-semibold lt-md:(w-8 h-8)"
+        :to="$config.public.twitterProfile"
+        class="footer-item font-semibold lt-md:(w-8 h-8 ml-3)"
         target="_blank"
         title="Toni Engelhardt on Twitter"
         @click="useTrackEvent('click: Twitter profile')"
@@ -64,8 +66,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
         <span lt-md:hidden>toniengelhardt</span>
       </NuxtLink>
     </span>
-    <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
-    <span class="flex items-center lt-md:hidden">
+    <span class="flex items-center ml-1.5 lt-md:hidden">
       <span>with</span>
       <NuxtLink
         href="https://v3.nuxtjs.org/"
@@ -98,9 +99,8 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
         <span>Uno</span>
       </NuxtLink>
     </span>
-    <span class="flex items-center mx-2 lt-md:hidden">&middot;</span>
-    <span class="flex items-center lt-md:hidden">
-      <span>on</span>
+    <span class="flex items-center ml-8 lt-md:hidden">
+      <span>Hosted on</span>
       <NuxtLink
         href="https://vercel.com/"
         class="footer-item font-semibold"
@@ -117,9 +117,9 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
 
 <style lang="postcss" scoped>
 .footer-action {
-  @apply flex-center lt-md:(w-8 h-8) md:not-first:ml-8;
+  @apply flex-center lt-md:(w-10 h-10) ml-2 md:not-first:ml-4;
   .icon {
-    @apply text-1.5rem md:text-1.25rem;
+    @apply text-1.5rem md:text-1.15rem;
   }
   span {
     @apply ml-1.5 lt-md:hidden;

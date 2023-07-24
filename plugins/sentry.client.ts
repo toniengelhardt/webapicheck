@@ -1,20 +1,22 @@
 import * as Sentry from '@sentry/vue'
-import { Integrations } from '@sentry/tracing'
 import { version } from '~/package.json'
 
 export default defineNuxtPlugin((nuxtApp) => {
+  const release = `webapicheck-webapp@${version}`
   const environment = process.env.NODE_ENV
+
   if (environment !== 'development') {
-    const config = useRuntimeConfig()
     Sentry.init({
       app: nuxtApp.vueApp,
-      dsn: config.public.sentryDSN,
-      release: `webapicheck-webapp@${version}`,
+      dsn: 'https://e726ccc63b0549c289c845a24347426f@o4504038618693632.ingest.sentry.io/4504038627082240',
+      release,
       environment,
-      integrations: [new Integrations.BrowserTracing({
-        routingInstrumentation: Sentry.vueRouterInstrumentation(nuxtApp.$router),
-        tracingOrigins: ['localhost', 'webapicheck.com', /^\//],
-      })],
+      integrations: [
+        new Sentry.BrowserTracing({
+          routingInstrumentation: Sentry.vueRouterInstrumentation((nuxtApp as any).$router),
+          tracingOrigins: ['localhost', 'webapicheck.com', /^\//],
+        }),
+      ],
       tracesSampleRate: 0.05,
     })
   }

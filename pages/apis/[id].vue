@@ -7,11 +7,20 @@ definePageMeta({
 
 const route = useRoute()
 
-const webApiStatuses: Ref<WebApiStatuses> = useState('webApiStatuses', () => ({}))
+const webApiList = useWebApiList()
+const webApiStatuses = useState('webApiStatuses', () => ({} as WebApiStatuses))
 
 const webApiId = computed(() => route.params.id.toString())
 const webApi = computed(() => ({ id: webApiId.value, ...webApiData[webApiId.value] }))
 const available = computed(() => webApiStatuses.value[webApiId.value])
+const otherWebAPIs = computed(() => {
+  const idx = webApiList.value.findIndex(api => api.id === webApiId.value)
+  const list = [] as WebApi[]
+  for (let i = idx + 1; i <= idx + 5; i++) {
+    list.push(webApiList.value.at(i)!)
+  }
+  return list
+})
 
 useSeoMeta({
   title: () => webApi.value.name,
@@ -49,33 +58,40 @@ onMounted(() => useTestWebApis([webApi.value]))
 <template>
   <div>
     <NuxtLayout>
-      <div max-w-screen-lg mx-auto px-3 md:px-4>
-        <h1>
+      <div max-w-screen-lg mx-auto px-3 md:px-4 py-12>
+        <h1 important-mt-0>
           {{ webApi.name }}
         </h1>
-        <div class="status" :class="status?.name">
-          <span class="status-icon">
-            <Icon :name="status?.icon || ''" />
-          </span>
-          <span class="status-label">
-            {{ status?.label }}
-          </span>
+        <p mb-2 text-sm text-dim font-bold>
+          API test:
+        </p>
+        <div min-h-6>
+          <ClientOnly>
+            <div class="status" :class="status?.name">
+              <span class="status-icon">
+                <Icon :name="status?.icon || ''" />
+              </span>
+              <span class="status-label">
+                {{ status?.label }}
+              </span>
+            </div>
+          </ClientOnly>
         </div>
         <div class="box" grid md:grid-cols-2 gap-3 md:gap-4 mt-8>
+          <div>
+            <div class="label">
+              Type
+            </div>
+            <div class="value">
+              WebAPI
+            </div>
+          </div>
           <div>
             <div class="label">
               Path
             </div>
             <div class="value">
               {{ webApi.path || 'N/A' }}
-            </div>
-          </div>
-          <div>
-            <div class="label">
-              Source
-            </div>
-            <div class="value">
-              <ApiSource :source="webApi.source" />
             </div>
           </div>
           <div>
@@ -94,35 +110,65 @@ onMounted(() => useTestWebApis([webApi.value]))
               </NuxtLink>
             </div>
           </div>
+          <div>
+            <div class="label">
+              Source
+            </div>
+            <div class="value">
+              <ApiSource :source="webApi.source" />
+            </div>
+          </div>
         </div>
-        <div mt-8>
-          <p mb-6 text-dim font-bold>
-            Special properties
-          </p>
-          <div v-if="webApi.availableInWebWorkers" class="panel">
-            <div flex items-center>
-              <Icon name="webworker" size="1.25rem" /> Available in Web Workers
-            </div>
+        <h2>
+          Special properties
+        </h2>
+        <div v-if="webApi.availableInWebWorkers" class="panel">
+          <div flex items-center>
+            <Icon name="webworker" size="1.25rem" /> Available in Web Workers
           </div>
-          <div v-if="webApi.userInteractionRequired" class="panel">
-            <div flex items-center>
-              <Icon name="interaction" size="1.25rem" /> User interaction required
-            </div>
-          </div>
-          <div v-if="webApi.permissionsRequired" class="panel">
-            <div flex items-center>
-              <Icon name="permission" size="1.25rem" /> Permission/s required
-            </div>
-          </div>
-          <div v-if="webApi.secureContextRequired" class="panel">
-            <div flex items-center>
-              <Icon name="secure" size="1.25rem" /> Secure context required
-            </div>
-          </div>
-          <p v-if="!webApi.availableInWebWorkers && !webApi.userInteractionRequired && !webApi.permissionsRequired && !webApi.secureContextRequired" mt-4 italic>
-            No special features or requirements.
-          </p>
         </div>
+        <div v-if="webApi.userInteractionRequired" class="panel">
+          <div flex items-center>
+            <Icon name="interaction" size="1.25rem" /> User interaction required
+          </div>
+        </div>
+        <div v-if="webApi.permissionsRequired" class="panel">
+          <div flex items-center>
+            <Icon name="permission" size="1.25rem" /> Permission/s required
+          </div>
+        </div>
+        <div v-if="webApi.secureContextRequired" class="panel">
+          <div flex items-center>
+            <Icon name="secure" size="1.25rem" /> Secure context required
+          </div>
+        </div>
+        <p v-if="!webApi.availableInWebWorkers && !webApi.userInteractionRequired && !webApi.permissionsRequired && !webApi.secureContextRequired" mt-4 italic>
+          No special features or requirements.
+        </p>
+        <h2>
+          FAQ
+        </h2>
+        <FaqList
+          :includeUserInteraction="webApi.userInteractionRequired"
+          :includePermissions="webApi.permissionsRequired"
+          :includeSecureContext="webApi.secureContextRequired"
+          :includeWebWorkers="webApi.availableInWebWorkers"
+        />
+        <h2>
+          Other WebAPIs
+        </h2>
+        <ul pl-0 list-none>
+          <li v-for="api in otherWebAPIs" :key="api.id" flex not-first:mt-4>
+            <div flex-center w-4 mr-2>
+              <Icon name="ph:caret-right" text-faint />
+            </div>
+            <NuxtLink
+              :to="api.path"
+              :title="`${api.name} - Device Test and Details`"
+              link
+            >{{ api.name }}</NuxtLink>
+          </li>
+        </ul>
       </div>
     </NuxtLayout>
   </div>
@@ -130,7 +176,10 @@ onMounted(() => useTestWebApis([webApi.value]))
 
 <style lang="postcss" scoped>
 h1 {
-  @apply mb-8;
+  @apply my-8;
+}
+h2 {
+  @apply my-8 text-dim font-bold text-1.25rem;
 }
 .status {
   @apply flex items-center;

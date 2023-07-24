@@ -1,7 +1,7 @@
 <template>
-  <div class="flex-center flex-col w-8 h-8">
-    <Icon name="brand" size="1.25rem" />
-    <div class="flex">
+  <div flex-center flex-col w-10 h-10 md:w-8 md:h-8>
+    <Icon name="brand" size="1em" />
+    <div flex>
       <div class="dot bg-lime-500" />
       <div class="dot bg-purple-500" />
       <div class="dot bg-neutral-400" />

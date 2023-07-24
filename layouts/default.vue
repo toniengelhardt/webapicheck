@@ -7,17 +7,17 @@
     >
       <div class="flex items-center h-12 lt-md:justify-center md:w-1/3">
         <div
-          flex-center w-8 h-8 cursor-pointer
+          flex-center w-10 h-10 cursor-pointer
           :class="{ 'display-none': $route.path === '/' }"
           @click="$router.go(-1)"
         >
           <Icon name="back" />
         </div>
-        <div lt-md:flex-1 flex-center>
+        <div lt-md:flex-1 flex-center lt-md:pr-5 text-1.25rem>
           <BrandIcon :class="{ '!md:display-none': $route.path !== '/' }" />
           <BrandName ml-1 />
         </div>
-        <div :class="{ 'display-none': $route.path === '/' }" w-8 h-8 />
+        <div :class="{ 'display-none': $route.path === '/' }" w-10 h-10 />
       </div>
       <div class="md:w-1/3">
         <slot name="header-center" />
