@@ -58,7 +58,7 @@ onMounted(() => useTestWebApis([webApi.value]))
 <template>
   <div>
     <NuxtLayout>
-      <div max-w-screen-lg mx-auto px-3 md:px-4 py-12>
+      <div max-w-screen-lg mx-auto px-3 md:px-4 py-8 md:py-12>
         <h1 important-mt-0>
           {{ webApi.name }}
         </h1>
