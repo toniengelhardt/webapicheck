@@ -163,7 +163,7 @@ onMounted(() => useTestWebApis([webApi.value]))
               <Icon name="ph:caret-right" text-faint />
             </div>
             <NuxtLink
-              :to="api.path"
+              :to="`/apis/${api.id}`"
               :title="`${api.name} - Device Test and Details`"
               link
             >{{ api.name }}</NuxtLink>

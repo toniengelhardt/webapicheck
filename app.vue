@@ -12,9 +12,4 @@ useSchemaOrg([
     logo: '/icon.png',
   }),
 ])
-
-// defineOgImageStatic({
-//   component: 'OgDefault',
-//   provider: 'browser',
-// })
 </script>
