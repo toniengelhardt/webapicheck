@@ -25,6 +25,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     componentIslands: true,
+    headNext: true,
   },
   modules: [
     '@kevinmarrec/nuxt-pwa',
