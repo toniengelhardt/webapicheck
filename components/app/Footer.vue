@@ -6,28 +6,6 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
 <template>
   <div class="flex justify-between items-center text-sm text-dim px-2 md:px-4 h-14 md:h-10 box-border" border="t-solid t-1 base">
     <ThemeSelector lt-md:ml-2 />
-    <NuxtLink
-      :to="$config.public.repoUrl"
-      class="footer-item footer-action"
-      title="Contribute on GitHub"
-      target="_blank"
-      lt-md:important-hidden
-      @click="useTrackEvent('click: Contribute')"
-    >
-      <Icon name="github" />
-      <span>Contribute</span>
-    </NuxtLink>
-    <NuxtLink
-      :to="`mailto:${$config.public.feedbackEmail}`"
-      class="footer-item footer-action"
-      title="Send feedback via email"
-      target="_blank"
-      lt-md:important-hidden
-      @click="useTrackEvent('click: Feedback')"
-    >
-      <Icon name="email" />
-      <span>Feedback</span>
-    </NuxtLink>
     <div flex-1 md:hidden />
     <!-- <div
       v-if="shareAvailable"
@@ -49,20 +27,30 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
       title="Legend and information about WebAPI check"
       class="footer-item footer-action"
     >
-      <Icon name="info" />
+      <Icon name="info" size="1.1em" />
       <span>Info</span>
+    </NuxtLink>
+    <NuxtLink
+      :to="$config.public.repoUrl"
+      class="footer-item footer-action"
+      title="Contribute on GitHub"
+      target="_blank"
+      @click="useTrackEvent('click: Contribute')"
+    >
+      <Icon name="github" />
+      <span>Contribute</span>
     </NuxtLink>
     <span flex-1 lt-md:hidden />
     <span flex items-center>
       <span lt-md:hidden>Made by</span>
       <NuxtLink
-        :to="$config.public.twitterProfile"
+        :to="$config.public.xProfile"
         class="footer-item font-semibold lt-md:(w-10 h-10 mx-2)"
         target="_blank"
         title="Toni Engelhardt on Twitter"
         @click="useTrackEvent('click: Twitter profile')"
       >
-        <Icon name="logos:twitter" lt-md:text-1.4rem md:ml-1 md:mr-1 />
+        <Icon name="simple-icons:x" size="0.9em" lt-md:text-1.3rem md:ml-1 md:mr-1 />
         <span lt-md:hidden>toniengelhardt</span>
       </NuxtLink>
     </span>
@@ -75,7 +63,7 @@ const shareDialogOpen = useState('shareDialogOpen', () => false)
         title="Official Nuxt 3 website"
         @click="useTrackEvent('click: Footer link', { props: { target: 'Nuxt' } })"
       >
-        <Icon name="nuxt" class="ml-2 mr-1" />
+        <Icon name="nuxt" size="1.15em" class="ml-2 mr-1" />
         <span>Nuxt</span>
       </NuxtLink>
       <NuxtLink

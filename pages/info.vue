@@ -21,29 +21,20 @@ useSeoMeta({
             target="_blank"
           >
             WebAPIs
-          </NuxtLink><Icon name="external" class="ml-0.5" /> are currently available on your device.
+          </NuxtLink> are currently available on your device.
           Just open the page on the device you want to test and voilà.
         </p>
         <p class="mt-4">
-          Feedback, suggestions, and contributions are very welcome! Get in touch on
-          <span whitespace-nowrap><NuxtLink
-            :to="$config.public.twitterProfile"
-            title="Toni Engelhardt on Twitter"
+          Feedback, suggestions, and contributions are very welcome, just get in touch on
+          <NuxtLink
+            :to="$config.public.xProfile"
+            title="Toni Engelhardt on X"
             target="_blank"
             class="link"
             @click="useTrackEvent('click: Link', { props: { target: 'Twitter profile' } })"
           >
-            Twitter
-          </NuxtLink><Icon name="external" class="ml-0.5" /></span> or
-          <span whitespace-nowrap><NuxtLink
-            :to="$config.public.repoUrl"
-            title="Contribute on GitHub"
-            target="_blank"
-            class="link"
-            @click="useTrackEvent('click: Link', { props: { target: 'GitHub repo' } })"
-          >
-            GitHub
-          </NuxtLink><Icon name="external" class="ml-0.5" /></span>.
+            𝕏
+          </NuxtLink>.
         </p>
         <h2>Legend</h2>
         <ApiLegend />
@@ -69,16 +60,7 @@ useSeoMeta({
         </p>
         <h2>Disclaimer</h2>
         <p>
-          There is no guarantee that the above checks work correctly. If you find any bugs, please let me know at
-          <NuxtLink
-            :to="`mailto:${$config.public.feedbackEmail}`"
-            title="Send feedback via email"
-            target="_blank"
-            link
-            @click="useTrackEvent('click: Link', { props: { target: 'Feedback' } })"
-          >
-            {{ $config.public.feedbackEmail }}
-          </NuxtLink> or
+          There is no guarantee that the above checks work correctly. If you find any bugs, please
           <NuxtLink
             :to="`${$config.public.repoUrl}/issues`"
             title="GitHub issues for WebAPIcheck"
@@ -87,7 +69,7 @@ useSeoMeta({
             @click="useTrackEvent('click: Link', { props: { target: 'GitHub issues' } })"
           >
             create an issue
-          </NuxtLink><Icon name="external" class="ml-0.5" />
+          </NuxtLink>
           in the GitHub repo.
           Please also note that some browsers (e.g.
           <NuxtLink
@@ -98,7 +80,7 @@ useSeoMeta({
             @click="useTrackEvent('click: Link', { props: { target: 'Brave' } })"
           >
             Brave
-          </NuxtLink><Icon name="external" class="ml-0.5" />)
+          </NuxtLink>)
           might not always report API support correctly and
           signal for certain APIs that they are available when they are actually not.
         </p>
@@ -113,7 +95,7 @@ useSeoMeta({
             @click="useTrackEvent('click: Link', { props: { target: 'Progressive Web Apps (PWA)' } })"
           >
             Progressive Web App (PWA)
-          </NuxtLink><Icon name="external" class="ml-0.5" />,
+          </NuxtLink>,
           meaning you can install it on your mobile- and/or desktop device to
           get a better user experience.
         </p>
@@ -138,7 +120,7 @@ useSeoMeta({
                   class="link"
                 >
                   MDN Web Docs
-                </NuxtLink><Icon name="external" class="ml-0.5" />
+                </NuxtLink>
               </li>
               <li class="mt-2">
                 <NuxtLink
@@ -148,7 +130,7 @@ useSeoMeta({
                   class="link"
                 >
                   Chrome Developers
-                </NuxtLink><Icon name="external" class="ml-0.5" />
+                </NuxtLink>
               </li>
               <li class="mt-2">
                 <NuxtLink
@@ -158,7 +140,7 @@ useSeoMeta({
                   class="link"
                 >
                   W3C
-                </NuxtLink><Icon name="external" class="ml-0.5" />
+                </NuxtLink>
               </li>
               <li class="mt-2">
                 <NuxtLink
@@ -168,7 +150,7 @@ useSeoMeta({
                   class="link"
                 >
                   Fugu API Tracker
-                </NuxtLink><Icon name="external" class="ml-0.5" />
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -209,7 +191,7 @@ useSeoMeta({
                 class="btn-outline lt-sm:text-xl w-full h-12 font-black uppercase"
                 @click="useTrackEvent('click: RepoTracker')"
               >
-                Pr<Icon name="promptmetheus" size="1rem" pb-0.6 class="mt-0.5 -mx-0.15" text-rose-400 />mpt<span text-dim font-normal tracking-tighter>metheus</span>
+                Pr<Icon name="promptmetheus" size="1em" pb-0.175em class="md:mt-0.025em" />mpt<span text-dim font-normal tracking-tighter>metheus</span>
               </NuxtLink>
             </div>
           </div>

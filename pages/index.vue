@@ -43,6 +43,7 @@
 
 <script setup lang="ts">
 import Fuse from 'fuse.js'
+import type { FuseResult } from 'fuse.js'
 
 const searchOptions = {
   keys: ['name'],
@@ -77,7 +78,7 @@ const sharedStatus = useSharedStatus()
 const fuse = computed(() => new Fuse(webApiList.value, searchOptions))
 const filteredAPIs = computed(() => {
   return debouncedSearchTerm.value
-    ? fuse.value.search(debouncedSearchTerm.value).map((result: Fuse.FuseResult<WebApi>) => result.item)
+    ? fuse.value.search(debouncedSearchTerm.value).map((result: FuseResult<WebApi>) => result.item)
     : webApiList.value
 })
 const supportedAPICount = computed(() => filteredAPIs.value.filter(api => !!webApiStatuses.value[api.id]).length)

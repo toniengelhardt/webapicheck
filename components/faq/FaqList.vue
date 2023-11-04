@@ -64,7 +64,7 @@ defineProps<{
             target="_blank"
           >
             Let's build a Native(-like) Web App (NWA)
-          </NuxtLink><Icon name="external" class="ml-0.5" /> for more info on that topic.
+          </NuxtLink> for more info on that topic.
         </p>
       </div>
     </div>
@@ -107,7 +107,7 @@ defineProps<{
           class="link"
         >
           Permissions API
-        </NuxtLink><Icon name="external" class="ml-0.5" /> that gives you better control over the permissions UX.
+        </NuxtLink> that gives you better control over the permissions UX.
       </p>
     </div>
   </div>
@@ -135,7 +135,7 @@ defineProps<{
           target="_blank"
         >
           W3C spec
-        </NuxtLink><Icon name="external" class="ml-0.5" /> and on the
+        </NuxtLink> and on the
         <NuxtLink
           to="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts"
           title="Secure contexts on MDN"
@@ -143,7 +143,7 @@ defineProps<{
           target="_blank"
         >
           Secure Contexts
-        </NuxtLink><Icon name="external" class="ml-0.5" />
+        </NuxtLink>
         page on MDN.
       </p>
     </div>
@@ -167,7 +167,7 @@ defineProps<{
           target="_blank"
         >
           Web Worker API documentation
-        </NuxtLink><Icon name="external" class="ml-0.5" /> on MDN.
+        </NuxtLink> on MDN.
       </p>
     </div>
   </div>

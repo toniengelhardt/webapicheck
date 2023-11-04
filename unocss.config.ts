@@ -9,7 +9,7 @@ import {
 
 export default defineConfig({
   safelist: [
-    'display-none',
+    'hidden',
   ],
   shortcuts: {
     'flex-center': 'flex justify-center items-center',

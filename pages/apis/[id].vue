@@ -1,7 +1,9 @@
 <script setup lang="ts">
 definePageMeta({
-  validate: ({ params }) => {
-    return Object.keys(webApiData).includes(params.id.toString())
+  validate: (route) => {
+    return route
+      ? Object.keys(webApiData).includes(route.params.id.toString())
+      : false
   },
 })
 
@@ -60,7 +62,7 @@ onMounted(() => useTestWebApis([webApi.value]))
     <NuxtLayout>
       <div max-w-screen-lg mx-auto px-3 md:px-4 py-8 md:py-12>
         <h1 important-mt-0>
-          {{ webApi.name }}
+          {{ webApi.name }} Test
         </h1>
         <p mb-2 text-sm text-dim font-bold>
           API test:
@@ -155,7 +157,7 @@ onMounted(() => useTestWebApis([webApi.value]))
           :includeWebWorkers="webApi.availableInWebWorkers"
         />
         <h2>
-          Other WebAPIs
+          Other WebAPI tests
         </h2>
         <ul pl-0 list-none>
           <li v-for="api in otherWebAPIs" :key="api.id" flex not-first:mt-4>
@@ -166,7 +168,7 @@ onMounted(() => useTestWebApis([webApi.value]))
               :to="`/apis/${api.id}`"
               :title="`${api.name} - Device Test and Details`"
               link
-            >{{ api.name }}</NuxtLink>
+            >{{ api.name }} Test</NuxtLink>
           </li>
         </ul>
       </div>

@@ -51,7 +51,7 @@ export default defineAppConfig({
       check: 'ph:check',
       cross: 'ph:x',
       repotracker: 'IconRepoTracker',
-      promptmetheus: 'game-icons:fire',
+      promptmetheus: 'IconPromptmetheus',
     },
   },
 })

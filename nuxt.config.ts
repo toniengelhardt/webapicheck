@@ -6,20 +6,14 @@ const appName = 'WebAPI check'
 const appDescription = 'Simply open this page and get an instant overview of the WebAPIs that are supported on your current device. WebAPI requirements, specs, live tests, and more...'
 
 export default defineNuxtConfig({
-  extends: [
-    'nuxt-seo-kit',
-  ],
   runtimeConfig: {
     indexable: true,
     public: {
-      titleSeparator: '·',
-      trailingSlash: false,
       siteUrl: 'https://webapicheck.com',
       siteName: appName,
       siteDescription: appDescription,
-      twitterProfile: 'https://twitter.com/toniengelhardt',
+      xProfile: 'https://twitter.com/toniengelhardt',
       repoUrl: 'https://github.com/toniengelhardt/webapicheck',
-      feedbackEmail: 'feedback@webapicheck.com',
       sentryDSN: process.env.SENTRY_DSN,
     },
   },
@@ -27,10 +21,19 @@ export default defineNuxtConfig({
     componentIslands: true,
     headNext: true,
   },
+  site: {
+    name: appName,
+    description: appDescription,
+    url: 'https://webapicheck.com',
+    defaultLocale: 'en-US',
+    titleSeparator: '·',
+    trailingSlash: false,
+  },
   modules: [
     '@kevinmarrec/nuxt-pwa',
     '@nuxtjs/color-mode',
     '@nuxtjs/plausible',
+    '@nuxtseo/module',
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
@@ -119,8 +122,5 @@ export default defineNuxtConfig({
     domain: 'webapicheck.com',
     trackLocalhost: false,
     autoOutboundTracking: false,
-  },
-  linkChecker: {
-    failOn404: true,
   },
 })

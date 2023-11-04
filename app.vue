@@ -1,10 +1,3 @@
-<template>
-  <div>
-    <SeoKit />
-    <NuxtPage :keepalive="{}" />
-  </div>
-</template>
-
 <script setup lang="ts">
 useSchemaOrg([
   defineOrganization({
@@ -13,3 +6,9 @@ useSchemaOrg([
   }),
 ])
 </script>
+
+<template>
+  <div>
+    <NuxtPage :keepalive="{}" />
+  </div>
+</template>

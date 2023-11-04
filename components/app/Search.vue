@@ -1,7 +1,7 @@
 <template>
   <div
     flex items-center max-w-120 h-9 md:h-8 mx-auto rounded-md overflow-hidden
-    border="solid 1 base"
+    bg-surface border="solid 1 base"
   >
     <div flex-center shrink-0 h-9 w-9 md:h-8 md:w-8 text-zinc-500 dark:text-zinc-400>
       <Icon name="search" />
@@ -30,6 +30,6 @@ defineProps<{
 }>()
 defineEmits<{
   (event: 'update:searchTerm', value: string): void
-  (event: 'update:searchMode', value: string): void
+  (event: 'update:searchMode', value: boolean): void
 }>()
 </script>
