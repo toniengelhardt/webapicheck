@@ -25,7 +25,7 @@ const otherWebAPIs = computed(() => {
 })
 
 useSeoMeta({
-  title: () => webApi.value.name,
+  title: () => `${webApi.value.name} Test`,
   description: () => `Open this page to test if your current device supports ${webApi.value.name} (WebAPI). Details, properties, special requirements, and more for ${webApi.value.name}.`,
 })
 
