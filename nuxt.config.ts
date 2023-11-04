@@ -1,4 +1,5 @@
 import '@total-typescript/ts-reset'
+import { defineNuxtModule } from '@nuxt/kit'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { version } from './package.json'
 
@@ -31,6 +32,16 @@ export default defineNuxtConfig({
   },
   modules: [
     '@kevinmarrec/nuxt-pwa',
+    // Fix for nuxt-pwa module to make pnpm typecheck work, see
+    // https://github.com/nuxt/nuxt/issues/23157
+    defineNuxtModule({
+      setup(_, nuxt) {
+        nuxt.hook('prepare:types', ({ tsConfig }) => {
+          // @ts-ignore
+          tsConfig.compilerOptions.paths['#pwa'] = ['./.nuxt/types/pwa'];
+        });
+      },
+    }),
     '@nuxtjs/color-mode',
     '@nuxtjs/plausible',
     '@nuxtseo/module',
@@ -47,6 +58,7 @@ export default defineNuxtConfig({
   ],
   postcss: {
     plugins: {
+
       'cssnano': false,
       'postcss-nested': {},
     },
