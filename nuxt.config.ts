@@ -37,9 +37,9 @@ export default defineNuxtConfig({
     defineNuxtModule({
       setup(_, nuxt) {
         nuxt.hook('prepare:types', ({ tsConfig }) => {
-          // @ts-ignore
-          tsConfig.compilerOptions.paths['#pwa'] = ['./.nuxt/types/pwa'];
-        });
+          if (tsConfig.compilerOptions)
+            tsConfig.compilerOptions.paths['#pwa'] = ['./.nuxt/types/pwa']
+        })
       },
     }),
     '@nuxtjs/color-mode',
