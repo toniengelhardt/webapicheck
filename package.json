@@ -1,6 +1,6 @@
 {
   "name": "webapicheck",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "type": "module",
   "packageManager": "pnpm@8.9.2",
   "scripts": {
