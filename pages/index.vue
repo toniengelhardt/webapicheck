@@ -1,46 +1,3 @@
-<template>
-  <NuxtLayout>
-    <template #header-center>
-      <AppSearch
-        v-model:searchTerm="searchTerm"
-        v-model:searchMode="searchMode"
-      />
-    </template>
-    <template #header-right>
-      <div flex w-full lt-md:py-3 md:justify-end>
-        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
-          <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
-        </div>
-        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
-          <ApiModeSelector
-            :modelValue="displayMode"
-            @update:modelValue="updateMode($event)"
-          />
-        </div>
-        <div class="flex lt-md:(w-1/3 justify-center)">
-          <ContextStatus />
-        </div>
-        <div
-          v-if="!sharedStatus"
-          lt-md:hidden flex-center ml-4 text-sm font-bold text-black bg-yellow-400 hover:bg-yellow-400:90 h-7 px-2.5 py-0 rounded cursor-pointer
-          @click="shareDialogOpen = true"
-        >
-          <Icon name="ph:arrow-up-bold" />
-          <span ml-1 mr-0.5>Share</span>
-        </div>
-      </div>
-    </template>
-    <div
-      v-if="filteredAPIs && !filteredAPIs.length"
-      flex-center h-full text-dim italic
-    >
-      There are no APIs matching your search...
-    </div>
-    <ApiList v-else-if="displayMode === 'rows'" :apis="filteredAPIs" />
-    <ApiGrid v-else-if="displayMode === 'tiles'" :apis="filteredAPIs" />
-  </NuxtLayout>
-</template>
-
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 import type { FuseResult } from 'fuse.js'
@@ -90,3 +47,46 @@ function updateMode(newValue: DisplayMode) {
 
 onMounted(() => useTestWebApis())
 </script>
+
+<template>
+  <NuxtLayout>
+    <template #header-center>
+      <AppSearch
+        v-model:searchTerm="searchTerm"
+        v-model:searchMode="searchMode"
+      />
+    </template>
+    <template #header-right>
+      <div flex w-full lt-md:py-3 md:justify-end>
+        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
+          <ApiCounter :supported-count="supportedAPICount" :total-count="totalAPICount" />
+        </div>
+        <div class="flex lt-md:(w-1/3 justify-center) md:mr-4">
+          <ApiModeSelector
+            :model-value="displayMode"
+            @update:model-value="updateMode($event)"
+          />
+        </div>
+        <div class="flex lt-md:(w-1/3 justify-center)">
+          <ContextStatus />
+        </div>
+        <div
+          v-if="!sharedStatus"
+          lt-md:hidden flex-center ml-4 text-sm font-bold text-black bg-yellow-400 hover:bg-yellow-400:90 h-7 px-2.5 py-0 rounded cursor-pointer
+          @click="shareDialogOpen = true"
+        >
+          <Icon name="ph:arrow-up-bold" />
+          <span ml-1 mr-0.5>Share</span>
+        </div>
+      </div>
+    </template>
+    <div
+      v-if="filteredAPIs && !filteredAPIs.length"
+      flex-center h-full text-dim italic
+    >
+      There are no APIs matching your search...
+    </div>
+    <ApiList v-else-if="displayMode === 'rows'" :apis="filteredAPIs" />
+    <ApiGrid v-else-if="displayMode === 'tiles'" :apis="filteredAPIs" />
+  </NuxtLayout>
+</template>

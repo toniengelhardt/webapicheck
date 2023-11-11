@@ -132,7 +132,5 @@ export default defineNuxtConfig({
   },
   plausible: {
     domain: 'webapicheck.com',
-    trackLocalhost: false,
-    autoOutboundTracking: false,
   },
 })

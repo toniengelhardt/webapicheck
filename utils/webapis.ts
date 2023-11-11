@@ -1,7 +1,10 @@
 import * as shvl from 'shvl'
 import {
-  DetailBatteryStatusAPI, DetailGeolocationAPI, DetailNetworkConnectionAPI,
-  DetailVisualViewport, DetailWebCryptoAPI,
+  DetailBatteryStatusAPI,
+  DetailGeolocationAPI,
+  DetailNetworkConnectionAPI,
+  DetailVisualViewport,
+  DetailWebCryptoAPI,
 } from '#components'
 
 export function defaultWebApiCheck(api: WebApi) {
@@ -54,7 +57,8 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
           return bm !== undefined
         }
         return false
-      } catch (error) {
+      }
+      catch (error) {
         return false
       }
     },
@@ -101,10 +105,12 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
         try {
           const registration = await navigator.serviceWorker.ready
           return 'index' in registration
-        } catch (error) {
+        }
+        catch (error) {
           return false
         }
-      } else {
+      }
+      else {
         return false
       }
     },
@@ -126,7 +132,8 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
       {
         name: 'spec',
         url: 'https://github.com/WICG/digital-goods/blob/main/explainer.md',
-      }, {
+      },
+      {
         name: 'status',
         url: 'https://chromestatus.com/feature/5339955595313152',
       },
@@ -147,7 +154,8 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
           const eyeDropper = new EyeDropper()
           eyeDropper.open()
             .then((result: any) => alert(`Selected color: ${result.sRGBHex}`))
-        } catch (error) { }
+        }
+        catch (error) { }
       },
     },
   },
@@ -177,10 +185,12 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
         try {
           if (document?.fullscreenEnabled !== undefined) {
             document.documentElement.requestFullscreen()
-          } else if ((document as any)?.webkitFullscreenEnabled !== undefined) {
+          }
+          else if ((document as any)?.webkitFullscreenEnabled !== undefined) {
             (document.documentElement as any).webkitRequestFullscreen()
           }
-        } catch (error) {
+        }
+        catch (error) {
           console.error(error)
           alert('Oh oh, an error occured. Check the console for more details!')
         }
@@ -501,7 +511,8 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
       try {
         const canvas = document?.createElement('canvas')
         return !!(canvas && !!window?.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')))
-      } catch (error) {
+      }
+      catch (error) {
         return false
       }
     },
@@ -574,7 +585,8 @@ export const webApiData: { [slug: string]: Omit<WebApi, 'id'> } = {
     check: () => {
       try {
         return !!(window as any)?.SpeechRecognition || !!(window as any)?.webkitSpeechRecognition
-      } catch (error) {
+      }
+      catch (error) {
         return false
       }
     },
@@ -702,7 +714,7 @@ export const webApiExportList: (keyof typeof webApiData)[] = [
 
 /**
  * Convert a binary number string to a base64-encoded string.
- * @param binarySequence: binary number string.
+ * @param binarySequence - binary number string.
  */
 export function binaryToBase64(binarySequence: string) {
   // Note: we need to use BigInt to avoid rounding errors.
@@ -712,7 +724,7 @@ export function binaryToBase64(binarySequence: string) {
 
 /**
  * Convert a base64-encoded string to a binary number string.
- * @param base64Sequence: base64-encoded string.
+ * @param base64Sequence - base64-encoded string.
  */
 export function base64ToBinary(base64Sequence: string) {
   const decimalSequence = window.atob(base64Sequence).replace(/-/g, '+').replace(/_/g, '/')

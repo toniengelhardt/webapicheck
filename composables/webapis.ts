@@ -55,8 +55,8 @@ export function useWebApiStatus(api: WebApi, available?: boolean) {
 /**
  * Check the availability of each WebAPI on the current device.
  * This can only run on the client obviously.
- * @param webApis: list of WebAPIs to test, defaults to all.
- * @param force: by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
+ * @param webApis - list of WebAPIs to test, defaults to all.
+ * @param force - by default WebAPIs that have been checked already are skipped, unless this flag is set to true.
  */
 export function useTestWebApis(webApis?: WebApi[], force = false) {
   if (window && navigator) {
@@ -66,7 +66,8 @@ export function useTestWebApis(webApis?: WebApi[], force = false) {
       for (const [key, val] of Object.entries(decodeStatus(sharedStatus.split('-')[1]))) {
         webApiStatuses.value[key] = val
       }
-    } else {
+    }
+    else {
       webApis = webApis || useWebApiList().value
       webApis.forEach((webApi) => {
         if (force || !webApiStatuses.value[webApi.id]) {
@@ -74,7 +75,8 @@ export function useTestWebApis(webApis?: WebApi[], force = false) {
           if (check.constructor.name === 'AsyncFunction') {
             (check(webApi) as Promise<boolean>)
               .then((available: boolean) => webApiStatuses.value[webApi.id] = available)
-          } else {
+          }
+          else {
             webApiStatuses.value[webApi.id] = check(webApi) as boolean
           }
         }
