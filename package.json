@@ -33,7 +33,7 @@
     "@nuxtjs/seo": "2.0.0-rc.10",
     "@sentry/vite-plugin": "^2.16.1",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@unocss/nuxt": "^0.59.3",
+    "@unocss/nuxt": "^0.59.4",
     "@vueuse/nuxt": "^10.9.0",
     "eslint": "^9.0.0",
     "happy-dom": "^14.7.1",
