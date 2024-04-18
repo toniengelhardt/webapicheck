@@ -1,7 +1,7 @@
 {
   "name": "webapicheck",
   "type": "module",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "packageManager": "pnpm@8.15.3",
   "scripts": {
     "dev": "nuxt dev --host --no-qr",
