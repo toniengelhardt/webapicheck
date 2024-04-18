@@ -1,4 +1,4 @@
-import { defineVitestConfig } from 'nuxt-vitest/config'
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
 // See Elk repo for examples: https://github.com/elk-zone/elk
 

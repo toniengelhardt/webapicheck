@@ -1,5 +1,4 @@
 import '@total-typescript/ts-reset'
-import { defineNuxtModule } from '@nuxt/kit'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { version } from './package.json'
 
@@ -31,24 +30,13 @@ export default defineNuxtConfig({
     trailingSlash: false,
   },
   modules: [
-    '@kevinmarrec/nuxt-pwa',
-    // Fix for nuxt-pwa module to make pnpm typecheck work, see
-    // https://github.com/nuxt/nuxt/issues/23157
-    defineNuxtModule({
-      setup(_, nuxt) {
-        nuxt.hook('prepare:types', ({ tsConfig }) => {
-          if (tsConfig.compilerOptions)
-            tsConfig.compilerOptions.paths['#pwa'] = ['./.nuxt/types/pwa']
-        })
-      },
-    }),
+    '@nuxt/eslint',
     '@nuxtjs/color-mode',
     '@nuxtjs/plausible',
-    '@nuxtseo/module',
+    '@nuxtjs/seo',
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-vitest',
   ],
   typescript: {
     shim: false,
@@ -58,7 +46,6 @@ export default defineNuxtConfig({
   ],
   postcss: {
     plugins: {
-
       'cssnano': false,
       'postcss-nested': {},
     },
@@ -72,6 +59,9 @@ export default defineNuxtConfig({
       bodyAttrs: {
         class: 'text-base bg-base',
       },
+      meta: [
+        { name: 'keywords', content: 'WebAPI, WebAPI test, Modern Web, Open Web' },
+      ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', key: 'favicon' },
       ],
@@ -96,39 +86,14 @@ export default defineNuxtConfig({
   },
   nitro: {
     routeRules: {
-      '/': { prerender: false }, // Note: for some reason / is prerendered by default, which breaks the auth middleware.
-    },
-  },
-  pwa: {
-    manifest: {
-      id: '/?standalone=true',
-      name: appName,
-      short_name: appName,
-      description: appDescription,
-      display: 'standalone',
-      orientation: 'portrait',
-      lang: 'en',
-      start_url: '/?standalone=true',
-      categories: [
-        'productivity',
-        'utilities',
-      ],
-    },
-    meta: {
-      title: appName,
-      mobileApp: true,
-      mobileAppIOS: true,
-      twitterCard: 'summary_large_image',
-      theme_color: false,
-    },
-    icon: {
-      source: 'public/icon.png',
-      maskableSource: 'public/icon.maskable.png',
-      maskablePadding: 0,
+      '/': { prerender: false },
     },
   },
   colorMode: {
     classSuffix: '',
+  },
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
   },
   plausible: {
     domain: 'webapicheck.com',

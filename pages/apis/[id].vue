@@ -18,7 +18,7 @@ const available = computed(() => webApiStatuses.value[webApiId.value])
 const otherWebAPIs = computed(() => {
   const idx = webApiList.value.findIndex(api => api.id === webApiId.value)
   const list = [] as WebApi[]
-  for (let i = idx + 1; i <= idx + 5; i++) {
+  for (let i = idx + 1; i <= idx + 10; i++) {
     list.push(webApiList.value.at(i % webApiList.value.length)!)
   }
   return list
