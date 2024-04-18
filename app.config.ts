@@ -15,7 +15,7 @@ export default defineAppConfig({
       permission: 'bx:check-shield',
       secure: 'bxs:lock-alt',
       unsecure: 'bxs:lock-open-alt',
-      external: 'ci:external-link',
+      external: 'ph:arrow-square-out',
       search: 'carbon:search',
       clear: 'carbon:erase',
       light: 'ph:sun',

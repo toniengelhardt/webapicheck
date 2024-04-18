@@ -18,7 +18,7 @@ const available = computed(() => webApiStatuses.value[webApiId.value])
 const otherWebAPIs = computed(() => {
   const idx = webApiList.value.findIndex(api => api.id === webApiId.value)
   const list = [] as WebApi[]
-  for (let i = idx + 1; i <= idx + 10; i++) {
+  for (let i = idx + 1; i <= idx + 12; i++) {
     list.push(webApiList.value.at(i % webApiList.value.length)!)
   }
   return list
@@ -26,7 +26,7 @@ const otherWebAPIs = computed(() => {
 
 useSeoMeta({
   title: () => `${webApi.value.name} Test`,
-  description: () => `Open this page to test if your current device supports ${webApi.value.name} (WebAPI). Details, properties, special requirements, and more for ${webApi.value.name}.`,
+  description: () => `Open this page to test if your device supports the ${webApi.value.name} WebAPI. Availability test, details, special properties, and more.`,
 })
 
 const status = computed(() => {
@@ -65,7 +65,7 @@ onMounted(() => useTestWebApis([webApi.value]))
           {{ webApi.name }} Test
         </h1>
         <p mb-2 text-sm text-dim font-bold>
-          API test:
+          WebAPI test:
         </p>
         <div min-h-6>
           <ClientOnly>
@@ -79,8 +79,8 @@ onMounted(() => useTestWebApis([webApi.value]))
             </div>
           </ClientOnly>
         </div>
-        <div class="box" grid md:grid-cols-2 gap-3 md:gap-4 mt-8>
-          <div>
+        <div grid md:grid-cols-2 gap-3 md:gap-4 mt-8>
+          <div class="box">
             <div class="label">
               Type
             </div>
@@ -88,7 +88,7 @@ onMounted(() => useTestWebApis([webApi.value]))
               WebAPI
             </div>
           </div>
-          <div>
+          <div class="box">
             <div class="label">
               Path
             </div>
@@ -96,7 +96,7 @@ onMounted(() => useTestWebApis([webApi.value]))
               {{ webApi.path || 'N/A' }}
             </div>
           </div>
-          <div>
+          <div class="box">
             <div class="label">
               Documentation
             </div>
@@ -105,14 +105,14 @@ onMounted(() => useTestWebApis([webApi.value]))
                 :to="webApi.url"
                 :title="`Documentation for ${webApi.name}`"
                 target="_blank"
-                btn-xs btn-outline
+                flex items-center
                 @click="useTrackEvent('click: WebAPI documentation', { props: { webapi: webApi.id } })"
               >
-                OPEN <Icon name="external" class="ml-0.5" />
+                <u>Open</u> <Icon name="external" ml-0.5 />
               </NuxtLink>
             </div>
           </div>
-          <div>
+          <div class="box">
             <div class="label">
               Source
             </div>
@@ -159,18 +159,17 @@ onMounted(() => useTestWebApis([webApi.value]))
         <h2>
           Other WebAPI tests
         </h2>
-        <ul pl-0 list-none>
-          <li v-for="api in otherWebAPIs" :key="api.id" flex not-first:mt-4>
-            <div flex-center w-4 mr-2>
-              <Icon name="ph:caret-right" text-faint />
-            </div>
-            <NuxtLink
-              :to="`/apis/${api.id}`"
-              :title="`${api.name} - Device Test and Details`"
-              link
-            >{{ api.name }} Test</NuxtLink>
-          </li>
-        </ul>
+        <div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4>
+          <NuxtLink
+            v-for="api in otherWebAPIs" :key="api.id"
+            :to="`/apis/${api.id}`"
+            :title="`Test ${api.name} support of this device`"
+            flex items-center px-4 py-3 bg-zinc-200:25 hover:bg-zinc-200:50 text-sm text-dim font-semibold rounded
+          >
+            <span flex-1>Test&nbsp;<span text-base>{{ api.name }}</span></span>
+            <Icon name="ph:arrow-right" />
+          </NuxtLink>
+        </div>
       </div>
     </NuxtLayout>
   </div>
@@ -181,7 +180,7 @@ h1 {
   @apply my-8;
 }
 h2 {
-  @apply my-8 text-dim font-bold text-1.25rem;
+  @apply mt-16 mb-8 text-dim font-semibold text-1.25rem;
 }
 .status {
   @apply flex items-center;
@@ -217,7 +216,7 @@ h2 {
   }
 }
 .label {
-  @apply mb-1.5 text-sm text-dim font-bold;
+  @apply mb-1.5 text-sm text-dim font-semibold;
 }
 .value {
   @apply flex items-center h-5;
