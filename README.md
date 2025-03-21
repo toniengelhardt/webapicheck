@@ -1,11 +1,11 @@
 # WebAPI check
 
-Simply open this page and get an instant overview of the WebAPIs that are supported on your current device.
+Simply open this page and get an instant overview of the WebAPIs that are supported on your device.
 
 | ![WebAPI check preview](https://user-images.githubusercontent.com/2703233/218753084-20b6cd9c-5303-48df-89ae-7bccb1519d0a.png) |
 |-|
 
-Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss). Powered by [Vercel](https://vercel.com).
+Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss).
 
 Sources: 
 
@@ -94,5 +94,5 @@ If you need help, don't hesitate to ask.
 
 <br>
 
-Repo Insights via **[RepoTracker](https://repo-tracker.com)** at  
-[https://repo-tracker.com/r/gh/toniengelhardt/webapicheck](https://repo-tracker.com/r/gh/toniengelhardt/webapicheck)
+Check the **[GithubTracker](https://githubtracker.com)** repo stats at<br>
+**[https://githubtracker.com/toniengelhardt/webapicheck](https://githubtracker.com/toniengelhardt/webapicheck)**
