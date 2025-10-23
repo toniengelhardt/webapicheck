@@ -1,11 +1,11 @@
 # WebAPI check
 
-Simply open this page and get an instant overview of the WebAPIs that are supported on your device.
+Simply open this page to see which WebAPIs are supported on your device.
+
+Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss).
 
 | ![WebAPI check preview](https://user-images.githubusercontent.com/2703233/218753084-20b6cd9c-5303-48df-89ae-7bccb1519d0a.png) |
 |-|
-
-Made with [Nuxt](https://nuxt.com), [Vite](https://vitejs.dev), and [Uno](https://github.com/unocss/unocss).
 
 Sources: 
 
@@ -14,26 +14,18 @@ Sources:
 
 ## Setup
 
-Clone the repo, install the dependencies with pnpm, and you're ready to go.
+Clone the repo, install dependencies with pnpm, and you're ready to go.
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-## Production
-
-Build application for production:
-
-```bash
-pnpm build
-```
-
 ## Contribute
 
 Contributions are very welcome!
 
-For WebAPI additions and bug fixes you can open pull requests right away, but for improvements and new features I'd suggest opening an issue for discussion first to avoid unnecessary work if it gets rejected.
+For WebAPI additions and bug fixes you can open pull requests right away, but for improvements and new features I'd suggest opening an issue for discussion first to avoid unnecessary work if the proposal gets rejected.
 
 Please use prefixes according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventiona) in your commits to make [changelogithub](https://github.com/antfu/changelogithub) work properly, e.g.
 
@@ -58,9 +50,9 @@ Adding new WebAPIs is really easy, just add it to the `webApiData` object in `ut
 }
 ```
 
-By default the app will check if the interface under `path` is defined – in this case `navigator.bluetooth` – and if yes the API is available, if not it is not available.
+By default the app will check if the interface under `path` is defined – in this case `navigator.bluetooth` – and if yes, the API is available, otherwise not.
 
-But that is the simplest case, some APIs require a more complex test in which case you can add a custom check function like so:
+For more complex APIs you can customize the check function like so:
 
 ```ts
 'battery-status-api': {
@@ -84,7 +76,7 @@ But that is the simplest case, some APIs require a more complex test in which ca
 }
 ```
 
-Note that this entry also has a `detail` property, which you can define if you want to display a widget to demo the API. Here the widget shows the current battery level of the device. Take a look at the `DetailBatteryStatusAPI` component to get a feel for how that looks like.
+Note that this entry also has a `detail` property, which you can define if you want to display a widget to demo the API. In the example the widget shows the current battery level of the device. Take a look at the `DetailBatteryStatusAPI` component to get a feel for how that looks like.
 
 If you need help, don't hesitate to ask.
 
@@ -94,5 +86,4 @@ If you need help, don't hesitate to ask.
 
 <br>
 
-Check the **[GithubTracker](https://githubtracker.com)** repo stats at<br>
-**[https://githubtracker.com/toniengelhardt/webapicheck](https://githubtracker.com/toniengelhardt/webapicheck)**
+Track repo stats on **[GithubTracker](https://githubtracker.com/toniengelhardt/webapicheck)**
